@@ -6,7 +6,7 @@
        de sécurité sont gérées en CSS via env(safe-area-inset-*). -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
   <title>Rome en famille</title>
-  <meta name="description" content="Guide touristique familial hors-ligne pour Rome et le Vatican : carte, lieux autour de moi, anecdotes pour les enfants et lecture audio.">
+  <meta name="description" content="Guide touristique familial hors-ligne pour Rome et le Vatican : carte, lieux autour de moi, guide adultes et enfants, lecture audio.">
   <meta name="app-version" content="__VERSION__">
 
   <!-- Couleur de la barre système : suit le mode clair / sombre -->
@@ -63,7 +63,7 @@
         <!-- Mini-fiche affichée quand on touche un marqueur -->
         <div id="map-mini" class="map-mini" aria-live="polite">
           <button id="mini-open" class="map-mini-main" type="button">
-            <span id="mini-emoji" class="lieu-emoji"></span>
+            <img id="mini-img" class="lieu-photo" alt="" width="56" height="56">
             <span class="lieu-texte">
               <span id="mini-nom" class="lieu-nom"></span>
               <span id="mini-meta" class="lieu-meta"></span>
@@ -82,7 +82,23 @@
             <button id="btn-hint-gps" class="btn btn-small btn-primary" type="button">Activer la localisation</button>
           </div>
           <ul id="liste" class="liste"></ul>
-          <p class="liste-footer">Rome en famille · version <span id="version">__VERSION__</span> · Cartes © OpenStreetMap</p>
+
+          <!-- Mode hors-ligne : téléchargement des médias -->
+          <div class="offline-card">
+            <h3>Mode hors-ligne</h3>
+            <p>À faire une fois en Wi-Fi avant le voyage : les audios et photos seront disponibles sans réseau.</p>
+            <div class="offline-progress" id="media-progress" hidden>
+              <div class="preload-bar"><div id="media-bar-fill" class="preload-bar-fill"></div></div>
+              <span id="media-label" class="preload-label"></span>
+            </div>
+            <div class="offline-actions">
+              <button id="btn-media" class="btn btn-small btn-primary" type="button">⬇ Audios et photos</button>
+              <button id="btn-preload-2" class="btn btn-small" type="button">🗺️ Carte</button>
+            </div>
+            <p id="media-status" class="offline-status"></p>
+          </div>
+
+          <p class="liste-footer">Rome en famille · version <span id="version">__VERSION__</span><br>Cartes © OpenStreetMap · Photos Wikimedia Commons (crédits dans chaque fiche)</p>
         </div>
         <!-- Filtres par catégorie, placés en bas pour être accessibles au pouce -->
         <div id="chips" class="chips" role="tablist" aria-label="Filtrer par catégorie"></div>
@@ -111,13 +127,34 @@
 
         <!-- Barre d'actions : tout est dans le tiers inférieur, sous le pouce -->
         <div class="sheet-actions">
-          <div id="audio-progress" class="audio-progress" aria-hidden="true"><div id="audio-progress-fill" class="audio-progress-fill"></div></div>
-          <div class="sheet-actions-row sheet-actions-audio">
-            <button id="btn-audio" class="btn btn-primary btn-audio" type="button">
-              <span class="btn-audio-icon" aria-hidden="true">🔊</span><span id="btn-audio-label">Écouter le guide</span>
+          <!-- 1. Choix du texte à lire / afficher -->
+          <div class="segmented" role="radiogroup" aria-label="Choisir le guide">
+            <button id="seg-adultes" class="segment is-active" type="button" role="radio" aria-checked="true" data-public="adultes">
+              <span aria-hidden="true">👨‍👩‍👧</span> Adultes
             </button>
-            <button id="btn-stop" class="btn btn-square" type="button" aria-label="Arrêter la lecture" hidden>■</button>
+            <button id="seg-enfants" class="segment" type="button" role="radio" aria-checked="false" data-public="enfants">
+              <span aria-hidden="true">🧒</span> Enfants
+            </button>
           </div>
+
+          <!-- 2. Lecteur audio -->
+          <div class="player">
+            <div id="audio-progress" class="audio-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="audio-progress-fill" class="audio-progress-fill"></div>
+            </div>
+            <div class="player-row">
+              <button id="btn-back" class="btn btn-square" type="button" aria-label="Reculer de 15 secondes" hidden>⏪</button>
+              <button id="btn-audio" class="btn btn-primary btn-audio" type="button">
+                <span class="btn-audio-icon" aria-hidden="true">🔊</span>
+                <span id="btn-audio-label">Écouter le guide</span>
+              </button>
+              <button id="btn-fwd" class="btn btn-square" type="button" aria-label="Avancer de 15 secondes" hidden>⏩</button>
+              <button id="btn-stop" class="btn btn-square" type="button" aria-label="Arrêter la lecture" hidden>■</button>
+            </div>
+            <div id="player-time" class="player-time" aria-live="off"></div>
+          </div>
+
+          <!-- 3. Actions secondaires -->
           <div class="sheet-actions-row sheet-actions-secondary">
             <button id="btn-map" class="btn" type="button"><span aria-hidden="true">🗺️</span> Carte</button>
             <button id="btn-route" class="btn" type="button"><span aria-hidden="true">🚶</span> Itinéraire</button>

@@ -1,491 +1,1159 @@
 /* =====================================================================
    monuments.js — Base de données des lieux (Rome & Vatican)
    ---------------------------------------------------------------------
+   FICHIER GÉNÉRÉ par scripts/build_monuments.js à partir de content/part*.json.
+   Pour modifier un texte : éditer le JSON correspondant dans content/, puis
+   relancer  node scripts/build_monuments.js  (et  python scripts/generate_audio.py
+   pour régénérer les MP3 des textes modifiés).
+
    Chaque lieu contient :
-     id          : identifiant unique (utilisé pour la mémoire "déjà vu")
+     id          : identifiant unique (photos img/<id>.jpg, audios audio/<id>-*.mp3)
      nom         : nom affiché
-     emoji       : pictogramme du marqueur sur la carte et dans la liste
      categorie   : 'antique' | 'vatican' | 'place' | 'eglise' | 'quartier'
      lat / lon   : coordonnées GPS (WGS84)
      duree       : temps de visite estimé, en minutes
-     description : texte principal, lu par la synthèse vocale
-     enfants     : section "Pour les enfants (9-12 ans)", lue également
      conseil     : astuce pratique (non lue à voix haute)
+     adultes     : sections { titre, texte } du guide adultes
+     enfants     : sections { titre, texte } du guide enfants (9-12 ans)
    ===================================================================== */
 
 const CATEGORIES = {
-  antique:  { label: 'Rome antique',      emoji: '🏛️' },
-  vatican:  { label: 'Vatican',           emoji: '⛪' },
-  place:    { label: 'Places & rues',     emoji: '⛲' },
-  eglise:   { label: 'Églises & secrets', emoji: '🕯️' },
-  quartier: { label: 'Quartiers & vues',  emoji: '🌳' }
+  antique: {
+    label: "Rome antique",
+    emoji: "🏛️"
+  },
+  vatican: {
+    label: "Vatican",
+    emoji: "⛪"
+  },
+  place: {
+    label: "Places & rues",
+    emoji: "⛲"
+  },
+  eglise: {
+    label: "Églises & secrets",
+    emoji: "🕯️"
+  },
+  quartier: {
+    label: "Quartiers & vues",
+    emoji: "🌳"
+  }
 };
 
 const MONUMENTS = [
-  /* ------------------------------------------------------------------
-     ROME ANTIQUE
-     ------------------------------------------------------------------ */
   {
-    id: 'colisee',
-    nom: 'Colisée',
-    emoji: '🏟️',
-    categorie: 'antique',
+    id: "colisee",
+    nom: "Colisée",
+    categorie: "antique",
     lat: 41.8902, lon: 12.4922,
     duree: 120,
-    description:
-      "Inauguré en l'an 80 par l'empereur Titus, l'amphithéâtre Flavien est le plus grand jamais construit par les Romains : 188 mètres de long, près de 50 mètres de haut et plus de 50 000 spectateurs. Pendant quatre siècles, on y a organisé des combats de gladiateurs, des chasses d'animaux venus d'Afrique et des spectacles grandioses. Sa façade en travertin comptait 80 arcades, et un immense voile de toile, le velarium, protégeait le public du soleil. Sous l'arène, un réseau de couloirs, de cages et de monte-charges permettait de faire surgir bêtes et décors par des trappes.",
-    enfants:
-      "Chaque spectateur avait un ticket en terre cuite avec un numéro d'entrée, exactement comme dans un stade de football aujourd'hui : le Colisée pouvait se remplir ou se vider en quelques minutes. Sous tes pieds, dans les souterrains, des lions, des ours et même des crocodiles attendaient dans des cages avant d'être hissés vers l'arène par des ascenseurs à contrepoids ! Les gladiateurs étaient souvent des esclaves ou des prisonniers, mais les meilleurs devenaient de vraies stars, avec des supporters et des cadeaux. Contrairement aux films, la plupart des combats ne se terminaient pas par la mort : un gladiateur coûtait trop cher à entraîner. Regarde les trous dans les murs : au Moyen Âge, les Romains ont arraché les agrafes de fer qui tenaient les pierres pour les revendre.",
-    conseil: "Billet à réserver en ligne à l'avance avec un créneau horaire. Le même billet inclut le Forum et le Palatin. Arrivez tôt le matin ou en fin d'après-midi."
+    conseil: "Billet à réserver en ligne à l'avance avec un créneau horaire. Le même billet inclut le Forum et le Palatin. Arrivez tôt le matin ou en fin d'après-midi.",
+    adultes: [
+      { titre: "Des origines à l'inauguration",
+        texte: "Vers 70 de notre ère, l'empereur Vespasien décide d'offrir au peuple un terrain que Néron s'était approprié : le lac artificiel de sa Maison dorée, dans la vallée entre le Palatin, l'Esquilin et le Cælius. Le chantier est financé en grande partie par le butin rapporté de Jérusalem, prise en 70. Vespasien meurt avant la fin des travaux ; son fils Titus inaugure l'amphithéâtre en 80 par cent jours de jeux, et son second fils Domitien achève le dernier étage et fait creuser les souterrains. Les Romains disaient l'amphithéâtre Flavien, du nom de cette dynastie. Le surnom de Colisée n'apparaît qu'au Moyen Âge, sans doute en souvenir du Colosse, une statue de bronze de Néron haute d'environ trente mètres qui se dressait juste à côté." },
+      { titre: "Un géant de travertin",
+        texte: "L'édifice dessine une ellipse de 188 mètres sur 156, pour près de 50 mètres de haut. Sa façade en travertin, un calcaire extrait près de Tivoli, superpose trois niveaux de 80 arcades encadrées de demi-colonnes toscanes, ioniques puis corinthiennes, et un attique percé de fenêtres. Les blocs étaient assemblés sans mortier et tenus par environ 300 tonnes d'agrafes de fer. À l'intérieur, tuf, brique et béton romain portent des gradins prévus pour 50 000 à 70 000 spectateurs selon les estimations. Tout en haut, 240 mâts soutenaient le velarium, un immense vélum de toiles. Sous l'arène de bois recouverte de sable, l'hypogée abritait deux niveaux de couloirs, de cages et de monte-charges." },
+      { titre: "Une journée au Colisée",
+        texte: "Les spectacles étaient gratuits, offerts par l'empereur ou un riche magistrat. Le programme suivait un ordre réglé : le matin, les chasses, où des bestiaires affrontaient lions, ours, panthères ou éléphants dans des décors reconstitués ; à midi, les exécutions de condamnés ; l'après-midi, le clou du spectacle, les combats de gladiateurs. Chacun s'asseyait selon son rang. Le podium, au plus près de l'arène, était réservé aux sénateurs, aux magistrats et aux Vestales, avec la loge impériale au centre ; venaient ensuite les chevaliers, puis les citoyens ordinaires, et tout en haut, sur des gradins de bois, les femmes, les esclaves et les plus pauvres. Les gladiateurs s'entraînaient à côté, au Ludus Magnus, une caserne reliée à l'arène par un tunnel et dont les ruines sont visibles de l'autre côté de la rue." },
+      { titre: "Abandon, pillage et survie",
+        texte: "Les derniers combats de gladiateurs eurent lieu vers 435, les dernières chasses vers 523. Puis le monument sombra dans l'oubli. Des tremblements de terre, dont celui de 1349, firent s'effondrer une grande partie du côté sud. Pendant des siècles, le Colisée servit de carrière : ses blocs ont bâti le palais de Venise, le palais Barberini et même une partie de la basilique Saint-Pierre. La famille Frangipane en fit une forteresse, des artisans y installèrent leurs ateliers. En 1749, le pape Benoît XIV le consacra à la mémoire des martyrs chrétiens, ce qui mit fin aux pillages. Au dix-neuvième siècle, les grands contreforts de brique des architectes Stern et Valadier ont sauvé la façade : on les distingue nettement aux deux extrémités de l'anneau extérieur." },
+      { titre: "Parcours conseillé",
+        texte: "Faites d'abord le tour de l'arène au premier niveau pour mesurer l'ellipse et le dédale de l'hypogée, dont une plateforme reconstituée montre la hauteur de l'ancien plancher. Montez ensuite au deuxième niveau : la vue y est la plus saisissante, avec les gradins en ruine d'un côté et, par les arcades, l'arc de Constantin et le temple de Vénus et de Rome de l'autre. Repérez au sol les fragments de marbre des anciennes places d'honneur. À l'extérieur, observez la différence entre la façade complète du nord et le mur intérieur mis à nu au sud." }
+    ],
+    enfants: [
+      { titre: "Imagine le jour de l'ouverture",
+        texte: "Imagine : nous sommes en l'an 80. L'empereur Titus vient d'inaugurer le plus grand amphithéâtre du monde et il a promis cent jours de fêtes. Tu serres dans ta main ton jeton en terre cuite, tu cherches ton numéro au-dessus des arcades, tu grimpes des escaliers sombres et soudain, tu débouches en pleine lumière : des dizaines de milliers de personnes qui crient, une odeur de sable et de parfum, un immense voile de toile qui claque au-dessus de ta tête. Sur la loge d'honneur, l'empereur lève la main. Le spectacle commence." },
+      { titre: "Vaincu, mais vivant ?",
+        texte: "Quand un gladiateur tombait, il levait un doigt pour demander grâce. Alors la foule hurlait « Mitte ! », laisse-le partir, ou « Iugula ! », achève-le, et l'empereur tranchait. Contrairement aux films, personne ne sait vraiment si le pouce vers le bas voulait dire la mort : les Romains ne l'ont jamais expliqué clairement. Ce que l'on sait, c'est que les gladiateurs mangeaient surtout de l'orge et des fèves, ce qui leur valait le surnom de « hordearii », les mangeurs d'orge. Les archéologues ont retrouvé sur leurs os les traces de ce régime très riche en légumes." },
+      { titre: "Rétiaire contre secutor",
+        texte: "Chaque gladiateur avait son équipement, comme un personnage de jeu vidéo. Le rétiaire n'avait presque aucune armure, mais un filet, un trident et un poignard ; il courait vite. Face à lui, le secutor portait un casque lisse et rond, sans rebord, pour que le filet glisse dessus, mais il voyait à peine par deux petits trous et s'essoufflait vite. Le mirmillon avait un grand bouclier et un casque orné d'un poisson, le Thrace un bouclier minuscule et une épée courbe. Les organisateurs faisaient toujours s'affronter des équipements différents pour que le combat reste incertain." },
+      { titre: "Une mer dans l'arène ?",
+        texte: "Les écrivains romains racontent que, pour l'inauguration, l'arène fut remplie d'eau et que des navires s'y livrèrent une vraie bataille. Est-ce possible ? Les historiens en discutent encore. Les souterrains que tu vois aujourd'hui n'existaient pas encore : ils ont été creusés quelques années plus tard par Domitien, ce qui rend la chose imaginable au tout début." },
+      { titre: "Défi sur place",
+        texte: "Lève les yeux au-dessus des arcades du rez-de-chaussée, du côté de la rue : certaines portent encore leur numéro en chiffres romains, gravés il y a presque deux mille ans pour guider les spectateurs. Trouve un L et un V. Puis cherche la grande croix de bois à l'intérieur, compte combien d'étages d'arcades restent debout au point le plus haut et repère, tout en haut, les petits trous carrés où l'on plantait les mâts du velarium." },
+      { titre: "Quiz éclair",
+        texte: "Question : qui manœuvrait l'immense toile qui protégeait les spectateurs du soleil ? Réponse : des marins de la flotte de guerre romaine, venus exprès de la base navale de Misène, près de Naples. Ils étaient les seuls à savoir tirer autant de cordages en même temps, comme sur un navire. Ils logeaient dans une caserne près du Colisée, prêts à hisser les toiles dès que le soleil tapait trop fort." }
+    ]
   },
   {
-    id: 'arc-constantin',
-    nom: 'Arc de Constantin',
-    emoji: '🏛️',
-    categorie: 'antique',
+    id: "arc-constantin",
+    nom: "Arc de Constantin",
+    categorie: "antique",
     lat: 41.8898, lon: 12.4907,
     duree: 15,
-    description:
-      "Dressé en 315 juste à côté du Colisée, cet arc de triomphe de 21 mètres célèbre la victoire de Constantin sur son rival Maxence au pont Milvius, en 312. C'est le plus grand arc de triomphe romain qui nous soit parvenu. Une grande partie de ses sculptures a été récupérée sur des monuments plus anciens dédiés à Trajan, Hadrien et Marc Aurèle. Les généraux victorieux passaient sous ce type d'arc lors du triomphe, un défilé grandiose qui traversait Rome jusqu'au Capitole.",
-    enfants:
-      "Cet arc est un monument recyclé ! Les sculpteurs de Constantin ont pris des statues et des reliefs sur des monuments vieux de deux siècles, puis ont retaillé les visages des anciens empereurs pour qu'ils ressemblent à Constantin. Lors d'un triomphe, le général défilait sur un char doré, le visage peint en rouge, tandis qu'un esclave derrière lui murmurait sans cesse : « Souviens-toi que tu n'es qu'un homme ». Plus récemment, en 1960, la ligne d'arrivée du marathon des Jeux Olympiques de Rome était juste ici : le vainqueur, l'Éthiopien Abebe Bikila, a couru les 42 kilomètres pieds nus !",
-    conseil: "Visible gratuitement depuis la rue. Idéal pour une photo de famille avec le Colisée en arrière-plan."
+    conseil: "Visible gratuitement depuis la rue. Idéal pour une photo de famille avec le Colisée en arrière-plan.",
+    adultes: [
+      { titre: "Une victoire au pont Milvius",
+        texte: "Le 28 octobre 312, Constantin affronte son rival Maxence aux portes de Rome, au pont Milvius, et remporte une victoire décisive. Il entre dans Rome en vainqueur, et le Sénat décide de lui élever un arc de triomphe, dédié en 315 pour ses dix ans de règne. L'inscription, répétée sur les deux faces, attribue la victoire à « l'inspiration de la divinité » et à la grandeur de son esprit, une formule volontairement vague : Constantin venait d'autoriser le christianisme par l'édit de Milan, mais le Sénat, encore païen, se gardait de nommer un dieu en particulier. L'arc est ainsi le dernier grand monument de la Rome antique et l'un des premiers de la Rome chrétienne." },
+      { titre: "Chiffres et architecture",
+        texte: "Avec ses 21 mètres de haut, 25,7 mètres de large et 7,4 mètres de profondeur, c'est le plus grand arc de triomphe romain conservé. Trois passages le traversent, le central plus haut et plus large que les deux latéraux. Huit colonnes corinthiennes en marbre jaune de Numidie, un marbre précieux venu d'Afrique du Nord, rythment les façades. L'attique, tout en haut, porte l'inscription dédicatoire, encadrée de reliefs et de huit statues de prisonniers daces en marbre blanc veiné de violet. Marbres blancs, gris et colorés composaient une façade bien plus chatoyante qu'il n'y paraît aujourd'hui." },
+      { titre: "Un monument de réemploi",
+        texte: "La plupart des sculptures ont été prélevées sur des monuments plus anciens. Les statues de Daces et les grands panneaux de bataille, visibles dans le passage central et sur les petits côtés de l'attique, viennent du forum de Trajan. Les huit médaillons ronds, qui montrent des chasses et des sacrifices, proviennent d'un monument d'Hadrien. Les huit panneaux rectangulaires de l'attique célébraient à l'origine Marc Aurèle. Les seuls reliefs sculptés pour l'occasion forment la frise étroite qui court au-dessus des passages latéraux : on y suit le siège de Vérone, la bataille du pont Milvius, l'entrée dans Rome, le discours au Forum et la distribution d'argent au peuple. Leurs figures trapues aux grosses têtes annoncent déjà l'art du Moyen Âge." },
+      { titre: "La cérémonie du triomphe",
+        texte: "Le triomphe était l'honneur suprême accordé par le Sénat à un général victorieux. Le cortège partait du Champ de Mars, franchissait une porte spéciale, contournait le Palatin, remontait la Via Sacra à travers le Forum et s'achevait au temple de Jupiter Capitolin. Défilaient d'abord les sénateurs et les musiciens, puis les chariots de butin, les tableaux peints des batailles, les taureaux blancs destinés au sacrifice, les prisonniers enchaînés, enfin le général sur son quadrige, suivi de ses soldats qui chantaient des couplets moqueurs sur leur chef pour conjurer le mauvais sort. Selon certains historiens, Constantin aurait évité la montée finale au Capitole et le sacrifice à Jupiter, geste très remarqué à l'époque." },
+      { titre: "Hier et aujourd'hui",
+        texte: "Au Moyen Âge, l'arc fut englobé dans la forteresse des Frangipane, ce qui l'a préservé. Il fut dégagé et restauré au dix-huitième siècle, puis en 1804. Devant lui, un tracé circulaire au sol marque l'emplacement de la Meta Sudans, une fontaine conique antique démolie en 1936 pour laisser passer les défilés. Pour lire le monument, placez-vous côté Colisée, au nord : sous les médaillons, la petite frise constantinienne montre l'empereur haranguant la foule depuis les Rostres du Forum, avec les statues d'Hadrien et de Marc Aurèle à ses côtés, comme pour l'inscrire dans la lignée des bons empereurs." }
+    ],
+    enfants: [
+      { titre: "Imagine le grand défilé",
+        texte: "Imagine des trompettes, des tambours, et la foule qui se presse le long de la rue. Un général victorieux passe sous une arche immense, debout sur un char tiré par quatre chevaux blancs. Derrière lui, des chariots débordent d'or, de vases et d'armes pris à l'ennemi, des prisonniers marchent enchaînés, et des soldats brandissent des pancartes racontant leurs batailles. Voilà à quoi servait un arc de triomphe : une porte de gloire, construite pour un seul homme, et que tout le monde devait admirer pendant des siècles." },
+      { titre: "Un puzzle de pierres",
+        texte: "Regarde bien : cet arc est fait de morceaux qui n'ont pas le même âge. Les statues de prisonniers barbus tout en haut, avec leurs bonnets, ont été prises à un monument de Trajan. Les grands médaillons ronds viennent d'un monument d'Hadrien. Les tableaux rectangulaires du haut célébraient Marc Aurèle. Et la petite bande sculptée juste au-dessus des petites arches, avec ses personnages tassés aux grosses têtes, a été faite exprès pour Constantin, à toute vitesse. Les sculpteurs ont même retaillé les visages des vieux empereurs pour leur donner la tête de Constantin ! Compare les deux styles : lequel te semble le plus réussi ?" },
+      { titre: "Le signe dans le ciel",
+        texte: "Selon une histoire racontée bien après la bataille, Constantin aurait vu, la veille du combat, une croix lumineuse dans le ciel avec ces mots : « Par ce signe, tu vaincras ». Il aurait fait peindre le signe sur les boucliers de ses soldats. Le lendemain, l'armée de son rival Maxence recula en désordre vers le Tibre, le pont de bateaux céda sous le poids des fuyards et Maxence tomba dans le fleuve avec son armure." },
+      { titre: "Le champion pieds nus",
+        texte: "Le 10 septembre 1960, la ligne d'arrivée du marathon des Jeux olympiques de Rome se trouvait exactement ici. La course s'est déroulée le soir, dans des rues éclairées par des soldats tenant des torches. Un inconnu venu d'Éthiopie, Abebe Bikila, a franchi la ligne le premier, pieds nus, en battant le record du monde. Ses chaussures neuves lui faisaient mal, alors il avait décidé de courir comme il s'entraînait chez lui. Quatre ans plus tard, il gagnait encore, avec des chaussures cette fois." },
+      { titre: "Défi sur place",
+        texte: "Fais le tour complet de l'arc. Cherche dans les grands médaillons ronds les animaux chassés par Hadrien : un lion, un sanglier et un ours se cachent dans les sculptures, avec des chiens de chasse. Compte ensuite les colonnes jaunes : il doit y en avoir huit. Enfin, lève la tête vers l'inscription tout en haut et trouve les quatre lettres S P Q R gravées dans la pierre." },
+      { titre: "Quiz éclair",
+        texte: "Question : que signifient les lettres S P Q R que l'on voit sur l'arc ? Réponse : « Senatus Populusque Romanus », le Sénat et le peuple romain. C'était la signature officielle de Rome, gravée sur les monuments et portée sur les enseignes des légions. Le plus drôle, c'est qu'elle est toujours utilisée aujourd'hui : regarde les plaques d'égout, les poubelles et les bus de Rome, elles portent toutes ces quatre lettres." }
+    ]
   },
   {
-    id: 'forum-romain',
-    nom: 'Forum Romain',
-    emoji: '🏛️',
-    categorie: 'antique',
+    id: "forum-romain",
+    nom: "Forum Romain",
+    categorie: "antique",
     lat: 41.8925, lon: 12.4853,
     duree: 90,
-    description:
-      "Pendant plus de mille ans, le Forum a été le cœur de Rome : on y votait les lois, on y rendait la justice, on y priait les dieux et on y faisait ses courses. Entre le Capitole et le Palatin, on découvre les temples de Saturne, de Vesta et de Castor et Pollux, la Curie où siégeait le Sénat, les arcs de Septime Sévère et de Titus, et la Via Sacra, la rue la plus célèbre de l'Antiquité. Après la chute de l'Empire, le site fut abandonné et enseveli, au point de devenir un pâturage à vaches, avant les grandes fouilles du dix-neuvième siècle.",
-    enfants:
-      "Au temple de Vesta vivaient six prêtresses, les Vestales, choisies dès l'âge de 6 à 10 ans pour garder le feu sacré de Rome pendant trente ans. Si la flamme s'éteignait, c'était une catastrophe pour toute la ville ! En échange, elles avaient des places d'honneur au Colisée et pouvaient même gracier un condamné à mort rien qu'en le croisant. Cherche le temple de Jules César : c'est ici que son corps a été brûlé en 44 avant J.-C., et aujourd'hui encore des visiteurs y déposent des fleurs. Pendant des siècles, le Forum était enterré sous 10 mètres de terre : seul le sommet des colonnes dépassait, au milieu des vaches !",
-    conseil: "Prévoir chapeau et eau, il y a peu d'ombre. Accès inclus dans le billet du Colisée. La terrasse derrière le Capitole offre la meilleure vue d'ensemble gratuite."
+    conseil: "Prévoir chapeau et eau, il y a peu d'ombre. Accès inclus dans le billet du Colisée. La terrasse derrière le Capitole offre la meilleure vue d'ensemble gratuite.",
+    adultes: [
+      { titre: "D'un marais au centre du monde",
+        texte: "Au huitième siècle avant Jésus-Christ, la vallée entre le Capitole et le Palatin n'est qu'un marécage où l'on enterre les morts des villages voisins. Les rois étrusques la drainent grâce à un grand égout, la Cloaca Maxima, qui fonctionne encore. Le terrain assaini devient une place de marché, puis le cœur politique de la République : on y trouve le Comitium, où le peuple vote, la Curie, où siège le Sénat, et la tribune des Rostres, d'où parlent les orateurs. Sous l'Empire, les empereurs le couvrent de temples, de basiliques et d'arcs, mais le pouvoir réel se déplace vers le Palatin et les nouveaux forums impériaux. Le Forum reste malgré tout, pendant mille ans, le symbole même de Rome." },
+      { titre: "Les monuments à ne pas manquer",
+        texte: "En entrant par la Via Sacra, on passe sous l'arc de Titus, élevé en 81 pour célébrer la prise de Jérusalem. Sur la droite, les trois voûtes colossales de la basilique de Maxence, hautes de 25 mètres, ne sont qu'un tiers de l'édifice d'origine. Plus loin, le temple d'Antonin et Faustine doit sa survie à l'église bâtie à l'intérieur. Au centre, le petit temple rond de Vesta et la maison des Vestales, avec ses bassins et ses statues. Trois colonnes élancées signalent le temple de Castor et Pollux, huit colonnes de granit celui de Saturne. La Curie, reconstruite par Dioclétien, est presque intacte, et l'arc de Septime Sévère, de 203, ferme la place vers le Capitole." },
+      { titre: "La vie quotidienne au Forum",
+        texte: "Dès l'aube, le Forum bourdonnait. Les avocats plaidaient dans les basiliques, vastes halles couvertes où l'on rendait la justice à l'abri du soleil ; les banquiers tenaient boutique sous les portiques ; les crieurs annonçaient les nouvelles et les enchères. Les jours de fête, les processions et les triomphes remontaient la Via Sacra. Le calendrier officiel, les lois gravées sur bronze et les traités étaient affichés ici. Cicéron y prononça ses grands discours ; après son assassinat en 43 avant Jésus-Christ, Marc Antoine fit clouer sa tête et ses mains sur la tribune même d'où il avait parlé. Un an plus tôt, c'est au Forum que le corps de César avait été brûlé par une foule en colère, à l'endroit où s'élève aujourd'hui un petit autel." },
+      { titre: "Ce qui a disparu",
+        texte: "Il faut imaginer les colonnes de marbre coloré, les toits couverts de tuiles de bronze doré, les statues peintes par centaines, les inscriptions rehaussées de rouge. La plupart des marbres ont été brûlés dans des fours à chaux au Moyen Âge pour produire du mortier. Les portes de bronze de la Curie ont été transférées en 1660 à la basilique Saint-Jean-de-Latran, où elles servent toujours : celles que l'on voit ici sont des copies. Les temples ont perdu leurs statues de culte, les basiliques leurs toitures, et le sol de la place s'est trouvé enseveli sous près de dix mètres de terre et de gravats accumulés au fil des crues et des démolitions." },
+      { titre: "Oubli et redécouverte",
+        texte: "Au Moyen Âge, le Forum devient le Campo Vaccino, le champ aux vaches, un pré où l'on menait paître le bétail entre des colonnes à demi enterrées. Les artistes du dix-huitième siècle, Piranèse en tête, en dessinent les ruines romantiques. Les premières fouilles sérieuses commencent en 1803 avec Carlo Fea, qui dégage l'arc de Septime Sévère, puis s'intensifient après l'unification de l'Italie. Entre 1898 et 1925, l'archéologue Giacomo Boni fouille jusqu'aux niveaux les plus anciens et découvre le Lapis Niger, une dalle de pierre noire recouvrant l'une des plus anciennes inscriptions latines connues, datée du sixième siècle avant Jésus-Christ. Le dernier monument élevé au Forum, la colonne de Phocas, date de 608 : elle clôt une histoire de plus de mille ans." }
+    ],
+    enfants: [
+      { titre: "Imagine la foule du matin",
+        texte: "Imagine : le soleil se lève sur la Via Sacra. Des sénateurs en toge blanche bordée de pourpre discutent en marchant, suivis de leurs secrétaires. Un avocat répète son discours à voix haute. Des enfants de ton âge courent vers l'école avec leurs tablettes de cire sous le bras. Devant les boutiques des changeurs, on pèse des pièces d'argent. Ça sent le pain chaud, l'encens des temples et la sueur des mules. Tu es au centre du monde connu." },
+      { titre: "Le trésor sous le temple",
+        texte: "Le temple de Saturne, avec ses huit grosses colonnes, servait de coffre-fort à l'État romain. Dans ses caves, on gardait les réserves d'or et d'argent, les enseignes des légions et les textes des lois. En 49 avant Jésus-Christ, Jules César, qui venait de prendre le pouvoir par la force, voulut s'en emparer pour payer ses soldats. Un tribun nommé Metellus se planta devant la porte pour l'en empêcher. César lui répondit qu'il lui était plus facile de le faire tuer que de le menacer, et Metellus s'écarta. César emporta le trésor." },
+      { titre: "Rallumer le feu sacré",
+        texte: "Le feu de Vesta ne devait jamais s'éteindre, et pourtant cela arrivait. On ne le rallumait pas avec n'importe quelle flamme : selon l'écrivain Plutarque, les Vestales concentraient les rayons du soleil dans un récipient de bronze poli pour enflammer une mèche, ou frottaient deux morceaux de bois d'un arbre porte-bonheur. Dans ce temple rond étaient aussi cachés des objets sacrés que personne, à part elles, n'avait le droit de voir, dont une statue mystérieuse qui serait venue de Troie et qui, disait-on, protégeait Rome tant qu'elle restait dans la ville." },
+      { titre: "Le nombril de Rome",
+        texte: "Près de l'arc de Septime Sévère, un petit monument rond en brique marquait l'Umbilicus Urbis, le nombril de la ville, considéré comme le centre exact de Rome. Juste à côté, Auguste avait fait dresser le Milliaire d'or, une colonne recouverte de bronze doré sur laquelle étaient gravées les distances entre Rome et les grandes villes de l'Empire. C'est de là que vient l'expression « tous les chemins mènent à Rome » : toutes les routes étaient mesurées à partir de ce point." },
+      { titre: "Défi sur place",
+        texte: "Sous l'arc de Titus, lève la tête vers les sculptures de l'intérieur : cherche le grand chandelier à sept branches que les soldats romains rapportent de Jérusalem. Ensuite, compte les colonnes du temple de Saturne et trouve les trois colonnes solitaires de Castor et Pollux. Enfin, dans la maison des Vestales, repère les longs bassins et les statues de prêtresses alignées, dont plusieurs ont perdu leur tête." },
+      { titre: "Quiz éclair",
+        texte: "Question : pourquoi la tribune des orateurs s'appelle-t-elle les Rostres ? Réponse : parce qu'elle était décorée de rostres, les éperons de bronze que les navires de guerre portaient à l'avant pour éventrer les bateaux ennemis. Les Romains les avaient arrachés à la flotte de la ville d'Antium, vaincue en 338 avant Jésus-Christ, et les avaient fixés sur la tribune comme des trophées. Quand un orateur parlait au peuple, il avait donc littéralement des becs de navires sous les pieds." }
+    ]
   },
   {
-    id: 'palatin',
-    nom: 'Mont Palatin',
-    emoji: '🐺',
-    categorie: 'antique',
+    id: "palatin",
+    nom: "Mont Palatin",
+    categorie: "antique",
     lat: 41.8892, lon: 12.4875,
     duree: 60,
-    description:
-      "Le Palatin est la colline où, selon la légende, Romulus fonda Rome le 21 avril 753 avant J.-C. Les archéologues y ont retrouvé des cabanes de l'âge du fer datant justement de cette époque. Sous l'Empire, les empereurs y bâtirent des palais gigantesques, dont la Domus Augustana et la Domus Flavia, avec leurs jardins, leurs fontaines et leur stade privé. Le mot « palais », dans presque toutes les langues, vient du nom de cette colline. Du haut des jardins Farnèse, la vue sur le Forum et le Circus Maximus est superbe.",
-    enfants:
-      "Voici l'histoire que tous les petits Romains connaissaient : deux jumeaux, Romulus et Rémus, abandonnés dans un panier sur le Tibre, furent recueillis et nourris par une louve dans une grotte au pied de cette colline. Devenus grands, ils se disputèrent pour savoir qui fonderait la ville : Romulus tua son frère et donna son nom à Rome. L'empereur Domitien, qui avait peur des complots, avait fait recouvrir les murs de ses galeries d'une pierre polie comme un miroir pour voir qui arrivait derrière lui. Et sous les sols des palais circulait de l'air chaud : les empereurs avaient déjà le chauffage au sol !",
-    conseil: "Le Palatin est plus calme que le Forum : parfait pour une pause pique-nique à l'ombre des pins parasols."
+    conseil: "Le Palatin est plus calme que le Forum : parfait pour une pause pique-nique à l'ombre des pins parasols.",
+    adultes: [
+      { titre: "La colline des origines",
+        texte: "Le Palatin est la plus ancienne des sept collines habitées. Sur son versant sud-ouest, les archéologues ont mis au jour en 1948 les trous de poteaux de cabanes de bergers datées du dixième au huitième siècle avant Jésus-Christ, à l'endroit même où la tradition situait la cabane de Romulus, pieusement entretenue par les Romains jusque sous l'Empire. Au pied de la colline se trouvait le Lupercal, la grotte où la louve aurait allaité les jumeaux, et devant elle le figuier sous lequel leur panier se serait échoué. Chaque 15 février, la fête des Lupercales y rassemblait des jeunes gens qui couraient autour de la colline. En 204 avant Jésus-Christ, on y installa le temple de la Grande Mère, Cybèle, dont la pierre noire avait été rapportée d'Asie Mineure." },
+      { titre: "Le quartier chic de la République",
+        texte: "Aux derniers siècles de la République, le Palatin est le quartier le plus recherché de Rome : Cicéron, Crassus, l'orateur Hortensius ou Catilina y possèdent leurs maisons. C'est là que naît Auguste en 63 avant Jésus-Christ. Devenu maître de Rome, il achète la maison d'Hortensius et les propriétés voisines pour y bâtir un ensemble volontairement sobre, relié au temple d'Apollon qu'il inaugure en 28 avant Jésus-Christ, avec des bibliothèques grecque et latine. Les maisons dites d'Auguste et de Livie conservent des fresques aux couleurs éclatantes, avec des architectures peintes en trompe-l'œil, des masques de théâtre et des scènes mythologiques." },
+      { titre: "Les palais des empereurs",
+        texte: "Tibère fait bâtir le premier vrai palais, la Domus Tiberiana, aujourd'hui sous les jardins Farnèse. Caligula l'étend jusqu'au Forum, Néron relie le Palatin à l'Esquilin par sa Maison dorée. Mais c'est Domitien qui, vers 92, confie à l'architecte Rabirius l'ensemble qui occupe encore le sommet : la Domus Flavia, aile officielle avec sa salle du trône, sa basilique et sa salle de banquet ouvrant sur des fontaines, la Domus Augustana, résidence privée sur deux niveaux autour d'un bassin, et le Stade, un jardin en forme de piste de 160 mètres de long. Septime Sévère complète l'ensemble vers le Circus Maximus par des terrasses sur arcades, dont les hautes arches de brique dominent encore la vallée." },
+      { titre: "Ce qu'il en reste",
+        texte: "Les palais ont été pillés dès le sixième siècle, et leurs marbres ont alimenté les fours à chaux. Il faut imaginer les sols en marbres de couleur, les murs revêtus de plaques polies, les statues colossales, les jardins suspendus. Au seizième siècle, le cardinal Alexandre Farnèse fait aménager sur les ruines de la Domus Tiberiana les Orti Farnesiani, l'un des premiers jardins botaniques d'Europe, avec des volières et des terrasses. Le Septizodium, façade monumentale de Septime Sévère tournée vers la Via Appia, fut démoli en 1588 par Sixte Quint. Les fouilles commencées sous Napoléon III, qui avait acheté les jardins Farnèse en 1861, se poursuivent encore aujourd'hui." },
+      { titre: "Parcours et points de vue",
+        texte: "Depuis le Forum, montez par le Clivus Palatinus jusqu'aux jardins Farnèse : le belvédère offre la plus belle vue plongeante sur le Forum, la Curie et le Capitole. Redescendez vers la maison de Livie et la maison d'Auguste, puis traversez la Domus Flavia pour rejoindre le Stade et la terrasse de la Domus Augustana, qui domine le Circus Maximus. Le musée du Palatin, installé dans un ancien couvent, présente les objets trouvés sur la colline, des fragments de fresques aux sculptures des palais. Sous les palais, le cryptoportique de Néron, un long couloir voûté, est traditionnellement associé à l'assassinat de Caligula en 41, poignardé par ses propres gardes dans un passage du palais." }
+    ],
+    enfants: [
+      { titre: "Imagine le premier village",
+        texte: "Imagine cette colline il y a près de trois mille ans. Pas de marbre, pas de palais : quelques cabanes de bois et de paille, aux toits pointus, entourées d'une palissade. Des bergers gardent leurs moutons sur les pentes, des enfants vont chercher l'eau au Tibre, et le soir, la fumée des foyers monte dans le ciel. C'est de ce village minuscule qu'est née la ville qui allait dominer tout le monde connu." },
+      { titre: "Le mystère de la grotte",
+        texte: "En 2007, des archéologues qui exploraient le sous-sol avec une caméra ont découvert, à seize mètres sous la maison d'Auguste, une grotte décorée de coquillages, de mosaïques et de marbres colorés, avec un aigle blanc au centre de la voûte. Certains ont aussitôt crié : c'est le Lupercal, la grotte de la louve, transformée en sanctuaire par Auguste ! D'autres pensent que c'est simplement une belle salle à manger souterraine avec des fontaines. Le mystère n'est pas résolu, et la grotte est trop fragile pour être visitée. La louve garde son secret." },
+      { titre: "Un empereur qui dormait modestement",
+        texte: "Auguste, le premier empereur, aurait pu vivre dans le luxe. Pourtant, selon l'écrivain Suétone, il a dormi pendant quarante ans dans la même petite chambre, dans une maison sans marbre, aux murs peints de rouge et de jaune. Il l'avait fait relier au temple d'Apollon, son dieu protecteur, et travaillait dans un petit bureau tout en haut qu'il surnommait « Syracuse ». Les empereurs suivants ont eu bien moins de retenue : Domitien s'est fait construire une salle du trône si haute qu'un immeuble de dix étages y tiendrait presque." },
+      { titre: "Un stade pour un seul homme",
+        texte: "Domitien avait aussi un stade privé, une longue piste de 160 mètres entourée de portiques, juste pour se promener à cheval, faire des courses ou admirer ses jardins. Personne ne sait exactement à quoi il servait, peut-être à des jeux, peut-être seulement à se détendre. Plus tard, un roi barbare, Théodoric, y fit ajouter une petite piste ovale. Debout sur la terrasse qui le domine, tu vois toute sa forme d'un coup : c'est l'un des endroits les plus étranges de la colline, une piste de course perdue au milieu d'un palais." },
+      { titre: "Défi sur place",
+        texte: "Depuis le belvédère des jardins Farnèse, retrouve dans le Forum en contrebas l'arc de Septime Sévère et le grand toit de la Curie. Puis, dans la maison de Livie, cherche sur les murs peints des guirlandes de fruits et des oiseaux. Enfin, dans les palais de Domitien, trouve la grande fontaine en forme d'octogone, un bassin à huit côtés creusé de petits canaux, et compte les côtés pour vérifier." },
+      { titre: "Quiz éclair",
+        texte: "Question : quel mot très courant, que tu utilises pour désigner la maison d'un roi, vient directement du nom de cette colline ? Réponse : le mot palais. Comme les empereurs habitaient tous sur le Palatin, le nom latin de la colline, Palatium, a fini par désigner leur demeure, puis toutes les grandes demeures royales. On le retrouve dans « palace » en anglais, « palazzo » en italien et « Palast » en allemand." }
+    ]
   },
   {
-    id: 'colonne-trajane',
-    nom: 'Colonne et Marchés de Trajan',
-    emoji: '📜',
-    categorie: 'antique',
+    id: "colonne-trajane",
+    nom: "Colonne et Marchés de Trajan",
+    categorie: "antique",
     lat: 41.8958, lon: 12.4845,
     duree: 45,
-    description:
-      "Achevée en 113, la colonne Trajane est un chef-d'œuvre : autour de ses 30 mètres s'enroule une frise de 200 mètres de long qui raconte, scène après scène, les guerres de l'empereur Trajan contre les Daces, dans l'actuelle Roumanie. Juste derrière, les Marchés de Trajan formaient un immense complexe en demi-cercle sur six niveaux, avec plus de 150 boutiques et bureaux : on le surnomme souvent le premier centre commercial de l'histoire. La statue de Trajan au sommet a été remplacée par celle de saint Pierre en 1587.",
-    enfants:
-      "La colonne est une bande dessinée en pierre : 155 scènes et environ 2 500 personnages sculptés, où Trajan apparaît 59 fois ! On y voit les soldats construire des ponts, des camps, soigner des blessés et combattre. La colonne est creuse : à l'intérieur, un escalier en colimaçon de 185 marches monte jusqu'au sommet. À sa base repose une urne en or avec les cendres de Trajan, un honneur exceptionnel car on n'enterrait jamais personne à l'intérieur de la ville. Dans les Marchés, imagine les boutiques d'huile, de vin, d'épices et de poissons, avec les clients romains qui marchandaient comme au marché aujourd'hui.",
-    conseil: "La colonne se voit gratuitement depuis la Via dei Fori Imperiali. Les Marchés (musée des Forums impériaux) sont payants mais couverts : bonne option s'il pleut."
+    conseil: "La colonne se voit gratuitement depuis la Via dei Fori Imperiali. Les Marchés (musée des Forums impériaux) sont payants mais couverts : bonne option s'il pleut.",
+    adultes: [
+      { titre: "Le forum du plus grand empire",
+        texte: "Entre 101 et 106, Trajan mène deux guerres contre les Daces, un peuple installé dans l'actuelle Roumanie, et s'empare de leur royaume et de ses mines d'or. Ce butin finance le plus vaste des forums impériaux, inauguré en 112 et confié à l'architecte Apollodore de Damas. Il fallut pour cela araser une partie de la colline du Quirinal. L'ensemble comprenait une immense place bordée de portiques, la basilique Ulpia, la plus grande de Rome, deux bibliothèques, l'une grecque et l'autre latine, la colonne dressée entre elles, puis le temple de Trajan divinisé ajouté par Hadrien. L'historien Ammien Marcellin raconte qu'en 357, l'empereur Constance II resta muet de stupeur devant cet ensemble unique au monde." },
+      { titre: "La colonne, chiffres et techniques",
+        texte: "Le fût mesure un peu moins de 30 mètres et repose sur un piédestal de plus de 5 mètres, pour près de 40 mètres au total avec la statue. Il est composé de dix-sept tambours de marbre de Carrare, chacun pesant plusieurs dizaines de tonnes, empilés avec une précision extraordinaire. Un escalier en colimaçon éclairé par 43 petites fenêtres monte jusqu'au sommet. La frise, sculptée après la pose des blocs, s'enroule sur 23 tours et près de 200 mètres. Sa hauteur augmente légèrement vers le haut pour compenser l'éloignement du regard, et elle était à l'origine peinte de couleurs vives, avec des armes miniatures en métal aujourd'hui disparues. La statue de bronze doré de Trajan, tombée au Moyen Âge, a été remplacée en 1587 par un saint Pierre sur ordre de Sixte Quint." },
+      { titre: "Lire la frise",
+        texte: "Le récit commence en bas par la traversée du fleuve sur un pont de bateaux. Suivent la construction des camps et des routes, les discours de Trajan à ses troupes, les sacrifices, les ambassades, puis les batailles, où les Daces se distinguent à leur bonnet et à leur épée courbe. Une Victoire écrivant sur un bouclier sépare la première guerre de la seconde. On y voit le pont de pierre jeté sur le Danube par Apollodore, la prise de la capitale Sarmizegetusa, et la fin tragique du roi Décébale, qui se donne la mort au moment où les cavaliers romains l'atteignent. Fait remarquable, les Romains sont plus souvent représentés en train de construire que de combattre : la frise célèbre l'ordre et la discipline autant que la victoire." },
+      { titre: "Les Marchés de Trajan",
+        texte: "Derrière la colonne, un vaste ensemble de brique épouse en hémicycle la pente du Quirinal, sur six niveaux. Les quelque 150 salles voûtées ouvrant sur des rues pavées ont longtemps été prises pour des boutiques, d'où le surnom de premier centre commercial de l'histoire. Les archéologues y voient aujourd'hui plutôt des bureaux de l'administration impériale, chargée notamment des distributions de blé. La Grande Salle, couverte de six voûtes d'arêtes, est un chef-d'œuvre de l'architecture en brique et béton. Au Moyen Âge, la Torre delle Milizie, haute tour du treizième siècle, fut plantée sur le complexe, transformé ensuite en couvent. Dégagé dans les années 1930, l'ensemble abrite le musée des Forums impériaux." },
+      { titre: "Une postérité mondiale",
+        texte: "La colonne Trajane a servi de modèle à la colonne de Marc Aurèle, à quelques centaines de mètres, puis à des monuments très éloignés : la colonne Vendôme à Paris, coulée en 1810 dans le bronze des canons pris à Austerlitz, ou les colonnes de la Karlskirche à Vienne. Napoléon III fit réaliser en 1861 un moulage complet de la frise, dont on trouve des copies au Victoria and Albert Museum de Londres et au musée de la Civilisation romaine à Rome : elles permettent d'étudier de près des scènes que l'on ne distingue plus depuis le sol." }
+    ],
+    enfants: [
+      { titre: "Imagine une bande dessinée déroulée",
+        texte: "Imagine que tu puisses dérouler la sculpture qui s'enroule autour de cette colonne. Tu obtiendrais une bande de pierre de 200 mètres, soit deux terrains de football mis bout à bout, avec plus de 2 500 personnages : des soldats, des chevaux, des rivières, des villes en flammes, des bateaux. C'est une bande dessinée en pierre, racontée dans l'ordre, du bas vers le haut. À l'époque, elle était peinte de couleurs vives, et les Romains pouvaient lire les scènes du haut depuis les terrasses des deux bibliothèques qui l'entouraient." },
+      { titre: "Le meilleur des empereurs",
+        texte: "Trajan est né en Espagne, à Italica, près de Séville : c'est le premier empereur qui ne venait pas d'Italie. Soldat avant tout, il marchait à pied avec ses légions, mangeait la même chose qu'elles et traversait les rivières à la nage. Les Romains l'aimaient tellement que le Sénat lui donna le titre d'« Optimus », le Meilleur. Pendant des siècles après sa mort, quand un nouvel empereur montait sur le trône, on lui souhaitait d'être « plus heureux qu'Auguste et meilleur que Trajan »." },
+      { titre: "La montagne déplacée",
+        texte: "Lis l'inscription sur le socle : elle explique que la colonne a été construite pour montrer à quelle hauteur s'élevait la colline que les ouvriers ont enlevée pour construire le forum. Autrement dit, là où tu te trouves, il y avait autrefois une montagne de terre et de roche presque aussi haute que la colonne, que des milliers d'ouvriers ont creusée et transportée à la pelle et à la brouette, sans aucune machine. Les Romains voulaient que tout le monde sache l'exploit accompli." },
+      { titre: "Le trésor du roi Décébale",
+        texte: "Le roi des Daces, Décébale, avait caché son trésor d'une manière géniale : il avait fait détourner une rivière, enterrer l'or et l'argent dans son lit, puis remis l'eau à sa place. Personne n'aurait dû le trouver. Mais un de ses compagnons, capturé par les Romains, révéla le secret. Trajan récupéra des tonnes d'or et d'argent, assez pour payer le forum, la colonne et 123 jours de fêtes à Rome." },
+      { titre: "Défi sur place",
+        texte: "Tout en bas de la colonne, juste au-dessus du socle, cherche un vieil homme barbu à moitié sorti de l'eau : c'est le dieu du fleuve Danube, qui regarde les soldats romains traverser. Juste après, repère les légionnaires qui portent leurs bagages accrochés à un bâton sur l'épaule. Puis compte les petites fentes verticales qui percent la colonne : ce sont les fenêtres de l'escalier caché à l'intérieur. Dans les Marchés, trouve la rue pavée en pente, la Via Biberatica, et imagine les enseignes des boutiques." },
+      { titre: "Quiz éclair",
+        texte: "Question : où se trouve aujourd'hui la Dacie, le pays conquis par Trajan ? Réponse : c'est la Roumanie. Les soldats et les colons romains s'y sont installés en si grand nombre que leur langue y est restée : le roumain est, comme le français, l'italien ou l'espagnol, une langue fille du latin, alors que tous les pays voisins parlent des langues très différentes. Le nom même du pays, Roumanie, veut dire « le pays des Romains »." }
+    ]
   },
   {
-    id: 'circus-maximus',
-    nom: 'Circus Maximus',
-    emoji: '🐎',
-    categorie: 'antique',
-    lat: 41.8860, lon: 12.4853,
+    id: "circus-maximus",
+    nom: "Circus Maximus",
+    categorie: "antique",
+    lat: 41.886, lon: 12.4853,
     duree: 30,
-    description:
-      "Le Circus Maximus est le plus grand stade jamais construit : 600 mètres de long, 140 mètres de large et jusqu'à 150 000 spectateurs, soit trois fois le Colisée. Pendant mille ans, on y a organisé des courses de chars tirés par quatre chevaux, les quadriges, ainsi que des fêtes et des défilés. Aujourd'hui, c'est une immense pelouse où les Romains viennent courir, mais on distingue encore parfaitement la forme de la piste et de la spina, le mur central autour duquel tournaient les chars.",
-    enfants:
-      "Les courses de chars étaient le sport numéro un des Romains, plus populaire que les gladiateurs ! Quatre équipes s'affrontaient : les Bleus, les Verts, les Rouges et les Blancs, avec des supporters aussi passionnés que ceux du football. Le champion le plus célèbre, Gaius Appuleius Diocles, a gagné 1 462 courses et une fortune si énorme qu'on le considère comme le sportif le mieux payé de toute l'Histoire. Les cochers attachaient les rênes autour de leur taille et gardaient un couteau pour les couper en cas d'accident, qu'on appelait un « naufrage ». Pour compter les sept tours, on abaissait des œufs et des dauphins en bronze géants. Fais la course avec tes parents sur la longueur de la piste !",
-    conseil: "Accès libre à la pelouse. Depuis l'arrière du Circus, superbe vue sur les palais du Palatin. Une expérience de réalité augmentée (Circo Maximo Experience) est proposée à la billetterie."
+    conseil: "Accès libre à la pelouse. Depuis l'arrière du Circus, superbe vue sur les palais du Palatin. Une expérience de réalité augmentée (Circo Maximo Experience) est proposée à la billetterie.",
+    adultes: [
+      { titre: "Mille ans de courses",
+        texte: "Le cirque occupe la vallée Murcia, une dépression naturelle entre le Palatin et l'Aventin. La tradition attribue les premières courses au roi Tarquin l'Ancien, au sixième siècle avant Jésus-Christ, mais pendant des siècles les installations restent en bois. César agrandit l'ensemble, Auguste installe la loge impériale et, en 10 avant Jésus-Christ, dresse au centre de la piste un obélisque de Ramsès II rapporté d'Égypte. En 64, le grand incendie de Rome, sous Néron, part des boutiques adossées au cirque. Trajan le reconstruit en pierre vers 103, dans la forme dont on voit les vestiges. Constance II ajoute en 357 un second obélisque, le plus haut jamais transporté. Les dernières courses ont lieu en 549, organisées par le roi goth Totila dans une ville presque vide." },
+      { titre: "Un stade de 150 000 places",
+        texte: "Long de 600 mètres et large de 140, le Circus Maximus est le plus grand édifice de spectacle de l'Antiquité. Les gradins, sur trois niveaux, abritaient environ 150 000 spectateurs, davantage selon certains auteurs anciens. À l'extrémité plate, douze stalles de départ, les carceres, s'ouvraient simultanément grâce à un mécanisme à ressort. Au centre courait la spina, un long mur de 340 mètres orné de statues, d'autels, de bassins et des deux obélisques, avec à chaque bout trois bornes coniques dorées, les metae. Sous les gradins, des tavernes, des boutiques et des échoppes de devins attiraient une foule mêlée, où hommes et femmes s'asseyaient ensemble, ce qui n'était pas le cas au Colisée." },
+      { titre: "Une journée de courses",
+        texte: "Une course comptait sept tours, soit près de cinq kilomètres, et une journée en alignait jusqu'à vingt-quatre. Le magistrat qui présidait donnait le départ en lâchant un linge blanc, la mappa. Les cochers, presque tous esclaves ou affranchis, couraient pour quatre écuries, les factions des Bleus, des Verts, des Rouges et des Blancs, que l'on soutenait avec une ferveur de supporter. Le virage serré autour des metae provoquait les accidents les plus spectaculaires. Les vainqueurs recevaient palme, couronne et une bourse d'argent. Le plus grand champion, Gaius Appuleius Diocles, courut pendant vingt-quatre ans au deuxième siècle, remporta 1 462 victoires en plus de 4 000 courses et amassa près de 36 millions de sesterces, une fortune colossale." },
+      { titre: "Ce qu'il en reste",
+        texte: "Après l'abandon, la vallée redevint un champ, puis un quartier d'entrepôts et, au dix-neuvième siècle, une usine à gaz. La grande pelouse actuelle date des années 1930. À l'extrémité arrondie, des fouilles achevées en 2016 ont dégagé les gradins, les boutiques et les fondations d'un arc de triomphe élevé pour Titus en 81, qui servait d'entrée monumentale. La tour médiévale qui domine cette zone, la Torre della Moletta, appartenait à la famille Frangipane et faisait tourner un moulin. Le niveau de la piste antique se trouve à plusieurs mètres sous la pelouse. Depuis la terrasse sud-est, on comprend d'un coup d'œil la forme allongée de la piste et l'emplacement de la spina." },
+      { titre: "Petites histoires",
+        texte: "Néron, passionné de course, se fit lui-même cocher et courut en Grèce, où il fut déclaré vainqueur malgré une chute. Caracalla soutenait les Bleus avec passion. Le cirque servait aussi aux triomphes, aux processions religieuses et aux chasses avant la construction du Colisée. Aujourd'hui, la pelouse accueille les grands rassemblements de la ville : la fête de l'équipe d'Italie championne du monde en 2006, des concerts géants, et chaque 21 avril les célébrations de l'anniversaire de Rome, avec des défilés de légionnaires en costume et des reconstitutions de courses de chars." }
+    ],
+    enfants: [
+      { titre: "Imagine le départ",
+        texte: "Imagine : douze chars sont alignés dans leurs boîtes de départ, les chevaux piaffent, la poussière monte. Là-haut, un magistrat en toge brodée lève un mouchoir blanc. Cent cinquante mille personnes retiennent leur souffle. Le mouchoir tombe, les douze portes s'ouvrent d'un coup, et les chars s'élancent dans un vacarme de roues et de sabots. Sept tours à faire, des virages à prendre au ras des bornes, et une seule règle : arriver le premier." },
+      { titre: "Choisis ton équipe",
+        texte: "Il y avait quatre écuries, et chaque Romain en avait une dans le cœur : les Bleus, les Verts, les Rouges et les Blancs. On portait leurs couleurs, on se disputait dans les tavernes pour elles, et même les empereurs avaient leur camp. Caligula adorait les Verts au point de dîner dans leurs écuries. L'écrivain Suétone raconte même qu'il avait offert à son propre cheval, Incitatus, une écurie de marbre, une mangeoire en ivoire et des serviteurs, et qu'il voulait le nommer consul, l'un des postes les plus importants de Rome." },
+      { titre: "Scorpus, la star morte trop tôt",
+        texte: "Bien avant les footballeurs, les cochers étaient les vraies vedettes de Rome. Scorpus, qui courait pour les Verts, a remporté 2 048 victoires alors qu'il n'avait même pas trente ans. Son portrait était partout, on chantait son nom, et il gagnait en une heure ce qu'un ouvrier gagnait en une année. Il est mort dans un accident vers l'âge de 27 ans, et le poète Martial, qui l'admirait, écrivit un poème pour pleurer sa mort." },
+      { titre: "L'enlèvement des Sabines",
+        texte: "Au tout début de Rome, la ville ne comptait presque que des hommes, et les voisins refusaient de leur donner leurs filles en mariage. Alors Romulus organisa dans cette vallée une grande fête avec des courses et invita le peuple des Sabins. Au signal, les jeunes Romains enlevèrent les jeunes filles sabines pour les épouser. La guerre éclata entre les deux peuples. Mais au moment de la bataille, les Sabines se jetèrent entre leurs pères et leurs maris pour les empêcher de se battre, et les deux peuples décidèrent de n'en former qu'un seul." },
+      { titre: "Défi sur place",
+        texte: "Repère d'abord les deux bouts de la piste : le côté arrondi, près de la tour médiévale, où les chars faisaient demi-tour, et le côté plat, vers le Tibre, où se trouvaient les boîtes de départ. Puis mesure la piste à ta façon : compte tes pas sur une longueur, et calcule combien de pas feraient sept tours. Enfin, regarde vers le Palatin : les grandes arcades de brique que tu vois sont les terrasses du palais d'où l'empereur regardait les courses sans quitter chez lui." },
+      { titre: "Quiz éclair",
+        texte: "Question : deux obélisques égyptiens se dressaient au milieu de la piste. Où sont-ils aujourd'hui ? Réponse : le premier, rapporté par Auguste, se trouve sur la Piazza del Popolo, au nord de la ville ; le second, le plus haut du monde, se dresse devant la basilique Saint-Jean-de-Latran. Tous deux ont été retrouvés cassés sous la terre du cirque au seizième siècle et redressés par le pape Sixte Quint." }
+    ]
   },
   {
-    id: 'thermes-caracalla',
-    nom: 'Thermes de Caracalla',
-    emoji: '🛁',
-    categorie: 'antique',
-    lat: 41.8790, lon: 12.4925,
+    id: "thermes-caracalla",
+    nom: "Thermes de Caracalla",
+    categorie: "antique",
+    lat: 41.879, lon: 12.4925,
     duree: 60,
-    description:
-      "Construits entre 212 et 216 par l'empereur Caracalla, ces thermes s'étendaient sur 11 hectares et pouvaient accueillir 1 600 baigneurs en même temps. On y trouvait des bains froids, tièdes et chauds, une piscine olympique à ciel ouvert, des salles de sport, deux bibliothèques, des jardins et des boutiques. Les murs de briques, hauts de plus de 30 mètres, étaient recouverts de marbre et de mosaïques. Les thermes ont fonctionné jusqu'en 537, quand les Goths coupèrent les aqueducs qui les alimentaient en eau.",
-    enfants:
-      "Les thermes, c'était la piscine, la salle de sport, la bibliothèque et le parc réunis, et l'entrée coûtait presque rien ! Les Romains n'avaient pas de savon : ils s'enduisaient d'huile, puis grattaient la saleté avec une lame courbe appelée strigile. Sous tes pieds, deux kilomètres de galeries souterraines où des centaines d'esclaves alimentaient 50 fours en brûlant dix tonnes de bois par jour. L'air chaud circulait sous les sols et dans les murs : c'était le premier chauffage central. Les statues géantes découvertes ici, comme l'Hercule Farnèse, ont tellement impressionné les architectes que la grande gare de New York a été dessinée en copiant les thermes de Caracalla !",
-    conseil: "Site vaste et souvent peu fréquenté, avec de grands espaces pour courir. En été, des opéras sont joués en plein air dans les ruines."
+    conseil: "Site vaste et souvent peu fréquenté, avec de grands espaces pour courir. En été, des opéras sont joués en plein air dans les ruines.",
+    adultes: [
+      { titre: "Un cadeau impérial",
+        texte: "Les travaux commencent en 206, sous Septime Sévère, et les bains sont inaugurés en 216 par son fils Caracalla, un empereur brutal qui avait fait assassiner son propre frère Geta cinq ans plus tôt. Offrir au peuple les thermes les plus somptueux jamais construits était un moyen de se faire aimer. Officiellement, ils s'appelaient les thermes Antoniniennes. Les portiques extérieurs, les bibliothèques et le stade furent achevés par ses successeurs Héliogabale et Alexandre Sévère. Une nouvelle branche de l'aqueduc de l'Aqua Marcia, l'Aqua Antoniniana, fut construite pour alimenter les bassins, avec de gigantesques citernes sur la pente voisine." },
+      { titre: "Chiffres et architecture",
+        texte: "L'enceinte mesure environ 337 mètres sur 328, soit plus de 11 hectares, et le bâtiment des bains 214 mètres sur 110. Il fut construit en cinq ans à peine : les archéologues estiment que plusieurs milliers d'ouvriers y travaillèrent chaque jour et que des millions de briques furent nécessaires. Le plan est symétrique autour d'un axe central : la natatio, une piscine à ciel ouvert de 50 mètres sur 22, le frigidarium couvert de trois voûtes d'arêtes, le tepidarium, puis le caldarium, une rotonde de 35 mètres de diamètre coiffée d'une coupole presque aussi large que celle du Panthéon. De part et d'autre, deux palestres identiques servaient à l'exercice. Les murs, hauts de plus de 30 mètres, étaient plaqués de marbre et les voûtes couvertes de mosaïques de verre." },
+      { titre: "Une journée aux bains",
+        texte: "On arrivait en début d'après-midi, après le travail. Le parcours commençait dans la palestre par la lutte, la course ou les jeux de balle, puis l'on passait dans les salles de plus en plus chaudes avant de plonger dans l'eau froide. Masseurs, épileurs, vendeurs de boissons et de gâteaux proposaient leurs services. On pouvait ensuite lire dans l'une des deux bibliothèques, flâner dans les jardins ou assister à une conférence. Les thermes accueillaient toutes les classes sociales : le sénateur y croisait l'artisan. Sous les salles, un réseau de galeries de plusieurs kilomètres abritait les fours et les réserves de bois nécessaires pour chauffer l'eau et l'air qui circulait sous les sols." },
+      { titre: "Un musée disparu",
+        texte: "Les thermes étaient un véritable musée de sculptures. Lorsque le pape Paul III Farnèse y fit fouiller en 1545 pour orner son palais, on en sortit des chefs-d'œuvre colossaux, l'Hercule Farnèse, le Taureau Farnèse et la Flore Farnèse, tous aujourd'hui au musée archéologique de Naples. Les mosaïques des athlètes, découvertes en 1824, sont au Vatican. Deux immenses baignoires de granit gris servent de fontaines sur la Piazza Farnese, et des colonnes ont été remployées dans la basilique Santa Maria in Trastevere. L'architecture elle-même a inspiré les gares monumentales du vingtième siècle : la salle des pas perdus de la Pennsylvania Station de New York, détruite en 1963, copiait directement le frigidarium." },
+      { titre: "Déclin et renaissance",
+        texte: "Les bains fonctionnèrent plus de trois siècles, jusqu'en 537, quand les Goths de Vitigès, assiégeant Rome, coupèrent les aqueducs. Privé d'eau, l'édifice fut abandonné, pillé, puis secoué par le séisme de 847. Ses ruines envahies de végétation ont fasciné les voyageurs du Grand Tour et le poète Shelley, qui y écrivit une partie de son Prométhée délivré en 1819. Depuis 1937, les ruines servent de décor à l'opéra de Rome en été : c'est là que, le 7 juillet 1990, à la veille de la finale de la Coupe du monde, les trois ténors Pavarotti, Domingo et Carreras donnèrent leur premier concert commun, devant des millions de téléspectateurs." }
+    ],
+    enfants: [
+      { titre: "Imagine ton après-midi aux bains",
+        texte: "Imagine : l'école est finie, il est tôt dans l'après-midi et toute la ville se dirige vers les thermes. Tu paies une toute petite pièce à l'entrée, tu déposes tes vêtements dans un casier surveillé par un esclave, et te voilà dans une cour immense où des adultes soulèvent des poids, luttent dans le sable ou jouent à la balle. Ensuite, direction les salles chaudes, où la vapeur te fait transpirer, puis un plongeon glacé dans la grande piscine, sous le ciel bleu." },
+      { titre: "C'était très bruyant",
+        texte: "Le philosophe Sénèque habitait juste au-dessus d'un établissement de bains, et il s'en plaignait dans une lettre restée célèbre. Il entendait les costauds qui grognaient en soulevant leurs poids, les claques du masseur sur les épaules des clients, le plongeon bruyant de ceux qui sautaient dans la piscine, le vendeur de saucisses et le pâtissier qui hurlaient leurs prix, et surtout l'épileur qui arrachait les poils des aisselles et faisait crier ses clients. Voilà à quoi ressemblait une piscine romaine : une fête foraine géante, du matin au soir." },
+      { titre: "Les secrets du sous-sol",
+        texte: "Sous tes pieds, ce n'est pas fini. Des galeries assez larges pour des chariots serpentent sous tout le bâtiment. Des centaines d'esclaves y transportaient du bois pour les fours qui chauffaient l'eau et l'air. On y a retrouvé un moulin à eau, qui écrasait le grain pour faire la farine des boulangers, et surtout un temple secret du dieu Mithra, le plus grand de Rome, où des hommes se réunissaient en cachette autour de l'image d'un taureau, avec une fosse mystérieuse dont les archéologues discutent encore l'usage." },
+      { titre: "Les géants de marbre",
+        texte: "En 1545, des ouvriers qui creusaient dans les ruines pour le pape tombèrent sur une statue gigantesque : un Hercule de plus de trois mètres, épuisé, appuyé sur sa massue. Il cache quelque chose dans la main qu'il tient derrière le dos : les pommes d'or du jardin des Hespérides, sa dernière mission. Peu après sortit de terre un groupe encore plus grand, le Taureau Farnèse, taillé dans un seul bloc de marbre, avec un taureau furieux et quatre personnages. Ces géants sont aujourd'hui à Naples, mais imagine-les ici, à leur place, au bord des piscines." },
+      { titre: "Défi sur place",
+        texte: "Regarde les grands murs de brique : cherche les rangées de petits trous carrés. C'était l'emplacement des crochets qui tenaient les plaques de marbre, arrachées depuis longtemps. Ensuite, dans les deux cours de sport, trouve les morceaux de mosaïque noire et blanche encore en place au sol, avec leurs motifs. Enfin, repère la grande salle ronde du caldarium, la salle la plus chaude, et essaie de compter ses immenses fenêtres." },
+      { titre: "Quiz éclair",
+        texte: "Question : pourquoi appelle-t-on l'empereur Caracalla, alors que ce n'était pas son vrai nom ? Réponse : son vrai nom était Marcus Aurelius Antoninus. Caracalla était un surnom moqueur, donné à cause du long manteau gaulois à capuche qu'il adorait porter et qu'il avait mis à la mode chez les soldats. Le surnom lui est resté pour toujours, et personne ne l'appelle plus autrement." }
+    ]
   },
   {
-    id: 'via-appia',
-    nom: 'Via Appia Antica',
-    emoji: '🛣️',
-    categorie: 'antique',
+    id: "via-appia",
+    nom: "Via Appia Antica",
+    categorie: "antique",
     lat: 41.8536, lon: 12.5205,
     duree: 120,
-    description:
-      "La « reine des routes » fut commencée en 312 avant J.-C. par le censeur Appius Claudius pour relier Rome à Capoue, puis au port de Brindisi, à 540 kilomètres. Ses grandes dalles de basalte, encore en place, sont bordées de tombeaux monumentaux comme celui de Cecilia Metella, du cirque de Maxence et de villas impériales. Aujourd'hui protégée dans un grand parc, inscrite à l'UNESCO en 2024, elle se parcourt à pied ou à vélo, dans une campagne de pins parasols et de cyprès qui n'a presque pas changé depuis l'Antiquité.",
-    enfants:
-      "Pose tes pieds dans les ornières creusées dans la pierre : ce sont les traces laissées par des milliers de roues de chars il y a 2 000 ans ! Les Romains construisaient leurs routes en quatre couches, légèrement bombées pour évacuer la pluie, avec une borne tous les milles, c'est-à-dire tous les mille pas de soldats, soit 1,5 kilomètre. C'est le long de cette route qu'en 71 avant J.-C., après la grande révolte des gladiateurs menée par Spartacus, 6 000 rebelles furent crucifiés, un tous les 30 mètres. Les tombeaux bordent la route parce qu'il était interdit d'enterrer les morts dans la ville. À la petite église Domine Quo Vadis, on montre les empreintes de pieds que Jésus aurait laissées en apparaissant à saint Pierre.",
-    conseil: "Le dimanche, la route est fermée aux voitures : location de vélos près de la Via Appia Antica 58. Prévoir eau et goûter, peu de commerces sur place."
+    conseil: "Le dimanche, la route est fermée aux voitures : location de vélos près de la Via Appia Antica 58. Prévoir eau et goûter, peu de commerces sur place.",
+    adultes: [
+      { titre: "La reine des routes",
+        texte: "En 312 avant Jésus-Christ, le censeur Appius Claudius Caecus lance la construction d'une route militaire pour acheminer rapidement les légions vers Capoue, à 195 kilomètres, en pleine guerre contre les Samnites. Il fait la même année construire le premier aqueduc de Rome. La route est ensuite prolongée jusqu'à Bénévent, Tarente et enfin Brindisi, sur l'Adriatique, port d'embarquement pour la Grèce et l'Orient. Le poète Stace la surnomme au premier siècle « regina viarum », la reine des routes. Trajan en ouvre en 109 une variante plus courte par la côte, la Via Appia Traiana. Pendant des siècles, elle voit passer armées, marchands, pèlerins et courriers de la poste impériale." },
+      { titre: "Une technique de construction exemplaire",
+        texte: "Les ingénieurs romains commençaient par creuser une tranchée jusqu'à un sol ferme, puis superposaient plusieurs couches : de gros blocs, un lit de pierres et de gravier lié à la chaux, un mortier fin et enfin les dalles de basalte polygonales, parfaitement ajustées. La chaussée, large d'environ 4 mètres, permettait à deux chars de se croiser ; elle était bombée pour évacuer l'eau et bordée de trottoirs. Tous les milles, une borne de pierre indiquait la distance depuis Rome. Ce soin explique que, plus de deux mille ans après, des kilomètres de dalles d'origine soient encore en place, notamment entre le quatrième et le huitième mille." },
+      { titre: "Une route bordée de tombeaux",
+        texte: "La loi interdisait d'enterrer les morts à l'intérieur de la ville : les familles riches firent donc bâtir leurs tombeaux le long des grandes routes, là où tout le monde les verrait. Sur la Via Appia, ils se succèdent sur des kilomètres. Le plus célèbre, le mausolée de Cecilia Metella, une rotonde de près de 30 mètres de diamètre élevée vers 30 avant Jésus-Christ, fut transformé en château fort par la famille Caetani en 1302. Plus loin, la Villa des Quintilii, si belle que l'empereur Commode fit exécuter ses propriétaires pour s'en emparer en 182. En face, le cirque de Maxence, bâti en 309, conserve mieux que le Circus Maximus la forme d'une piste antique." },
+      { titre: "Parcours conseillé",
+        texte: "La promenade commence à la Porta San Sebastiano, la plus belle porte des murailles d'Aurélien, qui abrite un musée des murs. Vient ensuite la petite église Domine Quo Vadis, puis les grandes catacombes de Saint-Calixte et de Saint-Sébastien. Après le cirque de Maxence et le tombeau de Cecilia Metella, la route devient une allée bordée de pins parasols et de cyprès. C'est à partir de là que les dalles antiques réapparaissent, avec les ruines des tombeaux, les statues sans tête et, au loin, les arches des aqueducs. Le tronçon le plus spectaculaire s'étend jusqu'au Casal Rotondo, un immense tombeau rond sur lequel une ferme a été construite au Moyen Âge." },
+      { titre: "Petites histoires",
+        texte: "En 71 avant Jésus-Christ, après l'écrasement de la révolte de Spartacus, six mille prisonniers furent crucifiés le long de la route entre Capoue et Rome. Le roman Quo Vadis et son film de 1951 ont fait connaître au monde entier la légende de saint Pierre fuyant Rome par cette route et rencontrant le Christ. Au dix-neuvième siècle, l'architecte Luigi Canina dégagea les tombeaux et transforma la route en promenade archéologique. Au vingtième siècle, le journaliste Antonio Cederna mena un combat acharné pour sauver la campagne romaine de la spéculation immobilière, jusqu'à la création du parc régional en 1988 et l'inscription au patrimoine mondial en 2024." }
+    ],
+    enfants: [
+      { titre: "Imagine une légion en marche",
+        texte: "Imagine : tu entends d'abord un grondement, puis tu vois la poussière. Une légion arrive, des milliers de soldats en rangs serrés, casques brillants, sandales cloutées qui claquent sur les dalles. Chacun porte sur l'épaule un bâton avec son sac, ses outils et sa nourriture, plus de 30 kilos : on les surnommait les « mules ». Ils marchent 30 kilomètres par jour et, le soir, ils construiront un camp entier avec fossé et palissade avant de dormir." },
+      { titre: "La route d'un aveugle",
+        texte: "L'homme qui a lancé cette route s'appelait Appius Claudius. Il était censeur, un magistrat très puissant, et il a laissé son nom à la route et à un aqueduc. À la fin de sa vie, il est devenu aveugle, ce qui lui a valu le surnom de Caecus, l'Aveugle. Vieux et aveugle, il s'est quand même fait porter au Sénat pour convaincre les Romains de ne jamais faire la paix avec le roi Pyrrhus tant qu'il serait sur le sol italien. Son discours est resté célèbre." },
+      { titre: "Le château aux têtes de bœuf",
+        texte: "Le grand tombeau rond que tu vois au troisième mille appartenait à Cecilia Metella, une riche Romaine dont on ne sait presque rien. Regarde en haut du mur : des crânes de bœufs sculptés, reliés par des guirlandes. Les gens du Moyen Âge l'ont surnommé Capo di Bove, la tête de bœuf. Vers 1300, la puissante famille Caetani a ajouté des créneaux à la tombe et faisait payer un péage à tous ceux qui passaient sur la route." },
+      { titre: "Le poète et les moustiques",
+        texte: "Il y a plus de deux mille ans, le poète Horace a fait tout le voyage de Rome à Brindisi sur cette route et a tout raconté. La première nuit, il a pris un bateau tiré par une mule sur un canal à travers les marais. Impossible de dormir : les grenouilles coassaient, les moustiques piquaient, le batelier chantait à tue-tête puis s'est endormi, et la mule s'est arrêtée. Plus loin, l'eau était si mauvaise qu'il a préféré ne pas boire, et le pain si dur qu'il en a emporté pour la suite." },
+      { titre: "Défi sur place",
+        texte: "Trouve une dalle avec deux ornières parallèles creusées par les roues, et mesure l'écart entre elles avec tes pieds : environ un mètre quarante, la largeur des chars romains. Cherche ensuite une borne milliaire, une colonne de pierre ronde qui indiquait la distance depuis Rome. Puis marche mille pas doubles, c'est-à-dire mille fois deux pas, en comptant : tu auras parcouru un mille romain, l'unité de distance des soldats. Enfin, compte combien de tombeaux tu croises en une seule longueur." },
+      { titre: "Quiz éclair",
+        texte: "Question : les dalles de la route sont d'une pierre grise presque noire. D'où vient-elle ? Réponse : c'est du basalte, une roche de lave refroidie. Elle vient des monts Albains, les collines que tu vois au sud, qui sont d'anciens volcans éteints depuis des milliers d'années. Les Romains ont choisi cette pierre parce qu'elle est extrêmement dure : c'est pour cela que la route est encore là, alors que les routes goudronnées d'aujourd'hui doivent être refaites tous les dix ans." }
+    ]
   },
   {
-    id: 'catacombes',
-    nom: 'Catacombes de Saint-Calixte',
-    emoji: '🕯️',
-    categorie: 'antique',
-    lat: 41.8590, lon: 12.5115,
+    id: "catacombes",
+    nom: "Catacombes de Saint-Calixte",
+    categorie: "antique",
+    lat: 41.859, lon: 12.5115,
     duree: 45,
-    description:
-      "Les catacombes de Saint-Calixte sont les plus grandes de Rome : 20 kilomètres de galeries sur quatre niveaux, creusées dès le troisième siècle dans le tuf volcanique, avec près d'un demi-million de tombes. On y visite la crypte des Papes, où reposèrent neuf papes, et la crypte de sainte Cécile, ornée de fresques parmi les plus anciennes du christianisme. La visite se fait obligatoirement avec un guide, en français, dans une fraîcheur constante de 15 degrés.",
-    enfants:
-      "Imagine une ville souterraine de 20 kilomètres de couloirs, sur quatre étages, creusée à la main par des ouvriers appelés fossores qui travaillaient à la lueur de petites lampes à huile. Les premiers chrétiens y enterraient leurs morts dans des niches creusées dans la roche, fermées par des dalles portant des symboles secrets : le poisson, l'ancre, la colombe. Contrairement aux films, ils ne s'y cachaient pas vraiment : c'était un cimetière, mais on y priait ensemble. Le mot « catacombe » vient justement de ce quartier, appelé « ad catacumbas », près des creux. Il fait 15 degrés toute l'année : prends un pull, même en plein été !",
-    conseil: "Fermé le mercredi. Escalier raide, non accessible aux poussettes. Bus 118 depuis le Circus Maximus ou le Colisée."
+    conseil: "Fermé le mercredi. Escalier raide, non accessible aux poussettes. Bus 118 depuis le Circus Maximus ou le Colisée.",
+    adultes: [
+      { titre: "Le cimetière des premiers chrétiens",
+        texte: "Au début du troisième siècle, le pape Zéphyrin confie au diacre Calixte la gestion d'un cimetière souterrain au deuxième mille de la Via Appia, sur des terrains offerts par des familles chrétiennes. C'est la première nécropole collective de la communauté chrétienne de Rome, jusque-là dispersée dans des tombes privées. Calixte devient pape en 217, et le cimetière garde son nom. Il ne cesse de s'agrandir aux troisième et quatrième siècles, en absorbant les galeries voisines : on estime aujourd'hui son réseau à près de 20 kilomètres de couloirs sur quatre niveaux, pour environ un demi-million de sépultures, sous une surface de 15 hectares." },
+      { titre: "Comment on creusait",
+        texte: "Le sous-sol de Rome est fait de tuf, une roche volcanique tendre à creuser mais qui durcit à l'air, idéale pour ouvrir des galeries sans risque d'effondrement. Les fossoyeurs taillaient des couloirs d'environ un mètre de large et creusaient dans les parois des niches rectangulaires superposées, les loculi, fermées par une dalle de marbre ou de terre cuite scellée au mortier. Les familles aisées disposaient d'arcosolia, tombes surmontées d'un arc, ou de cubicula, petites chambres funéraires peintes. Des puits verticaux apportaient un peu de lumière et d'air. Les inscriptions, en latin ou en grec, indiquent le nom du défunt, parfois son métier, et souvent un simple souhait : « en paix »." },
+      { titre: "La crypte des Papes",
+        texte: "Le cœur du site est une chambre découverte en 1854, que l'archéologue Giovanni Battista de Rossi baptisa « le petit Vatican » : neuf papes du troisième siècle y furent inhumés, dont Pontien, Fabien et Sixte II, arrêté dans ces mêmes catacombes et exécuté en 258 pendant la persécution de Valérien. Les plaques de marbre grecques portant leurs noms sont encore en place. Au fond, un long poème gravé en lettres élégantes par le calligraphe Filocalus rend hommage aux martyrs : il fut composé vers 370 par le pape Damase, qui aménagea le lieu pour les pèlerins. Damase y précise qu'il aurait voulu être enterré ici, mais qu'il n'osait pas déranger les cendres des saints." },
+      { titre: "Sainte Cécile",
+        texte: "La crypte voisine abrita la tombe de Cécile, jeune patricienne martyrisée au troisième siècle, devenue la patronne des musiciens. En 821, le pape Pascal Ier fit transférer son corps dans l'église qui lui est dédiée au Trastevere. En 1599, lors de travaux dans cette église, le sarcophage fut ouvert et le corps trouvé, selon les témoins, dans un état de conservation remarquable ; le sculpteur Stefano Maderno le représenta tel quel, allongé sur le côté, dans une statue dont la copie orne aujourd'hui la crypte. Les murs conservent des fresques du septième au neuvième siècle, parmi lesquelles une image du Christ et une sainte Cécile en prière." },
+      { titre: "Oubli et redécouverte",
+        texte: "Après les invasions lombardes du huitième siècle, les papes transfèrent les reliques dans les églises de la ville, et les catacombes, abandonnées, disparaissent sous la végétation. Il faut attendre 1849 pour qu'un jeune archéologue, Giovanni Battista de Rossi, remarque dans une vigne un fragment de marbre portant les lettres « NELIUS MARTYR ». Il devine qu'il s'agit du pape Corneille, dont les textes anciens situaient la tombe près de celle des autres papes. Le pape Pie IX achète la vigne, les fouilles commencent, et en 1852 de Rossi retrouve la crypte des Papes, puis le reste du réseau. Le site, propriété du Saint-Siège, est confié depuis 1930 aux frères salésiens, qui assurent les visites guidées." }
+    ],
+    enfants: [
+      { titre: "Imagine la descente",
+        texte: "Imagine : tu descends un escalier taillé dans la roche, avec pour seule lumière une petite lampe à huile qui tremble dans ta main. L'air devient frais, presque froid. Devant toi s'ouvre un couloir si étroit que deux personnes peuvent à peine se croiser, et si haut que la lumière n'atteint pas le plafond. De chaque côté, des rangées de niches creusées les unes au-dessus des autres, comme les étagères d'une immense bibliothèque, chacune fermée par une plaque avec un nom." },
+      { titre: "Le langage secret des chrétiens",
+        texte: "Sur les plaques, tu verras des dessins simples qui étaient en réalité des messages codés. Le poisson d'abord : en grec, poisson se dit ICHTHUS, et chaque lettre est le début d'un mot de la phrase « Jésus Christ, Fils de Dieu, Sauveur ». L'ancre voulait dire l'espérance, la colombe avec un rameau la paix, le berger portant un agneau représentait le Christ. On raconte que, pour se reconnaître sans se trahir, un chrétien dessinait dans le sable une moitié de poisson : si l'inconnu complétait le dessin, on pouvait lui faire confiance." },
+      { titre: "Perdu dans le noir",
+        texte: "En 1593, un garçon de 18 ans nommé Antonio Bosio descend avec des amis dans une catacombe que personne n'a explorée depuis des siècles. Ils avancent, se perdent, leurs bougies s'éteignent une à une. Bosio pense qu'il va mourir là, dans le noir. Ils finissent par retrouver la sortie, épuisés. Au lieu de jurer de ne jamais recommencer, Bosio décide de consacrer toute sa vie à explorer la Rome souterraine, avec des cordes et des lampes de secours. Son grand livre a fait de lui le « Christophe Colomb des catacombes »." },
+      { titre: "Les hommes qui creusaient",
+        texte: "Les fossores, les fossoyeurs, passaient leurs journées sous terre à tailler le tuf à la pioche, à la lueur des lampes. Ils portaient la terre dehors dans des paniers, creusaient des puits pour laisser entrer l'air et un peu de lumière, et vendaient les emplacements aux familles. On a retrouvé leurs portraits peints sur les murs : un homme avec une pioche sur l'épaule et une lampe à la main. Pour les enfants, ils creusaient de toutes petites niches, souvent placées tout en haut." },
+      { titre: "Défi sur place",
+        texte: "Pendant la visite, cherche sur les plaques et les murs les trois symboles secrets : un poisson, une ancre et une colombe. Compte combien de niches sont empilées les unes sur les autres dans un couloir : il y en a parfois six ou sept. Enfin, devant la statue de sainte Cécile allongée, regarde bien ses mains : elle montre trois doigts d'une main et un seul de l'autre, un message qui signifie « un seul Dieu en trois personnes »." },
+      { titre: "Quiz éclair",
+        texte: "Question : jusqu'à quelle profondeur descendent les galeries les plus basses ? Réponse : à environ vingt mètres sous terre, soit la hauteur d'un immeuble de six étages, mais à l'envers. On a creusé vers le bas quand il n'y avait plus de place en haut, au lieu de s'étendre sur les côtés, parce que le terrain appartenait à d'autres." }
+    ]
   },
   {
-    id: 'pyramide-cestius',
-    nom: 'Pyramide de Cestius',
-    emoji: '🔺',
-    categorie: 'antique',
+    id: "pyramide-cestius",
+    nom: "Pyramide de Cestius",
+    categorie: "antique",
     lat: 41.8763, lon: 12.4807,
     duree: 20,
-    description:
-      "Une vraie pyramide en plein Rome ! Haute de 36 mètres, elle fut bâtie entre 18 et 12 avant J.-C. comme tombeau de Caius Cestius, un riche magistrat, à l'époque où la conquête de l'Égypte avait lancé une véritable mode égyptienne. Au troisième siècle, elle fut intégrée aux murailles d'Aurélien, ce qui l'a sauvée. Juste à côté, le cimetière non catholique, envahi de chats et de cyprès, abrite les tombes des poètes anglais Keats et Shelley, et non loin, le Monte Testaccio est une colline entièrement faite de débris d'amphores.",
-    enfants:
-      "Le testament de Cestius disait que la pyramide devait être finie en 330 jours, sinon ses héritiers perdaient tout leur héritage : elle a été construite en un temps record ! Elle est plus pointue que les pyramides d'Égypte parce que les Romains les ont copiées sans jamais les voir de près. À l'intérieur, une petite chambre décorée de fresques, visitable certains week-ends. Et à quelques pas, le Monte Testaccio est une colline de 35 mètres de haut faite de 53 millions d'amphores cassées : c'était la décharge de Rome, où l'on jetait les jarres d'huile d'olive vides venues d'Espagne. Une montagne de poterie de 2 000 ans !",
-    conseil: "Métro B, station Piramide. Le cimetière non catholique voisin est gratuit (don conseillé) et très paisible."
+    conseil: "Métro B, station Piramide. Le cimetière non catholique voisin est gratuit (don conseillé) et très paisible.",
+    adultes: [
+      { titre: "Un tombeau à la mode égyptienne",
+        texte: "Quand Octave, le futur Auguste, s'empare de l'Égypte en 30 avant Jésus-Christ, Rome se prend de passion pour tout ce qui vient du Nil : obélisques, sphinx, divinités et pyramides. C'est dans ce climat qu'un riche magistrat, Caius Cestius Epulo, préteur, tribun de la plèbe et membre du collège des sept prêtres chargés des banquets sacrés, décide de se faire construire un tombeau en forme de pyramide. Les inscriptions gravées sur les deux faces les plus visibles donnent son nom et ses titres, et précisent que l'ouvrage fut achevé en trois cent trente jours, conformément à son testament. Ses héritiers, parmi lesquels figure Marcus Agrippa, le gendre et bras droit d'Auguste, tenaient donc à respecter le délai. La construction est datée entre 18 et 12 avant Jésus-Christ." },
+      { titre: "Architecture et chiffres",
+        texte: "La pyramide mesure environ 36 mètres de haut pour une base carrée d'un peu moins de 30 mètres de côté. Elle est bâtie en béton romain sur des fondations de travertin, puis entièrement revêtue de plaques de marbre blanc de Carrare. Ses pentes sont beaucoup plus raides que celles des pyramides de Gizeh : les architectes se sont sans doute inspirés des pyramides de Nubie, au sud de l'Égypte, que les légions venaient de découvrir lors de campagnes militaires. À l'intérieur, une chambre funéraire voûtée d'environ 6 mètres sur 4 était décorée de fresques délicates, avec des figures féminines et des Victoires ailées. Une fois le corps déposé, l'accès fut muré : le tombeau n'avait pas de porte." },
+      { titre: "Sauvée par les murailles",
+        texte: "Entre 271 et 275, l'empereur Aurélien fait ceindre Rome d'une muraille de 19 kilomètres pour la protéger des invasions. Les bâtisseurs, pressés, incorporent tout ce qui se trouve sur le tracé, et la pyramide devient une sorte de bastion à côté de la Porta Ostiensis, aujourd'hui Porta San Paolo. C'est ce qui l'a préservée, alors que presque tous les autres tombeaux de Rome ont été démontés pour récupérer leur marbre. Au Moyen Âge, on avait oublié Cestius : on l'appelait la Meta Remi, le tombeau de Rémus, tandis qu'une seconde pyramide, près du Vatican, passait pour celui de Romulus. Cette dernière fut démolie vers 1499 pour ouvrir une rue vers Saint-Pierre." },
+      { titre: "Redécouverte et restaurations",
+        texte: "En 1660, le pape Alexandre VII ordonne de dégager la pyramide, alors à moitié enterrée, et de la restaurer. Les ouvriers percent un tunnel jusqu'à la chambre funéraire, qu'ils trouvent vide, déjà pillée. Ils retrouvent aussi les bases de deux statues de bronze de Cestius et deux colonnes, remises debout aux angles ouest du monument. Une inscription rappelle cette campagne. Le tombeau devient ensuite un sujet favori des graveurs et des peintres du Grand Tour, de Piranèse aux aquarellistes anglais. La dernière grande restauration, entre 2013 et 2015, a été financée par un mécène japonais, l'homme d'affaires Yuzo Yagi, qui a permis de nettoyer le marbre et de consolider les fresques." },
+      { titre: "Autour de la pyramide",
+        texte: "Contre la muraille s'étend le cimetière non catholique, ouvert au dix-huitième siècle pour les étrangers protestants et orthodoxes qui n'avaient pas droit aux cimetières de la Ville éternelle. Sous les cyprès reposent les poètes anglais John Keats, mort à Rome en 1821 à vingt-cinq ans, et Percy Shelley, noyé au large de la Toscane en 1822, ainsi que le penseur italien Antonio Gramsci. À quelques centaines de mètres, le Monte Testaccio, colline artificielle de 35 mètres, est fait de millions de tessons d'amphores à huile : le quartier était le port fluvial et l'entrepôt de Rome antique." }
+    ],
+    enfants: [
+      { titre: "Imagine un pharaon romain",
+        texte: "Imagine que tu vis à Rome il y a un peu plus de deux mille ans. L'Égypte vient d'être conquise, et tout le monde ne parle que de ça : les bateaux rapportent des obélisques, des statues de dieux à tête d'animal, des tissus brodés. Un riche Romain nommé Caius Cestius se dit alors : pourquoi ne pas me faire un tombeau comme un pharaon ? Et le voilà, ce tombeau, tout blanc, tout pointu, planté entre les voitures et le métro. Ce n'est pas un décor de cinéma, c'est une vraie pyramide antique, la seule qui reste à Rome." },
+      { titre: "Le tombeau de Rémus",
+        texte: "Pendant le Moyen Âge, plus personne ne savait lire les vieilles inscriptions, et les Romains ont inventé une explication : cette pyramide serait la tombe de Rémus, le frère jumeau de Romulus, tué lors de la fondation de Rome. Une autre pyramide, près du Vatican, était censée être celle de Romulus. Le problème, c'est que les jumeaux, s'ils ont existé, sont morts sept cents ans avant la construction de ce monument. La pyramide du Vatican a été démolie il y a cinq cents ans, et celle de Cestius a survécu parce qu'elle avait été coincée dans les remparts de la ville, comme une tour de défense." },
+      { titre: "Le savais-tu",
+        texte: "Quand des ouvriers ont creusé un tunnel pour entrer dans la pyramide, il y a environ trois cent soixante ans, ils espéraient un trésor. Ils n'ont trouvé qu'une pièce vide : des voleurs étaient passés bien avant eux, sans doute en perçant le marbre. Autre curiosité : Cestius voulait qu'on enferme dans son tombeau de précieuses tapisseries brodées d'or, mais une loi venait d'interdire d'enterrer des objets de luxe. Ses héritiers les ont donc vendues et ont utilisé l'argent pour lui offrir deux statues de bronze devant la pyramide. Il ne reste que leurs socles, les statues ont disparu." },
+      { titre: "Défi sur place",
+        texte: "Fais le tour de la pyramide par l'extérieur du cimetière et cherche les grandes lettres gravées dans le marbre, très haut sur la face qui donne sur la rue : c'est le nom de Cestius, écrit en latin, sans espaces entre les mots. Trouve ensuite les deux colonnes dressées près d'un angle, puis les chats : le cimetière voisin en héberge toute une colonie, souvent couchés sur les tombes au soleil. Enfin, essaie de repérer les endroits où le marbre a l'air plus neuf et plus blanc : ce sont les plaques restaurées il y a une dizaine d'années." },
+      { titre: "Le quiz",
+        texte: "Pourquoi cette pyramide est-elle beaucoup plus pointue que les grandes pyramides d'Égypte que tu vois dans les livres ? Réponse : parce que les Romains ne l'ont pas copiée sur celles de Gizeh, mais sur les petites pyramides très raides de Nubie, tout au sud de l'Égypte, que leurs soldats avaient vues pendant une expédition quelques années plus tôt. Bonus : la construction a duré trois cent trente jours, soit moins d'un an, alors que les pharaons mettaient parfois vingt ans." }
+    ]
   },
-
-  /* ------------------------------------------------------------------
-     PLACES, FONTAINES & RUES
-     ------------------------------------------------------------------ */
   {
-    id: 'pantheon',
-    nom: 'Panthéon',
-    emoji: '🏛️',
-    categorie: 'place',
+    id: "pantheon",
+    nom: "Panthéon",
+    categorie: "place",
     lat: 41.8986, lon: 12.4769,
     duree: 45,
-    description:
-      "Reconstruit par l'empereur Hadrien vers 125, le Panthéon est le monument antique le mieux conservé de Rome. Sa coupole de béton de 43 mètres de diamètre est restée la plus grande du monde sans armature pendant près de deux mille ans. Elle est percée d'un oculus de 9 mètres, unique source de lumière. Transformé en église en 609, ce qui lui a évité la destruction, il abrite les tombes du peintre Raphaël et des premiers rois d'Italie. Ses seize colonnes de granit ont été taillées en Égypte et transportées par bateau.",
-    enfants:
-      "Le grand trou au sommet de la coupole est vraiment ouvert : quand il pleut, il pleut à l'intérieur du Panthéon ! Le sol est légèrement bombé avec 22 petits trous pour évacuer l'eau. Les Romains ont utilisé un béton de plus en plus léger vers le haut, avec de la pierre ponce, et une recette si bonne que ce béton se répare tout seul quand il se fissure : les scientifiques ne l'ont compris qu'en 2023 ! La coupole est si parfaite qu'une boule géante de 43 mètres tiendrait exactement à l'intérieur. Le 21 avril à midi, jour de l'anniversaire de Rome, le rayon de soleil traverse l'oculus et éclaire pile la porte d'entrée. Chaque colonne du porche pèse 60 tonnes.",
-    conseil: "Entrée payante depuis 2023 (gratuite pour les moins de 18 ans), billet à prendre en ligne ou sur place. Le matin tôt, on profite du rayon de lumière presque seuls."
+    conseil: "Entrée payante depuis 2023 (gratuite pour les moins de 18 ans), billet à prendre en ligne ou sur place. Le matin tôt, on profite du rayon de lumière presque seuls.",
+    adultes: [
+      { titre: "Trois temples pour tous les dieux",
+        texte: "Le premier Panthéon est bâti entre 27 et 25 avant Jésus-Christ par Marcus Agrippa, le fidèle général et gendre d'Auguste, au Champ de Mars. Ce temple dédié à tous les dieux brûle en 80, est reconstruit par Domitien, puis foudroyé et incendié à nouveau en 110. L'empereur Hadrien, passionné d'architecture, le fait entièrement rebâtir entre 118 et 125 environ, en lui donnant la forme que nous voyons. Par modestie ou par habileté politique, il conserve sur le fronton la dédicace du premier bâtisseur, en grandes lettres de bronze : Marcus Agrippa, fils de Lucius, consul pour la troisième fois, a fait cet édifice." },
+      { titre: "La coupole et ses secrets",
+        texte: "La rotonde est un cylindre coiffé d'une coupole de 43,3 mètres de diamètre, exactement égale à sa hauteur : une sphère parfaite s'y inscrirait. Elle resta la plus grande coupole du monde jusqu'au vingtième siècle et demeure la plus grande jamais réalisée en béton non armé. Les Romains ont allégé la structure en changeant la recette en montant : travertin lourd à la base, tuf, brique, puis pierre ponce volcanique tout en haut, autour de l'oculus de près de 9 mètres. Cinq rangées de vingt-huit caissons creusent la voûte et réduisent encore son poids. À l'entrée, seize colonnes monolithes de granit gris et rose, hautes d'environ 12 mètres, ont été extraites en Égypte et acheminées par bateau." },
+      { titre: "D'un temple à une église",
+        texte: "En 609, l'empereur byzantin Phocas offre le bâtiment au pape Boniface IV, qui le consacre à sainte Marie et à tous les martyrs. Cette conversion précoce explique sa conservation exceptionnelle : ses portes de bronze antiques sont encore en place. Le monument n'a pourtant pas échappé aux pillages. En 663, l'empereur Constant II emporte à Constantinople les tuiles de bronze doré de la coupole. En 1625, le pape Urbain VIII Barberini fait fondre le bronze des poutres du porche pour couler des canons destinés au château Saint-Ange et, dit-on, le baldaquin de Saint-Pierre. Les Romains en ont tiré un jeu de mots resté célèbre : ce que les Barbares n'ont pas fait, les Barberini l'ont fait." },
+      { titre: "Les tombeaux illustres",
+        texte: "Depuis la Renaissance, le Panthéon sert de sépulture aux grands artistes. Raphaël, mort en 1520 à trente-sept ans, y repose sous une Vierge sculptée par son élève Lorenzetto, avec une épitaphe du poète Pietro Bembo : de son vivant, la Nature craignit d'être vaincue par lui, et à sa mort elle craignit de mourir. À ses côtés se trouvent les peintres Annibale Carracci et Baldassare Peruzzi. Après l'unification de l'Italie, le monument devient aussi le mausolée de la monarchie : le roi Victor-Emmanuel II en 1878, son fils Umbert Ier en 1900 et la reine Marguerite en 1926, veillés aujourd'hui encore par des volontaires de la Garde d'honneur." },
+      { titre: "À voir sur place",
+        texte: "Avant d'entrer, observez la différence de couleur entre les colonnes de façade et celles des côtés, et les traces sur le mur du porche où se fixaient les poutres de bronze disparues. Sous la coupole, prenez le temps de suivre le rayon de soleil qui se déplace sur les caissons comme l'aiguille d'un cadran solaire géant : le 21 avril à midi, anniversaire de la fondation de Rome, il vient frapper la porte d'entrée, comme un projecteur sur l'empereur qui entrait. Le sol légèrement bombé et ses vingt-deux petits trous évacuent la pluie qui tombe par l'oculus. À la Pentecôte, les pompiers de Rome montent sur la coupole et font pleuvoir des milliers de pétales de rose rouge sur les fidèles." }
+    ],
+    enfants: [
+      { titre: "Imagine un empereur bricoleur",
+        texte: "Imagine un empereur qui adore dessiner des bâtiments. C'est Hadrien, et le Panthéon est son chef-d'œuvre. Il y a mille neuf cents ans, il a fait couler ici la plus grande coupole du monde, sans grue, sans ordinateur, juste avec du béton, des échafaudages en bois et des ouvriers très doués. Quand tu franchis les portes de bronze, qui sont les mêmes qu'à l'époque, tu entres dans une pièce que les Romains ont vue exactement comme toi. Lève la tête : le trou rond au sommet est ouvert sur le ciel, et les nuages passent au-dessus de toi." },
+      { titre: "Le mystère des poutres volées",
+        texte: "Regarde le plafond du porche, sous les colonnes : il est en bois, mais ce n'est pas normal. À l'origine, il était fait d'énormes poutres de bronze. Il y a quatre cents ans, un pape de la famille Barberini a décidé de les récupérer pour fabriquer des canons. Les Romains, furieux, ont inventé une phrase moqueuse qui dit que les Barberini ont fait pire que les barbares. Le nom du pape se cachait dans le mot. Encore avant, un empereur avait déjà emporté les tuiles dorées de la coupole. Si tu vois des trous dans les murs du porche, ce sont les endroits où les poutres de bronze étaient accrochées." },
+      { titre: "Le savais-tu",
+        texte: "Le peintre Raphaël, mort il y a cinq cents ans, est enterré ici, dans un ancien sarcophage romain. Il était tellement admiré qu'on l'appelait le divin, et à sa mort, toute la ville a pleuré. Sur sa tombe, un poète a écrit que la Nature elle-même avait eu peur d'être battue par lui. Autre secret : tous les ans, cinquante jours après Pâques, des pompiers grimpent sur le toit et lâchent des milliers de pétales de roses rouges par le trou de la coupole." },
+      { titre: "Défi sur place",
+        texte: "Compte les colonnes du porche : il devrait y en avoir seize, mais attention, certaines sont grises et d'autres roses. Trouve la différence. Ensuite, à l'intérieur, compte les rangées de caissons creusés dans la coupole, de bas en haut : il y en a cinq, avec vingt-huit caissons par rangée, et ils rapetissent en montant pour donner l'impression que le plafond est encore plus haut. Baisse les yeux sur le sol au centre : cherche les petits trous ronds qui avalent la pluie. Enfin, repère le rond de soleil sur le mur ou la voûte : il se déplace sans bruit pendant que tu visites." },
+      { titre: "Le quiz",
+        texte: "Sur la façade, on lit le nom de Marcus Agrippa, écrit en énormes lettres. Est-ce lui qui a construit le bâtiment que tu vois ? Réponse : non. Agrippa a bâti le tout premier Panthéon, mais il a brûlé deux fois. Le monument actuel a été construit par l'empereur Hadrien environ cent cinquante ans plus tard, et il a laissé le nom de son prédécesseur sur le fronton, peut-être par respect, peut-être pour montrer qu'il continuait l'œuvre des premiers empereurs." }
+    ]
   },
   {
-    id: 'fontaine-trevi',
-    nom: 'Fontaine de Trevi',
-    emoji: '⛲',
-    categorie: 'place',
+    id: "fontaine-trevi",
+    nom: "Fontaine de Trevi",
+    categorie: "place",
     lat: 41.9009, lon: 12.4833,
     duree: 20,
-    description:
-      "Achevée en 1762 d'après les plans de Nicola Salvi, la fontaine de Trevi est la plus grande et la plus célèbre fontaine baroque du monde : 26 mètres de haut, 49 mètres de large. Au centre, le dieu Océan se dresse sur un char en forme de coquillage tiré par deux chevaux marins guidés par des tritons. L'eau vient de l'Aqua Virgo, un aqueduc construit en 19 avant J.-C. par Agrippa et qui fonctionne toujours. Son nom vient des « tre vie », les trois rues qui se croisent ici.",
-    enfants:
-      "La tradition : lance une pièce de la main droite par-dessus ton épaule gauche, en tournant le dos à la fontaine. Une pièce, tu reviendras à Rome ; deux, tu trouveras l'amour ; trois, tu te marieras ! Chaque jour, on ramasse environ 3 000 euros dans le bassin, soit plus d'un million par an, entièrement donnés à une association qui aide les pauvres. Regarde bien les deux chevaux : l'un est calme, l'autre se cabre, pour montrer les deux humeurs de la mer. L'aqueduc doit son nom de « Vierge » à une jeune fille qui aurait indiqué la source aux soldats romains assoiffés. Interdit de se baigner : une actrice a essayé dans un film célèbre, mais aujourd'hui l'amende est de 500 euros.",
-    conseil: "Toujours bondée : venez avant 8 h du matin ou tard le soir, quand elle est illuminée. L'accès au bord du bassin peut être régulé par une file d'attente."
+    conseil: "Toujours bondée : venez avant 8 h du matin ou tard le soir, quand elle est illuminée. L'accès au bord du bassin peut être régulé par une file d'attente.",
+    adultes: [
+      { titre: "L'eau de la Vierge",
+        texte: "Tout commence en 19 avant Jésus-Christ, lorsque Marcus Agrippa fait construire un aqueduc pour alimenter ses thermes près du Panthéon. L'Aqua Virgo capte des sources à une vingtaine de kilomètres à l'est de Rome et court presque entièrement sous terre, ce qui l'a protégé des destructions : c'est le seul aqueduc antique qui n'a jamais cessé de couler. Son nom viendrait, selon l'ingénieur Frontin, d'une jeune fille qui aurait montré la source à des soldats assoiffés. Au Moyen Âge, l'aqueduc aboutissait à une simple fontaine à trois bassins au carrefour de trois rues, les tre vie, d'où le nom de Trevi. En 1453, le pape Nicolas V la fit rénover par l'architecte Alberti, mais elle restait modeste." },
+      { titre: "Un chantier de trente ans",
+        texte: "En 1730, le pape Clément XII lance un concours pour donner enfin à l'Aqua Virgo une fontaine monumentale. Le projet de Nicola Salvi, un architecte encore peu connu, est retenu en 1732, malgré des dessins prestigieux, dont celui du Bernin un siècle plus tôt, resté sans suite. Salvi imagine une immense scène de théâtre adossée à la façade du palais Poli, où l'eau jaillit d'un chaos de rochers de travertin de Tivoli taillés sur place. Il meurt en 1751 sans voir l'œuvre achevée. Giuseppe Pannini termine le chantier et la fontaine est inaugurée en 1762 sous Clément XIII, trente ans après le concours. Elle mesure environ 26 mètres de haut et 49 mètres de large." },
+      { titre: "Lire la fontaine",
+        texte: "Au centre, dans une niche encadrée de colonnes, le dieu Océan de Pietro Bracci s'avance sur un char en forme de coquille tiré par deux chevaux marins. Le cheval de gauche se cabre tandis que celui de droite reste paisible : ce sont les deux visages de la mer. Deux tritons les guident, l'un jeune, l'autre plus âgé. De part et d'autre, deux statues de Filippo della Valle représentent l'Abondance, qui renverse une urne, et la Salubrité, qui tend une coupe à un serpent. Au-dessus, deux bas-reliefs racontent l'histoire de l'aqueduc : Agrippa approuvant les plans, et la jeune fille indiquant la source aux soldats. Tout en haut, les armes des Corsini, la famille de Clément XII, dominent l'ensemble." },
+      { titre: "Le mystère du grand vase",
+        texte: "À droite de la fontaine, posé sur la balustrade, un grand vase de travertin semble n'avoir aucune raison d'être. Selon une tradition romaine, un barbier installé en face du chantier critiquait chaque jour le travail de Salvi. Excédé, l'architecte aurait fait sculpter ce vase pour lui boucher la vue. Les Romains l'appellent l'as de coupe, en référence à une carte de jeu italienne. Autre curiosité : les coins et recoins de la fontaine sont peuplés d'une trentaine d'espèces de plantes sculptées avec un réalisme botanique, figuiers, chênes, lierre, artichauts, roseaux, qui rappellent que l'eau donne la vie." },
+      { titre: "Une star de cinéma",
+        texte: "La fontaine doit sa renommée mondiale au cinéma. En 1954, le film américain La Fontaine des amours popularise le lancer de pièces, et six ans plus tard, Federico Fellini y plonge Anita Ekberg et Marcello Mastroianni dans La Dolce Vita, une scène tournée de nuit, en plein hiver, l'actrice restant des heures dans l'eau glacée. Quand Mastroianni meurt en 1996, la ville voile la fontaine de noir et arrête l'eau en signe de deuil. Les pièces sont ramassées plusieurs fois par semaine et remises à Caritas pour ses œuvres sociales. La dernière grande restauration, financée en 2014 et 2015 par la maison Fendi, a nettoyé le travertin et refait les circuits d'eau." }
+    ],
+    enfants: [
+      { titre: "Imagine une rivière verticale",
+        texte: "Imagine que tu marches dans une ruelle étroite, pleine de monde, et que tu entends un grondement d'eau de plus en plus fort. Tu tournes au coin, et là, tout un palais se transforme en cascade : des rochers, des chevaux, un géant qui sort de la façade. C'est la fontaine de Trevi. L'eau qui coule devant toi arrive de sources situées loin à l'est de Rome, par un tunnel construit il y a deux mille ans par les ingénieurs de l'empereur Auguste. Elle n'a jamais cessé de couler depuis, même pendant les guerres et les invasions." },
+      { titre: "Le barbier ronchon",
+        texte: "Pendant les trente ans de travaux, l'architecte Nicola Salvi devait supporter un voisin pénible : un barbier dont la boutique donnait juste sur le chantier, et qui, paraît-il, se moquait de la fontaine chaque matin. Pour se venger, Salvi aurait fait sculpter un énorme vase de pierre sur la balustrade, pile devant la fenêtre du barbier, afin qu'il ne voie plus rien. Les Romains, qui adorent cette histoire, appellent ce vase l'as de coupe, comme la carte de leurs jeux. Personne ne sait si c'est vrai, mais le vase, lui, est bien là." },
+      { titre: "Le savais-tu",
+        texte: "Le géant du milieu n'est pas Neptune, contrairement à ce que beaucoup de gens pensent, mais Océan, le dieu de toutes les eaux du monde. Les sculpteurs ont caché sur les rochers une trentaine de plantes différentes, taillées dans la pierre : des figuiers, du lierre, des roseaux, même un artichaut. Et sur le côté droit, une petite fontaine à deux becs avait un rôle spécial : quand un jeune Romain partait pour un long voyage, il y buvait avec sa fiancée, puis cassait le verre pour qu'elle ne l'oublie pas. Aujourd'hui, l'eau de la grande vasque tourne en boucle grâce à des pompes." },
+      { titre: "Défi sur place",
+        texte: "Cherche d'abord le vase du barbier : il est à droite, sur la balustrade, et il ressemble à une grosse coupe de pierre. Ensuite, compte les chevaux et les hommes-poissons qui les tiennent. Repère au-dessus du géant les deux tableaux sculptés : sur l'un, une jeune fille pointe du doigt le sol pour montrer une source à des soldats. Enfin, essaie de trouver au moins cinq plantes différentes cachées dans les rochers. Celui qui en trouve le plus a gagné." },
+      { titre: "Le quiz",
+        texte: "Depuis quand les gens jettent-ils des pièces dans la fontaine ? Réponse : la tradition est bien plus jeune que la fontaine. Elle est devenue célèbre en 1954 grâce à un film américain dont la chanson passait partout à la radio. Avant, les voyageurs buvaient un verre de son eau pour être sûrs de revenir à Rome. Aujourd'hui, les pièces sont ramassées avec des balais et des aspirateurs, puis données à une association qui aide les personnes en difficulté." }
+    ]
   },
   {
-    id: 'place-espagne',
+    id: "place-espagne",
     nom: "Place d'Espagne",
-    emoji: '🪜',
-    categorie: 'place',
+    categorie: "place",
     lat: 41.9058, lon: 12.4823,
     duree: 30,
-    description:
-      "La Piazza di Spagna doit son nom à l'ambassade d'Espagne installée ici depuis le dix-septième siècle. Son escalier monumental de 135 marches, construit entre 1723 et 1726 grâce à un legs d'un diplomate français, monte vers l'église de la Trinité-des-Monts, propriété de la France. Au pied de l'escalier, la fontaine de la Barcaccia, en forme de barque à demi coulée, a été sculptée par Pietro Bernini avec l'aide de son fils, le grand Gian Lorenzo. Tout autour, la Via Condotti aligne les boutiques les plus luxueuses de Rome.",
-    enfants:
-      "Depuis 2019, il est interdit de s'asseoir sur les marches : les policiers sifflent et l'amende peut atteindre 250 euros ! Compte les marches en montant : il y en a 135, mais certains en trouvent 136, à cause d'une marche cachée. La fontaine en forme de bateau rappelle une légende : lors d'une grande crue du Tibre en 1598, une barque fut retrouvée échouée exactement ici, une fois l'eau retirée. Sur la Via Condotti, l'Antico Caffè Greco existe depuis 1760 : on y a servi Casanova, Goethe et Andersen. Au printemps, l'escalier est couvert de centaines d'azalées en fleurs.",
-    conseil: "Métro A, station Spagna. En haut de l'escalier, la terrasse offre une belle vue ; continuez vers le Pincio pour rejoindre la Villa Borghèse."
+    conseil: "Métro A, station Spagna. En haut de l'escalier, la terrasse offre une belle vue ; continuez vers le Pincio pour rejoindre la Villa Borghèse.",
+    adultes: [
+      { titre: "Une place entre deux nations",
+        texte: "Au dix-septième siècle, ce creux au pied du Pincio est un terrain disputé. En haut, l'église de la Trinité-des-Monts, fondée en 1502 par le roi Louis XII et achevée en 1585, appartient à la France, avec son couvent. En bas, depuis 1647, l'ambassade d'Espagne auprès du Saint-Siège occupe le palais qui donne son nom à la place ; à l'époque, les Espagnols considéraient les alentours comme leur territoire, et les passants imprudents risquaient d'être enrôlés de force dans leur armée. Le versant abrupt qui séparait les deux camps n'était qu'un talus boueux, planté d'ormes, où les carrosses ne pouvaient pas monter. Chacun voulait le transformer à sa gloire." },
+      { titre: "L'escalier de la discorde",
+        texte: "En 1661, un diplomate français, Étienne Gueffier, lègue une somme importante pour bâtir un escalier reliant la place à l'église. Mais le projet s'enlise pendant soixante ans : Louis XIV exige une statue équestre à son effigie en haut des marches, ce que le pape refuse net dans sa propre ville. Il faut attendre la mort du roi et le pontificat d'Innocent XIII pour qu'un compromis soit trouvé. L'architecte Francesco De Sanctis construit l'escalier entre 1723 et 1726 : cent trente-cinq marches de travertin, en rampes courbes qui se séparent et se rejoignent autour de terrasses, une véritable chorégraphie de pierre. Des fleurs de lys françaises et des aigles pontificaux se partagent discrètement la décoration. Au sommet, l'obélisque, copie romaine d'un modèle égyptien retrouvée dans les jardins de Salluste, n'a été dressé qu'en 1789." },
+      { titre: "La barque de Bernini père",
+        texte: "Au pied des marches, la Barcaccia, la vilaine barque, est l'œuvre de Pietro Bernini, achevée vers 1629 pour le pape Urbain VIII Barberini, dont les abeilles et les soleils ornent la pierre. Son fils Gian Lorenzo, alors âgé d'une trentaine d'années, y a probablement participé. La forme étrange, une embarcation à demi coulée qui déborde de partout, est une solution astucieuse à un problème technique : à cet endroit, l'Aqua Virgo arrive avec si peu de pression qu'aucun jet ne pouvait s'élever. Le sculpteur a donc creusé le bassin sous le niveau de la place et laissé l'eau s'écouler doucement par les flancs et la proue. L'eau y est potable, et les Romains viennent y remplir leurs gourdes." },
+      { titre: "Le quartier des étrangers",
+        texte: "Dès le dix-huitième siècle, les voyageurs du Grand Tour élisent domicile autour de la place, au point qu'on parle du ghetto des Anglais. Les peintres y recrutent leurs modèles, qui posent en costume sur les marches. Au numéro 26, à droite de l'escalier, la maison rose abrite le musée Keats-Shelley : c'est là que le poète John Keats, venu chercher un climat plus doux, meurt de la tuberculose en février 1821, à vingt-cinq ans. En face, les salons de thé Babington's servent les Britanniques depuis 1893. Sur la Via Condotti, l'Antico Caffè Greco, ouvert en 1760, a vu passer Goethe, Stendhal, Liszt et Wagner." },
+      { titre: "Traditions et cinéma",
+        texte: "Chaque 8 décembre, le pape vient déposer des fleurs au pied de la colonne de l'Immaculée Conception, dressée en 1857 à l'angle de la place, et les pompiers de Rome, qui l'ont érigée, grimpent à la grande échelle pour accrocher une couronne au bras de la Vierge. Au printemps, la ville couvre l'escalier de centaines d'azaléas en pots, une tradition née au vingtième siècle. En 1953, Audrey Hepburn dégustant une glace sur les marches dans Vacances romaines a fait le tour du monde. Restauré en 2015 et 2016 grâce au joaillier Bulgari, l'escalier est désormais interdit à la station assise, pour préserver le travertin." }
+    ],
+    enfants: [
+      { titre: "Imagine une colline boueuse",
+        texte: "Imagine cette place il y a trois cents ans : à la place du grand escalier, il n'y a qu'une pente de terre pleine d'arbres et de boue, où les carrosses s'embourbent. En haut, une église qui appartient au roi de France. En bas, l'ambassade du roi d'Espagne, dont les soldats considèrent la place comme chez eux. Pendant soixante ans, ils se disputent pour savoir qui construira l'escalier et quelle statue trônera en haut. Résultat : un escalier payé par un Français, sur une place espagnole, dans la ville du pape, sans aucune statue de roi." },
+      { titre: "La barque qui déborde",
+        texte: "La fontaine en forme de bateau a un vrai problème : l'eau arrive ici sans force, parce que l'aqueduc romain qui l'amène est presque au même niveau que la place. Impossible de faire jaillir un grand jet comme à Trevi. Le sculpteur Pietro Bernini, le papa du célèbre Gian Lorenzo, a eu une idée de génie : il a creusé la fontaine dans le sol et a sculpté un bateau à moitié coulé, qui laisse l'eau s'échapper tranquillement par tous les côtés. Sur les flancs, tu peux voir des abeilles : c'était l'emblème de la famille du pape qui a payé la fontaine." },
+      { titre: "Le savais-tu",
+        texte: "Au sommet de l'escalier, dans la rue qui part sur la droite, il existe une maison dont la porte et les fenêtres sont des bouches de monstres grandes ouvertes, avec des yeux qui te fixent : c'est le palais Zuccari, construit par un peintre farceur il y a plus de quatre cents ans. Tout en bas, dans la maison rose à droite des marches, un jeune poète anglais nommé John Keats a vécu ses derniers mois. Il est mort ici en 1821, et sa chambre est devenue un musée. Et chaque 8 décembre, des pompiers grimpent avec leur grande échelle pour poser une couronne de fleurs au bras de la statue de la Vierge, tout en haut de la colonne au coin de la place." },
+      { titre: "Défi sur place",
+        texte: "Monte l'escalier en comptant les marches, mais attention : il y a plusieurs terrasses, et les marches larges peuvent te tromper. Sur la fontaine, trouve les abeilles et les soleils sculptés, puis cherche les deux becs à l'avant et à l'arrière du bateau où l'on peut boire. À l'angle de la place, repère la colonne avec la Vierge dorée tout en haut. Enfin, si tu montes jusqu'en haut, va voir la maison aux bouches de monstres dans la rue de droite." },
+      { titre: "Le quiz",
+        texte: "Pourquoi le grand escalier s'appelle-t-il l'escalier d'Espagne alors qu'il mène à une église française et qu'il a été payé par un diplomate français ? Réponse : simplement parce qu'il débouche sur la place d'Espagne, qui tient son nom de l'ambassade d'Espagne installée là depuis presque quatre siècles. Le roi Louis XIV voulait même sa statue à cheval au sommet. Le pape a dit non, et le nom espagnol est resté." }
+    ]
   },
   {
-    id: 'piazza-navona',
-    nom: 'Piazza Navona',
-    emoji: '⛲',
-    categorie: 'place',
+    id: "piazza-navona",
+    nom: "Piazza Navona",
+    categorie: "place",
     lat: 41.8992, lon: 12.4731,
     duree: 30,
-    description:
-      "La plus belle place baroque de Rome garde exactement la forme allongée du stade de Domitien, construit en 86 pour 30 000 spectateurs, sur lequel elle a été bâtie. Au centre, la fontaine des Quatre-Fleuves du Bernin, achevée en 1651, porte un obélisque égyptien au-dessus de quatre géants représentant le Nil, le Gange, le Danube et le Rio de la Plata. En face, l'église Sainte-Agnès-en-Agone est l'œuvre de son rival Borromini. Peintres, musiciens et marchands de glaces animent la place toute l'année.",
-    enfants:
-      "Sous la place se trouvent encore les gradins du stade antique où couraient les athlètes : on peut les visiter en descendant sous les immeubles ! Aux dix-septième et dix-huitième siècles, chaque week-end d'août, on bouchait les évacuations des fontaines pour inonder la place et en faire un lac, où les nobles paradaient en carrosse dans l'eau. Sur la fontaine, le Nil se cache le visage avec un voile, parce qu'à l'époque personne ne savait où était sa source. Une légende dit que la statue du Rio de la Plata lève le bras comme pour se protéger de l'église d'en face qui va tomber, moquerie du Bernin envers Borromini... mais la fontaine a été construite avant l'église !",
-    conseil: "Les restaurants sur la place sont chers : préférez les ruelles voisines. En décembre, marché de Noël avec manèges."
+    conseil: "Les restaurants sur la place sont chers : préférez les ruelles voisines. En décembre, marché de Noël avec manèges.",
+    adultes: [
+      { titre: "Le stade sous la place",
+        texte: "Vers 86, l'empereur Domitien, grand admirateur de la culture grecque, fait bâtir au Champ de Mars un stade pour des concours athlétiques à la manière d'Olympie : courses à pied, lutte, lancer du disque. L'édifice mesure environ 275 mètres de long, une extrémité arrondie au nord et des gradins pour près de 30 000 spectateurs. Les Romains appellent ces jeux les agones, et le lieu devient au Moyen Âge le campus in agone, puis par déformation Navona. La place a conservé exactement le dessin de la piste, et les immeubles reposent sur les anciens gradins. À l'angle nord, on visite les vestiges de l'entrée monumentale, plusieurs mètres sous le niveau actuel." },
+      { titre: "Le pape Pamphilj et sa place",
+        texte: "En 1644, Giovanni Battista Pamphilj devient le pape Innocent X. Sa famille possède un palais sur la place, et il décide d'en faire une vitrine de sa puissance. Le palais est agrandi par Girolamo Rainaldi et Borromini ; il abrite aujourd'hui l'ambassade du Brésil. Le pape veut au centre une fontaine portant l'obélisque de granit retrouvé en morceaux au cirque de Maxence, sur la Via Appia. Cet obélisque n'est pas égyptien mais romain, taillé sous Domitien avec de fausses hiéroglyphes à la gloire de l'empereur. Bernini, tombé en disgrâce, est écarté du concours ; il fait alors parvenir au pape, par l'intermédiaire de sa belle-sœur, la redoutable Olimpia Maidalchini, une maquette en argent qui emporte la décision." },
+      { titre: "La fontaine des Quatre-Fleuves",
+        texte: "Achevée en 1651, la fontaine est une montagne de travertin creusée de grottes, sur laquelle quatre géants de marbre incarnent les fleuves des quatre continents connus. Le Nil, sculpté par Jacopo Antonio Fancelli, se voile le visage, car ses sources restaient inconnues ; un lion et un palmier l'accompagnent. Le Gange, par Claude Poussin, tient une rame, symbole de navigabilité. Le Danube, par Antonio Raggi, touche les armoiries du pape et s'appuie sur un cheval. Le Rio de la Plata, par Francesco Baratta, est assis sur un tas de pièces, richesse du Nouveau Monde, et un tatou surgit à ses pieds. Une colombe de bronze, emblème des Pamphilj, couronne l'obélisque. Bernini a conçu un rocher évidé où l'obélisque semble flotter sur le vide." },
+      { titre: "Sainte Agnès et Borromini",
+        texte: "Face à la fontaine, l'église Sainte-Agnès-en-Agone occupe l'endroit où, selon la tradition, la jeune Agnès fut exposée nue dans les arcades du stade vers 304, avant son martyre : ses cheveux auraient miraculeusement poussé pour la couvrir. Commencée en 1652 par les Rainaldi, la façade est reprise en 1653 par Borromini, qui lui donne sa courbe concave, ses deux clochers et sa haute coupole. Innocent X y est enterré. Les deux autres fontaines de la place, celle du Maure au sud et celle de Neptune au nord, ont été dessinées par Giacomo della Porta vers 1575 ; Bernini ajouta la figure du Maure en 1653, et les statues de Neptune ne datent que de 1878." },
+      { titre: "Une place en fête",
+        texte: "De 1652 à 1866, chaque samedi et dimanche d'août, on bouchait les évacuations des fontaines pour inonder le centre de la place : le lac de la Piazza Navona rafraîchissait le peuple, tandis que les nobles y faisaient rouler leurs carrosses. Le marché quotidien, installé ici en 1477, a déménagé au Campo de' Fiori en 1869, mais la place reste le théâtre, chaque hiver, du marché de la Befana, la sorcière qui apporte les cadeaux à l'Épiphanie. Portraitistes, caricaturistes et musiciens de rue perpétuent une tradition de spectacle vieille de près de deux mille ans." }
+    ],
+    enfants: [
+      { titre: "Imagine la course de fond",
+        texte: "Imagine : tu es assis sur des gradins de pierre, il y a mille neuf cents ans, et devant toi des athlètes grecs et romains courent pieds nus sur une piste de sable de deux cent quarante mètres. Ils n'ont pas de casque ni d'épée, car ici, pas de gladiateurs : ce sont des jeux sportifs, comme aux Jeux olympiques, avec de la lutte, du disque et des courses. Regarde la forme de la place : elle est longue, avec un bout arrondi. C'est exactement la piste, et les maisons tout autour sont construites sur les anciens gradins. Tu marches sur le stade de l'empereur Domitien." },
+      { titre: "La ruse de la maquette d'argent",
+        texte: "Quand le pape Innocent X a voulu une fontaine géante, il a organisé un concours d'artistes, mais il a refusé d'inviter Bernini, qu'il n'aimait pas, parce qu'il avait travaillé pour le pape précédent. Bernini ne s'est pas découragé : il a fabriqué en secret une maquette de sa fontaine tout en argent, et il s'est débrouillé pour qu'elle soit posée dans une pièce du palais où le pape devait passer. Le pape l'a vue, est resté planté devant pendant un long moment, puis a soupiré que la seule façon de ne pas travailler avec Bernini était de ne jamais regarder ses projets. Bernini a eu le chantier." },
+      { titre: "Le savais-tu",
+        texte: "Pour payer la fontaine, le pape a augmenté le prix du pain. Les Romains, furieux, ont collé des messages anonymes sur une vieille statue abîmée du quartier, appelée Pasquin, qui servait de journal secret : on y accrochait la nuit des poèmes moqueurs contre les puissants. Un des messages disait à peu près : nous ne voulons pas d'obélisques et de fontaines, c'est du pain que nous voulons. Pasquin existe toujours, à deux minutes d'ici, et les Romains y collent encore des papiers. Autre secret : l'obélisque de la fontaine a été fabriqué à Rome, avec de faux hiéroglyphes, pour faire égyptien." },
+      { titre: "Défi sur place",
+        texte: "Fais le tour de la grande fontaine et trouve tous les animaux cachés dans les rochers : un lion qui boit, un cheval qui surgit d'une grotte, un serpent, un tatou avec sa carapace, un dragon marin, et tout en haut, une colombe avec un rameau dans le bec. Ensuite, cherche le géant qui se cache le visage sous un tissu, puis celui qui est assis sur des pièces de monnaie. Enfin, regarde la fontaine du sud : un homme musclé y attrape un dauphin qui se débat." },
+      { titre: "Le quiz",
+        texte: "Pourquoi le géant appelé le Nil se couvre-t-il la tête avec un voile ? Réponse : parce qu'au moment où la fontaine a été sculptée, personne en Europe ne savait où le Nil prenait sa source. Le fleuve gardait son secret, et le sculpteur l'a montré en cachant son visage. Il a fallu attendre plus de deux cents ans pour que des explorateurs découvrent les grands lacs d'Afrique d'où il vient." }
+    ]
   },
   {
-    id: 'campo-de-fiori',
+    id: "campo-de-fiori",
     nom: "Campo de' Fiori",
-    emoji: '🍅',
-    categorie: 'place',
+    categorie: "place",
     lat: 41.8956, lon: 12.4722,
     duree: 20,
-    description:
-      "Le « champ de fleurs » était une prairie au Moyen Âge, avant de devenir l'une des places les plus vivantes de Rome. Chaque matin sauf le dimanche s'y tient un marché coloré de fruits, légumes, épices et fleurs. Au centre se dresse la statue encapuchonnée du philosophe Giordano Bruno, brûlé vif ici en 1600 pour avoir affirmé que l'univers était infini et que les étoiles étaient d'autres soleils. Le soir, la place devient le rendez-vous des jeunes Romains.",
-    enfants:
-      "Regarde la statue sombre au milieu de la place : Giordano Bruno a été condamné parce qu'il disait que la Terre tournait autour du Soleil et qu'il existait d'autres mondes, des idées qui se sont révélées vraies ! Sa statue, installée en 1889, tourne exprès le dos au Vatican. Les rues autour portent encore les noms des métiers du Moyen Âge : Via dei Cappellari, la rue des chapeliers, Via dei Giubbonari, la rue des fabricants de vestes, Via dei Chiavari, les serruriers. Au marché, goûte les fruits de saison, et à la boulangerie Forno Campo de' Fiori, la pizza bianca, une pizza sans garniture, juste avec de l'huile d'olive et du sel : le goûter préféré des enfants romains.",
-    conseil: "Marché du lundi au samedi, de 7 h à 14 h environ. Attention aux prix affichés au poids sur les stands pour touristes."
+    conseil: "Marché du lundi au samedi, de 7 h à 14 h environ. Attention aux prix affichés au poids sur les stands pour touristes.",
+    adultes: [
+      { titre: "Du pré aux auberges",
+        texte: "Jusqu'au quinzième siècle, cet espace au bord de l'ancien théâtre de Pompée n'est qu'une prairie inondable où poussent des fleurs, d'où son nom. Vers 1456, le pape Calixte III fait paver la place, et le quartier se transforme en carrefour d'affaires : les cardinaux y bâtissent leurs palais, celui de la Chancellerie à deux pas et, juste derrière, le palais Farnèse, aujourd'hui ambassade de France. Auberges, écuries et boutiques d'artisans se serrent autour du marché aux chevaux qui se tient deux fois par semaine. Vannozza Cattanei, maîtresse du pape Alexandre VI Borgia et mère de César et Lucrèce, y possède une auberge : ses armoiries sont encore visibles à l'angle du Vicolo del Gallo." },
+      { titre: "Le bûcher de Giordano Bruno",
+        texte: "Le Campo de' Fiori fut aussi une place d'exécutions. Le 17 février 1600, on y brûle vif le philosophe Giordano Bruno, ancien moine dominicain né près de Naples. Après avoir enseigné à Paris, à Oxford et en Allemagne, il avait été arrêté à Venise en 1592, puis jugé pendant huit ans par l'Inquisition romaine. Il soutenait que l'univers est infini, que les étoiles sont des soleils entourés de planètes peut-être habitées, et que la Terre tourne autour du Soleil. Il refusa de se rétracter, répondant à ses juges qu'ils prononçaient sa sentence avec plus de peur qu'il n'en avait à l'entendre. Conduit au bûcher la langue entravée pour qu'il ne puisse parler à la foule, il mourut sans renier ses idées." },
+      { titre: "Une statue qui fit scandale",
+        texte: "En 1889, moins de vingt ans après la fin du pouvoir temporel des papes, des étudiants et des intellectuels font ériger au centre de la place une statue de bronze de Bruno, sculptée par Ettore Ferrari. Le pape Léon XIII, indigné, passe la journée de l'inauguration en prières, tandis que trente mille personnes défilent. Le philosophe est représenté encapuchonné, le visage sombre, un livre entre les mains. Sur le socle, huit médaillons honorent d'autres penseurs persécutés, dont Érasme, Jan Hus et Michel Servet, et l'inscription dit que le siècle qu'il avait deviné lui rend hommage là où brûla le bûcher. Le monument est devenu un symbole de la liberté de pensée, et chaque 17 février, des fleurs y sont déposées." },
+      { titre: "Le marché et la Terrine",
+        texte: "Le marché quotidien, transféré de la Piazza Navona en 1869, reste l'âme de la place. Sous les parasols, les maraîchers proposent artichauts, courgettes en fleur, tomates, herbes aromatiques, fromages et fleurs coupées. À l'extrémité ouest, la fontaine dite la Terrina, une vasque à couvercle en forme de soupière, est une copie installée en 1898 de celle que Giacomo della Porta avait créée vers 1590. Le couvercle avait été ajouté à l'origine parce que les marchands jetaient leurs déchets dans l'eau. Sur le pourtour, remarquez la petite boulangerie historique où l'on vend la pizza bianca et les palais aux façades peintes en ocre et en rouge pompéien." },
+      { titre: "Les rues des métiers",
+        texte: "Les ruelles qui rayonnent depuis la place ont gardé les noms des corporations médiévales : Via dei Cappellari pour les chapeliers, Via dei Giubbonari pour les tailleurs de pourpoints, Via dei Baullari pour les fabricants de malles, Via dei Chiavari pour les serruriers. En suivant la Via di Grotta Pinta, vous marcherez sur la courbe parfaite de la cavea du théâtre de Pompée, le premier théâtre en pierre de Rome, inauguré en 55 avant Jésus-Christ : les maisons ont épousé la forme des gradins disparus. Le soir, les terrasses remplacent les étals, et la place devient le rendez-vous des jeunes Romains." }
+    ],
+    enfants: [
+      { titre: "Imagine le marché d'autrefois",
+        texte: "Imagine cette place à la Renaissance : des chevaux à vendre qui hennissent, des auberges pleines de voyageurs et de pèlerins, des cardinaux qui passent en carrosse vers leurs palais, des artisans qui martèlent des clés ou cousent des chapeaux dans les ruelles autour. On y annonçait aussi les nouvelles, et parfois, hélas, on y exécutait des condamnés devant la foule. Aujourd'hui, le matin, ce sont les marchands de légumes et de fleurs qui crient pour attirer les clients, et le soir, les guitares et les terrasses. Mais au milieu de tout ce bruit, une statue sombre ne bouge jamais." },
+      { titre: "L'homme qui voyait d'autres mondes",
+        texte: "Giordano Bruno était un moine qui posait trop de questions. Il pensait que l'univers n'a pas de bord, que chaque étoile est un soleil et qu'autour de ces soleils tournent peut-être des planètes avec des habitants. Il y a quatre cents ans, dire cela était très dangereux. Il a été enfermé pendant huit ans, on lui a demandé de dire qu'il s'était trompé, et il a refusé jusqu'au bout. Il a été brûlé ici, sur cette place, en l'an 1600. Aujourd'hui, les astronomes ont découvert des milliers de planètes autour d'autres étoiles : Bruno avait vu juste." },
+      { titre: "Le savais-tu",
+        texte: "La statue de Bruno a été installée en 1889 par des étudiants, contre l'avis du pape, qui a boudé toute la journée. Sur le socle, huit visages en bronze représentent d'autres penseurs qui ont eu des ennuis à cause de leurs idées. Au bout de la place, la fontaine ressemble à une soupière avec son couvercle : les Romains l'appellent la Terrine. Le couvercle a été ajouté parce que les marchands y jetaient leurs feuilles de salade et leurs trognons. Et à un angle, une famille très célèbre et très redoutée, les Borgia, tenait une auberge pour voyageurs." },
+      { titre: "Défi sur place",
+        texte: "Compte les médaillons de bronze sur le socle de la statue et essaie de lire un nom. Trouve ensuite la fontaine en forme de soupière, puis lis les plaques bleues des rues qui partent de la place : cherche celles qui parlent de chapeaux, de vestes, de malles et de clés, les métiers d'autrefois. Au marché, repère un légume que tu n'as jamais vu et demande son nom au vendeur. Bonus : à l'angle du Vicolo del Gallo, lève les yeux pour trouver un vieux blason sculpté avec une vache." },
+      { titre: "Le quiz",
+        texte: "Que veut dire le nom Campo de' Fiori ? Réponse : le champ de fleurs. Avant d'être pavée, il y a plus de cinq cents ans, la place n'était qu'un pré où poussaient des fleurs sauvages, tout près d'un vieux théâtre romain en ruine. Certains racontent plutôt que le nom vient d'une femme prénommée Flora, aimée du général Pompée, qui avait construit ce théâtre. Les fleurs du marché, elles, sont un joli clin d'œil au nom de la place." }
+    ]
   },
   {
-    id: 'largo-argentina',
-    nom: 'Largo di Torre Argentina',
-    emoji: '🐈',
-    categorie: 'place',
+    id: "largo-argentina",
+    nom: "Largo di Torre Argentina",
+    categorie: "place",
     lat: 41.8956, lon: 12.4767,
     duree: 20,
-    description:
-      "Au milieu de la circulation, ce vaste chantier de fouilles révèle quatre temples de la République romaine, vieux de plus de 2 000 ans, dégagés en 1929. Derrière eux se trouvaient les restes de la Curie de Pompée, où le Sénat se réunissait : c'est ici, et non au Forum, que Jules César fut assassiné aux ides de mars, le 15 mars 44 avant J.-C. Depuis 2023, des passerelles permettent de descendre parmi les ruines. Le site est aussi célèbre pour sa colonie de chats, protégée par une association de bénévoles.",
-    enfants:
-      "C'est exactement ici que Jules César, le plus célèbre des Romains, a été poignardé de 23 coups de couteau par un groupe de sénateurs, dont son ami Brutus. Selon la légende, il aurait dit en le voyant : « Toi aussi, mon fils ? ». Aujourd'hui, ce sont les chats qui règnent sur les ruines : plus d'une centaine y vivent, nourris et soignés par des bénévoles, et une loi de Rome déclare que les chats de la ville font partie du patrimoine. Cherche-les : ils dorment sur les vieilles colonnes, sur les autels, au soleil. Le nom « Argentina » ne vient pas du pays, mais de Strasbourg, appelée Argentoratum en latin, ville d'origine d'un évêque qui vivait ici.",
-    conseil: "Les ruines se voient gratuitement depuis le trottoir ; la descente sur les passerelles est payante. Le refuge des chats accueille les visiteurs dans un coin du site."
+    conseil: "Les ruines se voient gratuitement depuis le trottoir ; la descente sur les passerelles est payante. Le refuge des chats accueille les visiteurs dans un coin du site.",
+    adultes: [
+      { titre: "Une découverte sous les pioches",
+        texte: "En 1926, la municipalité de Rome entreprend de raser un vieux quartier pour ouvrir une grande place moderne. Les démolitions mettent au jour des colonnes, des podiums et une tête colossale de déesse en marbre. Les travaux s'arrêtent, et en 1929, Mussolini inaugure ce qu'on appelle depuis l'Aire sacrée de Largo Argentina : quatre temples de l'époque républicaine alignés côte à côte, les plus anciens vestiges de temples visibles à Rome. Les archéologues, faute de certitudes, les ont baptisés A, B, C et D. Le nom de la place vient d'une tour bâtie en 1503 par Johannes Burckardt, maître des cérémonies du pape Alexandre VI, originaire de Strasbourg, dont le nom latin est Argentoratum." },
+      { titre: "Quatre temples républicains",
+        texte: "Le temple C, au centre, est le plus ancien : ses murs de tuf datent du début du troisième siècle avant Jésus-Christ, et il était peut-être dédié à la déesse Feronia. Le temple A, au nord, aurait été voué à Juturne par le consul Lutatius Catulus après une victoire navale sur Carthage en 241 avant Jésus-Christ ; au Moyen Âge, une église s'installa entre ses colonnes, et l'on distingue encore deux absides de brique. Le temple B, le seul rond, fut élevé en 101 avant Jésus-Christ pour la Fortune du jour présent, en remerciement d'une victoire sur les Cimbres : la tête colossale retrouvée ici appartenait à sa statue de culte, haute de huit mètres. Le temple D, au sud, le plus vaste, dédié aux Lares protecteurs des marins, dort en partie sous la rue." },
+      { titre: "Les ides de mars",
+        texte: "Derrière les temples B et C se trouvent les restes de la curie de Pompée, une salle de réunion rattachée au premier théâtre en pierre de Rome, inauguré en 55 avant Jésus-Christ. Le Sénat y siégeait quand la Curie du Forum était en travaux. Le 15 mars 44 avant Jésus-Christ, Jules César s'y rend malgré les avertissements d'un devin et le mauvais rêve de son épouse Calpurnia. Une soixantaine de conjurés, menés par Cassius et Brutus, l'entourent. Casca frappe le premier ; César, atteint de vingt-trois coups, s'effondre au pied de la statue de Pompée, son ancien rival. Auguste fit ensuite murer la salle et déclarer le lieu maudit. Le mur de tuf que l'on aperçoit sous les arbres en est le vestige." },
+      { titre: "Le royaume des chats",
+        texte: "Dès les fouilles de 1929, les chats errants du quartier ont colonisé les ruines. Des Romaines, les gattare, viennent les nourrir depuis des décennies ; l'actrice Anna Magnani, qui jouait au théâtre voisin, en faisait partie. Depuis 1993, un refuge tenu par des bénévoles occupe un angle du site : les animaux y sont soignés, stérilisés et proposés à l'adoption. Une loi italienne de 1991 protège les colonies de chats libres, et la ville de Rome a reconnu en 2001 les chats de Largo Argentina comme faisant partie de son patrimoine bioculturel. Une centaine d'entre eux vivent ici, entre les colonnes." },
+      { titre: "Visiter le site aujourd'hui",
+        texte: "Longtemps observable seulement depuis les trottoirs, l'Aire sacrée se parcourt depuis juin 2023 grâce à des passerelles financées par le joaillier Bulgari, qui descendent au niveau antique, quelques mètres sous la rue. On y voit de près les autels et les podiums, ainsi qu'une petite exposition des objets découverts. Sur le côté ouest de la place, le Teatro Argentina, ouvert en 1732, a vu la création du Barbier de Séville de Rossini en 1816, un soir de fiasco mémorable, le public sifflant un spectacle devenu depuis l'un des opéras les plus joués au monde." }
+    ],
+    enfants: [
+      { titre: "Imagine un matin de mars",
+        texte: "Imagine : nous sommes le 15 mars de l'an 44 avant Jésus-Christ. Jules César, le maître de Rome, hésite à sortir de chez lui. Sa femme a fait un cauchemar, et un devin lui a dit de se méfier de ce jour, que les Romains appellent les ides de mars. Mais ses amis insistent, et il se rend à la réunion du Sénat, ici même, dans une grande salle à côté d'un théâtre. Il ne sait pas que des dizaines de sénateurs cachent des poignards sous leur toge. Ce matin-là, l'histoire de Rome bascule, et tu te tiens juste à côté de l'endroit où c'est arrivé." },
+      { titre: "Le devin avait raison",
+        texte: "Quand César arrive au Sénat, il croise le devin qui l'avait averti et se moque de lui : les ides de mars sont arrivées, et il ne s'est rien passé. Le devin répond : elles sont arrivées, mais pas encore passées. Quelques minutes plus tard, les conjurés l'encerclent. Un certain Casca frappe le premier, et les autres suivent. On raconte que César, en reconnaissant Brutus qu'il aimait comme un fils, se couvrit le visage avec sa toge pour mourir dignement. Après sa mort, l'empereur Auguste fit murer la salle pour que plus personne n'y entre jamais." },
+      { titre: "Le savais-tu",
+        texte: "En creusant ici, en 1929, les ouvriers ont découvert une tête de déesse en marbre plus grande qu'une voiture : elle appartenait à une statue de huit mètres qui se dressait dans le temple rond. Aujourd'hui, les vrais habitants des ruines sont les chats : environ une centaine, nourris et soignés par des bénévoles qui tiennent un refuge dans un coin du site. Une grande actrice italienne, Anna Magnani, venait elle-même leur apporter à manger entre deux représentations au théâtre d'en face." },
+      { titre: "Défi sur place",
+        texte: "Depuis le trottoir ou les passerelles, compte les temples : il y en a quatre, et un seul est rond. Trouve-le. Cherche ensuite les deux demi-cercles de brique rouge construits au Moyen Âge entre les colonnes du temple le plus au nord : c'était une petite église. Puis pars à la chasse aux chats : compte ceux que tu vois sur les colonnes couchées, sur les murs et sous les arbres. Enfin, essaie de repérer le grand mur de blocs de pierre brune au fond, derrière le temple rond : c'est le reste de la salle où César a été tué." },
+      { titre: "Le quiz",
+        texte: "Pourquoi cette place s'appelle-t-elle Largo Argentina, alors que l'Argentine n'a rien à voir avec l'histoire de Rome ? Réponse : à cause d'une tour construite il y a cinq cents ans par un homme d'église venu de Strasbourg. À l'époque, on écrivait les noms de villes en latin, et Strasbourg s'appelait Argentoratum. Sa tour est devenue la Torre Argentina, et le nom est resté pour toute la place. Le pays d'Amérique du Sud, lui, tient son nom du mot latin pour l'argent, le métal." }
+    ]
   },
   {
-    id: 'via-del-corso',
-    nom: 'Via del Corso',
-    emoji: '🛍️',
-    categorie: 'place',
+    id: "via-del-corso",
+    nom: "Via del Corso",
+    categorie: "place",
     lat: 41.9018, lon: 12.4792,
     duree: 45,
-    description:
-      "Parfaitement droite sur 1,5 kilomètre entre la Piazza Venezia et la Piazza del Popolo, la Via del Corso suit le tracé de l'antique Via Flaminia, ouverte en 220 avant J.-C. Son nom vient de la « corsa dei Barberi », la course de chevaux du carnaval de Rome qui s'y est tenue pendant quatre siècles. Aujourd'hui, c'est la grande rue commerçante de la ville. À mi-chemin, la Piazza Colonna abrite la colonne de Marc Aurèle, haute de 30 mètres, et le Palazzo Chigi, siège du gouvernement italien.",
-    enfants:
-      "Pendant 400 ans, chaque carnaval, on lâchait des chevaux sans cavalier tout au long de cette rue : on leur attachait des boules à pointes pour les faire galoper plus vite, et toute la ville regardait depuis les balcons ! La course a été arrêtée en 1874 après un grave accident. Sur la Piazza Colonna, la colonne de Marc Aurèle est une autre bande dessinée en pierre : elle raconte ses guerres contre les tribus germaniques, avec une scène célèbre où un dieu de la pluie sauve les soldats romains mourant de soif. Le grand palais à côté, avec ses gardes, est le bureau du Premier ministre italien. Et la galerie Alberto Sordi, juste en face, est parfaite pour une pause fraîche.",
-    conseil: "Rue piétonne sur une grande partie, mais très fréquentée le samedi après-midi. Nombreux glaciers dans les rues perpendiculaires."
+    conseil: "Rue piétonne sur une grande partie, mais très fréquentée le samedi après-midi. Nombreux glaciers dans les rues perpendiculaires.",
+    adultes: [
+      { titre: "La Via Lata des Romains",
+        texte: "La rue suit le tracé de la Via Flaminia, ouverte en 220 avant Jésus-Christ par le censeur Caius Flaminius pour relier Rome à Rimini, sur l'Adriatique. Dans sa traversée du Champ de Mars, les Romains l'appelaient la Via Lata, la rue large, car elle était bien plus vaste que les ruelles voisines. Bordée de portiques et de monuments, dont l'arc de Marc Aurèle démoli au dix-septième siècle, elle resta l'axe principal de la ville pendant tout le Moyen Âge." },
+      { titre: "La course des Barbari",
+        texte: "En 1466, le pape Paul II transfère sur cette rue les festivités du carnaval, jusque-là organisées au Testaccio. Le clou de la fête était la corsa dei Barberi : des chevaux de race barbe, sans cavalier, lâchés depuis la Piazza del Popolo et galopant sur un kilomètre et demi jusqu'à la Piazza Venezia, où l'on tendait un drap pour les arrêter. La foule s'entassait sur des tribunes et aux balcons loués à prix d'or ; Goethe, qui vécut au numéro 18 en 1787, en a laissé une description enthousiaste. La rue prit tout naturellement le nom de Corso, la course. Les papes la firent élargir et redresser, notamment Alexandre VII au dix-septième siècle, pour en faire une avenue digne de ces spectacles. La course fut interdite en 1874 par le roi Victor-Emmanuel II après la mort d'un jeune spectateur." },
+      { titre: "Piazza Colonna et le pouvoir",
+        texte: "À mi-parcours, la Piazza Colonna tient son nom de la colonne de Marc Aurèle, achevée vers 193, l'année qui suivit la mort de l'empereur. Haute d'environ 30 mètres sans son socle, elle imite la colonne Trajane, avec une frise en spirale qui raconte les guerres contre les Marcomans et les Quades, sur le Danube, entre 172 et 175. Une scène célèbre montre un dieu de la pluie aux bras ruisselants sauvant une armée romaine assoiffée. En 1589, le pape Sixte Quint remplaça la statue de l'empereur par celle de saint Paul, en bronze doré. Derrière la colonne, le palais Chigi, achevé au dix-septième siècle, est depuis 1961 le siège de la présidence du Conseil : les gardes en uniforme signalent la résidence du chef du gouvernement italien." },
+      { titre: "Palais et églises du parcours",
+        texte: "En remontant depuis la Piazza Venezia, on longe d'abord le palais Doria Pamphilj, dont la galerie privée conserve le portrait d'Innocent X par Vélasquez, l'un des plus grands tableaux du dix-septième siècle. La Galleria Alberto Sordi, ouverte en 1922 sous le nom de Galleria Colonna et rebaptisée en 2003 en hommage à l'acteur romain, offre son pavement de mosaïques et sa verrière. Vers le nord, les palais du dix-huitième siècle se succèdent jusqu'aux deux églises jumelles qui encadrent l'entrée de la rue sur la Piazza del Popolo." },
+      { titre: "La rue de la promenade",
+        texte: "Au dix-neuvième siècle, le Corso devient le lieu de la promenade en voiture à cheval, où la bonne société vient se montrer en fin d'après-midi, dans un flot ininterrompu de calèches que décrit Stendhal. Les premiers grands cafés et les magasins de nouveautés s'y installent, puis les grands magasins au vingtième siècle. Aujourd'hui, la rue est en grande partie piétonne, et la passeggiata du samedi y rassemble des milliers de Romains et de visiteurs. Depuis la Piazza Venezia, la perspective rectiligne de 1,5 kilomètre court jusqu'à l'obélisque de la Piazza del Popolo : c'est l'un des rares endroits de Rome où l'on peut embrasser d'un seul regard un axe tracé il y a plus de deux mille ans." }
+    ],
+    enfants: [
+      { titre: "Imagine le dernier soir du carnaval",
+        texte: "Imagine cette rue le dernier soir du carnaval, il y a deux cents ans. La nuit tombe, et des milliers de personnes tiennent chacune une petite bougie allumée, le moccoletto. Le jeu consiste à souffler la bougie du voisin tout en protégeant la sienne, et chaque fois qu'une flamme s'éteint, on crie en riant que le malheureux est mort. Les balcons débordent de gens qui lancent des fleurs et des dragées, les masques dansent, et la rue entière scintille comme un fleuve de lumière. Pendant des siècles, le Corso a été le plus grand terrain de jeu de Rome." },
+      { titre: "La ligne d'arrivée",
+        texte: "Chaque après-midi de carnaval, des chevaux sans cavalier étaient lâchés au bout de la rue, depuis la Piazza del Popolo, et fonçaient sur un kilomètre et demi. Le départ était donné au son des trompettes, et les chevaux étaient rendus fous par des rubans et des ornements accrochés sur leur dos. À l'arrivée, à la Piazza Venezia, on tendait un grand drap en travers de la rue pour les arrêter, et les palefreniers se jetaient sur eux pour les attraper. Un célèbre écrivain allemand, Goethe, a regardé la course depuis sa fenêtre, au numéro 18 de la rue." },
+      { titre: "Le savais-tu",
+        texte: "La colonne au milieu de la Piazza Colonna est creuse : un escalier en colimaçon monte à l'intérieur jusqu'au sommet, mais il est fermé au public. Tout en haut, ce n'est plus l'empereur Marc Aurèle qui se tient debout, mais saint Paul, en bronze doré, installé par un pape il y a plus de quatre cents ans. Juste derrière, dans le grand palais aux gardes en uniforme, travaille le Premier ministre d'Italie, et derrière encore siègent les députés qui votent les lois. Tu es dans le quartier le plus important de la politique italienne." },
+      { titre: "Défi sur place",
+        texte: "Sur la Piazza Colonna, fais le tour de la colonne et essaie de suivre la spirale sculptée du bas vers le haut : compte combien de tours elle fait avant d'arriver au sommet. Cherche les soldats romains qui traversent un fleuve sur un pont de bateaux, tout en bas de la frise. Repère ensuite saint Paul au sommet, avec son épée. En face, dans la galerie couverte, regarde le sol : il est fait de milliers de petits morceaux de mosaïque. Enfin, place-toi au milieu de la rue et vérifie qu'elle est vraiment droite jusqu'à l'obélisque, tout au bout." },
+      { titre: "Le quiz",
+        texte: "Que veut dire le mot Corso ? Réponse : la course. Pendant quatre cents ans, cette rue a été la piste d'une course de chevaux organisée chaque carnaval, et les Romains ont fini par appeler la rue elle-même le Corso. Avant cela, les Romains de l'Antiquité l'appelaient la Via Lata, la rue large, parce que c'était la plus large de la ville. Plus tard, d'autres villes d'Italie ont donné le nom de Corso à leur grande rue principale, en copiant Rome." }
+    ]
   },
   {
-    id: 'piazza-del-popolo',
-    nom: 'Piazza del Popolo',
-    emoji: '🦁',
-    categorie: 'place',
+    id: "piazza-del-popolo",
+    nom: "Piazza del Popolo",
+    categorie: "place",
     lat: 41.9107, lon: 12.4763,
     duree: 30,
-    description:
-      "Pendant des siècles, les voyageurs venant du nord entraient dans Rome par la Porta del Popolo et découvraient cette immense place ovale, dessinée en 1822 par Valadier. En son centre, l'obélisque Flaminio, rapporté d'Égypte par Auguste, est vieux de 3 300 ans. Au sud, deux églises jumelles encadrent l'entrée de la Via del Corso. L'église Santa Maria del Popolo, près de la porte, cache deux chefs-d'œuvre du Caravage et une chapelle dessinée par Raphaël. Au-dessus, la terrasse du Pincio offre l'un des plus beaux couchers de soleil de Rome.",
-    enfants:
-      "L'obélisque a été taillé pour le pharaon Ramsès II il y a 3 300 ans ; les Romains l'ont rapporté par bateau et l'ont planté au milieu du Circus Maximus, où les chars tournaient autour à toute vitesse. Une légende raconte que l'église Santa Maria del Popolo a été construite sur la tombe du terrible empereur Néron : un noyer hanté y poussait, rempli de corbeaux qui étaient des démons, jusqu'à ce que le pape le fasse abattre en 1099. Les deux églises jumelles ne sont pas vraiment identiques : l'une a une coupole ronde, l'autre ovale, pour paraître pareilles vues de la rue. Regarde aussi les quatre lions qui crachent de l'eau en éventail au pied de l'obélisque.",
-    conseil: "Métro A, station Flaminio. Montez au Pincio par la rampe à droite de la place pour la vue et l'entrée dans la Villa Borghèse."
+    conseil: "Métro A, station Flaminio. Montez au Pincio par la rampe à droite de la place pour la vue et l'entrée dans la Villa Borghèse.",
+    adultes: [
+      { titre: "La porte du nord",
+        texte: "Pendant près de deux mille ans, la Piazza del Popolo fut la première image de Rome pour ceux qui arrivaient du nord. La Via Flaminia, tracée en 220 avant Jésus-Christ, franchissait ici l'enceinte d'Aurélien par la Porta Flaminia, rebaptisée Porta del Popolo au Moyen Âge. Pèlerins, marchands, ambassadeurs et jeunes aristocrates du Grand Tour passaient tous sous cette porte avant de s'engager dans la ville. En 1655, le pape Alexandre VII demanda au Bernin d'en décorer la face intérieure pour accueillir la reine Christine de Suède, célèbre convertie au catholicisme. L'inscription latine gravée pour l'occasion souhaite toujours une heureuse entrée au voyageur." },
+      { titre: "L'obélisque du pharaon",
+        texte: "Au centre se dresse l'obélisque Flaminio, l'un des plus anciens de Rome. Taillé dans le granit rouge d'Assouan sous les pharaons Séthi Ier et Ramsès II, au treizième siècle avant Jésus-Christ, il ornait le temple du Soleil à Héliopolis. Auguste le fit transporter à Rome en l'an 10 avant Jésus-Christ, après la conquête de l'Égypte, et le dressa au centre du Circus Maximus. Il s'y effondra au Moyen Âge et resta enfoui jusqu'en 1587. Le pape Sixte Quint le fit redresser ici en 1589 par son architecte Domenico Fontana, celui-là même qui avait déplacé l'obélisque de la place Saint-Pierre. Haut d'environ 24 mètres sans son socle, il dépasse 36 mètres avec la base et la croix. Les quatre lions de style égyptien qui crachent de l'eau à ses pieds datent de 1823." },
+      { titre: "La place de Valadier",
+        texte: "La forme actuelle date du début du dix-neuvième siècle. L'architecte Giuseppe Valadier transforma entre 1811 et 1822 un espace trapézoïdal irrégulier en une vaste ellipse néoclassique. Il dessina les hémicycles latéraux, la fontaine de Neptune à l'ouest, celle de la déesse Rome à l'est, encadrée par les fleuves Tibre et Aniene, et les rampes qui montent vers le Pincio. Au sud, les églises jumelles Santa Maria dei Miracoli et Santa Maria in Montesanto, élevées entre 1662 et 1679 sur les plans de Carlo Rainaldi puis achevées par le Bernin et Carlo Fontana, encadrent le départ de la Via del Corso. Avec la Via del Babuino et la Via di Ripetta, celle-ci forme le Tridente, trois rues qui s'ouvrent en éventail vers le cœur de la ville." },
+      { titre: "Raphaël et le Caravage",
+        texte: "Adossée au rempart, l'église Santa Maria del Popolo est l'un des trésors les plus accessibles de Rome. Une première chapelle fut élevée en 1099 par le pape Pascal II, et l'édifice actuel fut reconstruit entre 1472 et 1477 sous Sixte IV. La chapelle Chigi fut conçue par Raphaël vers 1513 pour le banquier Agostino Chigi, puis achevée par le Bernin un siècle plus tard, qui y ajouta les statues de Daniel et d'Habacuc. Près du chœur, la chapelle Cerasi abrite deux toiles majeures du Caravage peintes en 1600 et 1601, la Conversion de saint Paul et la Crucifixion de saint Pierre, d'un réalisme qui dérouta les contemporains. Détail surprenant, le moine augustin Martin Luther logea dans le couvent attenant lors de son séjour romain de 1510, quelques années avant de déclencher la Réforme." },
+      { titre: "Le Pincio au couchant",
+        texte: "La terrasse du Pincio, aménagée elle aussi par Valadier, domine la place d'une vingtaine de mètres. La colline portait dans l'Antiquité les jardins de Lucullus, général gourmet dont les banquets sont restés proverbiaux. On y trouve des bustes d'Italiens illustres, une horloge à eau installée en 1867 par le père Giovanni Battista Embriaco, et surtout une vue qui embrasse la place, les coupoles de la ville et Saint-Pierre à l'horizon, au moment où le soleil se couche derrière le Vatican. La promenade se prolonge ensuite, sans redescendre, vers les allées ombragées de la Villa Borghèse." }
+    ],
+    enfants: [
+      { titre: "Imagine ton arrivée à Rome",
+        texte: "Imagine que tu es un voyageur de l'an 1700. Tu marches depuis des semaines sur la vieille route romaine qui descend du nord. Tes pieds sont couverts de poussière, et soudain, devant toi, une grande porte percée dans une muraille. Tu la franchis et la ville s'ouvre d'un coup : une place immense, un obélisque pointé vers le ciel, deux églises jumelles et trois rues qui filent vers le centre comme les dents d'une fourchette. C'est exactement ce que vivaient les pèlerins, les peintres et les princes qui arrivaient à Rome. Cette place était la porte d'entrée de la ville, son grand hall d'accueil." },
+      { titre: "Le voyage fou de l'obélisque",
+        texte: "L'obélisque du milieu a plus de 3 200 ans. Il a été taillé en Égypte d'un seul bloc de granit, sans grue ni machine, seulement avec des outils de pierre et de cuivre. L'empereur Auguste l'a fait charger sur un bateau spécialement construit, traverser la Méditerranée, remonter le Tibre, puis dresser au milieu du Circus Maximus, la piste de courses de chars. Pendant des siècles, les chevaux ont galopé autour de lui. Puis il est tombé, s'est brisé et a dormi sous la terre pendant presque mille ans. En 1589, le pape l'a fait déterrer, réparer et replanter ici, avec une croix au sommet." },
+      { titre: "La reine qui entra à cheval",
+        texte: "Le savais-tu ? En 1655, une reine est arrivée par cette porte : Christine de Suède. Elle avait abandonné son trône pour devenir catholique, un scandale énorme à l'époque. Pour l'accueillir, le pape a demandé au Bernin, le plus grand sculpteur de Rome, de décorer l'intérieur de la porte en quelques mois. Christine est entrée à cheval, habillée comme un homme, sous les acclamations. Elle a vécu à Rome jusqu'à la fin de sa vie, entourée de savants et d'artistes, et elle est l'une des rares femmes enterrées dans la basilique Saint-Pierre." },
+      { titre: "Le défi des fausses jumelles",
+        texte: "Place-toi au pied de l'obélisque et regarde les deux églises au sud. Elles ont l'air identiques, mais l'architecte a triché. Le terrain de gauche était plus étroit que celui de droite, alors il a donné une coupole ovale à l'une et une coupole ronde à l'autre, en les orientant pour que personne ne remarque la différence. Compte aussi les lions : il y en a quatre, et chacun crache l'eau en éventail. Enfin, cherche sur la place les deux grandes fontaines qui se font face : l'une montre Neptune avec son trident et ses dauphins, l'autre la déesse Rome entre deux fleuves couchés." },
+      { titre: "Le quiz",
+        texte: "D'où vient le nom de la place, Piazza del Popolo ? Réponse : personne n'en est totalement sûr. Certains disent qu'il vient du mot latin populus, qui veut dire peuplier, parce que des peupliers poussaient ici autrefois. D'autres pensent qu'il vient du peuple de Rome, qui a payé la construction de l'église Santa Maria del Popolo. En latin, peuplier et peuple s'écrivent presque pareil, alors l'énigme reste ouverte." }
+    ]
   },
   {
-    id: 'piazza-venezia',
-    nom: 'Piazza Venezia et Vittoriano',
-    emoji: '🎂',
-    categorie: 'place',
+    id: "piazza-venezia",
+    nom: "Piazza Venezia et Vittoriano",
+    categorie: "place",
     lat: 41.8955, lon: 12.4823,
     duree: 30,
-    description:
-      "Carrefour central de Rome, la Piazza Venezia est dominée par le Vittoriano, un monument colossal de marbre blanc érigé entre 1885 et 1935 en l'honneur de Victor-Emmanuel II, premier roi de l'Italie unifiée. Il abrite la tombe du Soldat inconnu, veillée en permanence par deux soldats et une flamme éternelle. Un ascenseur panoramique en verre mène à la terrasse supérieure, d'où l'on embrasse toute la ville. Sur le côté, le Palazzo Venezia fut la résidence de Mussolini, qui haranguait la foule depuis son balcon.",
-    enfants:
-      "Les Romains n'aiment pas beaucoup ce monument : ils le surnomment « la machine à écrire » ou « la pièce montée » à cause de sa forme et de sa couleur blanche. La statue du roi à cheval est si gigantesque, 12 mètres de haut, que le jour où elle a été terminée, en 1911, une vingtaine d'ouvriers ont organisé un dîner à l'intérieur du ventre du cheval ! Prends l'ascenseur en verre pour monter sur le toit : de là-haut, tu peux repérer le Colisée, le Panthéon et la coupole de Saint-Pierre. Devant la flamme, les deux soldats de garde ne bougent pas d'un millimètre. Sur la place, un policier perché sur un podium dirige parfois la circulation avec de grands gestes, comme un chef d'orchestre.",
-    conseil: "Accès aux terrasses basses gratuit, ascenseur panoramique payant. Excellent point de repère pour s'orienter dans le centre."
+    conseil: "Accès aux terrasses basses gratuit, ascenseur panoramique payant. Excellent point de repère pour s'orienter dans le centre.",
+    adultes: [
+      { titre: "Le carrefour de Rome",
+        texte: "La Piazza Venezia occupe le point où convergent les grands axes de la capitale : la Via del Corso venue du nord, la Via dei Fori Imperiali qui file vers le Colisée, et les rues qui mènent au Tibre et au Capitole. Ce carrefour existait déjà dans l'Antiquité, au pied de la colline sacrée, non loin du forum de Trajan dont la colonne se dresse toujours à quelques pas. Les travaux du métro, engagés dans les années 2000, ont mis au jour sous la place les auditoriums d'Hadrien, de vastes salles de conférence du deuxième siècle, preuve que le sous-sol de Rome réserve encore bien des surprises." },
+      { titre: "Le palais du cardinal vénitien",
+        texte: "La place tire son nom du Palazzo Venezia, élevé à partir de 1455 pour le cardinal Pietro Barbo, futur pape Paul II. C'est l'un des premiers grands édifices de la Renaissance à Rome, encore mâtiné d'allure médiévale avec ses créneaux. Le pape y résida, puis le palais fut cédé en 1564 à la République de Venise comme ambassade, avant de passer à l'Autriche. Mussolini y installa son bureau en 1929, dans l'immense Salle de la Mappemonde, et c'est depuis le balcon central qu'il harangua les foules, notamment le 10 juin 1940 pour annoncer l'entrée en guerre de l'Italie. Le palais abrite aujourd'hui un musée d'arts décoratifs et de sculptures médiévales." },
+      { titre: "Une montagne de marbre",
+        texte: "Le monument qui écrase la place fut voulu pour célébrer Victor-Emmanuel II, mort en 1878, premier roi de l'Italie unifiée. Le projet de l'architecte Giuseppe Sacconi remporta le concours de 1884, et le chantier ouvrit en 1885. Il fallut raser un quartier médiéval entier, démolir des couvents et déplacer pierre par pierre le Palazzetto Venezia. Inauguré en 1911 pour le cinquantenaire de l'unité italienne, l'ensemble ne fut achevé qu'en 1935. Il mesure environ 135 mètres de large et 70 mètres de haut, 81 mètres jusqu'aux quadriges de bronze qui couronnent les propylées. Le marbre blanc de Botticino, près de Brescia, fut choisi pour son éclat, très différent du travertin doré des monuments romains, ce qui explique en partie le rejet initial des habitants." },
+      { titre: "L'Autel de la Patrie",
+        texte: "Au cœur du monument, la statue de la déesse Rome domine l'Autel de la Patrie. Depuis le 4 novembre 1921, le Soldat inconnu y repose : sa dépouille fut choisie à Aquilée parmi onze cercueils de soldats non identifiés de la Première Guerre mondiale par Maria Bergamas, une mère dont le fils n'avait jamais été retrouvé. Deux sentinelles montent la garde en permanence devant la flamme. Les statues des seize régions italiennes et les fontaines des deux mers, l'Adriatique et la Tyrrhénienne, résument l'idée d'une nation rassemblée. La statue équestre du roi, en bronze, mesure douze mètres de haut et fut modelée par le sculpteur Enrico Chiaradia." },
+      { titre: "À voir autour de la place",
+        texte: "Les terrasses inférieures se parcourent librement et offrent déjà une belle vue sur les forums impériaux. L'ascenseur vitré, ajouté en 2007, conduit à la terrasse des quadriges, d'où le regard porte du Colisée à Saint-Pierre. À l'intérieur, le musée du Risorgimento retrace l'unification. En face, le Palazzo Bonaparte, à l'angle de la Via del Corso, fut la demeure de Letizia Ramolino, mère de Napoléon, qui y vécut jusqu'à sa mort en 1836 : elle observait la rue depuis le petit balcon vert fermé d'un treillage, encore visible aujourd'hui." }
+    ],
+    enfants: [
+      { titre: "Imagine un gâteau géant",
+        texte: "Imagine un énorme gâteau de mariage tout blanc, avec des étages, des colonnes en guise de bougies et deux chars tirés par des chevaux ailés posés sur le dessus. C'est le Vittoriano. Quand il a été construit, beaucoup de Romains l'ont trouvé trop grand, trop blanc, trop brillant à côté des vieilles pierres dorées de la ville. Ils lui ont donné des surnoms moqueurs : la pièce montée, la machine à écrire, ou même le dentier ! Pourtant, aujourd'hui, c'est l'un des monuments les plus photographiés de Rome et le meilleur point de repère pour ne jamais se perdre." },
+      { titre: "Le dîner dans le cheval",
+        texte: "Regarde bien la statue du roi Victor-Emmanuel II à cheval, au milieu du monument. Elle est en bronze et mesure douze mètres de haut, comme un immeuble de quatre étages. Le cheval est tellement énorme qu'en 1911, juste avant de le refermer, les ouvriers qui l'avaient fabriqué ont organisé un banquet à l'intérieur de son ventre : une vingtaine de personnes assises à table, avec des plats et du vin, dans le cheval ! Une photo de ce repas existe encore. Le savais-tu ? Le roi qui est représenté a réussi à réunir en un seul pays des dizaines de petits États qui se faisaient la guerre." },
+      { titre: "Un soldat sans nom",
+        texte: "Sous la statue de la déesse Rome repose un soldat dont personne ne connaît le nom. En 1921, après la Première Guerre mondiale, on a placé onze cercueils de soldats non identifiés côte à côte dans une église du nord de l'Italie. Une maman, Maria Bergamas, dont le fils n'avait jamais été retrouvé, a dû en choisir un. Elle a posé son voile sur l'un des cercueils, sans savoir qui était dedans. Ce soldat est devenu le symbole de tous ceux qui sont morts pour l'Italie. Deux gardes le veillent sans bouger, jour et nuit, et une flamme brûle sans jamais s'éteindre." },
+      { titre: "Le défi des détails",
+        texte: "Depuis les terrasses, cherche les deux chars de bronze tout en haut : chacun est tiré par quatre chevaux et conduit par une déesse ailée. Repère ensuite le balcon du Palazzo Venezia, le grand bâtiment couleur brique avec des créneaux, à droite de la place, d'où le dictateur Mussolini faisait ses discours devant des milliers de personnes. Enfin, trouve la colonne Trajane, juste derrière : c'est une bande dessinée en pierre de 30 mètres qui raconte une guerre contre les Daces. Si tu prends l'ascenseur, essaie de retrouver le Colisée, le Panthéon et la coupole de Saint-Pierre depuis le toit." },
+      { titre: "Le quiz",
+        texte: "Pourquoi le monument est-il aussi blanc, alors que les autres monuments de Rome sont plutôt beiges ou dorés ? Réponse : parce que son marbre ne vient pas de la région de Rome. Il a été extrait à Botticino, près de Brescia, dans le nord de l'Italie, et il est d'un blanc très pur. Ce choix a été fait pour que le monument brille de loin, mais c'est aussi pour cela que les Romains ont mis très longtemps à l'aimer." }
+    ]
   },
   {
-    id: 'capitole',
-    nom: 'Place du Capitole',
-    emoji: '🐺',
-    categorie: 'place',
+    id: "capitole",
+    nom: "Place du Capitole",
+    categorie: "place",
     lat: 41.8933, lon: 12.4828,
     duree: 40,
-    description:
-      "La plus petite des sept collines de Rome était la plus sacrée : on y trouvait le temple de Jupiter, et le mot « capitale » en descend. Michel-Ange a dessiné la place actuelle à partir de 1536, avec son pavement en étoile, son escalier en pente douce, la Cordonata, et la statue équestre de Marc Aurèle en son centre. Les palais qui l'entourent abritent les Musées capitolins, le plus ancien musée public du monde, ouvert en 1471, où l'on admire la Louve capitoline et la tête colossale de Constantin. Derrière la mairie, une terrasse domine tout le Forum.",
-    enfants:
-      "Au musée, tu verras la Louve capitoline, la statue de bronze de la louve qui a nourri Romulus et Rémus, symbole de Rome depuis toujours ; les jumeaux ont été ajoutés bien plus tard. La statue de Marc Aurèle à cheval a survécu au Moyen Âge parce que tout le monde croyait qu'elle représentait Constantin, le premier empereur chrétien ; toutes les autres statues de bronze ont été fondues ! Tu verras aussi la tête géante de l'empereur Constantin : elle mesure 2,6 mètres, et son pied est plus grand qu'un enfant, car la statue entière faisait 12 mètres. Enfin, en 390 avant J.-C., des oies sacrées ont sauvé le Capitole en cacardant pour réveiller les gardes lors d'une attaque nocturne des Gaulois.",
-    conseil: "La terrasse sur le Forum, derrière le palais du Sénat, est gratuite et magnifique au coucher du soleil. Musées capitolins : environ 2 h, café avec vue sur le toit."
+    conseil: "La terrasse sur le Forum, derrière le palais du Sénat, est gratuite et magnifique au coucher du soleil. Musées capitolins : environ 2 h, café avec vue sur le toit.",
+    adultes: [
+      { titre: "La colline sacrée",
+        texte: "Le Capitole est la plus petite des sept collines, mais la plus chargée de sens. Ses deux sommets, l'Arx au nord et le Capitolium au sud, dominaient le Forum. Sur le second s'élevait le temple de Jupiter Optimus Maximus, dédié en 509 avant Jésus-Christ, l'année même de la naissance de la République. Les généraux victorieux y achevaient leur triomphe, les consuls y prêtaient serment. Sur le versant sud, la roche Tarpéienne servait à précipiter les traîtres. Au Moyen Âge, la colline retomba en friche, mais en 1144 les Romains y installèrent leur Sénat renaissant, sur les ruines du Tabularium, l'ancien dépôt d'archives de 78 avant Jésus-Christ. Le mot capitale en dérive dans toutes les langues d'Europe." },
+      { titre: "Michel-Ange dessine une place",
+        texte: "En 1536, le pape Paul III voulait offrir à l'empereur Charles Quint une entrée digne de son triomphe. Il confia à Michel-Ange le réaménagement de la place, alors boueuse et irrégulière. L'artiste imagina un espace trapézoïdal ouvert vers la ville et non plus vers le Forum, fermé par trois palais aux façades rythmées de pilastres colossaux, une innovation reprise dans toute l'Europe. Il dessina aussi la Cordonata, cet escalier en pente douce que l'on peut gravir à cheval, gardé en haut par les Dioscures Castor et Pollux. Michel-Ange mourut en 1564 sans voir son projet achevé : le Palazzo Nuovo ne fut terminé qu'en 1654, et le pavement en étoile à douze branches, connu par une gravure de 1568, ne fut posé qu'en 1940." },
+      { titre: "Le cavalier qui a survécu",
+        texte: "Au centre de la place trône la statue équestre de Marc Aurèle, coulée en bronze doré vers 175 après Jésus-Christ. C'est la seule grande statue équestre antique en bronze parvenue jusqu'à nous : toutes les autres furent fondues au Moyen Âge pour récupérer le métal. Elle a échappé à ce sort parce qu'on la prenait pour Constantin, premier empereur chrétien. Elle se dressait au Latran quand Michel-Ange la fit transférer ici en 1538. L'original, fragilisé par la pollution, a été mis à l'abri au musée en 1981, et la copie de la place date de 1997. Un dicton romain prétend que lorsque la dorure aura entièrement reparu, la fin du monde sera proche." },
+      { titre: "Le plus ancien musée du monde",
+        texte: "Les Musées capitolins naquirent en 1471, lorsque le pape Sixte IV offrit au peuple romain quelques bronzes antiques conservés au Latran, dont la Louve, le Tireur d'épine et une tête colossale de Constantin. Ouverts au public en 1734, ils forment la plus ancienne collection publique du monde. Dans la cour du Palazzo dei Conservatori, les fragments du colosse en marbre de Constantin, une tête de 2,6 mètres, une main, un pied, proviennent de la basilique de Maxence : la statue entière atteignait environ douze mètres. Le Palazzo Nuovo abrite le Gaulois mourant et la Vénus capitoline. Un passage souterrain relie les deux palais en traversant le Tabularium, avec une vue imprenable sur le Forum." },
+      { titre: "Louve, oies et poète couronné",
+        texte: "La Louve capitoline, longtemps datée du cinquième siècle avant Jésus-Christ et attribuée aux Étrusques, a été réexaminée en 2012 : les analyses suggèrent une fonte médiévale, vers le douzième siècle. Les jumeaux, eux, furent ajoutés à la fin du quinzième siècle. L'histoire des oies sacrées de Junon, dont les cris auraient réveillé la garnison lors de l'attaque des Gaulois en 390 avant Jésus-Christ, est rapportée par Tite-Live. En 1341, Pétrarque reçut ici la couronne de laurier des poètes, et c'est sur cette colline qu'en 1764 l'historien Edward Gibbon conçut son Histoire de la décadence et de la chute de l'Empire romain. À gauche, les 124 marches de l'Aracoeli furent construites en 1348 pour remercier la Vierge de la fin de la peste." }
+    ],
+    enfants: [
+      { titre: "Imagine un triomphe",
+        texte: "Imagine la scène, il y a 2 000 ans. Un général romain vient de gagner une guerre. Il traverse Rome sur un char doré, le visage peint en rouge, avec derrière lui des prisonniers enchaînés, des chariots remplis d'or et des soldats qui chantent. Toute la ville hurle de joie. Le cortège grimpe la colline où tu te trouves, jusqu'au temple de Jupiter, le plus grand dieu des Romains. Là, le général sacrifie des taureaux blancs et dépose sa couronne de laurier. Le Capitole était le point d'arrivée de tous les triomphes, l'endroit le plus sacré de tout l'Empire. Et derrière le général, un esclave lui murmurait sans cesse à l'oreille : souviens-toi que tu n'es qu'un homme." },
+      { titre: "Les oies qui sauvèrent Rome",
+        texte: "Le savais-tu ? En 390 avant Jésus-Christ, les Gaulois ont envahi Rome. Les Romains se sont réfugiés sur le Capitole, la colline aux pentes raides. Une nuit, les Gaulois ont escaladé la falaise en silence. Les chiens de garde n'ont rien entendu. Mais les oies sacrées de la déesse Junon, qu'on avait épargnées malgré la famine, se sont mises à cacarder et à battre des ailes. Le soldat Marcus Manlius s'est réveillé, a repoussé le premier Gaulois dans le vide, et la colline a été sauvée. Ensuite, chaque année, les Romains ont promené une oie sur un coussin doré pour la remercier, et puni un chien pour sa paresse." },
+      { titre: "Le colosse en morceaux",
+        texte: "Dans la cour du musée, tu tomberas sur une tête géante en marbre avec des yeux immenses qui regardent vers le haut, à côté d'une main énorme et d'un pied plus grand que toi. C'est tout ce qui reste d'une statue de l'empereur Constantin, haute comme un immeuble de quatre étages. Seuls la tête, les bras et les jambes étaient en marbre ; le corps était fait de briques et de bois recouverts de bronze, et tout cela a disparu. Le pouce, à lui seul, est presque aussi long que ton bras." },
+      { titre: "Le défi de l'étoile",
+        texte: "Place-toi au bord de la place et regarde le dallage : Michel-Ange a dessiné une immense étoile. Compte ses branches, il y en a douze. Ensuite, trouve les deux statues géantes en haut de l'escalier : ce sont les jumeaux Castor et Pollux, chacun avec son cheval. Regarde bien le cheval de Marc Aurèle au centre : lequel de ses sabots est levé ? Enfin, passe à droite du palais du fond et cherche la terrasse cachée : d'un seul coup d'œil, tu verras tout le Forum romain en contrebas, comme sur une maquette." },
+      { titre: "Le quiz",
+        texte: "Pourquoi la statue du cavalier au milieu de la place est-elle une copie ? Réponse : la vraie statue de Marc Aurèle, en bronze doré, a environ 1 850 ans. Elle est restée dehors pendant des siècles, mais la pollution des voitures commençait à la ronger. En 1981, on l'a mise à l'abri dans le musée juste à côté, où tu peux la voir sous une grande verrière, et on a fabriqué une copie parfaite pour la place." }
+    ]
   },
-
-  /* ------------------------------------------------------------------
-     ÉGLISES & LIEUX SECRETS
-     ------------------------------------------------------------------ */
   {
-    id: 'bocca-verita',
-    nom: 'Bouche de la Vérité',
-    emoji: '🗿',
-    categorie: 'eglise',
-    lat: 41.8880, lon: 12.4816,
+    id: "bocca-verita",
+    nom: "Bouche de la Vérité",
+    categorie: "eglise",
+    lat: 41.888, lon: 12.4816,
     duree: 20,
-    description:
-      "Sous le porche de l'église Santa Maria in Cosmedin, ce grand disque de marbre de 1,75 mètre représente le visage d'un dieu fleuve, bouche ouverte. C'était probablement, au premier siècle, une plaque d'égout ou une bouche de fontaine. Placée ici en 1632, elle est devenue mondialement célèbre grâce au film Vacances romaines, en 1953. L'église elle-même, avec son campanile du douzième siècle et ses sols de mosaïques colorées, est l'une des plus charmantes de Rome. Tout près se dressent deux temples antiques parfaitement conservés, ceux d'Hercule et de Portunus.",
-    enfants:
-      "La légende dit que si tu mets ta main dans la bouche et que tu dis un mensonge, elle te la coupe ! Dans le film Vacances romaines, l'acteur Gregory Peck a fait semblant d'avoir perdu sa main en la retirant, et Audrey Hepburn a crié de peur pour de vrai, car il ne l'avait pas prévenue : le réalisateur a gardé cette scène. En réalité, c'était sans doute le couvercle d'un égout de la Cloaca Maxima, le grand égout de Rome, qui fonctionne toujours depuis 2 500 ans. À l'intérieur de l'église, dans une petite boîte de verre, on conserve le crâne de saint Valentin, celui de la Saint-Valentin ! Mets ta main dans la bouche... si tu oses.",
-    conseil: "File d'attente pour la photo (petite contribution demandée), mais elle avance vite. L'église ferme à l'heure du déjeuner."
+    conseil: "File d'attente pour la photo (petite contribution demandée), mais elle avance vite. L'église ferme à l'heure du déjeuner.",
+    adultes: [
+      { titre: "Un disque de marbre antique",
+        texte: "Sous le porche de Santa Maria in Cosmedin, un grand disque de marbre pavonazzetto d'environ 1,75 mètre de diamètre et de près de 1 300 kilos montre un visage barbu aux yeux, aux narines et à la bouche percés. Il date probablement du premier siècle après Jésus-Christ. Sa fonction reste discutée : plaque d'égout d'une rue voisine, bouche de fontaine ou couvercle d'un puits de temple. Le visage serait celui d'Océan ou d'un dieu fleuve, peut-être le Tibre lui-même, dont les quais étaient tout proches. La plaque fut adossée au mur du porche en 1632, et c'est depuis le Moyen Âge qu'on lui attribue le pouvoir de démasquer les menteurs." },
+      { titre: "Le marché aux bœufs",
+        texte: "L'église se dresse sur le Forum Boarium, le marché aux bestiaux de la Rome antique, au bord du premier port fluvial de la ville. Ici débarquaient les marchandises remontées depuis Ostie, et ici s'élevait l'Ara Maxima, l'autel d'Hercule, que le héros aurait fondé lui-même après avoir tué le géant Cacus. Sur la place voisine, deux temples exceptionnellement conservés témoignent de cette époque : le temple rond d'Hercule Victor, de la fin du deuxième siècle avant Jésus-Christ, plus ancien édifice de marbre encore debout à Rome, et le temple de Portunus, dieu des ports, dont les colonnes ioniques s'élèvent au-dessus du Tibre. Tous deux doivent leur survie à leur transformation en églises." },
+      { titre: "Santa Maria in Cosmedin",
+        texte: "L'église fut fondée au sixième siècle sur les bureaux de l'annone, l'administration chargée de distribuer le blé aux Romains, dont on voit encore les colonnes dans la nef. Au huitième siècle, le pape Adrien Ier l'agrandit pour la communauté grecque qui fuyait Constantinople et la querelle des images. Son surnom, Cosmedin, viendrait du grec kosmidion, qui signifie ornement. Le campanile roman à sept étages, l'un des plus élégants de Rome, date du douzième siècle. À l'intérieur, le sol de marbres colorés de l'atelier des Cosmates, la tribune des chantres et le baldaquin gothique de 1294 composent un ensemble médiéval rare. Dans une chapelle latérale, un reliquaire contient un crâne présenté comme celui de saint Valentin." },
+      { titre: "La légende du menteur",
+        texte: "La croyance en une bouche capable de mordre la main des parjures est attestée dès le Moyen Âge, quand les pèlerins la mentionnaient dans leurs guides. Une histoire médiévale raconte qu'une épouse soupçonnée d'adultère fut menée devant la pierre par son mari. Son amant, déguisé en fou, l'embrassa dans la foule juste avant l'épreuve. Elle put alors jurer que seuls son mari et ce fou l'avaient jamais touchée, et la bouche resta close. La ruse est restée le modèle de tous les contes sur la vérité et le mensonge." },
+      { titre: "Vacances romaines",
+        texte: "La célébrité mondiale de la Bocca date de 1953 et du film Vacances romaines de William Wyler. Gregory Peck, qui joue un journaliste, glisse sa main dans la bouche devant Audrey Hepburn, princesse en fugue, puis fait mine d'avoir perdu la main. Peck avait emprunté ce gag à un comique de cabaret et n'avait rien dit à sa partenaire, dont le cri est authentique. Wyler garda la première prise. Depuis, la file d'attente sous le porche ne désemplit pas, et le geste est devenu l'un des rituels touristiques de Rome. Prenez le temps de ne pas repartir sans avoir vu l'intérieur de l'église, souvent ignoré." }
+    ],
+    enfants: [
+      { titre: "Imagine ta main dans la bouche",
+        texte: "Imagine que tu es un enfant romain du Moyen Âge. Tes parents te traînent devant un gros visage de pierre aux yeux creux. Tout le quartier connaît sa réputation : si tu mets ta main dans sa bouche et que tu dis un mensonge, elle se referme d'un coup et tranche tes doigts. Tu as vraiment rangé ta chambre ce matin ? Ta main tremble. Voilà comment, pendant des siècles, on a fait peur aux menteurs à Rome. Aujourd'hui encore, des milliers de visiteurs font la queue pour tenter l'expérience. Sois honnête, ça ne coûte rien." },
+      { titre: "Hercule contre le monstre Cacus",
+        texte: "Le savais-tu ? La petite place devant l'église était, il y a 2 500 ans, le marché aux bœufs de Rome. La légende raconte qu'Hercule lui-même y est passé, en ramenant un troupeau de bœufs volés à un géant à trois corps. Pendant qu'il dormait, un monstre cracheur de feu nommé Cacus lui a volé quelques bêtes en les tirant par la queue, à reculons, pour brouiller les traces. Hercule a fini par entendre les meuglements, il a défoncé la grotte de Cacus et l'a étranglé. Les Romains ont construit un autel à cet endroit, et le petit temple rond que tu vois sur la place est dédié à Hercule." },
+      { titre: "Le plus vieil égout du monde",
+        texte: "La bouche de pierre était sans doute, au départ, une plaque d'égout ! Sous tes pieds passe la Cloaca Maxima, le grand égout de Rome, creusé il y a environ 2 500 ans pour assécher les marécages entre les collines. Il est si bien construit qu'une partie fonctionne encore. Il se jette dans le Tibre juste à côté, sous un arc de pierre que tu peux apercevoir depuis le pont. Les Romains avaient même une déesse des égouts, Cloacina, avec son propre petit sanctuaire au Forum." },
+      { titre: "Le défi des colonnes",
+        texte: "Regarde le clocher de l'église et compte ses étages : il y en a sept, et chacun a des petites fenêtres à colonnettes. Sur la place, trouve le temple rond et compte ses colonnes : il y en avait vingt, mais une a disparu. Cherche ensuite le second temple, rectangulaire, celui de Portunus, le dieu des ports : certaines de ses colonnes sont rondes et libres, les autres sont à moitié enfoncées dans le mur. Enfin, dans l'église, regarde le sol : il est fait de milliers de petits morceaux de marbre rouge, vert et blanc qui forment des cercles et des tresses." },
+      { titre: "Le quiz",
+        texte: "Pourquoi les deux temples de la place sont-ils encore debout, alors que presque tous les autres temples romains sont en ruine ? Réponse : parce qu'ils ont été transformés en églises au Moyen Âge. Les chrétiens les ont entretenus, réparés et utilisés pendant des siècles, au lieu de prendre leurs pierres pour construire d'autres bâtiments, comme cela est arrivé au Colisée." }
+    ]
   },
   {
-    id: 'aventin',
+    id: "aventin",
     nom: "Aventin : trou de serrure et Jardin des Orangers",
-    emoji: '🔑',
-    categorie: 'eglise',
-    lat: 41.8833, lon: 12.4780,
+    categorie: "eglise",
+    lat: 41.8833, lon: 12.478,
     duree: 30,
-    description:
-      "La colline de l'Aventin est un havre de calme au-dessus du Circus Maximus. Sur la Piazza dei Cavalieri di Malta, dessinée par Piranèse en 1765, la porte du prieuré de l'Ordre de Malte cache un secret : par le trou de sa serrure, on voit la coupole de Saint-Pierre parfaitement encadrée par une allée de lauriers. À côté, le Jardin des Orangers offre une terrasse panoramique sur le Tibre et Rome, et l'église Santa Sabina, du cinquième siècle, conserve des portes de bois sculptées vieilles de 1 600 ans.",
-    enfants:
-      "Colle ton œil au trou de la serrure : tu vois trois pays d'un coup ! Le jardin appartient à l'Ordre de Malte, qui est un État sans territoire, la ville de Rome est en Italie, et la coupole au bout de l'allée est au Vatican. Le Jardin des Orangers est plein d'orangers amers : leurs fruits ne se mangent pas, mais sentent divinement. À Santa Sabina, un petit trou dans le mur de l'entrée permet de voir un oranger que saint Dominique aurait planté en 1220 : l'arbre actuel serait son descendant. Et les portes en bois de l'église, sculptées vers 430, forment une bande dessinée avec l'une des plus anciennes images de la crucifixion au monde.",
-    conseil: "Petite file d'attente pour le trou de serrure, souvent moins de 10 minutes. Le jardin est parfait pour un pique-nique avec vue."
+    conseil: "Petite file d'attente pour le trou de serrure, souvent moins de 10 minutes. Le jardin est parfait pour un pique-nique avec vue.",
+    adultes: [
+      { titre: "La colline du peuple",
+        texte: "L'Aventin est la plus méridionale des sept collines. Selon la légende, c'est ici que Rémus observa le vol des oiseaux pour fonder la ville, avant d'être vaincu par son frère Romulus, installé sur le Palatin. Longtemps hors de l'enceinte sacrée, la colline devint celle de la plèbe : en 494 avant Jésus-Christ, le peuple s'y retira pour obtenir des tribuns, et en 456 une loi lui en distribua les terrains. Le temple de Diane, fondé par le roi Servius Tullius, en faisait le sanctuaire commun des cités latines. Sous l'Empire, l'Aventin devint au contraire un quartier résidentiel élégant, où Trajan vécut avant de devenir empereur. Le pillage d'Alaric, en 410, ravagea ses palais." },
+      { titre: "Santa Sabina, la basilique intacte",
+        texte: "Élevée entre 422 et 432 sur l'emplacement de la maison d'une matrone nommée Sabina, l'église est la basilique paléochrétienne la mieux conservée de Rome. Ses vingt-quatre colonnes corinthiennes de marbre de Proconnèse, ses grandes fenêtres de sélénite qui filtrent une lumière blonde et sa nef dépouillée donnent une idée exacte d'une église du cinquième siècle. Sous le porche, les portes de cyprès sculptées vers 430 conservent dix-huit panneaux sur vingt-huit, dont l'une des plus anciennes représentations connues de la Crucifixion. Les dominicains y sont installés depuis 1222 : saint Dominique y vécut, saint Thomas d'Aquin y enseigna, et l'oranger du cloître, visible par une ouverture du vestibule, serait le descendant de celui planté par le fondateur de l'ordre." },
+      { titre: "Le Jardin des Orangers",
+        texte: "Le parc Savello, que tout le monde appelle Jardin des Orangers, occupe l'emplacement du château de la famille Savelli, bâti au treizième siècle, dont subsistent les murailles. Aménagé en 1932 par l'architecte Raffaele De Vico, il fut planté d'orangers amers en hommage à saint Dominique. Sa terrasse s'ouvre sur le Tibre, le Trastevere, le Janicule et, au loin, la coupole de Saint-Pierre. En contrebas, la roseraie municipale occupe l'ancien cimetière juif, et ses allées dessinent la forme d'une menorah. Plus bas encore s'étend le Circus Maximus, long d'environ 600 mètres, où les courses de chars rassemblaient plus de cent cinquante mille spectateurs." },
+      { titre: "Piranèse et le trou de serrure",
+        texte: "Au bout de la rue, la Piazza dei Cavalieri di Malta fut dessinée en 1765 par Giovanni Battista Piranesi, le graveur célèbre pour ses vues de Rome et ses prisons imaginaires. C'est sa seule réalisation architecturale : il orna la place d'obélisques et de stèles chargées de trophées militaires, puis rebâtit l'église Santa Maria del Priorato, où il est enterré. Derrière la porte verte s'étend le prieuré de l'Ordre souverain de Malte, héritier des Hospitaliers de Jérusalem, qui jouit de l'extraterritorialité comme une ambassade. Par le trou de la serrure, une allée de lauriers taillés cadre exactement la coupole de Saint-Pierre, à plus de deux kilomètres. Les jardiniers entretiennent la perspective avec soin, et la perfection de l'effet doit peut-être autant au hasard qu'à Piranèse." },
+      { titre: "Conseils de promenade",
+        texte: "Le meilleur moment est la fin d'après-midi, quand le soleil descend sur le Trastevere et que les moines bénédictins de Sant'Anselmo, l'abbaye voisine, chantent les vêpres en grégorien. On peut redescendre par le Clivo di Rocca Savella, une ruelle médiévale pavée qui rejoint le Tibre, ou traverser le Circus Maximus vers les thermes de Caracalla." }
+    ],
+    enfants: [
+      { titre: "Imagine le duel des jumeaux",
+        texte: "Imagine deux frères jumeaux, Romulus et Rémus, debout chacun sur une colline, en train de scruter le ciel. Ils veulent fonder une ville, mais ils ne sont pas d'accord sur l'endroit. Pour se départager, ils comptent les vautours : les dieux enverront un signe. Rémus, sur l'Aventin, la colline où tu marches, en voit six le premier. Romulus, sur le Palatin en face, en voit douze ensuite. Qui a gagné ? Les deux crient victoire, la dispute tourne mal, et Rémus est tué. Rome porte le nom de Romulus, mais l'Aventin est resté la colline des rebelles, où le peuple se réfugiait pour faire grève contre les riches." },
+      { titre: "Une porte de 1 600 ans",
+        texte: "Le savais-tu ? Sous le porche de l'église Santa Sabina, tu verras une porte en bois de cyprès sculptée vers l'an 430, quand l'Empire romain existait encore. Elle a survécu aux incendies, aux guerres et aux pillages. Ses panneaux racontent la Bible comme une bande dessinée : cherche en haut à gauche l'un des tout premiers dessins de Jésus sur la croix de toute l'histoire, avec deux petits bonshommes à ses côtés. À l'époque, les chrétiens n'osaient presque jamais représenter cette scène. Dans l'église, la lumière ne passe pas par du verre mais par de fines plaques de pierre translucide, comme il y a 1 600 ans." },
+      { titre: "Un pays derrière une porte",
+        texte: "La porte verte de la place, tout au bout de la rue, cache un jardin qui n'est pas vraiment en Italie. Il appartient à l'Ordre de Malte, une organisation de chevaliers fondée il y a plus de 900 ans pour soigner les pèlerins à Jérusalem. Ces chevaliers ont possédé l'île de Rhodes, puis l'île de Malte, avant de tout perdre face à Napoléon. Aujourd'hui, ils n'ont plus de pays, mais ils ont encore un drapeau, des passeports, des ambassades, et cette maison sur l'Aventin, protégée comme une ambassade. Le grand artiste Piranèse a dessiné la place et l'église juste à côté, et il y est enterré." },
+      { titre: "Le défi de la serrure",
+        texte: "Colle ton œil au trou de la serrure de la porte verte. Tu dois voir une allée bordée de buissons taillés et, tout au bout, parfaitement encadrée, la coupole de Saint-Pierre, à plus de deux kilomètres. Chronomètre chaque membre de ta famille. Puis va au Jardin des Orangers : sens les fleurs d'oranger au printemps, mais ne goûte pas les fruits, ils sont amers. Depuis la terrasse, repère le fleuve Tibre en bas, la colline du Janicule en face, et retrouve les vieux murs du château qui entourent le jardin." },
+      { titre: "Le quiz",
+        texte: "Dans le jardin de Santa Sabina pousse un oranger que l'on dit planté par saint Dominique, un moine espagnol, vers 1220. Question : cet arbre peut-il vraiment avoir 800 ans ? Réponse : non, un oranger vit rarement plus d'un siècle. Mais chaque fois que l'arbre meurt, les moines en font repousser un nouveau à partir de ses graines ou de ses pousses, comme une chaîne. Celui que tu peux apercevoir par le petit trou du vestibule serait donc l'arrière-arrière-petit-fils de l'original." }
+    ]
   },
   {
-    id: 'saint-jean-latran',
-    nom: 'Basilique Saint-Jean-de-Latran',
-    emoji: '⛪',
-    categorie: 'eglise',
+    id: "saint-jean-latran",
+    nom: "Basilique Saint-Jean-de-Latran",
+    categorie: "eglise",
     lat: 41.8859, lon: 12.5057,
     duree: 40,
-    description:
-      "Souvent éclipsée par Saint-Pierre, Saint-Jean-de-Latran est pourtant la cathédrale de Rome et la « mère de toutes les églises » : fondée en 324 par Constantin, c'est la plus ancienne basilique d'Occident, et les papes y ont vécu pendant mille ans. Sa nef, redessinée par Borromini, est bordée de douze statues d'apôtres hautes de sept mètres. Sur la place, l'obélisque de Latran, venu du temple de Karnak, est le plus haut obélisque antique au monde. En face, les pèlerins gravissent à genoux la Scala Santa, l'escalier saint.",
-    enfants:
-      "L'obélisque de la place est le plus grand du monde : 32 mètres de granit, 3 500 ans, taillé en Égypte pour le pharaon Thoutmôsis. Il a fallu construire un bateau géant spécial pour le faire venir jusqu'à Rome en 357. En face, la Scala Santa est un escalier de 28 marches qui, selon la tradition, vient du palais de Ponce Pilate à Jérusalem, où Jésus l'aurait monté : les pèlerins ne le gravissent qu'à genoux, et les marches sont couvertes de bois pour les protéger. Dans la basilique, au-dessus de l'autel, un grand baldaquin doré contiendrait les crânes de saint Pierre et de saint Paul. Chaque nouveau pape vient prendre possession de cette église, car il est aussi l'évêque de Rome.",
-    conseil: "Métro A, station San Giovanni. Entrée gratuite. Le cloître (payant) est un petit bijou avec ses colonnes torsadées."
+    conseil: "Métro A, station San Giovanni. Entrée gratuite. Le cloître (payant) est un petit bijou avec ses colonnes torsadées.",
+    adultes: [
+      { titre: "Des Laterani à Constantin",
+        texte: "Le nom vient d'une riche famille romaine, les Laterani, dont Néron confisqua les propriétés en 65 après Jésus-Christ, après une conspiration manquée. Sous Septime Sévère, on installa ici la caserne de la garde à cheval de l'empereur. Ces cavaliers ayant combattu pour Maxence au pont Milvius en 312, Constantin, vainqueur, dissout leur corps et rasa leur caserne. Sur ses fondations, il fit bâtir la première grande basilique chrétienne de Rome et offrit le palais voisin à l'évêque de la ville. L'église fut dédiée au Sauveur en 324 par le pape Sylvestre ; ses deux saints Jean, le Baptiste et l'Évangéliste, lui furent associés plus tard. Elle reste la cathédrale de Rome, et son inscription la proclame mère et tête de toutes les églises de la ville et du monde." },
+      { titre: "Mille ans de papauté",
+        texte: "Pendant près de mille ans, jusqu'au départ pour Avignon en 1309, les papes vécurent au Latran, et non au Vatican. Cinq conciles œcuméniques y furent réunis entre 1123 et 1517, dont le quatrième, en 1215, qui fixa des règles encore en vigueur. Le palais subit un tremblement de terre en 896 et deux incendies, en 1307 et 1361. À leur retour de France en 1377, les papes trouvèrent des ruines et s'installèrent au Vatican. En 1586, Sixte Quint fit abattre l'ancien palais et confia à Domenico Fontana l'édifice actuel. C'est dans ce palais que furent signés en 1929 les accords du Latran, qui créèrent l'État de la Cité du Vatican. Chaque pape nouvellement élu vient toujours prendre possession de sa cathédrale." },
+      { titre: "Borromini et la façade",
+        texte: "L'intérieur doit son allure à Francesco Borromini, chargé par Innocent X de consolider la basilique pour le jubilé de 1650. Génie tourmenté, il enveloppa les vieilles colonnes dans des piliers massifs, creusa des niches et créa un espace blanc et solennel. Les douze statues d'apôtres qui occupent ces niches furent sculptées entre 1703 et 1718 par les meilleurs artistes de Rome. Les portes de bronze du portail central proviennent de la Curie du Forum romain, où siégeait le Sénat, et furent transférées ici en 1660. La façade monumentale, avec ses quinze statues de sept mètres de haut, fut achevée par Alessandro Galilei en 1735." },
+      { titre: "À voir à l'intérieur",
+        texte: "Au-dessus de l'autel papal, où seul le pape peut célébrer, le ciborium gothique de 1367 abrite les reliquaires qui, selon la tradition, contiennent les têtes de saint Pierre et de saint Paul. Devant, une dalle de bronze marque la tombe de Martin V, le pape qui ramena définitivement la papauté à Rome en 1420. Le plafond à caissons date du seizième siècle, le pavement cosmatesque de 1425. Le cloître, réalisé vers 1230 par la famille Vassalletto, aligne des colonnettes torsadées incrustées de mosaïques. Le baptistère octogonal, fondé par Constantin et remodelé au cinquième siècle, servit de modèle à tous les baptistères d'Italie." },
+      { titre: "L'obélisque et la Scala Santa",
+        texte: "Sur la place, l'obélisque de granit rouge est le plus haut obélisque antique encore debout : 32 mètres, plus de 45 avec son socle, pour environ 455 tonnes. Taillé pour Thoutmôsis III et son petit-fils Thoutmôsis IV au quinzième siècle avant Jésus-Christ, il dressait sa pointe à Karnak avant d'être apporté à Rome par Constance II en 357 pour le Circus Maximus. Retrouvé brisé en trois morceaux en 1587, il fut réérigé ici l'année suivante. En face, la Scala Santa, vingt-huit marches de marbre que sainte Hélène aurait rapportées du prétoire de Ponce Pilate, mène au Sancta Sanctorum, la chapelle privée des papes médiévaux, où l'on conserve une icône du Christ réputée peinte sans main humaine." }
+    ],
+    enfants: [
+      { titre: "Imagine la caserne des cavaliers",
+        texte: "Imagine cet endroit il y a 1 800 ans. Pas de basilique, mais une immense caserne pleine de chevaux, d'écuries et de soldats qui s'entraînent : la garde à cheval de l'empereur, les meilleurs cavaliers de l'Empire. En 312, ces cavaliers ont choisi le mauvais camp dans une guerre entre deux empereurs. Le vainqueur, Constantin, a dissous leur troupe et rasé leur caserne jusqu'aux fondations. Puis il a offert le terrain aux chrétiens, qui étaient encore persécutés quelques années plus tôt, pour bâtir leur première grande église. Sous le sol de la basilique, les archéologues ont retrouvé les murs de la caserne et même des tombes de cavaliers." },
+      { titre: "Le géant de granit",
+        texte: "Le savais-tu ? L'obélisque sur la place pèse autant que près de cent éléphants. Pour le transporter d'Égypte, il y a 1 700 ans, l'empereur Constance II a fait construire un navire spécial, gigantesque, avec 300 rameurs. Le voyage a traversé toute la Méditerranée. Ensuite, le monolithe a été dressé au Circus Maximus, où les chars de course l'ont contourné pendant des siècles. Puis il est tombé, s'est cassé en trois morceaux et a disparu dans la boue. On l'a retrouvé par hasard en 1587, enterré à sept mètres de profondeur. Le pape l'a fait réparer et installer ici, avec une croix au sommet." },
+      { titre: "Les portes du Sénat",
+        texte: "Les grandes portes de bronze au milieu de la façade ont environ 1 700 ans, mais elles n'ont pas été fabriquées pour l'église. Elles fermaient la Curie, le bâtiment du Forum romain où se réunissaient les sénateurs. Des milliers de fois, des hommes en toge les ont poussées pour aller débattre des guerres, des lois et des impôts de l'Empire. Un pape les a fait démonter et transporter ici en 1660. Quand tu passes devant, tu touches presque le même métal que les sénateurs romains." },
+      { titre: "Le défi des géants",
+        texte: "À l'intérieur, compte les statues géantes dans les niches de la grande nef : il y a douze apôtres, chacun avec un objet qui raconte sa vie. Cherche celui qui tient des clés, saint Pierre, celui qui tient une épée, saint Paul, et celui qui tient une scie, saint Simon. Dehors, sur le toit de la façade, compte les quinze statues, hautes comme des immeubles de deux étages. Enfin, si tu traverses la place, regarde les pèlerins de la Scala Santa : ils ne montent les 28 marches qu'à genoux, jamais debout." },
+      { titre: "Le quiz",
+        texte: "Quelle est la vraie cathédrale de Rome, celle de l'évêque de Rome, qui est le pape : Saint-Pierre du Vatican ou Saint-Jean-de-Latran ? Réponse : Saint-Jean-de-Latran ! Saint-Pierre est plus grande et plus célèbre, mais ce n'est pas une cathédrale. Une cathédrale est l'église où se trouve le siège officiel de l'évêque, sa cathedra, et celui du pape est ici. C'est pourquoi chaque nouveau pape vient s'y asseoir en cérémonie peu après son élection." }
+    ]
   },
   {
-    id: 'saint-clement',
-    nom: 'Basilique Saint-Clément',
-    emoji: '⬇️',
-    categorie: 'eglise',
+    id: "saint-clement",
+    nom: "Basilique Saint-Clément",
+    categorie: "eglise",
     lat: 41.8893, lon: 12.4977,
     duree: 45,
-    description:
-      "À deux pas du Colisée, Saint-Clément est un véritable mille-feuille d'histoire. L'église actuelle, du douzième siècle, avec sa mosaïque dorée de l'Arbre de vie, est bâtie sur une basilique du quatrième siècle ornée de fresques, elle-même construite sur des bâtiments romains du premier siècle, dont un temple secret dédié au dieu Mithra. Depuis 1667, la basilique est tenue par des dominicains irlandais, et c'est l'un d'eux, le père Mullooly, qui a découvert les niveaux souterrains en 1857.",
-    enfants:
-      "Descends trois étages, et tu remontes 2 000 ans dans le temps ! En haut, l'église de l'an 1100 ; en dessous, celle de l'an 400 ; tout en bas, une rue romaine de l'an 100, avec un temple secret de Mithra où des hommes, uniquement des hommes, se réunissaient pour des banquets et des rituels mystérieux autour d'un taureau sacrifié. Tends l'oreille au niveau le plus bas : on entend couler une rivière souterraine qui coule toujours depuis l'Antiquité. Sur une fresque du deuxième niveau, une bulle de dialogue contient l'une des toutes premières phrases écrites en italien, et ce sont... des gros mots que crie un noble païen à ses serviteurs !",
-    conseil: "L'église du haut est gratuite, les souterrains sont payants (billet en ligne conseillé). Il fait frais et humide en bas : idéal en pleine chaleur."
+    conseil: "L'église du haut est gratuite, les souterrains sont payants (billet en ligne conseillé). Il fait frais et humide en bas : idéal en pleine chaleur.",
+    adultes: [
+      { titre: "Trois églises superposées",
+        texte: "Saint-Clément est le meilleur endroit de Rome pour comprendre comment la ville s'est construite sur elle-même. Le niveau de la rue a monté d'une quinzaine de mètres depuis l'Antiquité, au gré des incendies, des inondations et des démolitions. En descendant, on traverse trois époques : la basilique médiévale, une basilique du quatrième siècle et, tout en bas, des constructions du premier siècle élevées après le grand incendie de Néron en 64. L'église est dédiée à Clément, quatrième pape selon la tradition, mort en exil en Crimée vers l'an 100 : jeté à la mer avec une ancre au cou, il aurait été enseveli dans un sanctuaire sous-marin." },
+      { titre: "Le temple secret de Mithra",
+        texte: "Au niveau le plus bas, une ruelle romaine sépare deux bâtiments. D'un côté, une grande construction de briques, peut-être un entrepôt ou l'atelier de la monnaie impériale ; de l'autre, une maison bourgeoise dont la cour fut transformée vers l'an 200 en sanctuaire de Mithra. Ce dieu d'origine perse, très populaire dans l'armée, était honoré dans des salles voûtées imitant une grotte, où ses fidèles, exclusivement des hommes, partageaient un banquet rituel sur deux banquettes de pierre. L'autel central montre Mithra égorgeant le taureau primordial, et la voûte est parsemée d'étoiles de stuc. Le christianisme, qui rivalisait avec ce culte, l'emporta au quatrième siècle, et la basilique fut bâtie juste au-dessus." },
+      { titre: "La basilique du quatrième siècle",
+        texte: "Le niveau intermédiaire correspond à l'église édifiée vers 390 sous le pape Sirice, à partir d'une maison de réunion chrétienne antérieure. Elle fut décorée entre le neuvième et le onzième siècle de fresques exceptionnelles : la vie de saint Clément, la translation de ses reliques par saint Cyrille, et l'histoire du noble païen Sisinnius. Cette dernière scène porte une inscription, vers 1080, où le maître insulte ses serviteurs en langue vulgaire : c'est l'un des tout premiers textes écrits en italien plutôt qu'en latin. Saint Cyrille, l'inventeur de l'alphabet des Slaves, mourut à Rome en 869 et fut enterré ici ; sa tombe est un lieu de pèlerinage pour les Bulgares et tous les peuples slaves." },
+      { titre: "La basilique médiévale",
+        texte: "En 1084, les troupes normandes de Robert Guiscard, venues secourir le pape Grégoire VII, incendièrent le quartier. La vieille basilique fut comblée, et le pape Pascal II fit élever la nouvelle vers 1100 à 1120. On y remonta les marbres sculptés de la tribune des chantres, du sixième siècle. La mosaïque de l'abside, l'une des plus belles de Rome, déploie une croix d'où jaillit un immense acanthe formant cinquante médaillons peuplés d'oiseaux, de cerfs et de scènes de la vie quotidienne, image du Christ arbre de vie. À l'entrée, la chapelle Sainte-Catherine conserve des fresques peintes vers 1430 par Masolino, aux premiers temps de la Renaissance." },
+      { titre: "Les dominicains irlandais",
+        texte: "Depuis 1667, la basilique est confiée aux dominicains irlandais, chassés de leur île par Cromwell. En 1857, l'un d'eux, le père Joseph Mullooly, commença à creuser sous le pavement et découvrit les niveaux inférieurs, un événement pour l'archéologie chrétienne. Les fouilles furent longtemps gênées par l'eau : une source antique inondait le Mithraeum, jusqu'à ce qu'un tunnel de près de 700 mètres, creusé en 1912, l'évacue vers la Cloaca Maxima. On entend toujours couler cette eau au fond, dernier bruit d'une Rome enfouie." }
+    ],
+    enfants: [
+      { titre: "Imagine une machine temporelle",
+        texte: "Imagine un escalier qui descend, descend, et à chaque étage tu recules de plusieurs siècles. En haut, tu es en l'an 1100, dans une église scintillante de mosaïques dorées. Un étage plus bas, tu arrives en l'an 400 : les murs sont couverts de peintures et l'Empire romain existe encore. Encore plus bas, te voilà en l'an 100. Tu marches dans une vraie rue de Rome, entre deux immeubles de briques, dans le noir et l'humidité. Les gens qui vivaient ici ont vu construire le Colisée, juste à côté. Saint-Clément est l'un des rares endroits au monde où l'on peut faire ce voyage à pied." },
+      { titre: "Le pape à l'ancre",
+        texte: "Le savais-tu ? Clément était l'un des tout premiers papes, il y a 1 900 ans. L'empereur l'a exilé en Crimée, au bord de la mer Noire, pour travailler dans les mines. Comme il continuait à convertir les prisonniers, on l'a jeté à la mer avec une ancre attachée au cou. La légende dit que la mer s'est retirée pour montrer sa tombe, dans un petit temple sous-marin. Un jour, un enfant oublié sur la plage a été englouti par la marée. Un an plus tard, quand l'eau s'est retirée à nouveau, ses parents l'ont retrouvé vivant, endormi près de la tombe du saint. C'est pour cela que tu verras des ancres un peu partout dans l'église." },
+      { titre: "Le club secret du taureau",
+        texte: "Tout en bas, une petite salle voûtée était le temple d'un dieu venu de Perse, Mithra. Ses fidèles formaient une sorte de club secret réservé aux hommes, surtout des soldats et des marchands. Il y avait sept grades, comme des niveaux dans un jeu : on commençait Corbeau et on finissait Père. Pour monter de niveau, il fallait passer des épreuves dont personne ne connaît les détails, car tout était secret. Les membres se réunissaient sur les deux banquettes de pierre pour un banquet, sous un plafond décoré d'étoiles, devant l'image de Mithra en train de tuer un taureau." },
+      { titre: "Le défi des sens",
+        texte: "Dans l'église du haut, lève les yeux vers la grande mosaïque dorée : cherche les deux cerfs qui boivent, les colombes blanches et la femme qui donne à manger à ses poules. Descends ensuite au deuxième niveau et trouve la peinture où des hommes tirent une colonne : c'est celle avec les gros mots écrits en vieil italien. Tout en bas, dans le temple de Mithra, cherche le taureau sur l'autel. Puis fais silence, pose ta main sur un mur et écoute : tu entendras une rivière couler quelque part sous tes pieds. On ne sait pas exactement d'où elle vient." },
+      { titre: "Le quiz",
+        texte: "Pourquoi les trois églises sont-elles empilées les unes sur les autres, au lieu d'être construites côte à côte ? Réponse : parce que le sol de Rome a monté d'environ quinze mètres en 2 000 ans. Quand un bâtiment brûlait ou s'écroulait, on ne déblayait pas : on remplissait les ruines de gravats et on construisait dessus. Les vieilles églises ont été oubliées sous terre, jusqu'à ce qu'un moine irlandais, en 1857, les retrouve en creusant." }
+    ]
   },
   {
-    id: 'sainte-marie-majeure',
-    nom: 'Basilique Sainte-Marie-Majeure',
-    emoji: '❄️',
-    categorie: 'eglise',
+    id: "sainte-marie-majeure",
+    nom: "Basilique Sainte-Marie-Majeure",
+    categorie: "eglise",
     lat: 41.8976, lon: 12.4985,
     duree: 40,
-    description:
-      "Construite entre 432 et 440, Sainte-Marie-Majeure est la plus grande église de Rome dédiée à la Vierge et l'une des quatre basiliques papales. Ses mosaïques de la nef datent de sa fondation, son campanile de 75 mètres est le plus haut de Rome, et son plafond doré aurait été réalisé avec le premier or rapporté d'Amérique. Sous l'autel, une relique de la crèche de Bethléem est vénérée depuis des siècles. Le grand sculpteur Bernin y est enterré, et le pape François a choisi d'y reposer en 2025, dans une tombe volontairement très simple.",
-    enfants:
-      "La légende de la neige : dans la nuit du 4 au 5 août 358, en pleine canicule romaine, la Vierge apparut en rêve au pape et à un riche Romain, leur demandant de construire une église là où il neigerait. Le lendemain matin, une colline était couverte de neige, en plein été ! Depuis, chaque 5 août, on fait tomber des milliers de pétales blancs du plafond de la basilique pendant la messe. L'or du plafond serait le premier or rapporté d'Amérique par Christophe Colomb et offert par les rois d'Espagne. Sous l'autel, dans un reliquaire de cristal, on garde des morceaux de bois qui viendraient de la mangeoire où Jésus a été couché à sa naissance.",
-    conseil: "Près de la gare Termini. Entrée gratuite, tenue correcte exigée. La tombe du pape François se trouve dans la nef latérale gauche, près de la chapelle Pauline."
+    conseil: "Près de la gare Termini. Entrée gratuite, tenue correcte exigée. La tombe du pape François se trouve dans la nef latérale gauche, près de la chapelle Pauline.",
+    adultes: [
+      { titre: "La neige d'août",
+        texte: "Selon une légende née au Moyen Âge, la Vierge apparut la nuit du 4 au 5 août 358 au pape Libère et à un riche patricien nommé Jean, leur demandant de bâtir une église là où ils trouveraient de la neige. Le lendemain, la neige recouvrait le sommet de l'Esquilin. L'histoire, absente des sources anciennes, a donné à la basilique ses surnoms de Sainte-Marie-des-Neiges et de basilique libérienne. La réalité est un peu différente : c'est le pape Sixte III qui fit construire l'édifice actuel entre 432 et 440, juste après le concile d'Éphèse de 431, qui venait de proclamer Marie Mère de Dieu. C'est la plus grande église de Rome dédiée à la Vierge." },
+      { titre: "La basilique du cinquième siècle",
+        texte: "Malgré les ajouts, Sainte-Marie-Majeure est celle des quatre basiliques papales qui a le mieux conservé sa structure paléochrétienne. La nef, longue de près de 86 mètres, est portée par quarante colonnes antiques de marbre et de granit. Au-dessus court une série de trente-six panneaux de mosaïques du cinquième siècle racontant l'Ancien Testament, d'Abraham à Josué, tandis que l'arc triomphal illustre l'enfance du Christ dans un style encore très romain. Ces mosaïques sont les plus anciennes de ce type à Rome. Le sol de marbres polychromes, œuvre des Cosmates, fut offert vers 1150 par un noble romain, et l'abside reçut en 1295 la grande mosaïque du Couronnement de la Vierge signée par Jacopo Torriti." },
+      { titre: "Or, campanile et façade",
+        texte: "Le plafond à caissons, dessiné par Giuliano da Sangallo à la fin du quinzième siècle, porte les armes des papes Borgia. La tradition veut que sa dorure provienne du premier or rapporté des Amériques, offert par les rois catholiques d'Espagne. Le campanile roman, élevé en 1377 au retour des papes d'Avignon, atteint 75 mètres, record romain. La façade actuelle, avec sa loggia, fut construite par Ferdinando Fuga en 1743 : elle abrite, sans les cacher, les mosaïques du treizième siècle de Filippo Rusuti qui racontent le miracle de la neige. Sur la place, la colonne de marbre provient de la basilique de Maxence au Forum ; Paul V la fit dresser en 1614 et couronner d'une Vierge de bronze." },
+      { titre: "Les chapelles et la crèche",
+        texte: "Deux chapelles monumentales se font face de part et d'autre du transept. La chapelle Sixtine, à droite, fut bâtie par Domenico Fontana pour Sixte Quint en 1585 ; la chapelle Pauline, à gauche, par Flaminio Ponzio pour Paul V Borghèse, entre 1605 et 1611. Cette dernière abrite l'icône Salus Populi Romani, le Salut du peuple romain, une Vierge à l'Enfant que la tradition attribue à saint Luc et que les Romains promènent depuis des siècles pour conjurer pestes et guerres. Sous l'autel majeur, la crypte de la Nativité conserve dans un reliquaire de cristal cinq planches de sycomore vénérées comme les restes de la crèche de Bethléem." },
+      { titre: "Le Bernin et le pape François",
+        texte: "Le plus grand sculpteur du baroque, Gian Lorenzo Bernini, repose ici sous une simple dalle, à droite de l'autel, dans le caveau de sa famille. Le pape François, très attaché à l'icône de la Vierge, venait prier devant elle avant et après chacun de ses voyages, plus d'une centaine de fois. Il choisit d'être enterré tout près, dans le bas-côté gauche, sous une pierre de Ligurie, la région de ses grands-parents, portant un seul mot : Franciscus. Sa tombe, où il fut inhumé le 26 avril 2025, est devenue l'un des lieux les plus visités de la basilique." }
+    ],
+    enfants: [
+      { titre: "Imagine de la neige en août",
+        texte: "Imagine Rome en plein mois d'août, il y a plus de 1 600 ans. Il fait une chaleur écrasante, les rues sont poussiéreuses, tout le monde cherche l'ombre. Et pourtant, un matin, les habitants découvrent le sommet d'une colline recouvert de neige fraîche, blanche et froide. La nuit précédente, la Vierge Marie est apparue en rêve au pape et lui a dit : construis-moi une église là où tu trouveras de la neige. Le pape a tracé le plan de l'église directement dans la neige avec son bâton. Voilà la légende de cette basilique. Chaque année, le 5 août, on fait tomber des milliers de pétales blancs du plafond pour rejouer la scène." },
+      { titre: "Un plafond en or d'Amérique",
+        texte: "Le savais-tu ? Lève la tête : le plafond est couvert d'or. On raconte que cet or est le premier arrivé en Europe depuis l'Amérique, après les voyages de Christophe Colomb. Les rois d'Espagne l'auraient offert au pape Alexandre VI Borgia, un pape espagnol, et lui l'aurait fait étaler ici, en feuilles très fines, sur les caissons de bois. Personne ne peut le prouver, mais si c'est vrai, cet or a traversé l'océan Atlantique sur une caravelle. Cherche le taureau des Borgia sculpté sur le plafond : c'était l'emblème de leur famille." },
+      { titre: "L'image qui voyage",
+        texte: "Dans la grande chapelle de gauche, une vieille icône représente Marie et Jésus enfant. Les Romains l'appellent le Salut du peuple romain, car ils croient qu'elle les a protégés de la peste, de la famine et des guerres. Pendant des siècles, quand un danger menaçait, on la portait en procession dans les rues. Le pape François l'adorait : avant chaque voyage à l'étranger, il venait lui déposer des fleurs, et il revenait la remercier au retour. Il est venu plus de cent fois, et il a demandé à être enterré juste à côté d'elle, dans une tombe toute simple." },
+      { titre: "Le défi des trésors cachés",
+        texte: "Compte les colonnes de la grande nef : il y en a quarante, et elles ont été prises sur des bâtiments romains encore plus anciens. Au-dessus, cherche les petites mosaïques carrées avec des personnages minuscules : elles ont 1 600 ans. Ensuite, descends l'escalier devant l'autel : au fond, dans une boîte de cristal, cinq vieilles planches de bois seraient des morceaux du berceau de Jésus. Trouve aussi la tombe du pape François, dans le bas-côté gauche : une pierre claire avec un seul mot, son nom en latin. Et dehors, lève la tête vers le clocher, le plus haut de Rome." },
+      { titre: "Le quiz",
+        texte: "Quelle hauteur fait le clocher de Sainte-Marie-Majeure, le plus haut de Rome ? Réponse : environ 75 mètres, soit la hauteur d'un immeuble de 25 étages. Il a été construit en 1377 pour fêter le retour des papes à Rome après soixante-dix ans passés en France, à Avignon. Sa cloche, surnommée la Sperduta, la perdue, sonne chaque soir : la légende dit qu'elle guidait autrefois une bergère égarée dans la nuit." }
+    ]
   },
-
-  /* ------------------------------------------------------------------
-     QUARTIERS & POINTS DE VUE
-     ------------------------------------------------------------------ */
   {
-    id: 'ghetto',
+    id: "ghetto",
     nom: "Ghetto et Portique d'Octavie",
-    emoji: '🎣',
-    categorie: 'quartier',
+    categorie: "quartier",
     lat: 41.8925, lon: 12.4778,
     duree: 30,
-    description:
-      "Le quartier juif de Rome est l'un des plus anciens du monde : une communauté y vit depuis plus de 2 000 ans, enfermée derrière des murs de 1555 à 1870. Ses ruelles mènent au Portique d'Octavie, construit par Auguste pour sa sœur, dont les ruines abritèrent le marché aux poissons pendant tout le Moyen Âge, et au théâtre de Marcellus, un « petit Colisée » transformé en palais. La grande synagogue de 1904 et son musée racontent cette histoire. Les trattorias servent les célèbres artichauts à la juive, frits et croustillants.",
-    enfants:
-      "Le théâtre de Marcellus ressemble à un petit Colisée, mais il est plus ancien, et des gens habitent dedans : au Moyen Âge, une famille a construit son palais par-dessus, et il y a encore des appartements tout en haut ! Sous le Portique d'Octavie, une plaque de marbre du Moyen Âge dit que toute tête de poisson plus longue que la plaque devait être donnée aux chefs de la ville pour faire de la soupe. Devant certaines portes, tu verras de petits pavés dorés, les « pierres d'achoppement » : chacune porte le nom d'un habitant qui a été emmené pendant la Seconde Guerre mondiale, pour qu'on ne l'oublie jamais. Sur la place voisine, la fontaine des Tortues aurait été construite en une seule nuit par un duc pour impressionner son futur beau-père.",
-    conseil: "Goûtez la pizza ebraica (gâteau aux fruits secs) à la pâtisserie Boccione. Le quartier est calme le samedi, jour de shabbat."
+    conseil: "Goûtez la pizza ebraica (gâteau aux fruits secs) à la pâtisserie Boccione. Le quartier est calme le samedi, jour de shabbat.",
+    adultes: [
+      { titre: "Deux mille ans de présence",
+        texte: "Les Juifs de Rome forment la plus ancienne communauté juive d'Europe. Des délégués de Judée sont reçus par le Sénat dès le deuxième siècle avant Jésus-Christ, et une communauté organisée vit dans la ville au temps de Jules César, qui la protège. Après la destruction du Temple de Jérusalem en l'an 70, l'empereur Titus ramène à Rome des milliers de prisonniers et le trésor du sanctuaire : l'arc de Titus, au Forum, montre encore les légionnaires portant le chandelier à sept branches. Pendant l'Antiquité et le Moyen Âge, les Juifs romains habitent surtout le Trastevere, puis traversent le fleuve pour s'installer sur la rive gauche, autour du Portique d'Octavie, dans le quartier que l'on parcourt aujourd'hui." },
+      { titre: "Le ghetto, de 1555 à 1870",
+        texte: "Le 14 juillet 1555, le pape Paul IV publie la bulle Cum nimis absurdum et ordonne d'enfermer les Juifs de Rome dans un enclos de trois hectares à peine, le long du Tibre, dans la zone la plus basse et la plus inondable de la ville. Des murs sont dressés, des portes fermées chaque soir au coucher du soleil et rouvertes à l'aube. Les habitants doivent porter un signe jaune, ne peuvent exercer que la fripe et le prêt sur gages, et sont contraints d'assister à des sermons destinés à les convertir. Les maisons s'y élèvent sur plusieurs étages pour loger des milliers de personnes. Les murs tombent en 1848, sont rétablis, puis disparaissent définitivement en 1870, lorsque Rome devient capitale de l'Italie. Le vieux quartier insalubre est rasé vers 1888 et la grande synagogue, avec sa coupole carrée couverte d'aluminium, est inaugurée en 1904. En 1986, Jean-Paul II y entre en ami : c'est la première visite d'un pape dans une synagogue." },
+      { titre: "Le 16 octobre 1943",
+        texte: "En septembre 1943, l'occupant allemand exige de la communauté cinquante kilos d'or en trente-six heures. Les Juifs romains, aidés par de nombreux voisins chrétiens, rassemblent la somme, mais cela ne les sauve pas. Le 16 octobre à l'aube, le quartier est encerclé et plus de mille personnes sont arrêtées et déportées vers Auschwitz. Seize seulement reviendront. Devant les portes, de petits pavés de laiton, les pierres d'achoppement, rappellent un par un les noms des habitants disparus, avec leur date de naissance et d'arrestation." },
+      { titre: "Portique et théâtre antiques",
+        texte: "Au bout de la rue principale se dressent les ruines du Portique d'Octavie, reconstruit par Auguste entre 27 et 23 avant Jésus-Christ et dédié à sa sœur. C'était un vaste rectangle de colonnes qui abritait deux temples, des bibliothèques et des chefs-d'œuvre grecs rapportés par les généraux victorieux. Ce qui subsiste, le pavillon d'entrée, fut restauré par Septime Sévère en 203 après un incendie. Au Moyen Âge, l'église Sant'Angelo in Pescheria s'y installa et le marché aux poissons occupa les lieux jusqu'au dix-neuvième siècle. Juste derrière, le théâtre de Marcellus, commencé par César et inauguré par Auguste vers 13 avant Jésus-Christ en mémoire de son neveu mort à vingt ans, pouvait accueillir près de quinze mille spectateurs. Ses arcades superposées, doriques puis ioniques, servirent de modèle aux architectes du Colisée. Devenu forteresse au Moyen Âge, il fut transformé au seizième siècle en palais par Baldassarre Peruzzi pour la famille Savelli." },
+      { titre: "Saveurs et parcours",
+        texte: "Flânez le long de la Via del Portico d'Ottavia, où les trattorias servent les carciofi alla giudia, les artichauts frits qui s'ouvrent comme des fleurs, et poussez jusqu'à la Piazza Mattei pour admirer la fontaine des Tortues, dessinée par Giacomo della Porta et sculptée par Taddeo Landini entre 1581 et 1588 ; les quatre tortues de bronze, ajoutées vers 1658, sont attribuées au Bernin. Le musée juif, sous la synagogue, expose tissus brodés, objets rituels et documents du ghetto, et permet de visiter la grande salle de prière." }
+    ],
+    enfants: [
+      { titre: "Imagine un quartier fermé à clé",
+        texte: "Imagine que tu habites une rue où, chaque soir au coucher du soleil, des gardes ferment de grandes portes à clé. Personne ne peut sortir avant le lever du jour. C'est ce qu'ont vécu les Juifs de Rome pendant plus de trois cents ans, de 1555 à 1870, dans un quartier minuscule, coincé contre le Tibre, où le fleuve entrait dans les maisons à chaque crue. Comme la place manquait, on construisait les maisons toujours plus haut, et les ruelles étaient si étroites que les voisins pouvaient presque se serrer la main d'une fenêtre à l'autre. Aujourd'hui, les murs ont disparu, mais le quartier a gardé ses ruelles, ses odeurs de friture et sa grande synagogue." },
+      { titre: "Le chandelier disparu",
+        texte: "Il y a presque deux mille ans, les soldats de l'empereur Titus ont pris Jérusalem et rapporté à Rome le trésor du Temple, dont un immense chandelier d'or à sept branches, la menorah. On la voit sculptée sur l'arc de Titus, au Forum, portée par des soldats qui défilent. Et ensuite ? Mystère. Certains racontent qu'elle a coulé au fond du Tibre quand les Vandales ont pillé Rome, d'autres qu'elle a été emportée à Constantinople, d'autres encore qu'elle dort dans une cave du Vatican. Personne ne l'a jamais retrouvée." },
+      { titre: "Le gâteau brûlé exprès",
+        texte: "Dans la rue principale, une petite boulangerie sans enseigne vend la pizza ebraica, qui n'est pas une pizza du tout : c'est un gâteau dense aux amandes, aux raisins secs et aux fruits confits, dont le dessus est volontairement presque noir, comme s'il avait brûlé. Les Romains font la queue pour l'acheter depuis plus d'un siècle. Les recettes du quartier sont nées de la pauvreté du ghetto : on cuisinait ce que les autres ne voulaient pas, comme les artichauts ou les restes de morue, et on les faisait frire pour leur donner du goût. Résultat : ce sont aujourd'hui les plats les plus célèbres de Rome." },
+      { titre: "Défi sur les pavés",
+        texte: "Devant les portes des immeubles, cherche les petits pavés dorés gravés d'un nom et d'une date : compte ceux que tu trouves dans une seule rue. Sous le Portique d'Octavie, trouve la plaque de marbre du Moyen Âge où l'on mesurait les poissons. Sur la Piazza Mattei, compte les tortues de la fontaine et observe comment les quatre jeunes hommes les poussent vers le bassin du haut. Enfin, devant le théâtre de Marcellus, compte les étages : deux étages d'arcades romaines en bas, et au-dessus, un palais avec de vraies fenêtres et des rideaux." },
+      { titre: "Le quiz",
+        texte: "Question : pourquoi le théâtre de Marcellus ressemble-t-il autant au Colisée ? Réponse : parce que c'est le Colisée qui l'a copié ! Le théâtre a été inauguré vers 13 avant Jésus-Christ, et le Colisée près de quatre-vingt-dix ans plus tard. Les architectes des empereurs Vespasien et Titus ont repris la même idée d'arcades superposées, avec des colonnes de styles différents à chaque étage." }
+    ]
   },
   {
-    id: 'ile-tiberine',
-    nom: 'Île Tibérine',
-    emoji: '🚢',
-    categorie: 'quartier',
+    id: "ile-tiberine",
+    nom: "Île Tibérine",
+    categorie: "quartier",
     lat: 41.8907, lon: 12.4776,
     duree: 20,
-    description:
-      "Seule île du Tibre à Rome, longue de 300 mètres, l'île Tibérine est dédiée à la médecine depuis 2 300 ans : un temple d'Esculape, dieu de la guérison, y fut construit en 293 avant J.-C., et l'hôpital Fatebenefratelli y fonctionne encore aujourd'hui, depuis 1584. On y accède par le pont Fabricius, bâti en 62 avant J.-C. : c'est le plus vieux pont de Rome encore utilisé dans son état d'origine. L'été, les quais accueillent un cinéma en plein air et des terrasses.",
-    enfants:
-      "En 293 avant J.-C., une épidémie ravageait Rome. Les Romains envoyèrent un navire en Grèce chercher le dieu de la médecine. Au retour, un serpent sacré se glissa hors du bateau et nagea jusqu'à cette île : on y construisit le temple, et les Romains sculptèrent l'île entière en forme de bateau, avec un obélisque comme mât ! À la pointe sud, on voit encore la « proue » en pierre avec le serpent gravé. Le pont Fabricius que tu traverses a 2 000 ans : on l'appelle le pont des Quatre-Têtes à cause de ses statues à quatre visages. Une légende raconte que ce sont quatre architectes que le pape fit décapiter parce qu'ils se disputaient sans arrêt.",
-    conseil: "Traversez l'île pour passer du Ghetto au Trastevere : c'est le chemin le plus joli. Glacier et pause à l'ombre sur les quais."
+    conseil: "Traversez l'île pour passer du Ghetto au Trastevere : c'est le chemin le plus joli. Glacier et pause à l'ombre sur les quais.",
+    adultes: [
+      { titre: "Une île née du fleuve",
+        texte: "Longue d'environ trois cents mètres et large de moins de soixante-dix, l'île Tibérine est la seule île du Tibre dans Rome. Elle repose sur un socle de roche volcanique autour duquel le fleuve a déposé ses alluvions. Les Romains lui donnaient une origine plus poétique : en 509 avant Jésus-Christ, après avoir chassé le dernier roi, Tarquin le Superbe, le peuple aurait jeté dans le Tibre les gerbes de blé récoltées sur les champs du tyran, et ces gerbes, retenues par la vase, auraient formé l'île. Sa position, au point où le fleuve est le plus facile à franchir, explique pourquoi Rome est née juste ici : c'est le gué que les marchands de sel empruntaient bien avant Romulus." },
+      { titre: "Esculape et le serpent",
+        texte: "En 293 avant Jésus-Christ, une épidémie ravage la ville. Sur le conseil des livres sibyllins, le Sénat envoie une ambassade à Épidaure, en Grèce, chercher le dieu de la médecine Esculape. Selon la légende, le dieu monta à bord sous la forme d'un serpent et, à l'arrivée, se glissa dans l'eau pour gagner l'île, indiquant l'emplacement de son sanctuaire. Le temple fut inauguré vers 289 avant Jésus-Christ ; les malades y passaient la nuit dans l'espoir de recevoir en rêve le remède. Au premier siècle avant Jésus-Christ, les Romains habillèrent l'île de travertin pour lui donner la silhouette d'un navire, avec un obélisque dressé en guise de mât. Un fragment de cette proue est encore visible à la pointe sud, gravé d'un bâton autour duquel s'enroule un serpent, l'emblème d'Esculape que les pharmacies utilisent toujours. L'église San Bartolomeo all'Isola, fondée par l'empereur Otton III en 998, occupe la place du temple ; le puits de marbre au milieu des marches du chœur serait le souvenir de la source sacrée." },
+      { titre: "Les ponts les plus anciens",
+        texte: "Le pont Fabricius, qui relie l'île à la rive gauche, a été construit en 62 avant Jésus-Christ par le curateur des routes Lucius Fabricius, dont le nom se lit encore quatre fois sur les arches. Ses deux arches de vingt-quatre mètres n'ont jamais été reconstruites : c'est le plus vieux pont de Rome en usage dans son état d'origine. Les Romains l'appellent pont des Quatre-Têtes, à cause des deux piliers antiques à quatre visages qui ornent son parapet. En face, le pont Cestius, du premier siècle avant Jésus-Christ, a été remonté à la fin du dix-neuvième siècle lors de la construction des quais. En aval, l'arche solitaire du Ponte Rotto, le pont brisé, est le vestige du pont Aemilius, le premier pont de pierre de Rome, commencé en 179 avant Jésus-Christ et emporté par la crue de 1598." },
+      { titre: "Deux mille ans de soins",
+        texte: "La vocation médicale de l'île n'a jamais cessé. En 1584, les frères de Saint-Jean-de-Dieu fondent l'hôpital que les Romains appellent Fatebenefratelli, du cri des moines qui quêtaient dans les rues : « Faites le bien, frères ! ». Il fonctionne toujours. Pendant l'occupation allemande, en octobre 1943, le médecin Giovanni Borromeo et ses collègues y cachèrent des dizaines de Juifs sous prétexte d'une maladie imaginaire, terriblement contagieuse, qu'ils baptisèrent « syndrome K ». Les soldats venus fouiller l'hôpital préférèrent ne pas entrer dans le service." },
+      { titre: "À voir sur place",
+        texte: "Descendez sur les quais pour faire le tour de l'île à pied, sous les platanes. La tour médiévale des Caetani, la petite place devant San Bartolomeo avec sa colonne de 1869 portant quatre saints, la proue de pierre et la vue sur le Ponte Rotto composent un décor unique. En été, l'île accueille un festival de cinéma en plein air, avec des terrasses le long de l'eau." }
+    ],
+    enfants: [
+      { titre: "Imagine un bateau de pierre",
+        texte: "Imagine une île tellement bien placée dans le fleuve que les Romains ont décidé de la transformer en navire géant. Ils ont recouvert ses bords de blocs de pierre blanche taillés en forme de coque, planté un obélisque au milieu pour faire le mât, et construit un temple à bord, comme une cabine. Vue du pont, l'île avait l'air de descendre le Tibre vers la mer. Deux mille ans plus tard, un bout de la proue existe encore, à la pointe sud : penche-toi sur le parapet pour l'apercevoir." },
+      { titre: "L'île du roi chassé",
+        texte: "Les Romains racontaient que l'île n'existait pas au début. En 509 avant Jésus-Christ, ils chassèrent leur dernier roi, Tarquin le Superbe, un tyran détesté. Le blé de ses champs venait d'être récolté, mais personne ne voulait manger le pain du tyran : on jeta toutes les gerbes dans le Tibre. Elles s'accrochèrent à la boue, la terre s'accumula dessus, et l'île apparut. C'est une légende, bien sûr, mais elle dit bien à quel point les Romains détestaient l'idée d'avoir un roi." },
+      { titre: "La maladie qui n'existait pas",
+        texte: "En 1943, pendant la guerre, des soldats allemands arrêtaient les Juifs de Rome, juste de l'autre côté du pont. Les médecins de l'hôpital de l'île ont eu une idée géniale : ils ont inventé une maladie, le syndrome K, censée être horriblement contagieuse. Ils ont caché des familles entières dans un service marqué de ce nom, en leur demandant de tousser très fort dès que des soldats approchaient. Les soldats, terrifiés, n'ont jamais osé entrer. La maladie n'existait pas : le K était un clin d'œil moqueur au nom des chefs allemands qui occupaient la ville." },
+      { titre: "Défi du plus vieux pont",
+        texte: "Traverse le pont Fabricius en lisant les lettres gravées sur l'arche : tu y verras le nom L FABRICIVS, écrit il y a plus de deux mille ans. Trouve les deux piliers à quatre visages qui lui ont donné son surnom de pont des Quatre-Têtes. Puis, depuis la pointe sud de l'île, cherche le serpent gravé sur la proue et, plus loin dans le fleuve, l'arche toute seule du Ponte Rotto, le pont brisé, qu'une crue a cassé en 1598 et qu'on n'a jamais réparé." },
+      { titre: "Le quiz",
+        texte: "Question : quel animal est l'emblème d'Esculape, le dieu de la médecine, et où le retrouves-tu encore aujourd'hui ? Réponse : le serpent, enroulé autour d'un bâton. Regarde bien les pharmacies en Italie et en France : la croix verte cache souvent une coupe avec un serpent, un souvenir direct du dieu arrivé sur cette île en 293 avant Jésus-Christ." }
+    ]
   },
   {
-    id: 'trastevere',
-    nom: 'Trastevere',
-    emoji: '🍕',
-    categorie: 'quartier',
+    id: "trastevere",
+    nom: "Trastevere",
+    categorie: "quartier",
     lat: 41.8895, lon: 12.4699,
     duree: 60,
-    description:
-      "« Au-delà du Tibre », Trastevere est le quartier-village de Rome : ruelles pavées, façades ocre couvertes de lierre, linge aux fenêtres et trattorias sur les places. Au cœur du quartier, la basilique Santa Maria in Trastevere, fondée au troisième siècle, éblouit par ses mosaïques dorées et ses 22 colonnes antiques prises aux thermes de Caracalla. À voir aussi : l'église Sainte-Cécile, la Villa Farnesina peinte par Raphaël, le jardin botanique et, le dimanche matin, le grand marché aux puces de Porta Portese.",
-    enfants:
-      "Regarde les pavés sous tes pieds : ce sont les sampietrini, les « petits Saint-Pierre », des cubes de basalte noir posés un par un à la main, très glissants quand il pleut ! Sur la façade de Santa Maria in Trastevere, la mosaïque montre douze brebis qui représentent les apôtres. Une légende raconte qu'en l'an 38 avant J.-C., une fontaine d'huile a jailli du sol à cet endroit pendant toute une journée. À la Villa Farnesina, le banquier Agostino Chigi, l'homme le plus riche de Rome, jetait sa vaisselle en argent dans le Tibre après ses banquets pour épater ses invités... mais il avait fait installer des filets pour tout récupérer ! C'est le meilleur quartier pour la pizza à la coupe et les glaces.",
-    conseil: "Le soir, arrivez avant 19 h 30 pour trouver une table sans réserver. Les marches de la Piazza Trilussa sont le lieu de rendez-vous des Romains."
+    conseil: "Le soir, arrivez avant 19 h 30 pour trouver une table sans réserver. Les marches de la Piazza Trilussa sont le lieu de rendez-vous des Romains.",
+    adultes: [
+      { titre: "Au-delà du Tibre",
+        texte: "Trans Tiberim, « au-delà du Tibre » : le nom dit tout. Pendant les premiers siècles de Rome, cette rive appartenait aux Étrusques, et le quartier n'entra dans la ville que tardivement, sous la République. Il devint alors le port et l'atelier de Rome : marins de la flotte de Ravenne, pêcheurs, tanneurs, potiers, marchands venus d'Orient, Juifs et premiers chrétiens y vivaient côte à côte. Les riches y possédaient des jardins ; ceux de Jules César, légués au peuple par testament, s'étendaient au pied du Janicule. Englobé dans les murailles d'Aurélien au troisième siècle, le Trastevere garda pendant tout le Moyen Âge un caractère à part, populaire et frondeur. Ses habitants se disent encore « Noantri », nous autres, et célèbrent chaque juillet la Festa de Noantri, une procession de la Vierge du Carmel qui remonte au seizième siècle." },
+      { titre: "Santa Maria in Trastevere",
+        texte: "Selon la tradition, le pape Calixte fonda ici vers 220 l'un des premiers lieux de culte chrétiens officiels de Rome, sur l'emplacement d'une taverne. L'église actuelle date de 1140 environ : le pape Innocent II, natif du quartier, la fit reconstruire avec vingt-deux colonnes de granit qui proviendraient des thermes de Caracalla. Dans l'abside, la mosaïque du douzième siècle montre le Christ et la Vierge assis sur le même trône, une nouveauté à l'époque ; en dessous, en 1291, Pietro Cavallini raconta la vie de Marie en six tableaux d'une finesse étonnante. Le plafond doré est du Dominiquin. Près de l'autel, une inscription, Fons Olei, marque l'endroit où, en 38 avant Jésus-Christ, une source d'huile aurait jailli du sol pendant une journée entière, signe interprété plus tard comme l'annonce de la naissance du Christ." },
+      { titre: "Cécile, Raphaël et la reine",
+        texte: "À Sainte-Cécile, la basilique s'élève sur la maison où la jeune patricienne aurait été martyrisée au troisième siècle. Sous l'autel, la statue de Stefano Maderno la représente couchée sur le côté, le visage caché, exactement comme on retrouva son corps intact en 1599. Dans le chœur des religieuses, le Jugement dernier de Cavallini, peint vers 1293, annonce Giotto. La Villa Farnesina, bâtie de 1506 à 1510 par Baldassarre Peruzzi pour le banquier Agostino Chigi, abrite le Triomphe de Galatée de Raphaël et la loggia de Psyché peinte par son atelier. En face, le palais Corsini fut la résidence de la reine Christine de Suède, qui avait abdiqué pour venir vivre à Rome, et son parc est devenu le jardin botanique, douze hectares de bambous et de palmiers sur les pentes du Janicule." },
+      { titre: "La vie du quartier",
+        texte: "Le Ponte Sisto, construit entre 1473 et 1479 par Sixte IV pour le jubilé, débouche sur la Piazza Trilussa, du nom du poète en dialecte romain dont la statue semble déclamer ses vers. Les ruelles pavées de sampietrini, les madones aux coins des rues, les vignes vierges sur les façades et le linge aux fenêtres composent le décor. Le dimanche matin, le marché aux puces de Porta Portese s'étire sur plus d'un kilomètre. Rue de la Septième Cohorte, on peut apercevoir les restes d'une caserne de vigiles, les pompiers de la Rome impériale, avec les graffitis laissés par les hommes de garde. Le soir, les trattorias servent cacio e pepe, supplì et pizza croustillante, et les jeunes Romains se retrouvent sur les marches des fontaines." }
+    ],
+    enfants: [
+      { titre: "Imagine un village dans la ville",
+        texte: "Imagine que tu traverses un pont et que, d'un coup, la grande ville disparaît. Plus de larges avenues : des ruelles tordues, des façades orange et roses, du lierre qui grimpe partout, des chats sur les marches et du linge qui sèche entre les fenêtres. Bienvenue au Trastevere, le quartier « de l'autre côté du fleuve ». Pendant des siècles, ses habitants ont eu l'impression de ne pas être tout à fait des Romains comme les autres : ils se surnomment « Noantri », nous autres, et organisent encore chaque été leur propre fête, avec des feux d'artifice sur le Tibre." },
+      { titre: "Les pompiers de l'empereur",
+        texte: "Rome brûlait souvent : des maisons en bois, des lampes à huile, des braseros partout. Alors l'empereur Auguste a créé un corps de sept mille pompiers, les vigiles, répartis en sept cohortes. Ils patrouillaient la nuit avec des seaux, des couvertures mouillées, des haches et des pompes à eau, et ils avaient aussi le droit d'arrêter les voleurs. Au Trastevere, on a retrouvé la caserne de la septième cohorte, enfouie sous une rue : sur les murs, les pompiers de garde avaient écrit des messages, un peu comme des graffitis, pour se plaindre de la fatigue ou souhaiter bonne chance à leur chef." },
+      { titre: "La sainte qui dort",
+        texte: "Dans la basilique Sainte-Cécile, une statue de marbre blanc montre une jeune fille allongée sur le côté, comme endormie, le visage tourné vers le sol. C'est sainte Cécile, la patronne des musiciens, morte il y a près de mille huit cents ans. En 1599, on a ouvert son tombeau et, dit-on, on l'a trouvée intacte, exactement dans cette position. Le sculpteur Stefano Maderno a copié ce qu'il avait vu. Regarde ses doigts : trois tendus d'une main, un seul de l'autre, pour dire, raconte-t-on, qu'il y a un seul Dieu en trois personnes." },
+      { titre: "Le géant de Michel-Ange",
+        texte: "À la Villa Farnesina, Raphaël a peint une nymphe, Galatée, filant sur les vagues dans un char tiré par des dauphins. On raconte que Michel-Ange, jaloux et curieux, s'est glissé dans la villa pendant l'absence de Raphaël et a dessiné au fusain une tête énorme sur un mur de la loggia, en guise de signature. Raphaël, admiratif, aurait interdit qu'on l'efface. La tête est toujours là. Est-ce vraiment Michel-Ange ? Personne n'en est sûr, mais les Romains adorent cette histoire de deux génies qui se taquinaient." },
+      { titre: "Défi des madonnelles",
+        texte: "Aux coins des rues, cherche les madonnelles : de petites images de la Vierge, encadrées et protégées par un petit toit, souvent avec une lanterne. Avant l'électricité, c'étaient les seules lumières de la nuit. Compte celles que tu croises entre la Piazza Trilussa et Santa Maria in Trastevere. Dans la basilique, compte les colonnes de la nef, il doit y en avoir vingt-deux, et trouve, près de l'autel, la petite inscription Fons Olei." },
+      { titre: "Le quiz",
+        texte: "Question : que signifie le mot Trastevere ? Réponse : « au-delà du Tibre », du latin trans Tiberim. Pour les Romains de l'Antiquité, qui vivaient sur l'autre rive, c'était le quartier d'en face, celui des marins, des pêcheurs et des étrangers." }
+    ]
   },
   {
-    id: 'janicule',
-    nom: 'Janicule',
-    emoji: '💥',
-    categorie: 'quartier',
-    lat: 41.8918, lon: 12.4610,
+    id: "janicule",
+    nom: "Janicule",
+    categorie: "quartier",
+    lat: 41.8918, lon: 12.461,
     duree: 40,
-    description:
-      "Le Janicule n'est pas l'une des sept collines, mais c'est le plus beau balcon de Rome. Sa terrasse domine toute la ville, du Vatican au Colisée. Le monument équestre de Garibaldi rappelle la bataille de 1849 pour défendre la République romaine, et des dizaines de bustes de ses compagnons bordent les allées. Plus bas, la Fontana dell'Acqua Paola, surnommée le Fontanone, déverse ses eaux depuis 1612, et le Tempietto de Bramante, joyau de la Renaissance, se cache dans la cour de San Pietro in Montorio. Chaque jour à midi, un coup de canon retentit.",
-    enfants:
-      "Chaque jour, à midi pile, un vrai canon tire un coup à blanc depuis la terrasse ! Cette tradition date de 1847 : le pape voulait que toutes les cloches de Rome sonnent midi en même temps. Arrive vers 11 h 50, bouche-toi les oreilles, et regarde les pigeons s'envoler. Le week-end, un petit théâtre de marionnettes joue les aventures de Pulcinella, comme il y a cent ans. Un jeu depuis la terrasse : retrouve le Vittoriano tout blanc, la coupole du Panthéon et le Colisée. Ne rate pas la statue d'Anita Garibaldi, la femme du héros : elle galope sur un cheval cabré, un bébé dans un bras et un pistolet dans l'autre, car elle a vraiment combattu à ses côtés.",
-    conseil: "Montée à pied depuis Trastevere en 15 min, ou bus 115. Marchands de glaces et jeux pour enfants sur la terrasse."
+    conseil: "Montée à pied depuis Trastevere en 15 min, ou bus 115. Marchands de glaces et jeux pour enfants sur la terrasse.",
+    adultes: [
+      { titre: "La colline de Janus",
+        texte: "Le Janicule culmine à près de quatre-vingt-dix mètres sur la rive droite du Tibre. Il ne compte pas parmi les sept collines, toutes situées sur l'autre rive, mais il a toujours veillé sur Rome : son nom viendrait de Janus, le dieu aux deux visages, qui y aurait fondé une cité avant même Romulus. En 508 avant Jésus-Christ, l'armée étrusque du roi Porsenna y installa son camp, et c'est en défendant le pont de bois en contrebas qu'Horatius Coclès devint un héros. Sous Trajan, un aqueduc amena sur ces hauteurs l'eau du lac de Bracciano, qui fit tourner pendant des siècles les moulins à grain de la ville. Le pape Urbain VIII enferma enfin la colline dans une nouvelle muraille entre 1642 et 1644." },
+      { titre: "1849, Garibaldi défend Rome",
+        texte: "En février 1849, les Romains chassent le pape Pie IX et proclament la République. Louis-Napoléon Bonaparte envoie un corps expéditionnaire français pour la renverser. Garibaldi, à la tête de volontaires venus de toute l'Italie, repousse un premier assaut le 30 avril, puis se bat pendant tout le mois de juin sur ces pentes, autour des villas Corsini et Pamphilj. La ville capitule le 30 juin. La colline est devenue le mémorial de cette lutte : le monument équestre de Garibaldi, inauguré en 1895, celui d'Anita, sa compagne brésilienne, sous lequel elle repose depuis 1932, et plus de quatre-vingts bustes de combattants alignés le long de la promenade. Parmi eux, Goffredo Mameli, l'auteur des paroles de l'hymne italien, mort à vingt et un ans des suites d'une blessure reçue ici ; son tombeau se trouve dans le mausolée ossuaire de la Via Garibaldi." },
+      { titre: "Bramante, le Fontanone et le phare",
+        texte: "Dans la cour de San Pietro in Montorio, le Tempietto de Bramante, daté de 1502 et commandé par les rois catholiques d'Espagne, marque l'endroit où, selon la tradition, saint Pierre fut crucifié. Ce petit temple rond entouré de seize colonnes doriques est considéré comme la première œuvre parfaite de la Renaissance à Rome. Plus haut, la fontaine de l'Acqua Paola, terminée en 1612 pour le pape Paul V Borghèse, marque l'arrivée de l'aqueduc de Trajan restauré ; ses colonnes de granit proviennent de l'ancienne basilique Saint-Pierre et son marbre du forum de Nerva. Les Romains l'appellent simplement le Fontanone. Sur la terrasse, un phare blanc, offert en 1911 par les Italiens d'Argentine, projette parfois vers la ville un faisceau vert, blanc et rouge." },
+      { titre: "Le canon de midi",
+        texte: "Depuis le premier décembre 1847, un coup de canon annonce midi à Rome. Le pape Pie IX voulait que toutes les cloches de la ville sonnent l'heure ensemble ; le tir partait alors du château Saint-Ange, puis du Monte Mario, avant de s'installer sur le Janicule en 1904. Interrompu par la guerre en 1939, il a repris le 21 avril 1959, jour anniversaire de Rome. Un obusier de l'armée italienne tire à blanc, et les pigeons de la terrasse s'envolent tous ensemble." },
+      { titre: "Petites histoires",
+        texte: "Le poète Torquato Tasso mourut en 1595 au couvent voisin de Sant'Onofrio, à la veille de recevoir la couronne de laurier au Capitole ; le vieux chêne sous lequel il aimait s'asseoir, mort et cerclé de fer, est encore là. Le week-end, un théâtre de marionnettes joue les aventures de Pulcinella pour les enfants, une tradition qui se transmet ici de génération en génération. Et juste en dessous, l'hôpital pédiatrique Bambino Gesù, fondé en 1869, est l'hôpital pour enfants le plus réputé d'Italie." }
+    ],
+    enfants: [
+      { titre: "Imagine le balcon de Rome",
+        texte: "Imagine que tu montes sur un immense balcon d'où l'on voit toute la ville d'un coup : les coupoles, les clochers, les toits roses, les pins parasols et, au loin, les montagnes. Le Janicule est ce balcon. Les Romains de l'Antiquité y postaient des guetteurs : quand un drapeau flottait au sommet, cela voulait dire que tout allait bien et que l'assemblée du peuple pouvait se réunir en bas. Si le drapeau descendait, l'ennemi approchait et tout le monde courait aux armes." },
+      { titre: "Le garçon de l'hymne",
+        texte: "En 1849, des milliers de jeunes volontaires sont venus défendre Rome sur cette colline, avec Garibaldi. Parmi eux, un poète de vingt et un ans, Goffredo Mameli, qui avait écrit deux ans plus tôt une chanson pour encourager les Italiens : « Fratelli d'Italia ». Blessé à la jambe pendant les combats, il est mort quelques semaines plus tard. Sa chanson est devenue l'hymne national de l'Italie : c'est celui que les joueurs chantent, la main sur le cœur, avant chaque match de l'équipe nationale de football. Son buste se trouve sur l'allée, parmi plus de quatre-vingts têtes de pierre de ses compagnons." },
+      { titre: "Un temple de poche",
+        texte: "Dans la cour d'une église, en descendant vers le Trastevere, se cache un temple minuscule, tout rond, entouré de seize colonnes : le Tempietto. Il est si petit qu'il tiendrait dans ta salle de classe. Pourtant, les architectes du monde entier viennent l'admirer, car c'est le premier bâtiment de Rome à avoir copié parfaitement les temples antiques, il y a un peu plus de cinq cents ans. Il a été construit à l'endroit exact où, d'après la tradition, saint Pierre a été crucifié la tête en bas." },
+      { titre: "L'eau qui traverse la colline",
+        texte: "La grande fontaine blanche que tu croises en montant, le Fontanone, crache l'eau d'un aqueduc construit par l'empereur Trajan il y a mille neuf cents ans, puis réparé par un pape. Cette eau vient d'un lac à quarante kilomètres de là. Autrefois, elle faisait tourner des moulins qui broyaient le blé de tout Rome. Mais elle n'a jamais été très bonne à boire : quand un Romain veut dire qu'une chose ne vaut rien, il dit encore qu'elle vaut autant que l'eau Paola." },
+      { titre: "Défi de la terrasse",
+        texte: "Sur la terrasse, cherche le phare blanc offert par les Italiens partis vivre en Argentine. Puis longe l'allée des bustes et trouve celui de Goffredo Mameli, et celui d'un combattant qui porte un chapeau ou une moustache impressionnante. Sur le socle de la statue de Garibaldi à cheval, lis la devise gravée : « Roma o Morte », Rome ou la mort. Enfin, repère dans la vue le Panthéon, avec sa coupole plate, et l'immense monument blanc du Vittoriano." },
+      { titre: "Le quiz",
+        texte: "Question : le Janicule fait-il partie des sept collines de Rome ? Réponse : non ! Les sept collines, le Palatin, le Capitole, l'Aventin, le Caelius, l'Esquilin, le Viminal et le Quirinal, sont toutes sur l'autre rive du Tibre. Le Janicule, lui, est sur la rive droite, comme le Vatican, et il est plus haut que toutes les sept." }
+    ]
   },
   {
-    id: 'villa-borghese',
-    nom: 'Villa Borghèse',
-    emoji: '🚣',
-    categorie: 'quartier',
-    lat: 41.9130, lon: 12.4850,
+    id: "villa-borghese",
+    nom: "Villa Borghèse",
+    categorie: "quartier",
+    lat: 41.913, lon: 12.485,
     duree: 90,
-    description:
-      "Avec ses 80 hectares, la Villa Borghèse est le grand parc de Rome, ancien domaine du cardinal Scipione Borghese créé en 1606. On y trouve la Galerie Borghèse, avec les sculptures les plus célèbres du Bernin et des toiles du Caravage, un lac avec des barques et un petit temple, le zoo Bioparco, une horloge à eau, la terrasse du Pincio, un cinéma minuscule et de grandes pelouses. On peut y louer des vélos ou des voitures à pédales pour explorer les allées bordées de pins parasols.",
-    enfants:
-      "C'est le parc des Romains, et il est fait pour vous : louez une rosalie, une voiture à pédales pour quatre, ou une barque sur le petit lac pour ramer jusqu'au temple d'Esculape. Près du Pincio, une horloge de 1867 fonctionne uniquement avec de l'eau, sans électricité ni ressort. Le Cinema dei Piccoli, une maisonnette de 63 places, est le plus petit cinéma du monde depuis 1934. À la Galerie Borghèse, cherche la statue de Daphné qui se transforme en arbre pour échapper à Apollon : ses feuilles en marbre sont aussi fines que du papier. Et le visage du David du Bernin, qui se mord la lèvre en visant Goliath, est celui du sculpteur lui-même, qui se regardait dans un miroir.",
-    conseil: "Galerie Borghèse : réservation obligatoire plusieurs semaines à l'avance, visite limitée à 2 h. Location de rosalies près de la Casina dell'Orologio."
+    conseil: "Galerie Borghèse : réservation obligatoire plusieurs semaines à l'avance, visite limitée à 2 h. Location de rosalies près de la Casina dell'Orologio.",
+    adultes: [
+      { titre: "Le cardinal collectionneur",
+        texte: "En 1605, Camillo Borghese devient pape sous le nom de Paul V et fait aussitôt cardinal son neveu de vingt-sept ans, Scipione. Riche, cultivé et sans scrupules, celui-ci achète dès 1606 les vignes qui couvrent la colline du Pincio pour y créer une « villa de délices ». Le casino, bâti entre 1613 et 1616 par Flaminio Ponzio puis Giovanni Vasanzio, n'est pas fait pour y habiter mais pour y exposer une collection et y donner des fêtes. Scipione fait enlever de nuit la Déposition de Raphaël dans une église de Pérouse, jette en prison le peintre Cavalier d'Arpin pour s'emparer de ses toiles, et passe commande à un jeune sculpteur encore inconnu, Gian Lorenzo Bernini : Énée et Anchise, l'Enlèvement de Proserpine, Apollon et Daphné et le David naissent ici entre 1618 et 1625. Le Caravage, le Titien, Antonello da Messina et le Corrège rejoignent les murs. Une plaque à l'entrée invitait tout visiteur honnête à entrer librement : la villa fut l'un des premiers musées ouverts au public." },
+      { titre: "Du domaine princier au parc public",
+        texte: "Au dix-huitième siècle, le prince Marcantonio IV Borghese transforme les jardins à la mode anglaise : le jardin du Lac et son temple d'Esculape datent de 1786, la place de Sienne, un hippodrome de verdure, et la fontaine des Chevaux marins suivent. En 1807, Camillo Borghese, époux de Pauline Bonaparte, vend à son beau-frère Napoléon plus de trois cents sculptures antiques, aujourd'hui au Louvre ; sa femme, sculptée par Canova en Vénus victorieuse, allongée à demi nue sur un divan, reste en revanche à Rome. En 1901, l'État italien achète le domaine, puis le confie à la ville de Rome, qui l'ouvre au public en 1903. Avec le Pincio dessiné par Valadier, il forme aujourd'hui un parc d'environ quatre-vingts hectares." },
+      { titre: "À voir dans le parc",
+        texte: "La Galerie Borghèse reste le joyau : au rez-de-chaussée les sculptures du Bernin et de Canova, à l'étage les tableaux, dont six toiles du Caravage. Autour, le parc réserve des surprises. L'horloge à eau, inventée par le dominicain Giovanni Battista Embriaco et présentée à l'Exposition universelle de Paris en 1867, tourne toujours au milieu d'un bassin du Pincio. Le Cinema dei Piccoli, une maisonnette de bois de 1934, projette des dessins animés. Le zoo Bioparco, créé en 1911 par Carl Hagenbeck, fut l'un des premiers à remplacer les barreaux par des fossés. La terrasse du Pincio, bordée de plus de deux cents bustes d'Italiens illustres, domine la Piazza del Popolo. On peut aussi visiter le musée Carlo Bilotti et ses toiles de Giorgio De Chirico, ou pousser jusqu'à la Villa Giulia, le grand musée étrusque." },
+      { titre: "Petites histoires",
+        texte: "Le Bernin sculpta Apollon et Daphné avant ses vingt-cinq ans ; le cardinal Maffeo Barberini, futur pape Urbain VIII, fit graver sur le socle un distique latin rappelant que celui qui court après les plaisirs ne récolte que des feuilles. Pauline Bonaparte, à qui l'on demandait comment elle avait pu poser nue devant Canova, aurait répondu que l'atelier était bien chauffé. Quant aux bustes du Pincio, c'est Mazzini qui fit poser les premiers en 1849, pendant la brève République romaine, pour célébrer les gloires de l'Italie." }
+    ],
+    enfants: [
+      { titre: "Imagine le jardin d'un cardinal",
+        texte: "Imagine un jardin si grand qu'on y circule à cheval, avec des bois, des fontaines, des paons qui se pavanent, des cerfs et des oiseaux exotiques dans une immense volière. C'est ce que le cardinal Scipione Borghese a fait construire il y a quatre cents ans, pour recevoir ses amis et leur montrer les statues et les tableaux qu'il collectionnait. Il n'y dormait même pas : c'était un palais uniquement fait pour épater. Aujourd'hui, ce jardin est devenu le parc préféré des enfants de Rome, avec ses barques, ses vélos, son zoo et ses pelouses." },
+      { titre: "Le cardinal voleur d'art",
+        texte: "Scipione voulait tellement posséder les plus belles œuvres qu'il ne reculait devant rien. Un peintre célèbre, le Cavalier d'Arpin, refusait de lui vendre ses tableaux ? Le cardinal l'a fait accuser de posséder des armes interdites et jeter en prison, puis a fait saisir sa collection : plus de cent toiles, dont plusieurs d'un jeune inconnu nommé Caravage. Un grand tableau de Raphaël lui plaisait dans une église de Pérouse ? Il l'a fait décrocher en pleine nuit et transporter à Rome. Les habitants de Pérouse ont tellement protesté que le pape leur a envoyé une copie pour les calmer." },
+      { titre: "Le zoo sans barreaux",
+        texte: "Le zoo du parc, le Bioparco, a été inventé en 1911 par un Allemand qui avait une idée révolutionnaire : plus de cages ! Carl Hagenbeck voulait que les animaux vivent dans des décors qui ressemblent à leur pays, séparés des visiteurs par des fossés et des rochers plutôt que par des barreaux. C'était l'un des premiers zoos de ce genre au monde. Aujourd'hui, il abrite plus de mille animaux et s'occupe surtout de protéger les espèces en danger." },
+      { titre: "Une princesse en marbre",
+        texte: "Pauline Bonaparte, la sœur de Napoléon, a épousé le prince Camillo Borghese. Elle a demandé au sculpteur Canova de la représenter en Vénus, la déesse de la beauté, à demi nue sur un divan. Son mari a été tellement gêné qu'il a caché la statue et ne la montrait à ses invités que la nuit, à la lueur d'une torche. Aujourd'hui, elle trône au milieu de la Galerie Borghèse, et le divan de marbre cache un mécanisme : autrefois, on pouvait le faire tourner pour admirer la princesse sous tous les angles." },
+      { titre: "Défi du Pincio",
+        texte: "Sur la terrasse du Pincio, longe les bustes de marbre et cherche ceux qui ont le nez cassé : des farceurs les ont abîmés pendant des années. Trouve ensuite l'horloge à eau au milieu de son petit étang, et observe l'eau qui remplit tour à tour deux petits godets pour faire osciller le balancier. Sur le lac, compte les colonnes du temple d'Esculape. Et devant la fontaine des Chevaux marins, compte les chevaux : ils ont une queue de poisson." },
+      { titre: "Le quiz",
+        texte: "Question : quel âge avait le Bernin quand il a sculpté Apollon et Daphné, la statue où la nymphe se transforme en laurier ? Réponse : environ vingt-quatre ans. Il avait commencé à sculpter enfant dans l'atelier de son père, et le cardinal Scipione a été le premier à croire en lui." }
+    ]
   },
-
-  /* ------------------------------------------------------------------
-     VATICAN
-     ------------------------------------------------------------------ */
   {
-    id: 'chateau-saint-ange',
-    nom: 'Château Saint-Ange',
-    emoji: '🏰',
-    categorie: 'vatican',
+    id: "chateau-saint-ange",
+    nom: "Château Saint-Ange",
+    categorie: "vatican",
     lat: 41.9031, lon: 12.4663,
     duree: 75,
-    description:
-      "Construit vers 139 comme mausolée de l'empereur Hadrien, le château est devenu forteresse, refuge des papes, prison redoutée et aujourd'hui musée. Un passage secret de 800 mètres, le Passetto di Borgo, le relie au Vatican depuis 1277. Au sommet, l'archange saint Michel en bronze rengaine son épée, en souvenir d'une vision du pape Grégoire le Grand qui annonça la fin de la peste de 590. On y découvre la rampe en spirale antique, les appartements des papes, les cachots, et une terrasse avec une vue splendide sur le pont Saint-Ange et ses anges du Bernin.",
-    enfants:
-      "En 1527, quand les soldats de Charles Quint pillèrent Rome, le pape Clément VII s'enfuit du Vatican par le passage secret sur les murailles, pendant que 147 gardes suisses mouraient pour le protéger : c'est pour cela que les gardes suisses prêtent serment chaque 6 mai. Le sculpteur Benvenuto Cellini, enfermé ici en 1538, s'est évadé avec une corde faite de draps, mais il s'est cassé la jambe en sautant ! Dans les cours, tu verras des tas de boulets de pierre pour les catapultes et des cuves pour l'huile bouillante. Et à l'intérieur, la grande rampe en spirale a été creusée pour le cortège funèbre de l'empereur Hadrien, il y a presque 1 900 ans.",
-    conseil: "Billet en ligne pour éviter la file. Le café sur la terrasse haute est l'un des plus beaux points de vue de Rome. Comptez 1 h 30 avec les enfants."
+    conseil: "Billet en ligne pour éviter la file. Le café sur la terrasse haute est l'un des plus beaux points de vue de Rome. Comptez 1 h 30 avec les enfants.",
+    adultes: [
+      { titre: "Le mausolée d'Hadrien",
+        texte: "Vers 135, l'empereur Hadrien, bâtisseur du Panthéon et du mur qui porte son nom en Bretagne, entreprend son propre tombeau sur la rive droite du Tibre, en face du Champ de Mars. L'édifice est achevé en 139, un an après sa mort, par son successeur Antonin le Pieux. Sur une base carrée de près de quatre-vingt-dix mètres de côté s'élevait un tambour cylindrique de soixante-quatre mètres de diamètre, revêtu de marbre, couronné d'un tumulus planté de cyprès et d'un quadrige de bronze conduit par l'empereur. Une rampe hélicoïdale de cent vingt-cinq mètres montait vers la chambre des urnes, où furent déposées les cendres des empereurs jusqu'à Caracalla, en 217. Le pont Aelius, l'actuel pont Saint-Ange, fut bâti en 134 pour y conduire." },
+      { titre: "Forteresse et refuge des papes",
+        texte: "Intégré aux murailles d'Aurélien à la fin du troisième siècle, le mausolée devient un bastion. En 537, les soldats byzantins qui le défendent contre les Goths brisent les statues de marbre pour les jeter sur les assaillants. Son nom actuel vient d'une procession de 590 : selon la tradition, le pape Grégoire le Grand vit au sommet l'archange Michel rengainer son épée, signe de la fin de la peste. Au Moyen Âge, les grandes familles romaines se le disputent, puis les papes en font leur citadelle. Nicolas III construit en 1277 le Passetto, le couloir fortifié qui le relie au Vatican ; Alexandre VI Borgia et ses successeurs ajoutent bastions, fossés et appartements. En mai 1527, pendant le sac de Rome par les troupes de Charles Quint, Clément VII s'y réfugie et y reste enfermé pendant sept mois avant de s'enfuir déguisé. Paul III Farnèse fait ensuite décorer la salle Pauline par Perin del Vaga, entre 1545 et 1547." },
+      { titre: "Prison et scène d'opéra",
+        texte: "Le château fut aussi la prison la plus redoutée de Rome. L'orfèvre Benvenuto Cellini, le comte Cagliostro, accusé de sorcellerie, et des centaines d'inconnus y furent enfermés. En 1599, la jeune Beatrice Cenci, coupable d'avoir fait tuer un père monstrueux, fut décapitée sur la place devant le pont. Puccini y situe le dernier acte de Tosca, en 1900 : l'héroïne se jette du haut des remparts. Les feux d'artifice de la Girandola, tirés depuis les terrasses lors des fêtes papales, ont inspiré des générations d'artistes. La statue de l'archange qui couronne l'édifice est celle de Peter Anton von Verschaffelt, en bronze, installée en 1753 ; sa devancière en marbre, de Raffaello da Montelupo, est visible dans la cour." },
+      { titre: "Le pont des anges",
+        texte: "Le pont Saint-Ange conserve trois arches antiques. En 1450, lors du jubilé, la foule y fut si dense que les parapets cédèrent et que près de deux cents pèlerins se noyèrent. Entre 1667 et 1669, le Bernin dessina les dix anges portant les instruments de la Passion ; il en sculpta deux lui-même, jugés si beaux que le pape les garda, et ils sont aujourd'hui dans l'église Sant'Andrea delle Fratte. Les copies qui les remplacent, comme les huit autres, sont l'œuvre de ses élèves." },
+      { titre: "Parcours de visite",
+        texte: "On monte par la rampe antique, on traverse la cour des boulets de pierre, on découvre les appartements peints, la salle du trésor avec ses coffres de fer, la petite salle de bains chauffée de Clément VII, les cachots, puis la terrasse au pied de l'ange, d'où la vue embrasse la coupole de Saint-Pierre et toute la ville." }
+    ],
+    enfants: [
+      { titre: "Imagine une tombe devenue château",
+        texte: "Imagine un tombeau si énorme qu'il ressemble à une montagne de marbre blanc, avec un jardin de cyprès sur le toit et, tout en haut, une statue de l'empereur sur un char à quatre chevaux. C'est ainsi que l'empereur Hadrien voulait dormir pour l'éternité. Mais Rome a eu besoin d'une forteresse, alors on a arraché le marbre, bouché les ouvertures et ajouté des murailles, des tours et des canons. Le tombeau est devenu un château, puis un palais pour les papes, puis une prison, et aujourd'hui un musée où tu peux grimper jusqu'au sommet." },
+      { titre: "Des statues comme boulets",
+        texte: "En 537, une armée de Goths attaque Rome. Les soldats qui défendent le château n'ont plus assez de flèches ni de pierres à lancer. Alors ils cassent les magnifiques statues de marbre qui décoraient le tombeau et les jettent du haut des murs sur les assaillants ! Des chefs-d'œuvre vieux de quatre cents ans transformés en boulets. Bien plus tard, au dix-septième siècle, en creusant le fossé, on a retrouvé un superbe satyre endormi, aujourd'hui dans un musée de Munich : on pense qu'il faisait partie de ces projectiles." },
+      { titre: "La salle de bains du pape",
+        texte: "Au cœur du château, le pape Clément VII s'est fait construire vers 1530 une minuscule salle de bains, avec une baignoire de marbre et des murs peints de fresques. L'eau chaude arrivait par un tuyau depuis une chaudière cachée derrière le mur : un vrai spa privé au milieu d'une forteresse ! Juste à côté, la salle du trésor gardait, dans des coffres de fer, l'or et les papiers secrets du Vatican, et le pape dormait dans une chambre dont les fenêtres donnaient sur le fleuve pour surveiller l'arrivée des ennemis." },
+      { titre: "Une héroïne qui saute du toit",
+        texte: "Dans l'opéra Tosca, écrit par Puccini en 1900, une chanteuse, Tosca, essaie de sauver l'homme qu'elle aime, prisonnier au château. À la fin, tout va mal, et elle se jette du haut des remparts. Depuis, des milliers de spectateurs ont pleuré sur cette scène. Quand tu seras sur la terrasse, tu verras l'endroit : sous l'ange, au-dessus du fleuve. Les papes, eux, préféraient les feux d'artifice : pour les grandes fêtes, on tirait depuis le château la Girandola, une pluie de fusées si spectaculaire que les peintres venaient de toute l'Europe pour la dessiner." },
+      { titre: "Défi des dix anges",
+        texte: "Sur le pont, compte les anges : il y en a dix, et chacun porte un objet de la Passion du Christ. Trouve celui qui tient la couronne d'épines, celui qui tient les clous, celui qui porte l'éponge au bout d'un bâton et celui qui tient les dés des soldats. Dans le château, cherche les tas de boulets de pierre dans la cour, l'ancien ange de marbre qui a longtemps veillé au sommet, et, tout en haut, l'ange de bronze qui range son épée." },
+      { titre: "Le quiz",
+        texte: "Question : quel empereur a fait construire ce bâtiment, et pourquoi ? Réponse : Hadrien, pour en faire son tombeau. C'est le même empereur qui a reconstruit le Panthéon et fait bâtir, tout au nord de l'Angleterre, un mur de cent dix-sept kilomètres pour protéger la frontière de l'Empire." }
+    ]
   },
   {
-    id: 'place-saint-pierre',
-    nom: 'Place Saint-Pierre',
-    emoji: '🔑',
-    categorie: 'vatican',
+    id: "place-saint-pierre",
+    nom: "Place Saint-Pierre",
+    categorie: "vatican",
     lat: 41.9022, lon: 12.4573,
     duree: 30,
-    description:
-      "Dessinée par le Bernin entre 1656 et 1667, la place Saint-Pierre est enserrée par deux colonnades de 284 colonnes surmontées de 140 statues de saints : les « bras » de l'Église accueillant les fidèles. Au centre, l'obélisque de 25 mètres, rapporté d'Égypte par Caligula, se dressait dans le cirque de Néron où saint Pierre fut martyrisé. Il fut déplacé ici en 1586 par 900 ouvriers et 140 chevaux. La place peut réunir 300 000 personnes lors des audiences du mercredi et de l'Angélus du dimanche à midi.",
-    enfants:
-      "Bienvenue dans le plus petit pays du monde : le Vatican fait 44 hectares, moins qu'un grand parc, et compte environ 800 habitants, avec ses propres timbres, ses pièces d'euro, ses plaques d'immatriculation et même une équipe de football. La frontière avec l'Italie est une simple ligne sur le sol de la place ! Cherche les deux disques de pierre entre l'obélisque et les fontaines : quand tu te places dessus, les quatre rangées de colonnes s'alignent parfaitement et il n'y en a plus qu'une. Le jour où l'on a dressé l'obélisque, le silence était obligatoire sous peine de mort ; mais un marin cria « De l'eau sur les cordes ! » et sauva l'opération. Les gardes suisses en uniforme jaune, bleu et rouge doivent être suisses, célibataires et mesurer au moins 1,74 mètre.",
-    conseil: "Entrée gratuite après un contrôle de sécurité (file variable). Le mercredi matin, la place est fermée pour l'audience papale."
+    conseil: "Entrée gratuite après un contrôle de sécurité (file variable). Le mercredi matin, la place est fermée pour l'audience papale.",
+    adultes: [
+      { titre: "Le cirque de Néron",
+        texte: "Sous la place s'étendait, au premier siècle, un cirque commencé par Caligula et achevé par Néron, où couraient les chars. Après le grand incendie de 64, Néron accusa les chrétiens et en fit exécuter un grand nombre dans ce cirque et ses jardins. Selon la tradition, l'apôtre Pierre y fut crucifié la tête en bas, puis enterré dans la nécropole voisine, sur la pente de la colline. L'obélisque qui trône aujourd'hui au centre de la place se dressait sur la ligne médiane de cette piste : rapporté d'Égypte par Caligula en 37, sans hiéroglyphes, il est le seul obélisque de Rome à n'être jamais tombé." },
+      { titre: "L'obélisque déplacé",
+        texte: "En 1586, le pape Sixte Quint confie à l'architecte Domenico Fontana la tâche de transporter le monolithe de vingt-cinq mètres, pesant environ trois cent trente tonnes, jusqu'au centre de la nouvelle place. Il faut quatre mois, neuf cents hommes, cent quarante chevaux et quarante-quatre treuils. Le jour du levage, le 10 septembre, le silence est imposé à la foule sous peine de mort. Lorsque les cordes chauffent et menacent de céder, un marin de Sanremo, Benedetto Bresca, crie de les arroser. Loin d'être puni, il obtient pour sa famille le privilège de fournir chaque année les palmes tressées du dimanche des Rameaux, un droit encore exercé aujourd'hui." },
+      { titre: "Les bras de l'Église",
+        texte: "Entre 1656 et 1667, à la demande d'Alexandre VII, le Bernin dessine la place actuelle : une ellipse de deux cent quarante mètres de large, enserrée par deux colonnades en quart de cercle de deux cent quatre-vingt-quatre colonnes et quatre-vingt-huit piliers, disposés en quatre rangées et surmontés de cent quarante statues de saints hautes de plus de trois mètres. Le Bernin voulait que ces bras accueillent les catholiques, ramènent les hérétiques et éclairent les infidèles. Deux fontaines encadrent l'obélisque : celle de Carlo Maderno, de 1613, et sa jumelle ajoutée par le Bernin en 1677. Un troisième bras, prévu pour fermer la place, ne fut jamais construit ; à sa place, la Via della Conciliazione, percée entre 1936 et 1950 à travers les vieilles maisons du Borgo, ouvre la perspective depuis le Tibre." },
+      { titre: "Le plus petit État du monde",
+        texte: "Le traité du Latran, signé le 11 février 1929 entre Mussolini et le pape Pie XI, crée l'État de la Cité du Vatican : quarante-quatre hectares, la frontière suivant le bord de la place. La Garde suisse pontificale, fondée par Jules II le 22 janvier 1506, compte environ cent trente-cinq hommes ; leur uniforme bariolé, souvent attribué à Michel-Ange, a en fait été dessiné en 1914 par le commandant Jules Repond. La loggia centrale de la façade est le balcon d'où l'on annonce l'élection d'un nouveau pape et d'où il bénit la ville et le monde à Noël et à Pâques. La fenêtre du pape, d'où il récite l'Angélus le dimanche à midi, est la deuxième en partant de la droite, au dernier étage du palais apostolique." },
+      { titre: "À voir sur le pavé",
+        texte: "Entre l'obélisque et chaque fontaine, un disque de marbre marque les foyers de l'ellipse : de là, les quatre rangées de colonnes se confondent en une seule. Autour de l'obélisque, seize plaques de marbre nomment les vents, de la Tramontane au Sirocco, et une ligne de méridienne tracée en 1817 permet de lire, grâce à l'ombre de la pointe, la position du soleil dans le zodiaque. Sur le socle, les lions de bronze tenant des poires sont l'emblème de Sixte Quint, né Peretti." }
+    ],
+    enfants: [
+      { titre: "Un stade sous la place",
+        texte: "Imagine qu'à la place de cette immense place et de la basilique, il y a deux mille ans, se trouvait un stade où des chars tirés par quatre chevaux tournaient à toute vitesse. L'empereur Néron adorait s'y montrer, et il lui arrivait même de conduire lui-même un char. Au milieu de la piste se dressait un obélisque venu d'Égypte. C'est toujours le même que tu vois au centre de la place aujourd'hui, à quelques centaines de mètres de son ancien emplacement. Il a vu passer les chars, les martyrs et vingt siècles d'histoire sans jamais tomber." },
+      { titre: "Les palmes du marin",
+        texte: "Quand on a déplacé l'obélisque en 1586, un marin a sauvé l'opération en criant de mouiller les cordes, alors que parler était interdit. Le pape, au lieu de le punir, lui a demandé ce qu'il voulait comme récompense. Le marin, Benedetto Bresca, a répondu qu'il aimerait que sa famille fournisse les palmes du dimanche des Rameaux, qui poussaient dans sa ville de Sanremo. Accordé ! Plus de quatre cents ans plus tard, ce sont encore les descendants de Bresca qui livrent chaque printemps les palmes tressées que le pape bénit sur cette place." },
+      { titre: "Les soldats aux costumes rayés",
+        texte: "Les gardes suisses sont les soldats du pape depuis 1506, quand cent cinquante hommes ont marché à pied depuis la Suisse jusqu'à Rome. Leur uniforme bleu, rouge et jaune est cousu de plus de cent cinquante morceaux de tissu, et ils portent une hallebarde, une longue lance à hache, comme il y a cinq siècles. Mais ne t'y trompe pas : ce sont de vrais soldats entraînés, et ils ont aussi des armes modernes bien cachées. Ils jurent de protéger le pape jusqu'à la mort, et l'histoire a prouvé qu'ils le pensaient vraiment." },
+      { titre: "Défi sur la place",
+        texte: "Autour de l'obélisque, trouve les plaques de marbre avec le nom des vents et cherche le Sirocco, le vent chaud qui vient d'Afrique. Sur le socle, repère les lions de bronze : que tiennent-ils dans leurs pattes ? Des poires, l'emblème du pape Sixte Quint. Puis lève les yeux vers le haut de la façade de la basilique et compte les statues géantes : il y en a treize. Sauras-tu dire qui manque ? C'est saint Pierre lui-même : sa statue est en bas, au pied des marches, à gauche." },
+      { titre: "Le quiz",
+        texte: "Question : où se trouvait l'obélisque avant 1586 ? Réponse : au milieu du cirque de Néron, à gauche de la basilique actuelle, à l'endroit où saint Pierre a été martyrisé. Il est resté là pendant mille cinq cents ans, à moitié enfoui, à côté de la vieille basilique, avant qu'on ne le déplace au prix d'un effort colossal." }
+    ]
   },
   {
-    id: 'basilique-saint-pierre',
-    nom: 'Basilique Saint-Pierre',
-    emoji: '⛪',
-    categorie: 'vatican',
+    id: "basilique-saint-pierre",
+    nom: "Basilique Saint-Pierre",
+    categorie: "vatican",
     lat: 41.9022, lon: 12.4539,
     duree: 90,
-    description:
-      "Plus grande église du monde, Saint-Pierre a été bâtie entre 1506 et 1626 au-dessus de la tombe de l'apôtre Pierre, par les plus grands artistes : Bramante, Michel-Ange, Maderno et le Bernin. Sa coupole culmine à 136 mètres, sa nef mesure 186 mètres et elle peut accueillir 60 000 personnes. On y admire la Pietà, sculptée par Michel-Ange à 24 ans, le baldaquin de bronze du Bernin haut de 29 mètres, et la statue de saint Pierre au pied usé. Les grottes vaticanes abritent les tombes des papes, et la montée à la coupole offre le plus beau panorama de Rome.",
-    enfants:
-      "Sur le sol de la nef, des marques de bronze indiquent la taille des autres grandes églises du monde : toutes tiendraient à l'intérieur de Saint-Pierre. Pour grimper à la coupole, il y a 551 marches, ou un ascenseur puis 320 marches, dans des couloirs penchés et étroits entre les deux coques du dôme : là-haut, tu domines toute la ville. Michel-Ange a sculpté la Pietà à 24 ans, et quand il a entendu des visiteurs dire qu'elle était d'un autre artiste, il est revenu la nuit graver son nom sur la ceinture de Marie : c'est la seule œuvre qu'il ait jamais signée. Le pied droit de la statue de saint Pierre est complètement usé par les millions de pèlerins qui le touchent. Sous l'autel, à 20 mètres de profondeur, les archéologues ont retrouvé la tombe de saint Pierre.",
-    conseil: "Épaules et genoux couverts obligatoires, même pour les enfants. Coupole : montée à faire tôt le matin, éviter avec de jeunes enfants claustrophobes. Entrée gratuite, la file de sécurité est commune avec la place."
+    conseil: "Épaules et genoux couverts obligatoires, même pour les enfants. Coupole : montée à faire tôt le matin, éviter avec de jeunes enfants claustrophobes. Entrée gratuite, la file de sécurité est commune avec la place.",
+    adultes: [
+      { titre: "De Constantin à Michel-Ange",
+        texte: "Vers 320, l'empereur Constantin fait bâtir une première basilique sur la tombe présumée de l'apôtre, en nivelant la nécropole et la pente de la colline. Cette église à cinq nefs, longue de plus de cent mètres, vit le couronnement de Charlemagne à Noël de l'an 800 et le premier jubilé, en 1300. Au quinzième siècle, elle menace ruine. Le 18 avril 1506, Jules II pose la première pierre du nouvel édifice dessiné par Bramante, en croix grecque sous une coupole immense. Raphaël, Peruzzi et Antonio da Sangallo se succèdent, puis Michel-Ange, nommé en 1547 à plus de soixante-dix ans, simplifie le plan et conçoit la coupole, achevée en 1590 par Giacomo della Porta. Carlo Maderno allonge la nef et élève la façade entre 1607 et 1614 ; Urbain VIII consacre la basilique le 18 novembre 1626, cent vingt ans après la première pierre. Le financement par la vente d'indulgences avait entre-temps déclenché, en 1517, la révolte de Luther." },
+      { titre: "Des chiffres vertigineux",
+        texte: "La nef intérieure mesure cent quatre-vingt-six mètres de long, la façade cent quatorze mètres de large et quarante-cinq de haut, la coupole quarante-deux mètres de diamètre intérieur et cent trente-six mètres jusqu'à la croix. La surface dépasse un hectare et demi et la basilique peut accueillir soixante mille fidèles. Les lettres de la frise dorée mesurent près d'un mètre et demi, les angelots des bénitiers près de deux mètres : tout est calculé pour que l'œil ne perçoive pas l'échelle réelle. La coupole est double, deux coques emboîtées entre lesquelles grimpe l'escalier des visiteurs, et Della Porta l'a relevée par rapport au projet de Michel-Ange pour la rendre plus élancée." },
+      { titre: "Parcours à l'intérieur",
+        texte: "Sous le portique, la Porte sainte n'est ouverte que les années de jubilé. Dans la nef, le disque de porphyre rouge sur lequel Charlemagne s'agenouilla vient de l'ancienne basilique. À droite, la Pietà, sculptée en 1499 par Michel-Ange, est protégée par une vitre depuis qu'un déséquilibré l'a attaquée au marteau en 1972. Sous la coupole, le baldaquin de bronze du Bernin, élevé entre 1624 et 1633 avec du métal arraché au portique du Panthéon, surmonte la confession et la tombe de l'apôtre. Au fond, la chaire de saint Pierre, encore du Bernin, semble flotter devant une gloire dorée. Presque tous les tableaux sont en réalité des mosaïques, car l'humidité détruisait les toiles. Dans le transept gauche, le tombeau d'Alexandre VII montre un squelette doré brandissant un sablier sous un drapé de marbre rouge." },
+      { titre: "Sous la basilique",
+        texte: "Les grottes vaticanes, entre le sol actuel et celui de la basilique de Constantin, abritent les tombes de nombreux papes, dont Benoît XVI. Plus bas encore, les fouilles menées de 1940 à 1949 sous Pie XII ont mis au jour une rue de mausolées païens et, juste sous l'autel, un petit monument du deuxième siècle entouré de graffitis grecs, dont l'un se lit « Pierre est ici ». En 1968, Paul VI annonça que les ossements retrouvés dans une niche, ceux d'un homme robuste de soixante à soixante-dix ans, étaient vraisemblablement ceux de l'apôtre." },
+      { titre: "La vie de la basilique",
+        texte: "Des dizaines de milliers de visiteurs et de pèlerins la traversent chaque jour. Les sampietrini, les ouvriers de la fabrique de Saint-Pierre, veillent depuis quatre siècles sur ses marbres et ses mosaïques ; pendant des siècles, jusqu'à l'arrivée de l'électricité, ils escaladaient la coupole pour l'illuminer de centaines de lanternes les soirs de fête. Au sommet, après cinq cent cinquante et une marches, la vue s'étend jusqu'à la mer." }
+    ],
+    enfants: [
+      { titre: "La plus grande église du monde",
+        texte: "Imagine un bâtiment si grand que la statue de la Liberté, avec son socle, tiendrait debout sous la coupole. Presque deux terrains de football mis bout à bout tiendraient dans la nef. Les lettres dorées qui courent tout en haut des murs sont aussi grandes que toi, et les bébés anges qui tiennent les bénitiers à l'entrée sont plus grands qu'un adulte. Pourtant, quand tu entres, tout paraît normal : les architectes ont tout agrandi dans les mêmes proportions pour tromper ton œil. Pour comprendre la vraie taille, regarde les gens tout au fond : de vraies fourmis." },
+      { titre: "Le squelette au sablier",
+        texte: "Dans le transept de gauche, cherche un grand drapé de marbre rouge qui semble soulevé par un vent invisible. Dessous, un squelette doré sort la tête et brandit un sablier, pour rappeler au pape Alexandre VII, agenouillé au-dessus, que le temps passe. C'est le Bernin, à quatre-vingts ans, qui a sculpté ce tombeau. Le plus étonnant : sous le drapé se trouve une vraie porte, que le Bernin ne pouvait pas déplacer, alors il l'a transformée en porte de la mort." },
+      { titre: "La chasse au trésor sous terre",
+        texte: "En 1939, en creusant pour aménager la tombe d'un pape, des ouvriers tombent sur un mur ancien. Le pape Pie XII lance alors des fouilles discrètes qui durent dix ans, sous l'autel. On découvre une rue romaine bordée de tombeaux peints, puis un mur couvert de graffitis en grec, dont un qui dit « Pierre est ici ». Dans une cachette du mur, des ossements enveloppés dans un tissu de pourpre et de fil d'or : ceux d'un homme âgé et costaud. Depuis, on pense que c'est vraiment le pêcheur de Galilée qui repose là, sous la coupole." },
+      { titre: "La porte murée",
+        texte: "À droite, sous le portique, une porte de bronze est fermée de l'intérieur par un mur de briques. C'est la Porte sainte : on ne l'ouvre en principe qu'une fois tous les vingt-cinq ans, pour le jubilé. Le pape frappe alors le mur, on le démonte, et des millions de pèlerins passent par cette porte pendant un an. Elle a été ouverte pour la dernière fois en décembre 2024 et refermée en janvier 2026. Dans le mur, les ouvriers cachent un coffret avec les clés et un parchemin, à retrouver à l'ouverture suivante." },
+      { titre: "Défi dans la nef",
+        texte: "Trouve le grand disque rond de pierre rouge sombre, près de l'entrée, sur lequel Charlemagne s'est agenouillé pour être couronné empereur il y a plus de mille deux cents ans. Cherche ensuite, tout au fond, la colombe dorée dans la fenêtre au-dessus de la chaire : elle a l'air petite, mais elle mesure près de deux mètres. Enfin, compte les colonnes torsadées du baldaquin de bronze : il y en a quatre, décorées de branches de laurier et d'abeilles, l'emblème de la famille du pape." },
+      { titre: "Le quiz",
+        texte: "Question : pourquoi presque tous les tableaux de Saint-Pierre ne sont-ils pas de vrais tableaux ? Réponse : parce que l'humidité de l'immense église abîmait les toiles. On les a donc remplacées par des mosaïques, faites de millions de petits morceaux de verre coloré, si fins qu'il faut s'approcher tout près pour s'en apercevoir." }
+    ]
   },
   {
-    id: 'musees-vatican',
-    nom: 'Musées du Vatican et Chapelle Sixtine',
-    emoji: '🎨',
-    categorie: 'vatican',
+    id: "musees-vatican",
+    nom: "Musées du Vatican et Chapelle Sixtine",
+    categorie: "vatican",
     lat: 41.9065, lon: 12.4536,
     duree: 180,
-    description:
-      "Les Musées du Vatican comptent 7 kilomètres de galeries et 20 000 œuvres exposées : momies égyptiennes, statues grecques comme le Laocoon et l'Apollon du Belvédère, la galerie des Cartes géographiques longue de 120 mètres, les Chambres de Raphaël et leur École d'Athènes. Le parcours s'achève dans la chapelle Sixtine, dont Michel-Ange a peint le plafond entre 1508 et 1512, avec la célèbre Création d'Adam, puis le Jugement dernier. C'est ici que les cardinaux, enfermés en conclave, élisent le pape. L'escalier à double hélice de la sortie est l'un des plus photographiés du monde.",
-    enfants:
-      "Michel-Ange a peint les 500 mètres carrés du plafond de la Sixtine pendant quatre ans, debout sur un échafaudage, la tête renversée en arrière, la peinture lui coulant dans les yeux ; il a même écrit un poème pour se plaindre de son mal de dos ! Dans cette salle, les cardinaux s'enferment à clé, « cum clave », pour élire le pape : on brûle les bulletins de vote, et la fumée qui sort de la cheminée est noire si personne n'est élu, blanche quand il y a un nouveau pape. Dans la chapelle, silence total et pas de photos. Cherche aussi la Pigna, une pomme de pin de bronze de 4 mètres qui était une fontaine romaine, la galerie aux 40 cartes géantes de l'Italie, et le Laocoon, une statue retrouvée dans une vigne en 1506 : Michel-Ange est venu la voir sortir de terre.",
-    conseil: "Réservation en ligne indispensable, sur le site officiel uniquement. Fermé le dimanche sauf le dernier du mois (gratuit mais bondé). Demandez le parcours famille ou l'audioguide enfants."
+    conseil: "Réservation en ligne indispensable, sur le site officiel uniquement. Fermé le dimanche sauf le dernier du mois (gratuit mais bondé). Demandez le parcours famille ou l'audioguide enfants.",
+    adultes: [
+      { titre: "Cinq siècles de collections",
+        texte: "Tout commence le 14 janvier 1506, quand un vigneron découvre sur l'Esquilin un groupe de marbre spectaculaire, le Laocoon. Michel-Ange et Giuliano da Sangallo accourent, Jules II l'achète et l'installe dans la cour du Belvédère, à côté de l'Apollon : le premier musée du Vatican est né. Au dix-huitième siècle, Clément XIV et Pie VI créent le musée Pio-Clementino pour les antiques ; Pie VII confie à Canova le musée Chiaramonti ; Grégoire XVI ouvre le musée étrusque en 1837 et le musée égyptien en 1839 ; Pie XI inaugure la pinacothèque en 1932 ; Paul VI ajoute en 1973 l'art religieux moderne. Aujourd'hui, l'ensemble aligne sept kilomètres de salles, quelque vingt mille œuvres exposées sur environ soixante-dix mille, et accueille plus de six millions de visiteurs par an." },
+      { titre: "Le parcours",
+        texte: "Après la pinacothèque, où voisinent la Transfiguration de Raphaël, la Déposition du Caravage et le Saint Jérôme inachevé de Léonard, on traverse la cour de la Pigna, dominée par une pomme de pin de bronze du premier siècle, ancienne fontaine du Champ de Mars, et la sphère de bronze d'Arnaldo Pomodoro. Le musée Pio-Clementino aligne le Laocoon, l'Apollon du Belvédère et le Torse du Belvédère que Michel-Ange disait son maître, puis la salle ronde et sa vasque de porphyre de treize mètres de tour. Viennent ensuite les momies du musée égyptien, la galerie des Candélabres, celle des Tapisseries tissées d'après Raphaël, et la galerie des Cartes géographiques, cent vingt mètres de fresques peintes entre 1580 et 1583 par le mathématicien Ignazio Danti, qui parcourut l'Italie pour dresser ses quarante cartes. Les chambres de Raphaël, décorées de 1508 à 1524, culminent avec l'École d'Athènes, où Platon désigne le ciel et Aristote la terre." },
+      { titre: "La chapelle Sixtine",
+        texte: "Construite entre 1473 et 1481 pour Sixte IV, la chapelle mesure quarante mètres de long, treize de large et vingt de haut, les proportions attribuées au temple de Salomon. Ses murs furent peints dès 1481 par Botticelli, Pérugin, Ghirlandaio et Signorelli. En 1508, Jules II impose à Michel-Ange, qui se disait sculpteur et non peintre, la voûte de près de cinq cents mètres carrés : en quatre ans, seul ou presque, il y peint plus de trois cents figures, de la Création à Noé, entourées de prophètes et de sibylles. Vingt-cinq ans plus tard, Paul III lui commande le Jugement dernier, achevé en 1541. La restauration de 1980 à 1994 a rendu aux fresques des couleurs éclatantes que personne n'imaginait plus. C'est ici que les cardinaux s'enferment pour élire le pape, avec deux poêles dont la fumée annonce le résultat." },
+      { titre: "Petites histoires",
+        texte: "Jules II, impatient, menaçait de faire tomber Michel-Ange de son échafaudage s'il ne terminait pas ; l'artiste répondait qu'il finirait quand il pourrait. Le maître de cérémonies Biagio da Cesena ayant jugé le Jugement dernier indécent, Michel-Ange le peignit en Minos, juge des Enfers, avec des oreilles d'âne ; le pape refusa d'intervenir, disant que son pouvoir ne s'étendait pas à l'enfer. En 1564, Daniele da Volterra fut chargé de couvrir de voiles les nudités, ce qui lui valut le surnom de Braghettone, le culottier. Dans l'École d'Athènes, Raphaël ajouta après coup, sur un morceau d'enduit rapporté, le portrait de Michel-Ange en Héraclite pensif, hommage à la voûte qu'il venait de découvrir. Et le bras droit du Laocoon, restauré tendu au seizième siècle, fut retrouvé plié chez un marbrier romain en 1906, exactement comme Michel-Ange l'avait prédit." }
+    ],
+    enfants: [
+      { titre: "Imagine sept kilomètres de trésors",
+        texte: "Imagine un musée si grand que, si tu t'arrêtais une minute devant chaque œuvre, il te faudrait plusieurs semaines pour tout voir. Sept kilomètres de couloirs, de galeries et de salles remplis de momies, de statues géantes, de cartes peintes et de plafonds dorés. Chaque matin, avant l'ouverture, un homme parcourt tout ce chemin avec un trousseau de près de trois mille clés pour ouvrir environ trois cents portes, en commençant par les plus anciennes. Sa dernière clé, la plus précieuse, ouvre la chapelle Sixtine." },
+      { titre: "Le bras perdu du Laocoon",
+        texte: "En 1506, un paysan qui creusait sa vigne a trouvé une statue extraordinaire : un père et ses deux fils étranglés par des serpents de mer. Il manquait un bras au père. Michel-Ange, venu voir la découverte, affirma que ce bras devait être replié derrière la tête. Les autres artistes n'étaient pas d'accord, et on sculpta un bras tout droit, tendu vers le ciel. Quatre cents ans plus tard, en 1906, un archéologue a retrouvé le vrai bras de marbre chez un tailleur de pierre de Rome : il était plié, exactement comme Michel-Ange l'avait dit !" },
+      { titre: "Vengeance en peinture",
+        texte: "Quand Michel-Ange peignait le Jugement dernier, un homme du pape, Biagio da Cesena, se plaignit que les personnages nus étaient scandaleux. Michel-Ange se vengea : il le peignit en bas à droite, en juge des Enfers, avec des oreilles d'âne et un serpent enroulé autour du corps. Biagio courut se plaindre au pape, qui répondit en riant qu'il n'avait aucun pouvoir en enfer. Michel-Ange s'est aussi caché dans la fresque : cherche saint Barthélemy tenant une peau humaine toute molle, le visage sur cette peau est le sien !" },
+      { titre: "Défi des cartes géantes",
+        texte: "Dans la galerie des Cartes, cherche la botte de l'Italie et retrouve Rome, la Sicile et la Sardaigne : ces cartes ont été peintes il y a plus de quatre cents ans, sans avion ni satellite, par un savant qui a parcouru le pays à cheval. Dans la cour, trouve la pomme de pin géante et les deux paons de bronze qui l'encadrent. Dans la chapelle Sixtine, lève la tête et trouve les deux doigts qui se touchent presque, celui de Dieu et celui d'Adam ; puis, sur le mur du fond, en bas à droite, l'homme aux oreilles d'âne." },
+      { titre: "Le quiz",
+        texte: "Question : Michel-Ange se considérait-il comme un peintre ? Réponse : non ! Il se disait sculpteur et signait ses lettres « Michel-Ange sculpteur ». Il a tout fait pour refuser le plafond de la Sixtine, persuadé que ses rivaux voulaient le voir échouer. Il l'a finalement peint presque seul, en quatre ans, et c'est devenu la peinture la plus célèbre du monde." }
+    ]
   }
 ];
 
-/* Export pour un éventuel usage en module (tests, scripts Node) ; sans effet dans le navigateur. */
+/* Export pour un éventuel usage en module (scripts Node) ; sans effet dans le navigateur. */
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = { MONUMENTS, CATEGORIES };
 }

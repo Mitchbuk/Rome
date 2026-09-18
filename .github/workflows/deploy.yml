@@ -46,7 +46,7 @@ jobs:
       - name: Préparer le site
         run: |
           mkdir -p _site
-          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'README.md' ./ _site/
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'README.md' --exclude 'content' --exclude 'scripts' ./ _site/
 
       - name: Configurer GitHub Pages
         uses: actions/configure-pages@v5

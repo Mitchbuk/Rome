@@ -4,13 +4,13 @@
    Modules (dans l'ordre) :
      1. Constantes et état global
      2. Utilitaires (distance, formats, HTML)
-     3. Mémoire "déjà vu" (localStorage)
+     3. Mémoire "déjà vu" et préférences (localStorage)
      4. Liste "Autour de moi" (tri temps réel par distance + filtres)
-     5. Carte Leaflet (marqueurs, point bleu GPS, mini-fiche)
-     6. Fiche détail (bottom sheet) et actions
-     7. Synthèse vocale (Web Speech API, hors-ligne)
+     5. Carte Leaflet (marqueurs photo, point bleu GPS, mini-fiche)
+     6. Fiche détail (photo, sélecteur Adultes / Enfants, sections)
+     7. Audio : lecteur MP3 (voix neuronales) avec secours synthèse vocale
      8. Géolocalisation
-     9. Préchargement des tuiles pour le mode hors-ligne
+     9. Hors-ligne : tuiles de carte, audios et photos
     10. Onglets, toast, Service Worker, initialisation
    Tout est en JavaScript "vanilla", sans dépendance autre que Leaflet.
    ===================================================================== */
@@ -24,8 +24,9 @@
 
   /** URL des tuiles OpenStreetMap (sans sous-domaines, conformément à la politique OSM). */
   const TILE_URL = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
-  /** Nom du cache des tuiles : DOIT être identique à celui de sw.js. */
+  /** Noms des caches : DOIVENT être identiques à ceux de sw.js. */
   const TILE_CACHE = 'rome-tiles-v1';
+  const MEDIA_CACHE = 'rome-media-v1';
   /** Centre par défaut (Piazza Venezia) et zoom initial. */
   const ROME_CENTER = [41.8955, 12.4823];
   const ZOOM_INITIAL = 14;
@@ -33,9 +34,11 @@
   const PRELOAD_BOUNDS = { north: 41.925, south: 41.850, west: 12.430, east: 12.535 };
   const PRELOAD_ZOOMS = [12, 13, 14, 15, 16];
   const TAILLE_TUILE_KO = 25; // estimation moyenne pour l'affichage
+  const SAUT_SECONDES = 15;   // boutons ⏪ / ⏩ du lecteur
 
   const LS_VISITED = 'rome.visited';
   const LS_TAB = 'rome.tab';
+  const LS_PUBLIC = 'rome.public';
 
   const state = {
     position: null,        // { lat, lon } ou null
@@ -44,20 +47,27 @@
     userMovedMap: false,   // l'utilisateur a déplacé la carte : ne plus recentrer automatiquement
     filter: 'tous',        // filtre de catégorie actif
     visited: new Set(),    // identifiants des lieux marqués "vu"
+    public: 'adultes',     // guide sélectionné : 'adultes' | 'enfants'
     current: null,         // lieu affiché dans la fiche
     miniLieu: null,        // lieu affiché dans la mini-fiche de la carte
     map: null,
     markers: {},           // id -> L.marker
     userMarker: null,
     accuracyCircle: null,
-    // synthèse vocale
-    speaking: false,
+    credits: {},           // img/credits.json
+    audioManifest: {},     // audio/manifest.json
+    // lecture audio
+    audioMode: null,       // 'mp3' | 'tts' | null
+    audioLieu: null,       // lieu en cours de lecture
+    audioPublic: null,     // guide en cours de lecture
+    speaking: false,       // (mode tts) lecture en cours
     paused: false,
     queue: [],
     queueIndex: 0,
     wakeLock: null,
-    // préchargement
+    // téléchargements
     preloading: false,
+    mediaLoading: false,
     // rendu de liste (throttle)
     listTimer: null,
     lastListRender: 0,
@@ -107,6 +117,13 @@
     return r ? `${h} h ${String(r).padStart(2, '0')}` : `${h} h`;
   }
 
+  /** 125 s -> "2:05". */
+  function formatTemps(s) {
+    if (!isFinite(s) || s < 0) s = 0;
+    const m = Math.floor(s / 60);
+    return `${m}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  }
+
   /** Échappe le HTML pour injecter du texte en toute sécurité. */
   function escapeHtml(s) {
     return String(s).replace(/[&<>"']/g, (c) => (
@@ -124,30 +141,33 @@
     return MONUMENTS.find((m) => m.id === id) || null;
   }
 
+  const thumbUrl = (m) => `./img/${m.id}-thumb.jpg`;
+  const photoUrl = (m) => `./img/${m.id}.jpg`;
+  const audioNom = (m, pub) => `${m.id}-${pub}.mp3`;
+  const audioUrl = (m, pub) => `./audio/${audioNom(m, pub)}`;
+  const audioDispo = (m, pub) => !!state.audioManifest[audioNom(m, pub)];
+
   /* ===================================================================
-     3. MÉMOIRE "DÉJÀ VU"
+     3. MÉMOIRE "DÉJÀ VU" ET PRÉFÉRENCES
      =================================================================== */
 
-  function chargerVisites() {
-    try {
-      const raw = localStorage.getItem(LS_VISITED);
-      if (raw) state.visited = new Set(JSON.parse(raw));
-    } catch (e) { /* stockage indisponible (navigation privée) : on ignore */ }
+  function lsGet(cle, defaut) {
+    try { const v = localStorage.getItem(cle); return v == null ? defaut : v; } catch (e) { return defaut; }
+  }
+  function lsSet(cle, valeur) {
+    try { localStorage.setItem(cle, valeur); } catch (e) { /* stockage indisponible : on ignore */ }
   }
 
-  function sauverVisites() {
-    try {
-      localStorage.setItem(LS_VISITED, JSON.stringify([...state.visited]));
-    } catch (e) { /* ignore */ }
+  function chargerVisites() {
+    try { state.visited = new Set(JSON.parse(lsGet(LS_VISITED, '[]'))); } catch (e) { /* ignore */ }
   }
 
   function basculerVisite(id) {
     if (state.visited.has(id)) state.visited.delete(id);
     else state.visited.add(id);
-    sauverVisites();
-    // Met à jour le marqueur, la liste et le bouton de la fiche
+    lsSet(LS_VISITED, JSON.stringify([...state.visited]));
     const m = lieuParId(id);
-    if (m && state.markers[id]) state.markers[id].setIcon(makeIcon(m));
+    if (m && state.markers[id]) state.markers[id].setIcon(makeIcon(m, state.miniLieu === m));
     renderListe();
     updateVisitedBtn();
   }
@@ -173,7 +193,7 @@
       return `
         <li>
           <button class="lieu${vu ? ' is-visited' : ''}" type="button" data-id="${m.id}">
-            <span class="lieu-emoji" aria-hidden="true">${m.emoji}</span>
+            <img class="lieu-photo" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">
             <span class="lieu-texte">
               <span class="lieu-nom">${escapeHtml(m.nom)}</span>
               <span class="lieu-meta">${cat.label} · ${formatDuree(m.duree)}${vu ? ' · ✓ vu' : ''}</span>
@@ -210,16 +230,16 @@
      5. CARTE LEAFLET
      =================================================================== */
 
-  /** Icône HTML d'un lieu (emoji dans un cercle). */
+  /** Icône d'un lieu : sa photo dans un cercle. */
   function makeIcon(m, selected) {
-    const classes = ['marker-lieu'];
+    const classes = ['marker-photo'];
     if (state.visited.has(m.id)) classes.push('is-visited');
     if (selected) classes.push('is-selected');
     return L.divIcon({
       className: classes.join(' '),
-      html: `<span aria-hidden="true">${m.emoji}</span>`,
-      iconSize: [40, 40],
-      iconAnchor: [20, 20]
+      html: `<img src="${thumbUrl(m)}" alt="" draggable="false">`,
+      iconSize: [46, 46],
+      iconAnchor: [23, 23]
     });
   }
 
@@ -267,7 +287,6 @@
         interactive: false,
         zIndexOffset: 1000
       }).addTo(state.map);
-      // Premier point GPS : on centre la carte si l'utilisateur ne l'a pas déjà déplacée
       if (!state.userMovedMap) state.map.setView(ll, 15);
     } else {
       state.userMarker.setLatLng(ll);
@@ -292,7 +311,7 @@
     }
     state.miniLieu = m;
     state.markers[m.id].setIcon(makeIcon(m, true));
-    el.miniEmoji.textContent = m.emoji;
+    el.miniImg.src = thumbUrl(m);
     el.miniNom.textContent = m.nom;
     updateMiniMeta();
     el.mapMini.classList.add('is-visible');
@@ -324,13 +343,42 @@
   function openSheet(id) {
     const m = lieuParId(id);
     if (!m) return;
-    stopSpeech();
+    // On garde la lecture en cours si c'est le même lieu (retour sur la fiche), sinon on arrête
+    if (state.audioLieu && state.audioLieu.id !== id) stopAudio();
     state.current = m;
+    renderFiche();
+    el.sheetBody.scrollTop = 0;
+    updateVisitedBtn();
+    updateSegments();
+    updateAudioBtn();
+    el.sheet.classList.add('is-open');
+    el.sheet.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeSheet() {
+    el.sheet.classList.remove('is-open');
+    el.sheet.setAttribute('aria-hidden', 'true');
+    state.current = null;
+    // La lecture MP3 continue en arrière-plan (pratique en marchant) ; la synthèse vocale s'arrête
+    if (state.audioMode === 'tts') stopAudio();
+  }
+
+  /** Construit le HTML de la fiche pour le lieu courant et le guide sélectionné. */
+  function renderFiche() {
+    const m = state.current;
+    if (!m) return;
     const cat = CATEGORIES[m.categorie];
     const d = distanceVers(m);
+    const credit = state.credits[m.id];
+    const sections = m[state.public] || [];
+    const estEnfants = state.public === 'enfants';
+
     el.sheetBody.innerHTML = `
+      <figure class="fiche-hero">
+        <img src="${photoUrl(m)}" alt="${escapeHtml(m.nom)}" decoding="async">
+        ${credit ? `<figcaption class="fiche-credit">Photo : ${escapeHtml(credit.auteur)} · ${escapeHtml(credit.licence)} · Wikimedia Commons</figcaption>` : ''}
+      </figure>
       <header class="fiche-head">
-        <span class="fiche-emoji" aria-hidden="true">${m.emoji}</span>
         <h2 id="fiche-titre">${escapeHtml(m.nom)}</h2>
       </header>
       <div class="fiche-meta">
@@ -338,30 +386,39 @@
         <span class="meta meta-dist" id="fiche-dist">${d != null ? `📍 ${formatDistance(d)} · ${formatMarche(d)}` : '📍 distance inconnue'}</span>
         <span class="meta">${cat.emoji} ${cat.label}</span>
       </div>
-      <section class="fiche-section">
-        <h3>L'essentiel</h3>
-        <p>${escapeHtml(m.description)}</p>
-      </section>
-      <section class="fiche-section fiche-enfants">
-        <h3>🧒 Pour les enfants (9–12 ans)</h3>
-        <p>${escapeHtml(m.enfants)}</p>
-      </section>
+      <p class="fiche-public">${estEnfants ? '🧒 Guide des enfants (9–12 ans)' : '👨‍👩‍👧 Guide des adultes'}</p>
+      ${sections.map((s) => `
+        <section class="fiche-section ${estEnfants ? 'is-enfants' : 'is-adultes'}">
+          <h3>${escapeHtml(s.titre)}</h3>
+          ${s.texte.split(/\n+/).map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
+        </section>`).join('')}
       <section class="fiche-section fiche-conseil">
         <h3>💡 Conseil pratique</h3>
         <p>${escapeHtml(m.conseil)}</p>
       </section>`;
-    el.sheetBody.scrollTop = 0;
-    updateVisitedBtn();
-    updateAudioBtn();
-    el.sheet.classList.add('is-open');
-    el.sheet.setAttribute('aria-hidden', 'false');
   }
 
-  function closeSheet() {
-    stopSpeech();
-    el.sheet.classList.remove('is-open');
-    el.sheet.setAttribute('aria-hidden', 'true');
-    state.current = null;
+  /** Change le guide (Adultes / Enfants) : texte affiché ET audio à écouter. */
+  function choisirPublic(pub) {
+    if (pub === state.public) return;
+    state.public = pub;
+    lsSet(LS_PUBLIC, pub);
+    updateSegments();
+    if (state.current) {
+      const top = el.sheetBody.scrollTop;
+      renderFiche();
+      // On reste à la hauteur de la photo pour ne pas perdre le contexte
+      el.sheetBody.scrollTop = Math.min(top, 0);
+    }
+    updateAudioBtn();
+  }
+
+  function updateSegments() {
+    [el.segAdultes, el.segEnfants].forEach((b) => {
+      const on = b.dataset.public === state.public;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-checked', String(on));
+    });
   }
 
   function updateVisitedBtn() {
@@ -383,8 +440,7 @@
   function ouvrirItineraire() {
     if (!state.current) return;
     const { lat, lon, nom } = state.current;
-    const url = `https://maps.apple.com/?daddr=${lat},${lon}&dirflg=w&q=${encodeURIComponent(nom)}`;
-    window.open(url, '_blank', 'noopener');
+    window.open(`https://maps.apple.com/?daddr=${lat},${lon}&dirflg=w&q=${encodeURIComponent(nom)}`, '_blank', 'noopener');
   }
 
   function voirSurCarte() {
@@ -392,7 +448,7 @@
     const m = state.current;
     closeSheet();
     showTab('carte');
-    state.userMovedMap = true; // ne pas recentrer sur le GPS ensuite
+    state.userMovedMap = true;
     setTimeout(() => {
       state.map.invalidateSize();
       state.map.setView([m.lat, m.lon], 17, { animate: false });
@@ -401,13 +457,117 @@
   }
 
   /* ===================================================================
-     7. SYNTHÈSE VOCALE (Web Speech API — 100 % locale, sans réseau)
+     7. AUDIO — lecteur MP3 (voix neuronales pré-générées) + secours TTS
+     -------------------------------------------------------------------
+     Priorité : fichier audio/<id>-<public>.mp3 (naturel, généré sur PC).
+     Si le fichier n'est pas disponible (pas encore généré, ou hors-ligne
+     sans l'avoir téléchargé), on bascule sur la synthèse vocale de l'iPhone.
      =================================================================== */
+
+  const player = new Audio();
+  player.preload = 'none';
 
   const synth = 'speechSynthesis' in window ? window.speechSynthesis : null;
   let voixFr = null;
 
-  /** Choisit la meilleure voix française disponible sur l'appareil. */
+  /** Texte complet d'un guide (pour la synthèse vocale de secours). */
+  function texteGuide(m, pub) {
+    const sections = m[pub] || [];
+    return [m.nom + '.'].concat(sections.map((s) => `${s.titre}. ${s.texte}`)).join(' ');
+  }
+
+  /** Le lecteur joue-t-il actuellement (MP3 ou TTS) ? */
+  const enLecture = () => state.audioMode === 'mp3' ? (!player.paused && !player.ended) : (state.speaking && !state.paused);
+  const enPause = () => state.audioMode === 'mp3' ? (player.paused && player.currentTime > 0 && !player.ended) : (state.speaking && state.paused);
+
+  /** Bouton principal : lance, met en pause ou reprend la lecture du guide sélectionné. */
+  function basculerLecture() {
+    if (!state.current) return;
+    const m = state.current;
+    const memeLecture = state.audioLieu === m && state.audioPublic === state.public && state.audioMode;
+
+    if (memeLecture && enLecture()) {            // -> pause
+      if (state.audioMode === 'mp3') player.pause();
+      else { synth.pause(); state.paused = true; }
+      updateAudioBtn();
+      return;
+    }
+    if (memeLecture && enPause()) {              // -> reprise
+      if (state.audioMode === 'mp3') player.play().catch(() => {});
+      else { synth.resume(); state.paused = false; }
+      updateAudioBtn();
+      return;
+    }
+
+    // Nouvelle lecture
+    stopAudio();
+    state.audioLieu = m;
+    state.audioPublic = state.public;
+    if (audioDispo(m, state.public)) lireMp3(m, state.public);
+    else lireTts(m, state.public);
+  }
+
+  /* ---- Mode MP3 ---- */
+  function lireMp3(m, pub) {
+    state.audioMode = 'mp3';
+    player.src = audioUrl(m, pub);
+    player.currentTime = 0;
+    // play() est appelé dans le geste utilisateur : indispensable sur iOS
+    const p = player.play();
+    if (p && p.catch) p.catch((err) => {
+      console.warn('Lecture MP3 impossible, secours synthèse vocale :', err && err.name);
+      basculerVersTts(m, pub);
+    });
+    majMediaSession(m, pub);
+    demanderWakeLock();
+    updateAudioBtn();
+  }
+
+  function basculerVersTts(m, pub) {
+    if (state.audioMode !== 'mp3' || state.audioLieu !== m) return;
+    player.removeAttribute('src');
+    player.load();
+    toast('Audio non téléchargé : lecture avec la voix du téléphone');
+    lireTts(m, pub);
+  }
+
+  player.addEventListener('error', () => {
+    if (state.audioMode === 'mp3' && state.audioLieu) basculerVersTts(state.audioLieu, state.audioPublic);
+  });
+  player.addEventListener('timeupdate', () => {
+    if (state.audioMode !== 'mp3') return;
+    const p = player.duration ? player.currentTime / player.duration : 0;
+    el.audioFill.style.transform = `scaleX(${p})`;
+    el.audioProgress.setAttribute('aria-valuenow', String(Math.round(p * 100)));
+    el.playerTime.textContent = `${formatTemps(player.currentTime)} / ${formatTemps(player.duration)}`;
+  });
+  player.addEventListener('play', updateAudioBtn);
+  player.addEventListener('pause', updateAudioBtn);
+  player.addEventListener('ended', () => { stopAudio(); });
+
+  function sauter(delta) {
+    if (state.audioMode !== 'mp3' || !player.duration) return;
+    player.currentTime = Math.max(0, Math.min(player.duration, player.currentTime + delta));
+  }
+
+  /** Contrôles sur l'écran verrouillé / centre de contrôle iOS. */
+  function majMediaSession(m, pub) {
+    if (!('mediaSession' in navigator)) return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: m.nom,
+        artist: pub === 'enfants' ? 'Guide des enfants' : 'Guide des adultes',
+        album: 'Rome en famille',
+        artwork: [{ src: new URL(thumbUrl(m), location.href).href, sizes: '240x240', type: 'image/jpeg' }]
+      });
+      navigator.mediaSession.setActionHandler('play', () => player.play());
+      navigator.mediaSession.setActionHandler('pause', () => player.pause());
+      navigator.mediaSession.setActionHandler('seekbackward', () => sauter(-SAUT_SECONDES));
+      navigator.mediaSession.setActionHandler('seekforward', () => sauter(SAUT_SECONDES));
+    } catch (e) { /* non supporté */ }
+  }
+
+  /* ---- Mode synthèse vocale (secours) ---- */
   function choisirVoix() {
     if (!synth) return;
     const voices = synth.getVoices();
@@ -428,19 +588,18 @@
     return t
       .replace(/av\.\s?J\.-C\./g, 'avant Jésus-Christ')
       .replace(/apr\.\s?J\.-C\./g, 'après Jésus-Christ')
-      .replace(/(\d)\s(\d{3})\b/g, '$1$2')          // "1 462" -> "1462"
+      .replace(/(\d)\s(\d{3})\b/g, '$1$2')
       .replace(/(\d)\s?km\b/g, '$1 kilomètres')
       .replace(/(\d)\s?m\b(?![²³])/g, '$1 mètres')
       .replace(/(\d)\s?m²/g, '$1 mètres carrés')
       .replace(/(\d)\s?h\s?(\d{2})\b/g, '$1 heures $2')
-      .replace(/(\d)\s?h\b/g, '$1 heures')
-      .replace(/\bJ\.-C\./g, 'Jésus-Christ');
+      .replace(/(\d)\s?h\b/g, '$1 heures');
   }
 
   /** Découpe le texte en morceaux de ~220 caractères, coupés en fin de phrase. */
-  function construireMorceaux(m) {
-    const texte = texteParle(`${m.nom}. ${m.description} Et maintenant, la partie pour les enfants. ${m.enfants}`);
-    const phrases = texte.match(/[^.!?…]+[.!?…]+[»"”)]?\s*|[^.!?…]+$/g) || [texte];
+  function construireMorceaux(texte) {
+    const t = texteParle(texte);
+    const phrases = t.match(/[^.!?…]+[.!?…]+[»"”)]?\s*|[^.!?…]+$/g) || [t];
     const morceaux = [];
     let cur = '';
     for (const p of phrases) {
@@ -451,92 +610,89 @@
     return morceaux;
   }
 
-  function updateAudioBtn() {
-    if (!synth) {
-      el.btnAudioLabel.textContent = 'Audio indisponible';
-      el.btnAudio.disabled = true;
-      return;
-    }
-    el.btnAudio.disabled = false;
-    if (state.speaking && !state.paused) {
-      el.btnAudioLabel.textContent = 'Pause';
-      el.btnAudio.querySelector('.btn-audio-icon').textContent = '⏸';
-    } else if (state.speaking && state.paused) {
-      el.btnAudioLabel.textContent = 'Reprendre';
-      el.btnAudio.querySelector('.btn-audio-icon').textContent = '▶️';
-    } else {
-      el.btnAudioLabel.textContent = 'Écouter le guide';
-      el.btnAudio.querySelector('.btn-audio-icon').textContent = '🔊';
-    }
-    el.btnAudio.classList.toggle('is-playing', state.speaking);
-    el.btnStop.hidden = !state.speaking;
-    if (!state.speaking) el.audioFill.style.transform = 'scaleX(0)';
-  }
-
-  /** Bouton principal : lance, met en pause ou reprend la lecture. */
-  function basculerLecture() {
-    if (!synth) { toast("La synthèse vocale n'est pas disponible sur cet appareil."); return; }
-    if (!state.current) return;
-
-    if (state.speaking && !state.paused) {
-      synth.pause();
-      state.paused = true;
-      updateAudioBtn();
-      return;
-    }
-    if (state.speaking && state.paused) {
-      synth.resume();
-      state.paused = false;
-      updateAudioBtn();
-      return;
-    }
-    // Démarrage
+  function lireTts(m, pub) {
+    if (!synth) { toast("Aucune voix disponible sur cet appareil."); stopAudio(); return; }
+    state.audioMode = 'tts';
     choisirVoix();
     synth.cancel();
-    state.queue = construireMorceaux(state.current);
+    state.queue = construireMorceaux(texteGuide(m, pub));
     state.queueIndex = 0;
     state.speaking = true;
     state.paused = false;
-    updateAudioBtn();
     demanderWakeLock();
-    // Petit délai : Safari iOS ignore parfois un speak() immédiatement après cancel()
-    setTimeout(lireSuivant, 80);
+    updateAudioBtn();
+    setTimeout(lireSuivant, 80); // Safari iOS ignore parfois un speak() immédiatement après cancel()
   }
 
   function lireSuivant() {
     if (!state.speaking) return;
-    if (state.queueIndex >= state.queue.length) { stopSpeech(); return; }
-
-    const texte = state.queue[state.queueIndex++];
-    const u = new SpeechSynthesisUtterance(texte);
+    if (state.queueIndex >= state.queue.length) { stopAudio(); return; }
+    const u = new SpeechSynthesisUtterance(state.queue[state.queueIndex++]);
     u.lang = 'fr-FR';
     if (voixFr) u.voice = voixFr;
     u.rate = 0.95;
-    u.pitch = 1;
-    u.volume = 1;
     u.onstart = () => {
       el.audioFill.style.transform = `scaleX(${(state.queueIndex - 1) / state.queue.length})`;
+      el.playerTime.textContent = `Voix du téléphone · ${state.queueIndex} / ${state.queue.length}`;
     };
     u.onend = () => { lireSuivant(); };
     u.onerror = (e) => {
-      // "interrupted" / "canceled" surviennent après un cancel() volontaire : on ignore
       if (e.error === 'interrupted' || e.error === 'canceled') return;
       console.warn('Erreur de synthèse vocale :', e.error);
-      stopSpeech();
+      stopAudio();
     };
     synth.speak(u);
   }
 
-  function stopSpeech() {
-    // L'état est réinitialisé AVANT cancel() : sur certains navigateurs, cancel()
-    // déclenche onend de façon synchrone, ce qui relancerait la lecture.
+  /* ---- Commun ---- */
+  function stopAudio() {
+    // L'état est réinitialisé AVANT cancel()/pause() : certains navigateurs déclenchent
+    // les événements de fin de façon synchrone, ce qui relancerait la lecture.
     state.speaking = false;
     state.paused = false;
     state.queue = [];
     state.queueIndex = 0;
+    const mode = state.audioMode;
+    state.audioMode = null;
+    state.audioLieu = null;
+    state.audioPublic = null;
+    if (mode === 'mp3') {
+      try { player.pause(); player.removeAttribute('src'); player.load(); } catch (e) { /* ignore */ }
+    }
     if (synth) { try { synth.cancel(); } catch (e) { /* ignore */ } }
     libererWakeLock();
     if (el.btnAudio) updateAudioBtn();
+  }
+
+  function updateAudioBtn() {
+    if (!el.btnAudio) return;
+    const m = state.current;
+    const label = state.public === 'enfants' ? 'Enfants' : 'Adultes';
+    const memeLecture = m && state.audioLieu === m && state.audioPublic === state.public && state.audioMode;
+    const icone = el.btnAudio.querySelector('.btn-audio-icon');
+
+    if (memeLecture && enLecture()) {
+      icone.textContent = '⏸';
+      el.btnAudioLabel.textContent = 'Pause';
+    } else if (memeLecture && enPause()) {
+      icone.textContent = '▶️';
+      el.btnAudioLabel.textContent = 'Reprendre';
+    } else {
+      icone.textContent = '🔊';
+      el.btnAudioLabel.textContent = `Écouter · ${label}`;
+    }
+    el.btnAudio.classList.toggle('is-playing', !!memeLecture);
+    el.btnAudio.classList.toggle('is-fallback', !!(m && !audioDispo(m, state.public)));
+    el.btnStop.hidden = !memeLecture;
+    const mp3 = !!memeLecture && state.audioMode === 'mp3';
+    el.btnBack.hidden = !mp3;
+    el.btnFwd.hidden = !mp3;
+    if (!memeLecture) {
+      el.audioFill.style.transform = 'scaleX(0)';
+      el.playerTime.textContent = m && !audioDispo(m, state.public)
+        ? 'Voix du téléphone (audio non généré)'
+        : (m && state.audioManifest[audioNom(m, state.public)] ? `Durée : ${formatTemps(state.audioManifest[audioNom(m, state.public)].duree)}` : '');
+    }
   }
 
   /** Garde l'écran allumé pendant la lecture (iOS 16.4+), sans bloquer si non supporté. */
@@ -548,7 +704,6 @@
       }
     } catch (e) { /* refusé ou non supporté */ }
   }
-
   function libererWakeLock() {
     if (state.wakeLock) { state.wakeLock.release().catch(() => {}); state.wakeLock = null; }
   }
@@ -558,8 +713,7 @@
      =================================================================== */
 
   function setGps(texte) {
-    const prefix = navigator.onLine ? '' : 'Hors-ligne · ';
-    el.gps.textContent = prefix + texte;
+    el.gps.textContent = (navigator.onLine ? '' : 'Hors-ligne · ') + texte;
   }
 
   function demarrerGeoloc() {
@@ -567,9 +721,7 @@
     if (state.watchId != null) return;
     setGps('Recherche du signal GPS…');
     state.watchId = navigator.geolocation.watchPosition(onPosition, onGeoError, {
-      enableHighAccuracy: true,
-      maximumAge: 5000,
-      timeout: 20000
+      enableHighAccuracy: true, maximumAge: 5000, timeout: 20000
     });
   }
 
@@ -615,7 +767,7 @@
   }
 
   /* ===================================================================
-     9. PRÉCHARGEMENT DES TUILES (carte hors-ligne)
+     9. HORS-LIGNE : tuiles de carte, audios et photos
      =================================================================== */
 
   function lon2tile(lon, z) { return Math.floor(((lon + 180) / 360) * Math.pow(2, z)); }
@@ -640,54 +792,105 @@
     return urls;
   }
 
-  function afficherProgression(fait, total) {
-    el.preload.hidden = false;
-    el.preloadFill.style.transform = `scaleX(${total ? fait / total : 0})`;
-    el.preloadLabel.textContent = `Carte hors-ligne : ${fait} / ${total} tuiles`;
-  }
-
-  async function prechargerTuiles() {
-    if (state.preloading) return;
-    if (!('caches' in window)) { toast('Le stockage hors-ligne n\'est pas disponible ici.'); return; }
-    if (!navigator.onLine) { toast('Connectez-vous à internet pour télécharger la carte.'); return; }
-
-    const urls = listeTuiles();
-    const mo = Math.round((urls.length * TAILLE_TUILE_KO) / 1024);
-    const ok = window.confirm(
-      `Télécharger la carte du centre de Rome et du Vatican pour le mode hors-ligne ?\n\n` +
-      `${urls.length} tuiles, environ ${mo} Mo. À faire une seule fois, de préférence en Wi-Fi.`
-    );
-    if (!ok) return;
-
-    state.preloading = true;
-    el.btnPreload.classList.add('is-busy');
-    const cache = await caches.open(TILE_CACHE);
+  /**
+   * Télécharge une liste d'URLs dans un cache (4 en parallèle), en sautant celles
+   * déjà présentes. `onProgress(fait, total)` est appelé régulièrement.
+   */
+  async function remplirCache(nomCache, urls, onProgress, options) {
+    const cache = await caches.open(nomCache);
     let fait = 0, erreurs = 0;
-    afficherProgression(0, urls.length);
-
-    // 4 téléchargements en parallèle : rapide mais respectueux des serveurs OSM
     const file = urls.slice();
     const worker = async () => {
       while (file.length) {
         const url = file.shift();
         try {
-          const deja = await cache.match(url);
-          if (!deja) {
-            const res = await fetch(url, { mode: 'cors' });
+          if (!(await cache.match(url))) {
+            const res = await fetch(url, options || {});
             if (res.ok) await cache.put(url, res);
             else erreurs++;
           }
         } catch (e) { erreurs++; }
         fait++;
-        if (fait % 5 === 0 || fait === urls.length) afficherProgression(fait, urls.length);
+        if (fait % 3 === 0 || fait === urls.length) onProgress(fait, urls.length);
       }
     };
     await Promise.all([worker(), worker(), worker(), worker()]);
+    return erreurs;
+  }
 
+  async function prechargerTuiles() {
+    if (state.preloading) return;
+    if (!('caches' in window)) { toast("Le stockage hors-ligne n'est pas disponible ici."); return; }
+    if (!navigator.onLine) { toast('Connectez-vous à internet pour télécharger la carte.'); return; }
+
+    const urls = listeTuiles();
+    const mo = Math.round((urls.length * TAILLE_TUILE_KO) / 1024);
+    if (!window.confirm(`Télécharger la carte du centre de Rome et du Vatican pour le mode hors-ligne ?\n\n${urls.length} tuiles, environ ${mo} Mo. À faire une seule fois, de préférence en Wi-Fi.`)) return;
+
+    state.preloading = true;
+    el.btnPreload.classList.add('is-busy');
+    el.preload.hidden = false;
+    const erreurs = await remplirCache(TILE_CACHE, urls, (fait, total) => {
+      el.preloadFill.style.transform = `scaleX(${fait / total})`;
+      el.preloadLabel.textContent = `Carte hors-ligne : ${fait} / ${total} tuiles`;
+    }, { mode: 'cors' });
     state.preloading = false;
     el.btnPreload.classList.remove('is-busy');
     el.preload.hidden = true;
     toast(erreurs ? `Carte téléchargée (${erreurs} tuiles manquantes, réessayez plus tard)` : 'Carte du centre de Rome disponible hors-ligne ✓');
+  }
+
+  /** Télécharge tous les MP3 et toutes les photos dans le cache média. */
+  async function telechargerMedias() {
+    if (state.mediaLoading) return;
+    if (!('caches' in window)) { toast("Le stockage hors-ligne n'est pas disponible ici."); return; }
+    if (!navigator.onLine) { toast('Connectez-vous à internet pour télécharger les audios.'); return; }
+
+    const audios = Object.keys(state.audioManifest).map((f) => `./audio/${f}`);
+    const photos = MONUMENTS.flatMap((m) => [photoUrl(m), thumbUrl(m)]);
+    const urls = audios.concat(photos).map((u) => new URL(u, location.href).href);
+    const mo = Math.round(Object.values(state.audioManifest).reduce((s, a) => s + (a.taille || 0), 0) / 1024 / 1024 + 5);
+    if (!window.confirm(`Télécharger ${audios.length} audios et ${photos.length} photos pour le mode hors-ligne ?\n\nEnviron ${mo} Mo, à faire une seule fois en Wi-Fi.`)) return;
+
+    state.mediaLoading = true;
+    el.btnMedia.disabled = true;
+    el.mediaProgress.hidden = false;
+    const erreurs = await remplirCache(MEDIA_CACHE, urls, (fait, total) => {
+      el.mediaFill.style.transform = `scaleX(${fait / total})`;
+      el.mediaLabel.textContent = `${fait} / ${total} fichiers`;
+    });
+    state.mediaLoading = false;
+    el.btnMedia.disabled = false;
+    el.mediaProgress.hidden = true;
+    el.mediaStatus.textContent = erreurs ? `Terminé avec ${erreurs} fichier(s) manquant(s), relancez plus tard.` : '✓ Audios et photos disponibles hors-ligne';
+    verifierMediasHorsLigne();
+  }
+
+  /** Affiche l'état du cache média (combien d'audios déjà disponibles hors-ligne). */
+  async function verifierMediasHorsLigne() {
+    if (!('caches' in window)) return;
+    try {
+      const cache = await caches.open(MEDIA_CACHE);
+      const cles = await cache.keys();
+      const nbAudio = cles.filter((r) => r.url.includes('/audio/')).length;
+      const total = Object.keys(state.audioManifest).length;
+      if (total && nbAudio >= total) el.mediaStatus.textContent = `✓ ${nbAudio} audios disponibles hors-ligne`;
+      else if (nbAudio) el.mediaStatus.textContent = `${nbAudio} / ${total} audios hors-ligne (téléchargement incomplet)`;
+    } catch (e) { /* ignore */ }
+  }
+
+  /** Charge les index (crédits photos, audios disponibles). */
+  async function chargerIndex() {
+    try {
+      const r = await fetch('./img/credits.json');
+      if (r.ok) state.credits = await r.json();
+    } catch (e) { /* pas bloquant */ }
+    try {
+      const r = await fetch('./audio/manifest.json');
+      if (r.ok) state.audioManifest = await r.json();
+    } catch (e) { /* pas bloquant */ }
+    updateAudioBtn();
+    verifierMediasHorsLigne();
   }
 
   /* ===================================================================
@@ -697,11 +900,8 @@
   function showTab(name) {
     document.querySelectorAll('.view').forEach((v) => v.classList.toggle('is-active', v.dataset.view === name));
     document.querySelectorAll('.tab[data-tab]').forEach((t) => t.classList.toggle('is-active', t.dataset.tab === name));
-    try { localStorage.setItem(LS_TAB, name); } catch (e) { /* ignore */ }
-    if (name === 'carte' && state.map) {
-      // Leaflet doit recalculer sa taille une fois la vue visible
-      setTimeout(() => state.map.invalidateSize(), 250);
-    }
+    lsSet(LS_TAB, name);
+    if (name === 'carte' && state.map) setTimeout(() => state.map.invalidateSize(), 250);
     if (name === 'liste') renderListe();
   }
 
@@ -730,10 +930,7 @@
       try {
         const reg = await navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' });
         state.swRegistration = reg;
-
-        // Une nouvelle version est déjà en attente (l'app a été ouverte après un déploiement)
         if (reg.waiting && navigator.serviceWorker.controller) proposerMiseAJour(reg);
-
         reg.addEventListener('updatefound', () => {
           const nw = reg.installing;
           if (!nw) return;
@@ -741,16 +938,12 @@
             if (nw.state === 'installed' && navigator.serviceWorker.controller) proposerMiseAJour(reg);
           });
         });
-
-        // Quand le nouveau SW prend le contrôle, on recharge pour utiliser les nouveaux fichiers
         let rechargement = false;
         navigator.serviceWorker.addEventListener('controllerchange', () => {
           if (rechargement) return;
           rechargement = true;
           window.location.reload();
         });
-
-        // À chaque retour au premier plan, on vérifie s'il y a une mise à jour
         document.addEventListener('visibilitychange', () => {
           if (document.visibilityState === 'visible') reg.update().catch(() => {});
         });
@@ -775,10 +968,11 @@
     // Carte
     el.btnCenter.addEventListener('click', centrerSurMoi);
     el.btnPreload.addEventListener('click', prechargerTuiles);
+    el.btnPreload2.addEventListener('click', prechargerTuiles);
     el.miniOpen.addEventListener('click', () => { if (state.miniLieu) openSheet(state.miniLieu.id); });
     el.miniClose.addEventListener('click', hideMini);
 
-    // Liste (délégation d'événements)
+    // Liste
     el.liste.addEventListener('click', (ev) => {
       const btn = ev.target.closest('.lieu');
       if (btn) openSheet(btn.dataset.id);
@@ -792,32 +986,36 @@
       el.listeScroll.scrollTo({ top: 0 });
     });
     el.btnHintGps.addEventListener('click', rafraichirGps);
+    el.btnMedia.addEventListener('click', telechargerMedias);
 
     // Fiche
+    el.segAdultes.addEventListener('click', () => choisirPublic('adultes'));
+    el.segEnfants.addEventListener('click', () => choisirPublic('enfants'));
     el.btnAudio.addEventListener('click', basculerLecture);
-    el.btnStop.addEventListener('click', stopSpeech);
+    el.btnStop.addEventListener('click', stopAudio);
+    el.btnBack.addEventListener('click', () => sauter(-SAUT_SECONDES));
+    el.btnFwd.addEventListener('click', () => sauter(SAUT_SECONDES));
     el.btnRoute.addEventListener('click', ouvrirItineraire);
     el.btnVisited.addEventListener('click', () => { if (state.current) basculerVisite(state.current.id); });
     el.btnClose.addEventListener('click', closeSheet);
     el.btnMap.addEventListener('click', voirSurCarte);
     el.sheetBackdrop.addEventListener('click', closeSheet);
 
-    // Cycle de vie : sécurité pour la synthèse vocale et l'affichage
-    window.addEventListener('pagehide', stopSpeech);
+    // Cycle de vie
+    window.addEventListener('pagehide', () => { if (state.audioMode === 'tts') stopAudio(); });
     document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'visible') {
-        // Si iOS a coupé la lecture pendant que l'écran était verrouillé, on resynchronise l'état
-        if (state.speaking && synth && !synth.speaking && !synth.pending) stopSpeech();
+        if (state.audioMode === 'tts' && synth && !synth.speaking && !synth.pending) stopAudio();
         if (state.map) state.map.invalidateSize();
+        updateAudioBtn();
       }
     });
-    window.addEventListener('online', () => { setGps(el.gps.textContent.replace(/^Hors-ligne · /, '')); });
-    window.addEventListener('offline', () => { setGps(el.gps.textContent.replace(/^Hors-ligne · /, '')); toast('Hors-ligne : la carte reste disponible sur les zones déjà vues'); });
+    window.addEventListener('online', () => setGps(el.gps.textContent.replace(/^Hors-ligne · /, '')));
+    window.addEventListener('offline', () => { setGps(el.gps.textContent.replace(/^Hors-ligne · /, '')); toast('Hors-ligne : carte, audios et photos déjà téléchargés restent disponibles'); });
     window.addEventListener('orientationchange', () => { if (state.map) setTimeout(() => state.map.invalidateSize(), 300); });
   }
 
   function init() {
-    // Références DOM
     Object.assign(el, {
       gps: $('#gps-status'),
       viewCarte: $('#view-carte'),
@@ -829,46 +1027,58 @@
       btnGps: $('#btn-gps'),
       btnCenter: $('#btn-center'),
       btnPreload: $('#btn-preload'),
+      btnPreload2: $('#btn-preload-2'),
       preload: $('#preload-progress'),
       preloadFill: $('#preload-bar-fill'),
       preloadLabel: $('#preload-label'),
+      btnMedia: $('#btn-media'),
+      mediaProgress: $('#media-progress'),
+      mediaFill: $('#media-bar-fill'),
+      mediaLabel: $('#media-label'),
+      mediaStatus: $('#media-status'),
       mapMini: $('#map-mini'),
       miniOpen: $('#mini-open'),
       miniClose: $('#mini-close'),
-      miniEmoji: $('#mini-emoji'),
+      miniImg: $('#mini-img'),
       miniNom: $('#mini-nom'),
       miniMeta: $('#mini-meta'),
       sheet: $('#sheet'),
       sheetBackdrop: $('#sheet-backdrop'),
       sheetBody: $('#sheet-body'),
+      segAdultes: $('#seg-adultes'),
+      segEnfants: $('#seg-enfants'),
       btnAudio: $('#btn-audio'),
       btnAudioLabel: $('#btn-audio-label'),
       btnStop: $('#btn-stop'),
+      btnBack: $('#btn-back'),
+      btnFwd: $('#btn-fwd'),
+      audioProgress: $('#audio-progress'),
+      audioFill: $('#audio-progress-fill'),
+      playerTime: $('#player-time'),
       btnRoute: $('#btn-route'),
       btnVisited: $('#btn-visited'),
       btnClose: $('#btn-close'),
       btnMap: $('#btn-map'),
-      audioFill: $('#audio-progress-fill'),
       toast: $('#toast'),
       toastText: $('#toast-text'),
       toastAction: $('#toast-action')
     });
 
     chargerVisites();
+    state.public = lsGet(LS_PUBLIC, 'adultes') === 'enfants' ? 'enfants' : 'adultes';
+    updateSegments();
     renderChips();
     renderListe();
     initMap();
     lierEvenements();
+    chargerIndex();
 
     if (synth) {
       choisirVoix();
       synth.addEventListener('voiceschanged', choisirVoix);
     }
 
-    // Onglet mémorisé
-    let tab = 'carte';
-    try { tab = localStorage.getItem(LS_TAB) || 'carte'; } catch (e) { /* ignore */ }
-    showTab(tab);
+    showTab(lsGet(LS_TAB, 'carte'));
 
     // Demande de stockage persistant (évite la purge du cache hors-ligne)
     if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
