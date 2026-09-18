@@ -1,0 +1,9 @@
+# Système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Outils
+.claude/
+_site/
+node_modules/

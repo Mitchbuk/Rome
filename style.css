@@ -1,0 +1,719 @@
+/* =====================================================================
+   style.css — Rome en famille
+   ---------------------------------------------------------------------
+   Principes :
+   - Style iOS (San Francisco, cartes arrondies, gris système), modes
+     clair et sombre automatiques via prefers-color-scheme.
+   - Zones sûres Apple : env(safe-area-inset-*) pour l'encoche (13 Pro),
+     la Dynamic Island (16 Pro Max) et la barre de balayage du bas.
+   - Fluidité 120 Hz : toutes les animations n'utilisent que transform et
+     opacity (composées par le GPU), jamais top/left/height/width.
+   - Une main : actions importantes dans le tiers inférieur, cibles
+     tactiles d'au moins 54 px.
+   ===================================================================== */
+
+/* ---------- Variables de thème ---------- */
+:root {
+  color-scheme: light dark;
+
+  --bg: #F2F2F7;            /* fond système iOS */
+  --card: #FFFFFF;          /* cartes, barres */
+  --card-2: #E9E9EE;        /* boutons secondaires */
+  --text: #1C1C1E;
+  --text-2: #6E6E73;
+  --sep: rgba(60, 60, 67, 0.18);
+  --accent: #B23C30;        /* terracotta romaine */
+  --accent-soft: rgba(178, 60, 48, 0.12);
+  --blue: #007AFF;
+  --green: #34C759;
+  --kids-bg: #FFF4E0;
+  --kids-border: #F5A623;
+  --tip-bg: #E8F4FF;
+  --tip-border: #4DA3FF;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+
+  /* Zones sûres Apple (0 sur les navigateurs qui ne les gèrent pas) */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  --tab-height: 62px;
+  --radius: 16px;
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --card: #1C1C1E;
+    --card-2: #2C2C2E;
+    --text: #F2F2F7;
+    --text-2: #98989D;
+    --sep: rgba(84, 84, 88, 0.65);
+    --accent: #E0604F;
+    --accent-soft: rgba(224, 96, 79, 0.18);
+    --blue: #0A84FF;
+    --green: #30D158;
+    --kids-bg: #2C2416;
+    --kids-border: #F5A623;
+    --tip-bg: #14263A;
+    --tip-border: #4DA3FF;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;                 /* pas de rebond de la page entière */
+  overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.45;
+  color: var(--text);
+  background: var(--bg);
+  position: fixed;                  /* évite le "scroll" du viewport sous iOS */
+  inset: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;       /* supprime le délai de 300 ms au tap */
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+[hidden] { display: none !important; }
+
+/* ---------- Structure ---------- */
+#app {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  flex: 0 0 auto;
+  /* Marge haute = encoche / Dynamic Island + respiration */
+  padding: calc(var(--safe-top) + 6px) calc(var(--safe-right) + 16px) 8px calc(var(--safe-left) + 16px);
+  background: var(--card);
+  border-bottom: 0.5px solid var(--sep);
+  z-index: 5;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.gps-status {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--text-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.views {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 0;
+}
+
+/* Chaque vue est superposée ; la transition ne touche que transform/opacity */
+.view {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translate3d(28px, 0, 0);
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform, opacity;
+}
+.view.is-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  pointer-events: auto;
+}
+
+/* ---------- Barre d'onglets ---------- */
+.tabbar {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+  /* Marge basse = barre de balayage iOS */
+  padding: 6px calc(var(--safe-right) + 8px) calc(var(--safe-bottom) + 6px) calc(var(--safe-left) + 8px);
+  background: var(--card);
+  border-top: 0.5px solid var(--sep);
+  z-index: 5;
+}
+
+.tab {
+  flex: 1 1 0;
+  min-height: var(--tab-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 14px;
+  color: var(--text-2);
+  font-size: 12px;
+  font-weight: 600;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+.tab-icon { font-size: 24px; line-height: 1; }
+.tab.is-active { color: var(--accent); background: var(--accent-soft); }
+.tab:active { transform: scale(0.95); }
+
+/* ---------- Carte ---------- */
+#map {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+}
+
+/* Boutons flottants : tiers inférieur, côté droit (pouce droit) */
+.map-fabs {
+  position: absolute;
+  right: calc(var(--safe-right) + 14px);
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 500;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.view.has-mini .map-fabs { transform: translate3d(0, -104px, 0); }
+
+.fab {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--card);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+}
+.fab svg { width: 26px; height: 26px; }
+.fab:active { transform: scale(0.93); }
+.fab-primary { background: var(--blue); color: #fff; }
+.fab.is-busy { opacity: 0.6; }
+
+/* Mini-fiche au bas de la carte */
+.map-mini {
+  position: absolute;
+  left: calc(var(--safe-left) + 12px);
+  right: calc(var(--safe-right) + 12px);
+  bottom: 14px;
+  z-index: 600;
+  display: flex;
+  align-items: stretch;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transform: translate3d(0, 130%, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+  will-change: transform, opacity;
+}
+.map-mini.is-visible {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.map-mini-main {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 78px;
+  padding: 10px 4px 10px 14px;
+  text-align: left;
+  min-width: 0;
+}
+.map-mini-close {
+  flex: 0 0 56px;
+  font-size: 18px;
+  color: var(--text-2);
+}
+
+/* Barre de progression du préchargement */
+.preload-progress {
+  position: absolute;
+  left: calc(var(--safe-left) + 12px);
+  right: calc(var(--safe-right) + 84px);
+  bottom: 22px;
+  z-index: 550;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  color: var(--text-2);
+}
+.preload-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--card-2);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.preload-bar-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--blue);
+  transform-origin: left center;
+  transform: scaleX(0);           /* animé via transform, pas via width */
+  transition: transform 0.2s linear;
+}
+
+/* Marqueurs des lieux (divIcon Leaflet) */
+.marker-lieu {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  line-height: 1;
+}
+.marker-lieu.is-visited { border-color: var(--green); }
+.marker-lieu.is-selected { border-width: 3.5px; border-color: var(--blue); }
+
+/* Point bleu de position GPS, avec halo pulsé (transform + opacity) */
+.user-dot-wrap { background: none; border: 0; }
+.user-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.user-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0.35;
+  animation: pulse 2s ease-out infinite;
+}
+.user-dot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--blue);
+  border: 2.5px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+@keyframes pulse {
+  0%   { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+/* Leaflet : attribution discrète, pas de contrôle de zoom (pincement suffit) */
+.leaflet-container { font-family: var(--font); }
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.7);
+}
+@media (prefers-color-scheme: dark) {
+  /* Tuiles OSM assombries pour le mode sombre */
+  .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.9) saturate(0.7); }
+  .leaflet-control-attribution { background: rgba(0, 0, 0, 0.6); color: #ccc; }
+  .leaflet-control-attribution a { color: #8ab4f8; }
+}
+
+/* ---------- Liste "Autour de moi" ---------- */
+.liste-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 10px 0 84px;             /* place pour la rangée de filtres */
+}
+
+.liste {
+  list-style: none;
+  margin: 0;
+  padding: 0 calc(var(--safe-right) + 12px) 0 calc(var(--safe-left) + 12px);
+}
+
+.lieu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 80px;
+  padding: 10px 12px 10px 14px;
+  margin-bottom: 10px;
+  background: var(--card);
+  border-radius: var(--radius);
+  text-align: left;
+  transition: transform 0.1s ease;
+}
+.lieu:active { transform: scale(0.98); }
+
+.lieu-emoji {
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+}
+.lieu.is-visited .lieu-emoji { background: rgba(52, 199, 89, 0.18); }
+
+.lieu-texte {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.lieu-nom {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.25;
+}
+.lieu-meta {
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.lieu-dist {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+}
+.lieu-dist-val {
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.lieu-dist-sub {
+  font-size: 12px;
+  color: var(--text-2);
+}
+.lieu-chevron {
+  flex: 0 0 auto;
+  color: var(--text-2);
+  font-size: 26px;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.liste-hint {
+  margin: 0 12px 12px;
+  padding: 14px 16px;
+  background: var(--tip-bg);
+  border-radius: var(--radius);
+  font-size: 15px;
+}
+.liste-hint p { margin: 0 0 10px; }
+
+.liste-footer {
+  margin: 8px 16px 0;
+  font-size: 12px;
+  color: var(--text-2);
+  text-align: center;
+}
+
+/* Filtres (chips) en bas de la liste, sous le pouce */
+.chips {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 18px calc(var(--safe-right) + 12px) 10px calc(var(--safe-left) + 12px);
+  background: linear-gradient(to bottom, transparent, var(--bg) 35%);
+  scrollbar-width: none;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 22px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.1s ease;
+}
+.chip:active { transform: scale(0.95); }
+.chip.is-active { background: var(--accent); color: #fff; }
+
+/* ---------- Boutons génériques ---------- */
+.btn {
+  min-height: 54px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: var(--card-2);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+.btn:active { transform: scale(0.96); opacity: 0.9; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-small { min-height: 46px; font-size: 15px; }
+.btn-square { flex: 0 0 60px; width: 60px; font-size: 20px; }
+.btn.is-on { background: var(--green); color: #fff; }
+
+/* ---------- Fiche détail (bottom sheet) ---------- */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+.sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.sheet-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Le panneau s'arrête sous l'encoche : la poignée reste visible et touchable */
+  top: calc(var(--safe-top) + 36px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+  transform: translate3d(0, 105%, 0);
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+.sheet.is-open { pointer-events: auto; }
+.sheet.is-open .sheet-backdrop { opacity: 1; }
+.sheet.is-open .sheet-panel { transform: translate3d(0, 0, 0); }
+
+.sheet-handle {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--sep);
+  margin: 10px auto 4px;
+}
+
+.sheet-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 6px calc(var(--safe-right) + 20px) 24px calc(var(--safe-left) + 20px);
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.fiche-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.fiche-emoji {
+  flex: 0 0 60px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  line-height: 1;
+}
+.fiche-head h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+.fiche-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.meta {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: var(--card);
+  color: var(--text-2);
+}
+.meta.meta-dist { color: var(--accent); }
+
+.fiche-section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.fiche-section h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--text-2);
+}
+.fiche-section p {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.55;
+}
+.fiche-enfants {
+  background: var(--kids-bg);
+  border-left: 4px solid var(--kids-border);
+}
+.fiche-enfants h3 { color: #B8720A; }
+@media (prefers-color-scheme: dark) { .fiche-enfants h3 { color: #F5A623; } }
+.fiche-conseil {
+  background: var(--tip-bg);
+  border-left: 4px solid var(--tip-border);
+}
+.fiche-conseil p { font-size: 15px; }
+
+/* Barre d'actions de la fiche : toujours au bas, sous le pouce */
+.sheet-actions {
+  flex: 0 0 auto;
+  position: relative;
+  padding: 10px calc(var(--safe-right) + 12px) calc(var(--safe-bottom) + 10px) calc(var(--safe-left) + 12px);
+  background: var(--card);
+  border-top: 0.5px solid var(--sep);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sheet-actions-row { display: flex; gap: 8px; }
+.sheet-actions-audio .btn-audio { flex: 1 1 auto; font-size: 17px; min-height: 58px; }
+.btn-audio-icon { font-size: 22px; }
+.btn-audio.is-playing { background: var(--blue); }
+.sheet-actions-secondary .btn { flex: 1 1 0; padding: 0 6px; font-size: 14px; min-height: 50px; }
+
+.audio-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  overflow: hidden;
+}
+.audio-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--blue);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(var(--safe-bottom) + var(--tab-height) + 22px);
+  z-index: 2000;
+  max-width: calc(100% - 32px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 15px;
+  box-shadow: var(--shadow);
+  transform: translate3d(-50%, 20px, 0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease;
+}
+.toast.is-visible {
+  transform: translate3d(-50%, 0, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+.toast-action {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ---------- Accessibilité : mouvement réduit ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* ---------- Grands écrans (iPad, bureau) : largeur limitée pour la liste ---------- */
+@media (min-width: 700px) {
+  .liste, .liste-hint, .liste-footer { max-width: 640px; margin-left: auto; margin-right: auto; }
+  .sheet-panel { left: 50%; right: auto; width: 640px; transform: translate3d(-50%, 105%, 0); }
+  .sheet.is-open .sheet-panel { transform: translate3d(-50%, 0, 0); }
+}

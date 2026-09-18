@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <!-- viewport-fit=cover : l'app s'étend sous l'encoche / la Dynamic Island ; les marges
+       de sécurité sont gérées en CSS via env(safe-area-inset-*). -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+  <title>Rome en famille</title>
+  <meta name="description" content="Guide touristique familial hors-ligne pour Rome et le Vatican : carte, lieux autour de moi, anecdotes pour les enfants et lecture audio.">
+  <meta name="app-version" content="__VERSION__">
+
+  <!-- Couleur de la barre système : suit le mode clair / sombre -->
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+
+  <!-- Balises Apple pour le mode "standalone" (plein écran, sans barre Safari) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Rome">
+  <meta name="format-detection" content="telephone=no">
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png">
+
+  <link rel="stylesheet" href="./lib/leaflet/leaflet.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ====== EN-TÊTE (marge haute = safe-area-inset-top) ====== -->
+    <header class="app-header">
+      <h1 class="app-title">Rome en famille</h1>
+      <p id="gps-status" class="gps-status" aria-live="polite">Recherche du signal GPS…</p>
+    </header>
+
+    <!-- ====== VUES (transitions CSS transform/opacity uniquement) ====== -->
+    <main class="views">
+
+      <!-- Onglet CARTE -->
+      <section id="view-carte" class="view is-active" data-view="carte" aria-label="Carte">
+        <div id="map" role="application" aria-label="Carte de Rome"></div>
+
+        <!-- Boutons flottants, tiers inférieur de l'écran -->
+        <div class="map-fabs">
+          <button id="btn-preload" class="fab" type="button" aria-label="Télécharger la carte du centre de Rome pour le mode hors-ligne" title="Carte hors-ligne">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button id="btn-center" class="fab fab-primary" type="button" aria-label="Centrer la carte sur ma position" title="Ma position">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="currentColor"/><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <!-- Barre de progression du téléchargement des tuiles -->
+        <div id="preload-progress" class="preload-progress" hidden>
+          <div class="preload-bar"><div id="preload-bar-fill" class="preload-bar-fill"></div></div>
+          <span id="preload-label" class="preload-label">Téléchargement…</span>
+        </div>
+
+        <!-- Mini-fiche affichée quand on touche un marqueur -->
+        <div id="map-mini" class="map-mini" aria-live="polite">
+          <button id="mini-open" class="map-mini-main" type="button">
+            <span id="mini-emoji" class="lieu-emoji"></span>
+            <span class="lieu-texte">
+              <span id="mini-nom" class="lieu-nom"></span>
+              <span id="mini-meta" class="lieu-meta"></span>
+            </span>
+            <span class="lieu-chevron" aria-hidden="true">›</span>
+          </button>
+          <button id="mini-close" class="map-mini-close" type="button" aria-label="Fermer">✕</button>
+        </div>
+      </section>
+
+      <!-- Onglet AUTOUR DE MOI -->
+      <section id="view-liste" class="view" data-view="liste" aria-label="Autour de moi">
+        <div class="liste-scroll">
+          <div id="liste-hint" class="liste-hint" hidden>
+            <p>Activez la localisation pour trier les lieux du plus proche au plus lointain.</p>
+            <button id="btn-hint-gps" class="btn btn-small btn-primary" type="button">Activer la localisation</button>
+          </div>
+          <ul id="liste" class="liste"></ul>
+          <p class="liste-footer">Rome en famille · version <span id="version">__VERSION__</span> · Cartes © OpenStreetMap</p>
+        </div>
+        <!-- Filtres par catégorie, placés en bas pour être accessibles au pouce -->
+        <div id="chips" class="chips" role="tablist" aria-label="Filtrer par catégorie"></div>
+      </section>
+    </main>
+
+    <!-- ====== BARRE D'ONGLETS (marge basse = safe-area-inset-bottom) ====== -->
+    <nav class="tabbar" aria-label="Navigation principale">
+      <button class="tab is-active" type="button" data-tab="carte" aria-label="Carte">
+        <span class="tab-icon" aria-hidden="true">🗺️</span><span class="tab-label">Carte</span>
+      </button>
+      <button class="tab" type="button" data-tab="liste" aria-label="Autour de moi">
+        <span class="tab-icon" aria-hidden="true">📍</span><span class="tab-label">Autour de moi</span>
+      </button>
+      <button class="tab" id="btn-gps" type="button" aria-label="Rafraîchir la position GPS">
+        <span class="tab-icon" aria-hidden="true">🧭</span><span class="tab-label">GPS</span>
+      </button>
+    </nav>
+
+    <!-- ====== FICHE DÉTAIL (panneau coulissant depuis le bas) ====== -->
+    <div id="sheet" class="sheet" aria-hidden="true">
+      <div id="sheet-backdrop" class="sheet-backdrop"></div>
+      <article class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="fiche-titre">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <div id="sheet-body" class="sheet-body"></div>
+
+        <!-- Barre d'actions : tout est dans le tiers inférieur, sous le pouce -->
+        <div class="sheet-actions">
+          <div id="audio-progress" class="audio-progress" aria-hidden="true"><div id="audio-progress-fill" class="audio-progress-fill"></div></div>
+          <div class="sheet-actions-row sheet-actions-audio">
+            <button id="btn-audio" class="btn btn-primary btn-audio" type="button">
+              <span class="btn-audio-icon" aria-hidden="true">🔊</span><span id="btn-audio-label">Écouter le guide</span>
+            </button>
+            <button id="btn-stop" class="btn btn-square" type="button" aria-label="Arrêter la lecture" hidden>■</button>
+          </div>
+          <div class="sheet-actions-row sheet-actions-secondary">
+            <button id="btn-map" class="btn" type="button"><span aria-hidden="true">🗺️</span> Carte</button>
+            <button id="btn-route" class="btn" type="button"><span aria-hidden="true">🚶</span> Itinéraire</button>
+            <button id="btn-visited" class="btn" type="button" aria-pressed="false"><span aria-hidden="true">✓</span> Vu</button>
+            <button id="btn-close" class="btn" type="button" aria-label="Fermer la fiche"><span aria-hidden="true">✕</span> Fermer</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- ====== TOAST (mises à jour, messages) ====== -->
+    <div id="toast" class="toast" role="status" aria-live="polite">
+      <span id="toast-text"></span>
+      <button id="toast-action" class="toast-action" type="button" hidden></button>
+    </div>
+  </div>
+
+  <script src="./lib/leaflet/leaflet.js"></script>
+  <script src="./monuments.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+# =====================================================================
+# Déploiement automatique sur GitHub Pages à chaque push sur "main".
+# ---------------------------------------------------------------------
+# Étape clé : l'injection de la version. Le marqueur __VERSION__ présent
+# dans sw.js et index.html est remplacé par l'identifiant du commit + la
+# date. Le nom du cache du Service Worker change donc à chaque déploiement,
+# ce qui déclenche la mise à jour de l'app sur les iPhones (cache busting)
+# sans jamais avoir à modifier un numéro de version à la main.
+#
+# Activation (une seule fois) : Settings > Pages > Source : "GitHub Actions".
+# =====================================================================
+name: Déployer sur GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build & deploy
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Injecter la version (cache busting du Service Worker)
+        run: |
+          VERSION="${GITHUB_SHA::7}-$(date -u +%Y%m%d-%H%M)"
+          sed -i "s/__VERSION__/${VERSION}/g" sw.js index.html
+          echo "Version déployée : ${VERSION}"
+          grep -n "const VERSION" sw.js
+
+      - name: Préparer le site
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'README.md' ./ _site/
+
+      - name: Configurer GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Téléverser le site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Déployer
+        id: deployment
+        uses: actions/deploy-pages@v4
