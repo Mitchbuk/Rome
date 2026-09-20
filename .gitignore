@@ -10,3 +10,4 @@ node_modules/
 
 # Laboratoire de voix (35 Go, environnements Python) : jamais dans le dépôt
 tts-lab/
+__pycache__/
