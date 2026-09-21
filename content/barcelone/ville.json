@@ -1,0 +1,28 @@
+{
+  "id": "barcelone",
+  "nom": "Barcelone",
+  "palier": "tres-grande",
+  "centre": [41.3851, 2.1734],
+  "rayon": 20000,
+  "quartiers": [
+    { "id": "barri-gotic", "label": "Barri Gòtic", "centre": [41.3833, 2.1765] },
+    { "id": "born-ribera", "label": "El Born et la Ribera", "centre": [41.3865, 2.1830] },
+    { "id": "rambla-raval", "label": "La Rambla et le Raval", "centre": [41.3800, 2.1710] },
+    { "id": "barceloneta-port", "label": "Barceloneta et Port Vell", "centre": [41.3770, 2.1830] },
+    { "id": "sagrada-familia", "label": "Sagrada Família et Eixample est", "centre": [41.4036, 2.1744] },
+    { "id": "passeig-gracia", "label": "Passeig de Gràcia", "centre": [41.3925, 2.1640] },
+    { "id": "montjuic", "label": "Montjuïc", "centre": [41.3690, 2.1560] },
+    { "id": "gracia", "label": "Gràcia et Park Güell", "centre": [41.4080, 2.1560] },
+    { "id": "pedralbes-camp-nou", "label": "Pedralbes et Camp Nou", "centre": [41.3880, 2.1190] },
+    { "id": "tibidabo-collserola", "label": "Tibidabo et Collserola", "centre": [41.4210, 2.1180] },
+    { "id": "poblenou-glories", "label": "Poblenou, Glòries et le Fòrum", "centre": [41.4040, 2.2000] }
+  ],
+  "categories": {
+    "monument": { "label": "Monuments", "emoji": "🏛️" },
+    "musee":    { "label": "Musées", "emoji": "🖼️" },
+    "eglise":   { "label": "Églises", "emoji": "⛪" },
+    "place":    { "label": "Places et rues", "emoji": "⛲" },
+    "parc":     { "label": "Parcs et plages", "emoji": "🌳" },
+    "loisirs":  { "label": "Loisirs en famille", "emoji": "🎡" }
+  }
+}
