@@ -892,17 +892,50 @@ button {
 /* =====================================================================
    V3 — Où manger (restaurants, street food, bars)
    ===================================================================== */
-:root { --food: #1F8A70; --food-soft: rgba(31, 138, 112, 0.14); }
-@media (prefers-color-scheme: dark) { :root { --food: #34C29A; --food-soft: rgba(52, 194, 154, 0.2); } }
+:root { --food: #6D28D9; --food-soft: rgba(109, 40, 217, 0.14); }
+@media (prefers-color-scheme: dark) { :root { --food: #A78BFA; --food-soft: rgba(167, 139, 250, 0.22); } }
 
 /* Logos (carrés) : affichés entiers sur fond blanc, jamais recadrés */
 .lieu-photo.is-logo { object-fit: contain; background: #fff; padding: 3px; }
 .marker-photo.is-logo { background: #fff; }
 .marker-photo.is-logo img { object-fit: contain; padding: 3px; }
-/* Anneau vert pour les adresses "Où manger" (le vert "vu" et le bleu "sélectionné" priment) */
+/* Marqueur "Où manger" : anneau violet épais + badge picto qui déborde du cercle */
+.marker-manger-wrap { position: relative; width: 46px; height: 46px; }
+.marker-manger-wrap .marker-photo { display: block; width: 46px; height: 46px; }
 .marker-photo.is-manger:not(.is-visited):not(.is-selected) {
-  box-shadow: 0 0 0 2px var(--food), 0 3px 10px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 3.5px var(--food), 0 3px 10px rgba(0, 0, 0, 0.35);
 }
+.marker-manger-wrap .badge-resto {
+  position: absolute;
+  right: -7px;
+  bottom: -7px;
+  width: 24px;
+  height: 24px;
+}
+.marker-manger-wrap .badge-resto svg { width: 14px; height: 14px; }
+
+/* Vignette (liste, mini-fiche) : image + badge dans le coin */
+.vignette { position: relative; flex: 0 0 56px; width: 56px; height: 56px; }
+.vignette .lieu-photo { display: block; }
+.badge-resto {
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--food);
+  border: 2px solid var(--card);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.badge-resto svg { width: 13px; height: 13px; }
+.badge-resto.is-bar { background: #C2410C; }
+@media (prefers-color-scheme: dark) { .badge-resto.is-bar { background: #FB923C; color: #1C1C1E; } }
+.lieu-photo.is-logo { box-shadow: 0 0 0 2px var(--food); }
 .fiche-logo {
   flex: 0 0 72px;
   width: 72px;

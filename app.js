@@ -148,6 +148,16 @@
   /** Un logo (carré, à montrer entier) plutôt qu'une photo (à recadrer). */
   const estLogo = (m) => !!(estResto(m) && m.image && m.image.genre === 'logo');
 
+  /** Pictogrammes des adresses : fourchette-couteau (restaurant, street food) ou verre à pied (bar). */
+  const PICTO_RESTO = '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>';
+  const PICTO_BAR = '<path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-7 8-7-8Z"/>';
+  /** Petit badge rond posé sur la vignette d'une adresse "Où manger". */
+  function badgeResto(m) {
+    if (!estResto(m)) return '';
+    const bar = m.type === 'bar';
+    return `<span class="badge-resto${bar ? ' is-bar' : ''}" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${bar ? PICTO_BAR : PICTO_RESTO}</svg></span>`;
+  }
+
   const thumbUrl = (m) => estResto(m) ? `./img/resto/${m.id}-thumb.jpg` : `./img/${m.id}-thumb.jpg`;
   const photoUrl = (m) => estResto(m) ? `./img/resto/${m.id}.jpg` : `./img/${m.id}.jpg`;
   const audioNom = (m, pub) => `${m.id}-${pub}.mp3`;
@@ -209,7 +219,10 @@
     const cat = CATEGORIES[m.categorie];
     return `<li data-id="${m.id}">
       <button class="lieu${vu ? ' is-visited' : ''}" type="button" data-id="${m.id}">
-        <img class="lieu-photo${estLogo(m) ? ' is-logo' : ''}" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">
+        <span class="vignette">
+          <img class="lieu-photo${estLogo(m) ? ' is-logo' : ''}" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">
+          ${badgeResto(m)}
+        </span>
         <span class="lieu-texte">
           <span class="lieu-nom">${escapeHtml(m.nom)}</span>
           <span class="lieu-meta">${estResto(m)
@@ -295,9 +308,18 @@
     if (estLogo(m)) classes.push('is-logo');
     if (state.visited.has(m.id)) classes.push('is-visited');
     if (selected) classes.push('is-selected');
+    if (!estResto(m)) {
+      return L.divIcon({
+        className: classes.join(' '),
+        html: `<img src="${thumbUrl(m)}" alt="" draggable="false">`,
+        iconSize: [46, 46],
+        iconAnchor: [23, 23]
+      });
+    }
+    // Adresse "Où manger" : un conteneur sans rognage, pour que le badge déborde du cercle
     return L.divIcon({
-      className: classes.join(' '),
-      html: `<img src="${thumbUrl(m)}" alt="" draggable="false">`,
+      className: 'marker-manger-wrap',
+      html: `<span class="${classes.join(' ')}"><img src="${thumbUrl(m)}" alt="" draggable="false"></span>${badgeResto(m)}`,
       iconSize: [46, 46],
       iconAnchor: [23, 23]
     });
@@ -373,6 +395,7 @@
     state.markers[m.id].setIcon(makeIcon(m, true));
     el.miniImg.src = thumbUrl(m);
     el.miniImg.classList.toggle('is-logo', estLogo(m));
+    el.miniBadge.innerHTML = badgeResto(m);
     el.miniNom.textContent = m.nom;
     updateMiniMeta();
     el.mapMini.classList.add('is-visible');
@@ -1191,6 +1214,7 @@
       miniOpen: $('#mini-open'),
       miniClose: $('#mini-close'),
       miniImg: $('#mini-img'),
+      miniBadge: $('#mini-badge'),
       sheetActions: $('.sheet-actions'),
       miniNom: $('#mini-nom'),
       miniMeta: $('#mini-meta'),
