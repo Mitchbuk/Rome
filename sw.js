@@ -47,7 +47,7 @@ const SHELL_FILES = [
   './icons/icon-512.png',
   './icons/icon-512-maskable.png',
   './icons/favicon-32.png'
-].concat(MONUMENTS.filter((m) => m.categorie !== 'manger').map((m) => `./img/${m.id}-thumb.jpg`));
+].concat(MONUMENTS.map((m) => m.categorie === 'manger' ? `./img/resto/${m.id}-thumb.jpg` : `./img/${m.id}-thumb.jpg`));
 
 /* ---------- Installation : mise en cache de l'app ---------- */
 self.addEventListener('install', (event) => {
@@ -55,8 +55,10 @@ self.addEventListener('install', (event) => {
     const cache = await caches.open(SHELL_CACHE);
     // Chaque fichier est ajouté individuellement : un fichier facultatif manquant
     // (ex. audio/manifest.json avant la première génération) ne bloque pas l'installation.
+    // cache: 'reload' contourne le cache HTTP du navigateur : tous les fichiers de la
+    // nouvelle version sont téléchargés frais, jamais mélangés avec une version précédente.
     await Promise.all(SHELL_FILES.map(async (f) => {
-      try { await cache.add(f); } catch (e) { console.warn('[SW] non précaché :', f); }
+      try { await cache.add(new Request(f, { cache: 'reload' })); } catch (e) { console.warn('[SW] non précaché :', f); }
     }));
   })());
 });

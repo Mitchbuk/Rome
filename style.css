@@ -305,6 +305,7 @@ button {
   justify-content: center;
   font-size: 21px;
   line-height: 1;
+  font-family: var(--font), "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 .marker-lieu.is-visited { border-color: var(--green); }
 .marker-lieu.is-selected { border-width: 3.5px; border-color: var(--blue); }
@@ -384,16 +385,17 @@ button {
 .lieu:active { transform: scale(0.98); }
 
 .lieu-emoji {
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--accent-soft);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1;
+  font-family: var(--font), "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
 }
 .lieu.is-visited .lieu-emoji { background: rgba(52, 199, 89, 0.18); }
 
@@ -521,33 +523,53 @@ button {
   transition: opacity 0.25s ease;
 }
 .sheet-panel {
+  /* Pleine page : la fiche se comporte comme une page poussée, avec un bouton Retour */
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* Le panneau s'arrête sous l'encoche : la poignée reste visible et touchable */
-  top: calc(var(--safe-top) + 36px);
+  inset: 0;
   display: flex;
   flex-direction: column;
   background: var(--bg);
-  border-radius: 22px 22px 0 0;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
-  transform: translate3d(0, 105%, 0);
-  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translate3d(100%, 0, 0);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: transform;
+}
+.sheet-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(var(--safe-top) + 4px) calc(var(--safe-right) + 12px) 6px calc(var(--safe-left) + 6px);
+  background: var(--card);
+  border-bottom: 0.5px solid var(--sep);
+}
+.btn-back {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  min-height: 46px;
+  padding: 0 12px 0 6px;
+  border-radius: 12px;
+  color: var(--blue);
+  font-size: 17px;
+  font-weight: 600;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+.btn-back svg { width: 24px; height: 24px; }
+.btn-back:active { transform: scale(0.96); opacity: 0.7; }
+.sheet-header-titre {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-align: right;
 }
 .sheet.is-open { pointer-events: auto; }
 .sheet.is-open .sheet-backdrop { opacity: 1; }
 .sheet.is-open .sheet-panel { transform: translate3d(0, 0, 0); }
-
-.sheet-handle {
-  flex: 0 0 auto;
-  width: 40px;
-  height: 5px;
-  border-radius: 3px;
-  background: var(--sep);
-  margin: 10px auto 4px;
-}
 
 .sheet-body {
   flex: 1 1 auto;
@@ -555,7 +577,7 @@ button {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
-  padding: 6px calc(var(--safe-right) + 20px) 24px calc(var(--safe-left) + 20px);
+  padding: 14px calc(var(--safe-right) + 20px) 24px calc(var(--safe-left) + 20px);
   -webkit-user-select: text;
   user-select: text;
 }
@@ -714,7 +736,7 @@ button {
 /* ---------- Grands écrans (iPad, bureau) : largeur limitée pour la liste ---------- */
 @media (min-width: 700px) {
   .liste, .liste-hint, .liste-footer { max-width: 640px; margin-left: auto; margin-right: auto; }
-  .sheet-panel { left: 50%; right: auto; width: 640px; transform: translate3d(-50%, 105%, 0); }
+  .sheet-panel { left: 50%; right: auto; width: 640px; transform: translate3d(calc(-50% + 100vw), 0, 0); }
   .sheet.is-open .sheet-panel { transform: translate3d(-50%, 0, 0); }
 }
 
@@ -873,9 +895,24 @@ button {
 :root { --food: #1F8A70; --food-soft: rgba(31, 138, 112, 0.14); }
 @media (prefers-color-scheme: dark) { :root { --food: #34C29A; --food-soft: rgba(52, 194, 154, 0.2); } }
 
-.lieu-emoji-resto { background: var(--food-soft); }
-.marker-lieu.marker-manger { border-color: var(--food); font-size: 20px; }
-.marker-lieu.marker-manger.is-selected { border-color: var(--blue); }
+/* Logos (carrés) : affichés entiers sur fond blanc, jamais recadrés */
+.lieu-photo.is-logo { object-fit: contain; background: #fff; padding: 3px; }
+.marker-photo.is-logo { background: #fff; }
+.marker-photo.is-logo img { object-fit: contain; padding: 3px; }
+/* Anneau vert pour les adresses "Où manger" (le vert "vu" et le bleu "sélectionné" priment) */
+.marker-photo.is-manger:not(.is-visited):not(.is-selected) {
+  box-shadow: 0 0 0 2px var(--food), 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+.fiche-logo {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  object-fit: contain;
+  background: #fff;
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
 .fiche-resume {
   margin: 0 0 14px 4px;
   font-size: 17px;
@@ -894,4 +931,30 @@ button {
 .pratique-val { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 .pratique-val a { color: var(--blue); text-decoration: none; font-weight: 600; }
 .pratique-note { margin: 10px 0 0 !important; font-size: 13px !important; color: var(--text-2); }
-.sheet-actions.is-resto .segmented { display: none; }
+/* Fiche resto : ni sélecteur Adultes / Enfants, ni lecteur audio */
+.sheet-actions.is-resto .segmented,
+.sheet-actions.is-resto .player { display: none; }
+
+/* Séparateur "Où manger" en fin de liste (filtre Tous) */
+.liste-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 4px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--food);
+}
+.liste-section::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  background: var(--sep);
+}
+
+/* Bouton "Ma position" dans la barre du bas : une action, pas un onglet */
+.tab-action { color: var(--blue); }
+.tab-action.is-busy .tab-icon { animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }

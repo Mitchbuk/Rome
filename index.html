@@ -64,7 +64,6 @@
         <div id="map-mini" class="map-mini" aria-live="polite">
           <button id="mini-open" class="map-mini-main" type="button">
             <img id="mini-img" class="lieu-photo" alt="" width="56" height="56">
-            <span id="mini-emoji" class="lieu-emoji lieu-emoji-resto" aria-hidden="true" hidden></span>
             <span class="lieu-texte">
               <span id="mini-nom" class="lieu-nom"></span>
               <span id="mini-meta" class="lieu-meta"></span>
@@ -114,8 +113,9 @@
       <button class="tab" type="button" data-tab="liste" aria-label="Autour de moi">
         <span class="tab-icon" aria-hidden="true">📍</span><span class="tab-label">Autour de moi</span>
       </button>
-      <button class="tab" id="btn-gps" type="button" aria-label="Rafraîchir la position GPS">
-        <span class="tab-icon" aria-hidden="true">🧭</span><span class="tab-label">GPS</span>
+      <!-- Action (pas un onglet) : relance une mesure GPS précise et recentre la carte sur soi -->
+      <button class="tab tab-action" id="btn-gps" type="button" aria-label="Actualiser ma position et recentrer la carte">
+        <span class="tab-icon" aria-hidden="true">🎯</span><span class="tab-label">Ma position</span>
       </button>
     </nav>
 
@@ -123,7 +123,14 @@
     <div id="sheet" class="sheet" aria-hidden="true">
       <div id="sheet-backdrop" class="sheet-backdrop"></div>
       <article class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="fiche-titre">
-        <div class="sheet-handle" aria-hidden="true"></div>
+        <!-- En-tête de la fiche : bouton Retour (ramène à la carte ou à la liste, telles qu'on les a laissées) -->
+        <header class="sheet-header">
+          <button id="btn-back-sheet" class="btn-back" type="button" aria-label="Retour">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Retour</span>
+          </button>
+          <span id="sheet-header-titre" class="sheet-header-titre" aria-hidden="true"></span>
+        </header>
         <div id="sheet-body" class="sheet-body"></div>
 
         <!-- Barre d'actions : tout est dans le tiers inférieur, sous le pouce -->
@@ -160,7 +167,7 @@
             <button id="btn-map" class="btn" type="button"><span aria-hidden="true">🗺️</span> Carte</button>
             <button id="btn-route" class="btn" type="button"><span aria-hidden="true">🚶</span> Itinéraire</button>
             <button id="btn-visited" class="btn" type="button" aria-pressed="false"><span aria-hidden="true">✓</span> Vu</button>
-            <button id="btn-close" class="btn" type="button" aria-label="Fermer la fiche"><span aria-hidden="true">✕</span> Fermer</button>
+            <button id="btn-close" class="btn" type="button" aria-label="Retour à la page précédente"><span aria-hidden="true">‹</span> Retour</button>
           </div>
         </div>
       </article>

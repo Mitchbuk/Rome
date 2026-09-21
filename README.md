@@ -35,10 +35,12 @@ lib/leaflet/          Leaflet 1.9.4 en local (pas de CDN, fonctionne hors-ligne)
 
 ## Où manger
 
-15 adresses (6 trattorias, 6 pizza / street food, 3 bars-apéritivo) réparties par quartier, choisies pour les familles : institutions et pépites récentes, jamais de gastronomique. Elles apparaissent comme catégorie « Où manger » dans la liste (triée par distance) et sur la carte (marqueurs verts).
+15 adresses (6 trattorias, 6 pizza / street food, 3 bars-apéritivo) réparties par quartier, choisies pour les familles : institutions et pépites récentes, jamais de gastronomique. Dans « Autour de moi », elles forment une section « Où manger » en fin de liste (filtre Tous) ou s'affichent seules (filtre Où manger) ; sur la carte, leurs marqueurs ont un anneau vert.
 
 - Source : `content/restos.json` (une entrée par adresse : type, quartier, budget, résumé, pourquoi on aime, quoi commander, avec les enfants, infos pratiques, conseil).
-- Pas de MP3 : la fiche est courte et le bouton « Écouter » utilise la voix du téléphone.
+- Images : `python scripts/fetch_resto_images.py` récupère le logo du site officiel (icône Apple ou image de partage), sinon une photo du lieu sur Wikimedia Commons, dans `img/resto/`. Pour imposer une image : champ `"image": "https://…"` dans `restos.json`.
+- Téléphones au format international (`+39 06 …`) : composables tels quels depuis un téléphone français. Sites et pages Instagram sont des liens.
+- Pas d'audio ni de sélecteur Adultes / Enfants : la fiche est courte et se lit.
 - Les horaires et jours de fermeture ont été relevés en septembre 2026 et sont marqués d'un astérisque : chaque fiche renvoie vers le site du lieu et sa page Google Maps pour vérifier avant d'y aller.
 - Après modification : `node scripts/build_monuments.js` puis `git push`.
 

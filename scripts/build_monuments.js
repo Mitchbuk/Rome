@@ -17,8 +17,20 @@ const { MONUMENTS: TOUS, CATEGORIES: CATS_EXISTANTES } = require(path.join(ROOT,
 // Les restaurants (categorie 'manger') viennent de content/restos.json, pas des part*.json
 const MONUMENTS = TOUS.filter((m) => m.categorie !== 'manger');
 const CATEGORIES = Object.assign({}, CATS_EXISTANTES, { manger: { label: 'Où manger', emoji: '🍝' } });
+// Image de chaque adresse (logo du site ou photo), produite par scripts/fetch_resto_images.py
+let imagesRestos = {};
+try { imagesRestos = JSON.parse(fs.readFileSync(path.join(ROOT, 'img', 'resto', 'manifest.json'), 'utf8')); } catch (e) { /* pas encore générées */ }
 const RESTOS = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'restos.json'), 'utf8'))
-  .map((r) => Object.assign({ categorie: 'manger' }, r));
+  .map((r) => {
+    const img = imagesRestos[r.id];
+    const image = !img || img.source === 'aucune' ? null : {
+      // 'logo' = image carrée à afficher entière ; 'photo' = à recadrer
+      genre: ['logo', 'icone', 'favicon-google'].includes(img.source) ? 'logo' : 'photo',
+      credit: img.source === 'commons' ? `${img.auteur} · ${img.licence} · Wikimedia Commons` : 'Site officiel'
+    };
+    const { image: _ignore, ...reste } = r;
+    return Object.assign({ categorie: 'manger' }, reste, { image });
+  });
 
 // 1. Charger tous les contenus rédigés
 const contenus = {};

@@ -1183,11 +1183,15 @@ const MONUMENTS = [
       "adresse": "Salita de' Crescenzi 31, 00186 Roma",
       "horaires": "Lundi au samedi 12 h 30 à 15 h et 19 h à 23 h",
       "fermeture": "Dimanche, et généralement une partie du mois d'août",
-      "reservation": "Indispensable, uniquement en ligne sur le site, deux à trois semaines à l'avance. Pas de tables de plus de six personnes.",
-      "tel": "",
+      "reservation": "Indispensable, uniquement en ligne sur le site, deux à trois semaines à l'avance. Pas de réservation par téléphone, pas de tables de plus de six personnes.",
+      "tel": "+39 06 6880 3034",
       "site": "https://armandoalpantheon.it"
     },
-    "conseil": "Sans réservation, tentez votre chance à 12 h 30 pile en semaine. La salle est minuscule, il n'y a pas de terrasse."
+    "conseil": "Sans réservation, tentez votre chance à 12 h 30 pile en semaine. La salle est minuscule, il n'y a pas de terrasse.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1203,16 +1207,21 @@ const MONUMENTS = [
     "resume": "La trattoria de poche la plus célèbre de Trastevere : dix tables, une file sur le trottoir et une carbonara de référence.",
     "pourquoi": "Enzo, puis ses enfants, tiennent cette minuscule adresse de la partie calme de Trastevere, loin des rues à touristes. Les produits viennent de petits fermiers du Latium et tout est fait sur place, ce qui se sent dès la première bouchée. L'ambiance est bruyante et joyeuse, les tables sont collées les unes aux autres, et la file d'attente sur la Via dei Vascellari fait partie du spectacle.",
     "commander": "La carbonara et la cacio e pepe sont parmi les meilleures de Rome. Commencez par la burrata ou, de novembre à avril, les artichauts à la juive, croustillants comme des chips. Terminez par le tiramisu servi dans un bocal.",
-    "enfants": "Les boulettes de viande à la sauce tomate et les pâtes simples plaisent à coup sûr. Le temps d'attente peut être long : venez pour le premier service de 12 h 30 ou réservez le créneau de 19 h 30, le seul qui se réserve.",
+    "enfants": "Les boulettes de viande à la sauce tomate et les pâtes simples plaisent à coup sûr. Il n'y a pas de réservation : venez pour l'ouverture, à midi ou à 18 h 30, pour ne pas faire la queue avec des enfants affamés.",
     "pratique": {
       "adresse": "Via dei Vascellari 29, 00153 Roma",
-      "horaires": "Lundi au samedi 12 h 30 à 15 h et 19 h 30 à 23 h",
+      "horaires": "Lundi au samedi 12 h à 15 h et 18 h 30 à 22 h 30",
       "fermeture": "Dimanche",
-      "reservation": "Par téléphone, uniquement pour le service de 19 h 30. Sinon, file d'attente sur place, qui se forme dès 19 h.",
-      "tel": "06 5812260",
-      "site": "https://www.daenzoal29.com"
+      "reservation": "Aucune réservation : premier arrivé, premier servi. La file se forme avant l'ouverture.",
+      "tel": "+39 06 581 2260",
+      "site": "https://www.daenzoal29.com",
+      "instagram": "https://www.instagram.com/daenzoal29/"
     },
-    "conseil": "Arrivez vers 12 h 15 pour être dans les premiers du déjeuner. L'île Tibérine et le Ghetto sont à cinq minutes à pied."
+    "conseil": "Arrivez un quart d'heure avant l'ouverture pour être dans les premiers. L'île Tibérine et le Ghetto sont à cinq minutes à pied.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1234,10 +1243,14 @@ const MONUMENTS = [
       "horaires": "Tous les jours 12 h 30 à 15 h et 19 h 30 à 23 h",
       "fermeture": "Aucune fermeture hebdomadaire",
       "reservation": "Recommandée, par téléphone ou via le site.",
-      "tel": "06 5744194",
+      "tel": "+39 06 574 4194",
       "site": "https://www.ristorantevelavevodetto.it"
     },
-    "conseil": "Combinez avec la Pyramide de Cestius et le marché de Testaccio, à moins de dix minutes à pied. Métro B, station Piramide."
+    "conseil": "Combinez avec la Pyramide de Cestius et le marché de Testaccio, à moins de dix minutes à pied. Métro B, station Piramide.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1259,10 +1272,14 @@ const MONUMENTS = [
       "horaires": "Mardi au samedi 13 h à 14 h 45 et 20 h à 22 h 45, dimanche midi seulement",
       "fermeture": "Lundi toute la journée et dimanche soir",
       "reservation": "Indispensable, par téléphone, plusieurs jours à l'avance.",
-      "tel": "06 4466573",
+      "tel": "+39 06 446 6573",
       "site": ""
     },
-    "conseil": "À cinq minutes à pied de Sainte-Marie-Majeure et dix minutes de la gare Termini. Réservez avant de partir en voyage."
+    "conseil": "À cinq minutes à pied de Sainte-Marie-Majeure et dix minutes de la gare Termini. Réservez avant de partir en voyage.",
+    "image": {
+      "genre": "photo",
+      "credit": "Gobbler · CC BY-SA 3.0 · Wikimedia Commons"
+    }
   },
   {
     "categorie": "manger",
@@ -1284,10 +1301,15 @@ const MONUMENTS = [
       "horaires": "12 h 45 à 15 h et 19 h 45 à 23 h",
       "fermeture": "Mercredi",
       "reservation": "Fortement recommandée, via le site ou par téléphone, surtout le week-end.",
-      "tel": "06 536015",
-      "site": "https://trattoriadacesare.it"
+      "tel": "+39 06 536 015",
+      "site": "https://trattoriadacesare.it",
+      "tel2": "+39 351 890 1483"
     },
-    "conseil": "Tram 8 depuis Largo di Torre Argentina ou Trastevere jusqu'au terminus Casaletto, environ 25 minutes. Le restaurant est juste à côté de l'arrêt."
+    "conseil": "Tram 8 depuis Largo di Torre Argentina ou Trastevere jusqu'au terminus Casaletto, environ 25 minutes. Le restaurant est juste à côté de l'arrêt.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1309,10 +1331,14 @@ const MONUMENTS = [
       "horaires": "Mardi au jeudi 19 h à 23 h ; vendredi, samedi et dimanche 12 h à 15 h et 19 h à 23 h",
       "fermeture": "Lundi",
       "reservation": "Indispensable, par téléphone.",
-      "tel": "06 5742418",
+      "tel": "+39 06 574 2418",
       "site": "https://trattoriapennestri.it"
     },
-    "conseil": "À cinq minutes à pied de la Pyramide de Cestius et du métro Piramide. Faites un détour par la Via del Porto Fluviale pour les fresques géantes sur les entrepôts."
+    "conseil": "À cinq minutes à pied de la Pyramide de Cestius et du métro Piramide. Faites un détour par la Via del Porto Fluviale pour les fresques géantes sur les entrepôts.",
+    "image": {
+      "genre": "photo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1334,10 +1360,15 @@ const MONUMENTS = [
       "horaires": "Lundi au samedi environ 12 h à 16 h et 17 h à 21 h 30",
       "fermeture": "Dimanche, selon la saison",
       "reservation": "Sans réservation, on commande au comptoir.",
-      "tel": "06 89871920",
-      "site": ""
+      "tel": "+39 06 8987 1920",
+      "site": "https://www.supplizioroma.it",
+      "instagram": "https://www.instagram.com/supplizioroma/"
     },
-    "conseil": "À mi-chemin entre Piazza Navona et le Château Saint-Ange : parfait pour un déjeuner rapide entre les deux."
+    "conseil": "À mi-chemin entre Piazza Navona et le Château Saint-Ange : parfait pour un déjeuner rapide entre les deux.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1356,13 +1387,17 @@ const MONUMENTS = [
     "enfants": "Un carré de pizza bianca ou rossa dans la main, à manger en marchant vers le marché de Campo de' Fiori : c'est le goûter romain par excellence, et il coûte quelques euros. Montrez-leur le four à bois derrière le comptoir.",
     "pratique": {
       "adresse": "Via dei Chiavari 34, 00186 Roma",
-      "horaires": "Lundi au samedi environ 8 h à 20 h, dimanche 8 h à 18 h",
+      "horaires": "Tous les jours 7 h 30 à 20 h",
       "fermeture": "Ouvert tous les jours, sauf jours fériés",
       "reservation": "Sans réservation, on prend un ticket et on commande au poids.",
-      "tel": "06 6864045",
+      "tel": "+39 06 686 4045",
       "site": "https://anticofornoroscioli.it"
     },
-    "conseil": "Évitez 13 h, l'heure de pointe. Vers 11 h ou 16 h, la pizza sort du four et il n'y a presque personne."
+    "conseil": "Évitez 13 h, l'heure de pointe. Vers 11 h ou 16 h, la pizza sort du four et il n'y a presque personne.",
+    "image": {
+      "genre": "photo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1384,10 +1419,14 @@ const MONUMENTS = [
       "horaires": "Lundi au samedi 11 h à 22 h ; dimanche 11 h à 15 h et 17 h à 22 h",
       "fermeture": "Ouvert tous les jours",
       "reservation": "Sans réservation, comptoir.",
-      "tel": "06 39745416",
+      "tel": "+39 06 3974 5416",
       "site": "https://bonci.it"
     },
-    "conseil": "Métro A, station Cipro, à deux minutes. Prévoyez 10 à 15 minutes de file à midi : venez à 11 h 30 ou vers 15 h."
+    "conseil": "Métro A, station Cipro, à deux minutes. Prévoyez 10 à 15 minutes de file à midi : venez à 11 h 30 ou vers 15 h.",
+    "image": {
+      "genre": "photo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1409,10 +1448,14 @@ const MONUMENTS = [
       "horaires": "Tous les jours à partir de 12 h jusque tard dans la soirée",
       "fermeture": "Ouvert tous les jours, sauf jours fériés",
       "reservation": "Sans réservation.",
-      "tel": "06 5817312",
+      "tel": "+39 06 581 7312",
       "site": "https://www.trapizzino.it"
     },
-    "conseil": "Il existe aussi un Trapizzino à Testaccio, l'original, Via Giovanni Branca 88. Celui de Trastevere est le plus pratique en balade."
+    "conseil": "Il existe aussi un Trapizzino à Testaccio, l'original, Via Giovanni Branca 88. Celui de Trastevere est le plus pratique en balade.",
+    "image": {
+      "genre": "photo",
+      "credit": "Diego Zitelli · CC BY 3.0 · Wikimedia Commons"
+    }
   },
   {
     "categorie": "manger",
@@ -1434,10 +1477,15 @@ const MONUMENTS = [
       "horaires": "Lundi au samedi 19 h à 1 h, le soir uniquement",
       "fermeture": "Dimanche, et une partie du mois d'août",
       "reservation": "Pas de réservation, file d'attente sur place.",
-      "tel": "06 5746270",
-      "site": ""
+      "tel": "+39 06 574 6270",
+      "site": "",
+      "instagram": "https://www.instagram.com/remoatestaccio/"
     },
-    "conseil": "Espèces conseillées. Le soir, la place est pleine de familles du quartier et les enfants jouent au ballon : idéal après une journée de visites."
+    "conseil": "Espèces conseillées. Le soir, la place est pleine de familles du quartier et les enfants jouent au ballon : idéal après une journée de visites.",
+    "image": {
+      "genre": "photo",
+      "credit": "user:Lalupa · Public domain · Wikimedia Commons"
+    }
   },
   {
     "categorie": "manger",
@@ -1459,10 +1507,15 @@ const MONUMENTS = [
       "horaires": "Lundi au samedi, le matin et le midi, environ 9 h à 15 h",
       "fermeture": "Dimanche",
       "reservation": "Sans réservation, on commande au stand.",
-      "tel": "339 1343344",
-      "site": "https://www.mordievai.it"
+      "tel": "+39 339 134 3344",
+      "site": "https://www.mordievai.it",
+      "instagram": "https://www.instagram.com/mordievai/"
     },
-    "conseil": "Déjeuner uniquement, le marché ferme l'après-midi. À combiner avec la Pyramide de Cestius, à dix minutes à pied."
+    "conseil": "Déjeuner uniquement, le marché ferme l'après-midi. À combiner avec la Pyramide de Cestius, à dix minutes à pied.",
+    "image": {
+      "genre": "photo",
+      "credit": "Lalupa · CC BY-SA 4.0 · Wikimedia Commons"
+    }
   },
   {
     "categorie": "manger",
@@ -1480,14 +1533,19 @@ const MONUMENTS = [
     "commander": "Un spritz, un negroni ou un verre de blanc du Latium pour les parents, accompagnés des petites assiettes à partager. Le café du matin y est bon aussi, et le tiramisu maison a ses fans.",
     "enfants": "Les enfants ont droit à un spritz sans alcool ou à un jus pressé, et ils peuvent regarder les parties d'échecs, voire en commencer une. La place est piétonne et tranquille, ils peuvent bouger sans risque.",
     "pratique": {
-      "adresse": "Piazza del Fico 26, 00186 Roma",
-      "horaires": "Tous les jours, environ 8 h 30 à 2 h",
+      "adresse": "Piazza del Fico 26, angle Via della Pace 34, 00186 Roma",
+      "horaires": "Tous les jours 10 h 30 à 2 h",
       "fermeture": "Ouvert tous les jours",
       "reservation": "Sans réservation pour l'apéritif en terrasse.",
-      "tel": "06 68891373",
-      "site": "https://www.bardelfico.online"
+      "tel": "+39 06 6889 1373",
+      "site": "https://www.bardelfico.online",
+      "instagram": "https://www.instagram.com/bardelfico/"
     },
-    "conseil": "Venez vers 18 h, avant la foule du soir. Piazza Navona est à trois minutes : idéal avant d'aller y admirer les fontaines illuminées."
+    "conseil": "Venez vers 18 h, avant la foule du soir. Piazza Navona est à trois minutes : idéal avant d'aller y admirer les fontaines illuminées.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1509,10 +1567,14 @@ const MONUMENTS = [
       "horaires": "Tous les jours 18 h 30 à 2 h, apéritif avec buffet de 18 h 30 à 21 h",
       "fermeture": "Ouvert tous les jours",
       "reservation": "Sans réservation.",
-      "tel": "06 45497499",
+      "tel": "+39 06 4549 7499",
       "site": "https://www.freniefrizioni.com"
     },
-    "conseil": "Après 20 h le lieu devient bondé et très bruyant. Tôt, c'est parfait en famille ; ensuite, c'est plutôt pour les grands."
+    "conseil": "Après 20 h le lieu devient bondé et très bruyant. Tôt, c'est parfait en famille ; ensuite, c'est plutôt pour les grands.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   },
   {
     "categorie": "manger",
@@ -1534,10 +1596,15 @@ const MONUMENTS = [
       "horaires": "Tous les jours 8 h à 1 h, vendredi et samedi jusqu'à 2 h",
       "fermeture": "Ouvert tous les jours",
       "reservation": "Conseillée le soir et le dimanche midi, par téléphone.",
-      "tel": "06 97601552",
-      "site": "https://www.necci1924.com"
+      "tel": "+39 06 9760 1552",
+      "site": "https://www.necci1924.com",
+      "tel2": "+39 333 793 3760"
     },
-    "conseil": "Métro C, station Pigneto, ou tram 5 et 14 depuis Termini. Le samedi, un marché se tient sur la Via del Pigneto, la rue piétonne voisine."
+    "conseil": "Métro C, station Pigneto, ou tram 5 et 14 depuis Termini. Le samedi, un marché se tient sur la Via del Pigneto, la rue piétonne voisine.",
+    "image": {
+      "genre": "logo",
+      "credit": "Site officiel"
+    }
   }
 ];
 

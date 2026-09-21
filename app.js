@@ -141,15 +141,15 @@
     return MONUMENTS.find((m) => m.id === id) || null;
   }
 
-  /* Adresses "Où manger" : pas de photo, un emoji par type, pas de MP3 */
+  /* Adresses "Où manger" : logo du site ou photo du lieu dans img/resto/, pas de MP3 */
   const estResto = (m) => m.categorie === 'manger';
-  const EMOJI_RESTO = { trattoria: '🍝', street: '🍕', bar: '🍹' };
   const TYPES_RESTO = { trattoria: 'Trattoria', street: 'Pizza & street food', bar: 'Bar & apéritivo' };
-  const emojiResto = (m) => EMOJI_RESTO[m.type] || '🍴';
   const typeResto = (m) => TYPES_RESTO[m.type] || 'Restaurant';
+  /** Un logo (carré, à montrer entier) plutôt qu'une photo (à recadrer). */
+  const estLogo = (m) => !!(estResto(m) && m.image && m.image.genre === 'logo');
 
-  const thumbUrl = (m) => `./img/${m.id}-thumb.jpg`;
-  const photoUrl = (m) => `./img/${m.id}.jpg`;
+  const thumbUrl = (m) => estResto(m) ? `./img/resto/${m.id}-thumb.jpg` : `./img/${m.id}-thumb.jpg`;
+  const photoUrl = (m) => estResto(m) ? `./img/resto/${m.id}.jpg` : `./img/${m.id}.jpg`;
   const audioNom = (m, pub) => `${m.id}-${pub}.mp3`;
   const audioUrl = (m, pub) => `./audio/${audioNom(m, pub)}`;
   const audioDispo = (m, pub) => !!state.audioManifest[audioNom(m, pub)];
@@ -175,7 +175,7 @@
     lsSet(LS_VISITED, JSON.stringify([...state.visited]));
     const m = lieuParId(id);
     if (m && state.markers[id]) state.markers[id].setIcon(makeIcon(m, state.miniLieu === m));
-    renderListe();
+    renderListe(true);
     updateVisitedBtn();
   }
 
@@ -184,39 +184,86 @@
      =================================================================== */
 
   /** Lieux filtrés puis triés du plus proche au plus lointain (si GPS). */
+  /**
+   * Deux groupes, chacun trié du plus proche au plus lointain (si GPS) :
+   * - principal : les monuments (tous, ou la catégorie filtrée)
+   * - restos    : les adresses "Où manger", affichées dans une section à part
+   *               en fin de liste (filtre Tous) ou seules (filtre Où manger)
+   */
   function lieuxTries() {
-    let arr = MONUMENTS.map((m) => ({ m, d: distanceVers(m) }));
-    if (state.filter !== 'tous') arr = arr.filter((x) => x.m.categorie === state.filter);
-    if (state.position) arr.sort((a, b) => a.d - b.d);
-    return arr;
+    let principal = MONUMENTS.filter((m) => !estResto(m));
+    let restos = MONUMENTS.filter(estResto);
+    if (state.filter === 'manger') principal = [];
+    else if (state.filter !== 'tous') { principal = principal.filter((m) => m.categorie === state.filter); restos = []; }
+    const trier = (arr) => {
+      const avecDist = arr.map((m) => ({ m, d: distanceVers(m) }));
+      if (state.position) avecDist.sort((a, b) => a.d - b.d);
+      return avecDist;
+    };
+    return { principal: trier(principal), restos: trier(restos) };
   }
 
-  function renderListe() {
+  /** HTML d'un élément de liste. */
+  function ligneLieu(m, d) {
+    const vu = state.visited.has(m.id);
+    const cat = CATEGORIES[m.categorie];
+    return `<li data-id="${m.id}">
+      <button class="lieu${vu ? ' is-visited' : ''}" type="button" data-id="${m.id}">
+        <img class="lieu-photo${estLogo(m) ? ' is-logo' : ''}" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">
+        <span class="lieu-texte">
+          <span class="lieu-nom">${escapeHtml(m.nom)}</span>
+          <span class="lieu-meta">${estResto(m)
+            ? `${typeResto(m)} · ${escapeHtml(m.quartier)} · ${m.budget}`
+            : `${cat.label} · ${formatDuree(m.duree)}`}${vu ? ' · ✓ vu' : ''}</span>
+        </span>
+        <span class="lieu-dist">
+          <span class="lieu-dist-val">${formatDistance(d)}</span>
+          <span class="lieu-dist-sub">${d != null ? formatMarche(d) : ''}</span>
+        </span>
+        <span class="lieu-chevron" aria-hidden="true">›</span>
+      </button>
+    </li>`;
+  }
+
+  /**
+   * Rendu de la liste.
+   * Le GPS déclenche un rendu toutes les 1,5 s : pour éviter tout clignotement,
+   * on ne reconstruit JAMAIS les éléments existants. On met à jour les distances
+   * en place, et si l'ordre change on DÉPLACE les <li> (les photos ne se
+   * rechargent pas). `force` reconstruit tout (changement de filtre, "vu").
+   */
+  function renderListe(force) {
     state.lastListRender = Date.now();
-    const items = lieuxTries();
-    el.liste.innerHTML = items.map(({ m, d }) => {
-      const vu = state.visited.has(m.id);
-      const cat = CATEGORIES[m.categorie];
-      return `
-        <li>
-          <button class="lieu${vu ? ' is-visited' : ''}" type="button" data-id="${m.id}">
-            ${estResto(m)
-              ? `<span class="lieu-emoji lieu-emoji-resto" aria-hidden="true">${emojiResto(m)}</span>`
-              : `<img class="lieu-photo" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">`}
-            <span class="lieu-texte">
-              <span class="lieu-nom">${escapeHtml(m.nom)}</span>
-              <span class="lieu-meta">${estResto(m)
-                ? `${typeResto(m)} · ${escapeHtml(m.quartier)} · ${m.budget}`
-                : `${cat.label} · ${formatDuree(m.duree)}`}${vu ? ' · ✓ vu' : ''}</span>
-            </span>
-            <span class="lieu-dist">
-              <span class="lieu-dist-val">${formatDistance(d)}</span>
-              ${d != null ? `<span class="lieu-dist-sub">${formatMarche(d)}</span>` : ''}
-            </span>
-            <span class="lieu-chevron" aria-hidden="true">›</span>
-          </button>
-        </li>`;
-    }).join('');
+    const { principal, restos } = lieuxTries();
+    const ordre = [];
+    principal.forEach((x) => ordre.push({ key: x.m.id, x }));
+    if (restos.length && state.filter === 'tous') ordre.push({ key: '__section__', x: null });
+    restos.forEach((x) => ordre.push({ key: x.m.id, x }));
+
+    const existants = new Map();
+    if (!force) el.liste.querySelectorAll(':scope > li').forEach((li) => existants.set(li.dataset.id, li));
+    if (force) el.liste.innerHTML = '';
+
+    let ref = null;
+    for (const { key, x } of ordre) {
+      let li = existants.get(key);
+      if (li) {
+        existants.delete(key);
+        if (x) {
+          li.querySelector('.lieu-dist-val').textContent = formatDistance(x.d);
+          li.querySelector('.lieu-dist-sub').textContent = x.d != null ? formatMarche(x.d) : '';
+        }
+      } else {
+        const tmp = document.createElement('ul');
+        tmp.innerHTML = x ? ligneLieu(x.m, x.d) : `<li data-id="__section__" class="liste-section" aria-hidden="true">🍝 Où manger</li>`;
+        li = tmp.firstElementChild;
+      }
+      // Ne déplace l'élément que s'il n'est pas déjà à la bonne place
+      const attendu = ref ? ref.nextElementSibling : el.liste.firstElementChild;
+      if (attendu !== li) el.liste.insertBefore(li, attendu);
+      ref = li;
+    }
+    existants.forEach((li) => li.remove());
     el.listeHint.hidden = !!state.position;
   }
 
@@ -243,18 +290,9 @@
 
   /** Icône d'un lieu : sa photo dans un cercle. */
   function makeIcon(m, selected) {
-    if (estResto(m)) {
-      const cls = ['marker-lieu', 'marker-manger'];
-      if (state.visited.has(m.id)) cls.push('is-visited');
-      if (selected) cls.push('is-selected');
-      return L.divIcon({
-        className: cls.join(' '),
-        html: `<span aria-hidden="true">${emojiResto(m)}</span>`,
-        iconSize: [40, 40],
-        iconAnchor: [20, 20]
-      });
-    }
     const classes = ['marker-photo'];
+    if (estResto(m)) classes.push('is-manger');
+    if (estLogo(m)) classes.push('is-logo');
     if (state.visited.has(m.id)) classes.push('is-visited');
     if (selected) classes.push('is-selected');
     return L.divIcon({
@@ -333,15 +371,8 @@
     }
     state.miniLieu = m;
     state.markers[m.id].setIcon(makeIcon(m, true));
-    if (estResto(m)) {
-      el.miniImg.hidden = true;
-      el.miniEmoji.hidden = false;
-      el.miniEmoji.textContent = emojiResto(m);
-    } else {
-      el.miniEmoji.hidden = true;
-      el.miniImg.hidden = false;
-      el.miniImg.src = thumbUrl(m);
-    }
+    el.miniImg.src = thumbUrl(m);
+    el.miniImg.classList.toggle('is-logo', estLogo(m));
     el.miniNom.textContent = m.nom;
     updateMiniMeta();
     el.mapMini.classList.add('is-visible');
@@ -379,20 +410,36 @@
     if (state.audioLieu && state.audioLieu.id !== id) stopAudio();
     state.current = m;
     renderFiche();
+    el.sheetHeaderTitre.textContent = el.viewCarte.classList.contains('is-active') ? 'Carte' : 'Autour de moi';
     el.sheetBody.scrollTop = 0;
     updateVisitedBtn();
     updateSegments();
     updateAudioBtn();
+    // Une entrée d'historique : le bouton Retour du navigateur (ou le geste) ferme la fiche
+    if (!el.sheet.classList.contains('is-open')) {
+      try { history.pushState({ fiche: true }, ''); } catch (e) { /* ignore */ }
+    }
     el.sheet.classList.add('is-open');
     el.sheet.setAttribute('aria-hidden', 'false');
   }
 
+  /**
+   * Ferme la fiche et revient à la page précédente. La carte ou la liste n'ont
+   * jamais été détruites : elles réapparaissent exactement comme on les a
+   * laissées (zoom, mini-fiche, filtre, position de défilement).
+   */
   function closeSheet() {
+    if (!el.sheet.classList.contains('is-open')) return;
     el.sheet.classList.remove('is-open');
     el.sheet.setAttribute('aria-hidden', 'true');
     state.current = null;
     // La lecture MP3 continue en arrière-plan (pratique en marchant) ; la synthèse vocale s'arrête
     if (state.audioMode === 'tts') stopAudio();
+    // On retire l'entrée d'historique ajoutée à l'ouverture (sans redéclencher la fermeture)
+    if (history.state && history.state.fiche) {
+      state.popSilencieux = true;
+      try { history.back(); } catch (e) { state.popSilencieux = false; }
+    }
   }
 
   /** Construit le HTML de la fiche pour le lieu courant et le guide sélectionné. */
@@ -442,15 +489,26 @@
     const ligne = (label, html) => html
       ? `<div class="pratique-ligne"><span class="pratique-label">${label}</span><span class="pratique-val">${html}</span></div>`
       : '';
-    const tel = p.tel ? `<a href="tel:${p.tel.replace(/\s/g, '')}">${escapeHtml(p.tel)}</a>` : '';
-    const site = p.site ? `<a href="${escapeHtml(p.site)}" target="_blank" rel="noopener">${escapeHtml(p.site.replace(/^https?:\/\/(www\.)?/, ''))}</a>` : '';
+    // Numéros au format international (+39) : composables tels quels depuis un téléphone français
+    const lienTel = (t) => `<a href="tel:${t.replace(/[^+\d]/g, '')}">${escapeHtml(t)}</a>`;
+    const tel = [p.tel, p.tel2].filter(Boolean).map(lienTel).join(' · ');
+    const lienSite = (u, label) => `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${escapeHtml(label || u.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a>`;
+    const site = p.site ? lienSite(p.site) : '';
+    const instagram = p.instagram ? lienSite(p.instagram, '@' + p.instagram.replace(/\/$/, '').split('/').pop()) : '';
     const maps = `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.nom + ', ' + (p.adresse || 'Roma'))}" target="_blank" rel="noopener">Horaires et avis du jour sur Google Maps</a>`;
 
+    const entete = estLogo(m)
+      ? `<header class="fiche-head">
+           <img class="fiche-logo" src="${photoUrl(m)}" alt="" width="72" height="72" decoding="async">
+           <h2 id="fiche-titre">${escapeHtml(m.nom)}</h2>
+         </header>`
+      : `<figure class="fiche-hero">
+           <img src="${photoUrl(m)}" alt="${escapeHtml(m.nom)}" decoding="async">
+           ${m.image ? `<figcaption class="fiche-credit">Photo : ${escapeHtml(m.image.credit)}</figcaption>` : ''}
+         </figure>
+         <header class="fiche-head"><h2 id="fiche-titre">${escapeHtml(m.nom)}</h2></header>`;
     el.sheetBody.innerHTML = `
-      <header class="fiche-head">
-        <span class="fiche-emoji" aria-hidden="true">${emojiResto(m)}</span>
-        <h2 id="fiche-titre">${escapeHtml(m.nom)}</h2>
-      </header>
+      ${entete}
       <div class="fiche-meta">
         <span class="meta">${typeResto(m)}</span>
         <span class="meta">📍 ${escapeHtml(m.quartier)}</span>
@@ -469,6 +527,7 @@
         ${ligne('Réservation', escapeHtml(p.reservation))}
         ${ligne('Téléphone', tel)}
         ${ligne('Site', site)}
+        ${ligne('Instagram', instagram)}
         ${ligne('Vérifier', maps)}
         <p class="pratique-note">* Horaires habituels relevés en septembre 2026. Toujours revérifier sur le site du lieu ou sa page Google Maps avant d'y aller : les horaires et les jours de fermeture changent souvent.</p>
       </section>
@@ -836,10 +895,14 @@
       el.btnGps.classList.remove('is-busy');
       onPosition(pos);
       renderListe();
+      const precision = Math.round(pos.coords.accuracy);
       if (el.viewCarte.classList.contains('is-active') && state.map) {
+        state.userMovedMap = false;
         state.map.setView([pos.coords.latitude, pos.coords.longitude], Math.max(state.map.getZoom(), 16), { animate: true });
+        toast(`Carte recentrée sur vous · précision ${precision} m`);
       } else {
-        toast('Position mise à jour ✓');
+        el.listeScroll.scrollTo({ top: 0, behavior: 'smooth' });
+        toast(`Liste retriée depuis votre position · précision ${precision} m`);
       }
     }, (err) => {
       el.btnGps.classList.remove('is-busy');
@@ -1064,7 +1127,7 @@
       if (!chip) return;
       state.filter = chip.dataset.filter;
       renderChips();
-      renderListe();
+      renderListe(true);
       el.listeScroll.scrollTo({ top: 0 });
     });
     el.btnHintGps.addEventListener('click', rafraichirGps);
@@ -1080,8 +1143,14 @@
     el.btnRoute.addEventListener('click', ouvrirItineraire);
     el.btnVisited.addEventListener('click', () => { if (state.current) basculerVisite(state.current.id); });
     el.btnClose.addEventListener('click', closeSheet);
+    el.btnBackSheet.addEventListener('click', closeSheet);
     el.btnMap.addEventListener('click', voirSurCarte);
     el.sheetBackdrop.addEventListener('click', closeSheet);
+    // Retour du navigateur / geste de retour : ferme la fiche au lieu de quitter l'app
+    window.addEventListener('popstate', () => {
+      if (state.popSilencieux) { state.popSilencieux = false; return; }
+      if (el.sheet.classList.contains('is-open')) closeSheet();
+    });
 
     // Cycle de vie
     window.addEventListener('pagehide', () => { if (state.audioMode === 'tts') stopAudio(); });
@@ -1122,13 +1191,14 @@
       miniOpen: $('#mini-open'),
       miniClose: $('#mini-close'),
       miniImg: $('#mini-img'),
-      miniEmoji: $('#mini-emoji'),
       sheetActions: $('.sheet-actions'),
       miniNom: $('#mini-nom'),
       miniMeta: $('#mini-meta'),
       sheet: $('#sheet'),
       sheetBackdrop: $('#sheet-backdrop'),
       sheetBody: $('#sheet-body'),
+      sheetHeaderTitre: $('#sheet-header-titre'),
+      btnBackSheet: $('#btn-back-sheet'),
       segAdultes: $('#seg-adultes'),
       segEnfants: $('#seg-enfants'),
       btnAudio: $('#btn-audio'),
@@ -1152,7 +1222,7 @@
     state.public = lsGet(LS_PUBLIC, 'adultes') === 'enfants' ? 'enfants' : 'adultes';
     updateSegments();
     renderChips();
-    renderListe();
+    renderListe(true);
     initMap();
     lierEvenements();
     chargerIndex();
