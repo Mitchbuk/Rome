@@ -1,0 +1,77 @@
+{
+  "armando-pantheon": {
+    "lat": 41.89906,
+    "lon": 12.4762,
+    "nom": "Armando al Pantheon, 31, Salita de' Crescenzi, Sant'Eustachio, Municip"
+  },
+  "da-enzo-al-29": {
+    "lat": 41.88809,
+    "lon": 12.47781,
+    "nom": "Da Enzo, 29, Via dei Vascellari, Trastevere, Municipio Roma I, Roma, R"
+  },
+  "flavio-velavevodetto": {
+    "lat": 41.87663,
+    "lon": 12.47609,
+    "nom": "Flavio al Velavevodetto, 97, Via di Monte Testaccio, Testaccio, Munici"
+  },
+  "trattoria-monti": {
+    "lat": 41.89569,
+    "lon": 12.50207,
+    "nom": "13, Via di San Vito, Esquilino, Municipio Roma I, Roma, Roma Capitale,"
+  },
+  "cesare-al-casaletto": {
+    "lat": 41.87685,
+    "lon": 12.44077,
+    "nom": "Trattoria da Cesare, 45, Via del Casaletto, Municipio Roma XII, Roma, "
+  },
+  "trattoria-pennestri": {
+    "lat": 41.87335,
+    "lon": 12.47988,
+    "nom": "Trattoria Pennestri, 5, Via Giovanni da Empoli, Municipio Roma VIII, R"
+  },
+  "supplizio": {
+    "lat": 41.89747,
+    "lon": 12.4679,
+    "nom": "Supplizio, 143, Via dei Banchi Vecchi, Parione, Municipio Roma I, Roma"
+  },
+  "antico-forno-roscioli": {
+    "lat": 41.89465,
+    "lon": 12.47426,
+    "nom": "Forno Roscioli, 34, Via dei Chiavari, Parione, Municipio Roma I, Roma,"
+  },
+  "pizzarium-bonci": {
+    "lat": 41.9067,
+    "lon": 12.44666,
+    "nom": "Bonci Pizzarium, 43, Via della Meloria, Municipio Roma I, Roma, Roma C"
+  },
+  "trapizzino-trastevere": {
+    "lat": 41.89146,
+    "lon": 12.46991,
+    "nom": "Trapizzino, 46, Piazza Trilussa, Trastevere, Municipio Roma I, Roma, R"
+  },
+  "pizzeria-da-remo": {
+    "lat": 41.88093,
+    "lon": 12.47535,
+    "nom": "Pizzeria da Remo, 44, Piazza di Santa Maria Liberatrice, Testaccio, Mu"
+  },
+  "mordi-e-vai": {
+    "lat": 41.87757,
+    "lon": 12.47335,
+    "nom": "Mordi e Vai, 12e, Via Beniamino Franklin, Testaccio, Municipio Roma I,"
+  },
+  "bar-del-fico": {
+    "lat": 41.89942,
+    "lon": 12.47066,
+    "nom": "Bar del Fico, 26, Piazza del Fico, Parione, Municipio Roma I, Roma, Ro"
+  },
+  "freni-e-frizioni": {
+    "lat": 41.89128,
+    "lon": 12.47067,
+    "nom": "Freni e Frizioni, 4, Via del Politeama, Trastevere, Municipio Roma I, "
+  },
+  "necci-dal-1924": {
+    "lat": 41.88918,
+    "lon": 12.53029,
+    "nom": "Necci dal 1924, 68, Via Fanfulla da Lodi, Pigneto, Municipio Roma V, R"
+  }
+}

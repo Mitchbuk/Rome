@@ -15,6 +15,11 @@
      conseil     : astuce pratique (non lue à voix haute)
      adultes     : sections { titre, texte } du guide adultes
      enfants     : sections { titre, texte } du guide enfants (9-12 ans)
+   Les adresses "Où manger" (categorie 'manger') ont une structure propre :
+     type ('trattoria' | 'street' | 'bar'), quartier, budget, prix, resume,
+     pourquoi, commander, enfants (texte), pratique { adresse, horaires,
+     fermeture, reservation, tel, site }, conseil. Pas d'audio MP3 : la fiche
+     est lue par la voix du téléphone.
    ===================================================================== */
 
 const CATEGORIES = {
@@ -37,6 +42,10 @@ const CATEGORIES = {
   quartier: {
     label: "Quartiers & vues",
     emoji: "🌳"
+  },
+  manger: {
+    label: "Où manger",
+    emoji: "🍝"
   }
 };
 
@@ -1150,6 +1159,385 @@ const MONUMENTS = [
       { titre: "Le quiz",
         texte: "Question : Michel-Ange se considérait-il comme un peintre ? Réponse : non ! Il se disait sculpteur et signait ses lettres « Michel-Ange sculpteur ». Il a tout fait pour refuser le plafond de la Sixtine, persuadé que ses rivaux voulaient le voir échouer. Il l'a finalement peint presque seul, en quatre ans, et c'est devenu la peinture la plus célèbre du monde." }
     ]
+  },
+
+  /* ------------------------------------------------------------------
+     OÙ MANGER — restaurants, street food, bars (source : content/restos.json)
+     ------------------------------------------------------------------ */
+  {
+    "categorie": "manger",
+    "id": "armando-pantheon",
+    "nom": "Armando al Pantheon",
+    "type": "trattoria",
+    "quartier": "Panthéon",
+    "budget": "€€",
+    "prix": "30 à 40 € par personne",
+    "lat": 41.89906,
+    "lon": 12.4762,
+    "duree": 90,
+    "resume": "La trattoria familiale historique à vingt mètres du Panthéon, tenue par la famille Gargioli depuis 1961.",
+    "pourquoi": "Trouver une vraie trattoria de famille à côté d'un monument aussi visité tient du miracle, et c'est pourtant le cas ici. Depuis 1961, les Gargioli servent la cuisine romaine telle qu'on la fait à la maison, dans une petite salle aux murs couverts de photos et de dédicaces. Les portions sont généreuses, les serveurs ont vu passer trois générations de clients, et rien n'a été aménagé pour les touristes : la carte est la même pour tout le monde.",
+    "commander": "Les classiques romains sont tous là et tous réussis : rigatoni alla gricia, carbonara, cacio e pepe, saltimbocca alla romana. Pour changer, essayez le lapin ou l'agneau au four. En dessert, la tarte ricotta et cerises griottes est la spécialité de la maison.",
+    "enfants": "Des pâtes au beurre ou à la sauce tomate se demandent sans problème, et les enfants adorent regarder la file de touristes devant le Panthéon depuis la fenêtre. Prévoyez de venir à l'ouverture, à 12 h 30, quand la salle est encore calme.",
+    "pratique": {
+      "adresse": "Salita de' Crescenzi 31, 00186 Roma",
+      "horaires": "Lundi au samedi 12 h 30 à 15 h et 19 h à 23 h",
+      "fermeture": "Dimanche, et généralement une partie du mois d'août",
+      "reservation": "Indispensable, uniquement en ligne sur le site, deux à trois semaines à l'avance. Pas de tables de plus de six personnes.",
+      "tel": "",
+      "site": "https://armandoalpantheon.it"
+    },
+    "conseil": "Sans réservation, tentez votre chance à 12 h 30 pile en semaine. La salle est minuscule, il n'y a pas de terrasse."
+  },
+  {
+    "categorie": "manger",
+    "id": "da-enzo-al-29",
+    "nom": "Da Enzo al 29",
+    "type": "trattoria",
+    "quartier": "Trastevere",
+    "budget": "€€",
+    "prix": "25 à 35 € par personne",
+    "lat": 41.88809,
+    "lon": 12.47781,
+    "duree": 90,
+    "resume": "La trattoria de poche la plus célèbre de Trastevere : dix tables, une file sur le trottoir et une carbonara de référence.",
+    "pourquoi": "Enzo, puis ses enfants, tiennent cette minuscule adresse de la partie calme de Trastevere, loin des rues à touristes. Les produits viennent de petits fermiers du Latium et tout est fait sur place, ce qui se sent dès la première bouchée. L'ambiance est bruyante et joyeuse, les tables sont collées les unes aux autres, et la file d'attente sur la Via dei Vascellari fait partie du spectacle.",
+    "commander": "La carbonara et la cacio e pepe sont parmi les meilleures de Rome. Commencez par la burrata ou, de novembre à avril, les artichauts à la juive, croustillants comme des chips. Terminez par le tiramisu servi dans un bocal.",
+    "enfants": "Les boulettes de viande à la sauce tomate et les pâtes simples plaisent à coup sûr. Le temps d'attente peut être long : venez pour le premier service de 12 h 30 ou réservez le créneau de 19 h 30, le seul qui se réserve.",
+    "pratique": {
+      "adresse": "Via dei Vascellari 29, 00153 Roma",
+      "horaires": "Lundi au samedi 12 h 30 à 15 h et 19 h 30 à 23 h",
+      "fermeture": "Dimanche",
+      "reservation": "Par téléphone, uniquement pour le service de 19 h 30. Sinon, file d'attente sur place, qui se forme dès 19 h.",
+      "tel": "06 5812260",
+      "site": "https://www.daenzoal29.com"
+    },
+    "conseil": "Arrivez vers 12 h 15 pour être dans les premiers du déjeuner. L'île Tibérine et le Ghetto sont à cinq minutes à pied."
+  },
+  {
+    "categorie": "manger",
+    "id": "flavio-velavevodetto",
+    "nom": "Flavio al Velavevodetto",
+    "type": "trattoria",
+    "quartier": "Testaccio",
+    "budget": "€€",
+    "prix": "25 à 35 € par personne",
+    "lat": 41.87663,
+    "lon": 12.47609,
+    "duree": 90,
+    "resume": "Une trattoria creusée dans le Monte Testaccio, la colline d'amphores cassées de la Rome antique, visibles à travers les vitres.",
+    "pourquoi": "Le nom veut dire « je te l'avais bien dit », et Flavio De Maio a raison : sa trattoria est l'une des plus solides de Rome pour la cuisine romaine traditionnelle. Le lieu est unique : la salle du fond est taillée dans le Monte Testaccio, et des parois vitrées laissent voir les millions de tessons d'amphores romaines qui forment la colline. On mange donc littéralement dans un site archéologique, avec une terrasse ombragée à la belle saison.",
+    "commander": "Les rigatoni alla carbonara et les tonnarelli cacio e pepe sont les stars. Les boulettes de viande en sauce, les artichauts et les légumes de saison sont excellents. Pour les amateurs, la queue de bœuf mijotée est l'un des grands plats du quartier.",
+    "enfants": "Les boulettes de viande à la sauce tomate sont le plat préféré des enfants ici, et l'idée de manger dans une montagne de poteries vieilles de deux mille ans les amuse beaucoup. Demandez une table côté vitrine sur les amphores.",
+    "pratique": {
+      "adresse": "Via di Monte Testaccio 97, 00153 Roma",
+      "horaires": "Tous les jours 12 h 30 à 15 h et 19 h 30 à 23 h",
+      "fermeture": "Aucune fermeture hebdomadaire",
+      "reservation": "Recommandée, par téléphone ou via le site.",
+      "tel": "06 5744194",
+      "site": "https://www.ristorantevelavevodetto.it"
+    },
+    "conseil": "Combinez avec la Pyramide de Cestius et le marché de Testaccio, à moins de dix minutes à pied. Métro B, station Piramide."
+  },
+  {
+    "categorie": "manger",
+    "id": "trattoria-monti",
+    "nom": "Trattoria Monti",
+    "type": "trattoria",
+    "quartier": "Esquilin, près de Sainte-Marie-Majeure",
+    "budget": "€€€",
+    "prix": "35 à 45 € par personne",
+    "lat": 41.89569,
+    "lon": 12.50207,
+    "duree": 90,
+    "resume": "La table familiale des Camerucci, cuisine des Marches raffinée et sans chichis, à deux pas de Sainte-Marie-Majeure.",
+    "pourquoi": "Tenue par la famille Camerucci depuis les années 1970, cette trattoria propose la cuisine des Marches, la région d'origine de la famille, avec une finesse rare à ce prix. La salle est petite et élégante, le service chaleureux, et les habitués du quartier se mêlent aux voyageurs bien renseignés. C'est l'adresse idéale pour un dîner un peu plus soigné sans quitter l'esprit trattoria.",
+    "commander": "Le plat culte est le tortello al rosso d'uovo, un immense raviolo qui libère un jaune d'œuf coulant quand on le coupe. Les vincisgrassi, la version des Marches des lasagnes, et le lapin en porchetta sont d'autres valeurs sûres. Les desserts maison, dont la crème brûlée, méritent une place.",
+    "enfants": "Le tortello au jaune d'œuf est un vrai spectacle à table, et il existe toujours des pâtes simples pour les plus prudents. Le cadre est calme, plutôt pour un dîner tranquille que pour une pause pressée.",
+    "pratique": {
+      "adresse": "Via di San Vito 13a, 00185 Roma",
+      "horaires": "Mardi au samedi 13 h à 14 h 45 et 20 h à 22 h 45, dimanche midi seulement",
+      "fermeture": "Lundi toute la journée et dimanche soir",
+      "reservation": "Indispensable, par téléphone, plusieurs jours à l'avance.",
+      "tel": "06 4466573",
+      "site": ""
+    },
+    "conseil": "À cinq minutes à pied de Sainte-Marie-Majeure et dix minutes de la gare Termini. Réservez avant de partir en voyage."
+  },
+  {
+    "categorie": "manger",
+    "id": "cesare-al-casaletto",
+    "nom": "Trattoria da Cesare al Casaletto",
+    "type": "trattoria",
+    "quartier": "Monteverde, terminus du tram 8",
+    "budget": "€€",
+    "prix": "25 à 30 € par personne",
+    "lat": 41.87685,
+    "lon": 12.44077,
+    "duree": 90,
+    "resume": "La trattoria de quartier préférée des Romains, sous une pergola au bout de la ligne de tram, avec un rapport qualité-prix imbattable.",
+    "pourquoi": "Aucun touriste ne tombe ici par hasard : il faut prendre le tram 8 jusqu'au terminus, et c'est justement ce qui préserve l'adresse. Le chef Leonardo Vignoli y sert depuis 2009 une cuisine romaine précise, avec des produits choisis, à des prix de trattoria de quartier. La grande terrasse sous la pergola est pleine de familles romaines le dimanche midi, ce qui en dit long.",
+    "commander": "Commencez par les fritti, la spécialité du lieu : boulettes de bouilli, gnocchetti frits cacio e pepe, supplì. Puis fettuccine au ragoût, tonnarelli cacio e pepe ou poulet à la chasseur. Les vins naturels du Latium sont servis au verre à petit prix.",
+    "enfants": "Les fritures du début de repas sont une fête pour les enfants, les gnocchis et le poulet plaisent ensuite. La terrasse laisse de la place pour bouger, et le trajet en tram est une petite aventure en soi.",
+    "pratique": {
+      "adresse": "Via del Casaletto 45, 00151 Roma",
+      "horaires": "12 h 45 à 15 h et 19 h 45 à 23 h",
+      "fermeture": "Mercredi",
+      "reservation": "Fortement recommandée, via le site ou par téléphone, surtout le week-end.",
+      "tel": "06 536015",
+      "site": "https://trattoriadacesare.it"
+    },
+    "conseil": "Tram 8 depuis Largo di Torre Argentina ou Trastevere jusqu'au terminus Casaletto, environ 25 minutes. Le restaurant est juste à côté de l'arrêt."
+  },
+  {
+    "categorie": "manger",
+    "id": "trattoria-pennestri",
+    "nom": "Trattoria Pennestri",
+    "type": "trattoria",
+    "quartier": "Ostiense, près de la Pyramide",
+    "budget": "€€€",
+    "prix": "35 à 45 € par personne",
+    "lat": 41.87335,
+    "lon": 12.47988,
+    "duree": 90,
+    "resume": "La trattoria romaine moderne du quartier Ostiense, ouverte en 2016 et devenue une référence pour les Romains qui aiment bien manger.",
+    "pourquoi": "Tommaso Pennestri et Valeria Payero ont ouvert cette adresse en 2016 dans le quartier Ostiense, entre le Testaccio et les anciens entrepôts couverts de fresques de street art. La cuisine part des classiques romains mais les allège et les affine, avec des produits de saison et des desserts très soignés. Le cadre est simple et lumineux, le service attentif, les prix restent raisonnables pour ce niveau.",
+    "commander": "La carte change avec les saisons : pâtes fraîches du jour, viandes mijotées, légumes travaillés avec soin. Laissez-vous conseiller sur les entrées, souvent les plats les plus créatifs, et gardez de la place pour les desserts, qui sont l'une des fiertés de la maison.",
+    "enfants": "L'accueil est bienveillant avec les familles et la cuisine s'adapte volontiers pour un plat de pâtes simple. C'est plutôt une adresse pour un dîner posé, à privilégier le week-end quand elle ouvre aussi le midi.",
+    "pratique": {
+      "adresse": "Via Giovanni da Empoli 5, 00154 Roma",
+      "horaires": "Mardi au jeudi 19 h à 23 h ; vendredi, samedi et dimanche 12 h à 15 h et 19 h à 23 h",
+      "fermeture": "Lundi",
+      "reservation": "Indispensable, par téléphone.",
+      "tel": "06 5742418",
+      "site": "https://trattoriapennestri.it"
+    },
+    "conseil": "À cinq minutes à pied de la Pyramide de Cestius et du métro Piramide. Faites un détour par la Via del Porto Fluviale pour les fresques géantes sur les entrepôts."
+  },
+  {
+    "categorie": "manger",
+    "id": "supplizio",
+    "nom": "Supplizio",
+    "type": "street",
+    "quartier": "Centre historique, près de Campo de' Fiori",
+    "budget": "€",
+    "prix": "5 à 12 € par personne",
+    "lat": 41.89747,
+    "lon": 12.4679,
+    "duree": 30,
+    "resume": "Le temple du supplì, la boulette de riz frite des Romains, revisitée par un chef dans un petit salon aux canapés de cuir.",
+    "pourquoi": "Le supplì est le goûter de rue de Rome depuis toujours : une boulette de riz au ragoût, farcie de mozzarella, panée et frite. Le chef Arcangelo Dandini en a fait ici une spécialité d'orfèvre, avec la recette classique et des variantes qui changent selon les saisons. On mange debout au comptoir ou installé dans de vieux fauteuils de cuir, dans une rue d'antiquaires très jolie.",
+    "commander": "Le supplì classique, à la sauce tomate et au fil de mozzarella qu'on étire « comme un téléphone », est indispensable. Essayez aussi le supplì cacio e pepe ou carbonara, les croquettes de pommes de terre et le mini sandwich au bouilli. Deux ou trois pièces suffisent pour un déjeuner léger.",
+    "enfants": "Le jeu consiste à casser le supplì en deux et à voir le fil de mozzarella s'étirer le plus loin possible. Le classique est le préféré des enfants, sans surprise et sans piquant.",
+    "pratique": {
+      "adresse": "Via dei Banchi Vecchi 143, 00186 Roma",
+      "horaires": "Lundi au samedi environ 12 h à 16 h et 17 h à 21 h 30",
+      "fermeture": "Dimanche, selon la saison",
+      "reservation": "Sans réservation, on commande au comptoir.",
+      "tel": "06 89871920",
+      "site": ""
+    },
+    "conseil": "À mi-chemin entre Piazza Navona et le Château Saint-Ange : parfait pour un déjeuner rapide entre les deux."
+  },
+  {
+    "categorie": "manger",
+    "id": "antico-forno-roscioli",
+    "nom": "Antico Forno Roscioli",
+    "type": "street",
+    "quartier": "Campo de' Fiori",
+    "budget": "€",
+    "prix": "3 à 8 € par personne",
+    "lat": 41.89465,
+    "lon": 12.47426,
+    "duree": 20,
+    "resume": "La boulangerie mythique de la famille Roscioli, pour la pizza bianca et la pizza rossa qui font courir tout le quartier.",
+    "pourquoi": "Depuis 1972, la famille Roscioli tient ce four à deux pas de Campo de' Fiori, et la file qui déborde sur le trottoir à midi ne ment pas. La pizza bianca, une pâte fine, huilée et salée, et la pizza rossa, à la tomate, sortent du four toute la journée et se vendent au poids. Le comptoir propose aussi des dizaines de pizzas garnies, des pains et des biscuits.",
+    "commander": "La pizza bianca nature, chaude, est l'expérience de base. La version garnie de mortadelle, coupée en deux et fourrée sur place, est le sandwich préféré des Romains. Ajoutez une part de pizza aux pommes de terre ou aux fleurs de courgette selon la saison.",
+    "enfants": "Un carré de pizza bianca ou rossa dans la main, à manger en marchant vers le marché de Campo de' Fiori : c'est le goûter romain par excellence, et il coûte quelques euros. Montrez-leur le four à bois derrière le comptoir.",
+    "pratique": {
+      "adresse": "Via dei Chiavari 34, 00186 Roma",
+      "horaires": "Lundi au samedi environ 8 h à 20 h, dimanche 8 h à 18 h",
+      "fermeture": "Ouvert tous les jours, sauf jours fériés",
+      "reservation": "Sans réservation, on prend un ticket et on commande au poids.",
+      "tel": "06 6864045",
+      "site": "https://anticofornoroscioli.it"
+    },
+    "conseil": "Évitez 13 h, l'heure de pointe. Vers 11 h ou 16 h, la pizza sort du four et il n'y a presque personne."
+  },
+  {
+    "categorie": "manger",
+    "id": "pizzarium-bonci",
+    "nom": "Pizzarium de Gabriele Bonci",
+    "type": "street",
+    "quartier": "Prati, près des Musées du Vatican",
+    "budget": "€",
+    "prix": "8 à 14 € par personne",
+    "lat": 41.9067,
+    "lon": 12.44666,
+    "duree": 30,
+    "resume": "La pizza al taglio la plus célèbre du monde, à huit minutes à pied de l'entrée des Musées du Vatican.",
+    "pourquoi": "Gabriele Bonci a révolutionné la pizza à la coupe romaine : une pâte fermentée 72 heures, légère et alvéolée, garnie de produits d'artisans, avec des dizaines de recettes qui changent chaque jour. Le lieu est un petit comptoir sans tables, on mange debout devant la boutique, et les chefs du monde entier viennent y faire la queue. C'est l'adresse idéale avant ou après les Musées du Vatican.",
+    "commander": "On choisit au comptoir, on montre la taille voulue et on paie au poids. Les incontournables : la pizza aux pommes de terre, la margherita, celle à la mortadelle. Les supplì et les fritures sont excellents aussi. Comptez trois ou quatre morceaux différents pour deux.",
+    "enfants": "La margherita et la pizza aux pommes de terre sont les valeurs sûres des enfants, et le principe du « on montre ce qu'on veut avec le doigt » leur plaît. Il n'y a pas de chaises : prévoyez de manger sur les petits bancs devant ou dans la rue.",
+    "pratique": {
+      "adresse": "Via della Meloria 43, 00136 Roma",
+      "horaires": "Lundi au samedi 11 h à 22 h ; dimanche 11 h à 15 h et 17 h à 22 h",
+      "fermeture": "Ouvert tous les jours",
+      "reservation": "Sans réservation, comptoir.",
+      "tel": "06 39745416",
+      "site": "https://bonci.it"
+    },
+    "conseil": "Métro A, station Cipro, à deux minutes. Prévoyez 10 à 15 minutes de file à midi : venez à 11 h 30 ou vers 15 h."
+  },
+  {
+    "categorie": "manger",
+    "id": "trapizzino-trastevere",
+    "nom": "Trapizzino",
+    "type": "street",
+    "quartier": "Trastevere, Piazza Trilussa",
+    "budget": "€",
+    "prix": "5 à 12 € par personne",
+    "lat": 41.89146,
+    "lon": 12.46991,
+    "duree": 30,
+    "resume": "L'invention romaine de 2008 : un triangle de pizza bianca fourré des plats mijotés de la grand-mère, à manger sur les marches de la Piazza Trilussa.",
+    "pourquoi": "En 2008, le pizzaiolo Stefano Callegari a eu l'idée de couper un coin de pizza bianca en poche et de le remplir de plats traditionnels romains : poulet à la chasseur, boulettes en sauce, aubergines à la parmesane. Le trapizzino était né, et il est devenu un classique de la ville. Cette adresse de Trastevere a une petite salle et un comptoir à emporter, mais le mieux est de manger sur les marches de la place, au bord du Tibre.",
+    "commander": "Le poulet à la chasseur et la boulette en sauce tomate sont les deux grands classiques. La parmigiana d'aubergines est parfaite pour les végétariens. Complétez avec un supplì et une bière artisanale du Latium.",
+    "enfants": "La boulette à la sauce tomate dans son triangle de pain est un sans-faute chez les enfants, et le format se tient d'une main en marchant. Attention aux taches : prévoyez des serviettes.",
+    "pratique": {
+      "adresse": "Piazza Trilussa 46, 00153 Roma",
+      "horaires": "Tous les jours à partir de 12 h jusque tard dans la soirée",
+      "fermeture": "Ouvert tous les jours, sauf jours fériés",
+      "reservation": "Sans réservation.",
+      "tel": "06 5817312",
+      "site": "https://www.trapizzino.it"
+    },
+    "conseil": "Il existe aussi un Trapizzino à Testaccio, l'original, Via Giovanni Branca 88. Celui de Trastevere est le plus pratique en balade."
+  },
+  {
+    "categorie": "manger",
+    "id": "pizzeria-da-remo",
+    "nom": "Pizzeria da Remo",
+    "type": "street",
+    "quartier": "Testaccio",
+    "budget": "€",
+    "prix": "10 à 15 € par personne",
+    "lat": 41.88093,
+    "lon": 12.47535,
+    "duree": 60,
+    "resume": "La pizzeria romaine à l'ancienne, pizza ultrafine et croustillante, service au pas de course et tables sur la place du quartier.",
+    "pourquoi": "Da Remo est la pizzeria populaire de Testaccio depuis des décennies, et rien n'y a changé : des tables serrées, des serveurs qui crient les commandes, une salle bruyante et une terrasse sur la place. La pizza y est celle de Rome, à pâte très fine et bords croustillants, cuite en deux minutes dans un four brûlant. On commande en cochant un bout de papier, on paie une somme dérisoire, et on repart heureux.",
+    "commander": "Margherita, marinara ou capricciosa : les pizzas simples sont les meilleures. Avant, prenez les fritures : supplì, fleurs de courgette farcies d'anchois et de mozzarella, croquettes de pommes de terre. Une bière ou un pichet de vin, et c'est tout.",
+    "enfants": "Une margherita à partager, un supplì chacun, et les enfants adorent le côté « cantine » où tout va vite et fort. Venez à l'ouverture, à 19 h, pour éviter la file et le bruit du plein service.",
+    "pratique": {
+      "adresse": "Piazza di Santa Maria Liberatrice 44, 00153 Roma",
+      "horaires": "Lundi au samedi 19 h à 1 h, le soir uniquement",
+      "fermeture": "Dimanche, et une partie du mois d'août",
+      "reservation": "Pas de réservation, file d'attente sur place.",
+      "tel": "06 5746270",
+      "site": ""
+    },
+    "conseil": "Espèces conseillées. Le soir, la place est pleine de familles du quartier et les enfants jouent au ballon : idéal après une journée de visites."
+  },
+  {
+    "categorie": "manger",
+    "id": "mordi-e-vai",
+    "nom": "Mordi e Vai, marché de Testaccio",
+    "type": "street",
+    "quartier": "Testaccio, marché couvert",
+    "budget": "€",
+    "prix": "5 à 9 € par personne",
+    "lat": 41.87757,
+    "lon": 12.47335,
+    "duree": 45,
+    "resume": "Le stand d'un ancien boucher au marché couvert de Testaccio, qui fourre ses sandwichs des plats mijotés de la cuisine romaine.",
+    "pourquoi": "Sergio Esposito a tenu une boucherie pendant quarante ans avant d'ouvrir ce petit stand, le numéro 15, dans le marché couvert de Testaccio. Il y cuisine les plats de sa famille et les sert dans du pain : bouilli de bœuf aux chicorées, boulettes en sauce, bœuf aux oignons. Le marché lui-même est une visite en soi, avec ses étals de fruits, ses pâtes fraîches et ses stands de cuisine de rue, sur les vestiges d'une route antique visibles sous une vitre.",
+    "commander": "Le sandwich au bouilli de bœuf et chicorée, l'allesso, est celui qui a rendu le stand célèbre. Le panino aux boulettes de viande en sauce tomate est le plus simple et le plus réconfortant. Les amateurs de cuisine romaine rustique trouveront aussi les tripes et le picchiapò, mais rien n'oblige.",
+    "enfants": "Le sandwich aux boulettes est fait pour eux, et le marché regorge de trouvailles : jus de fruits pressés, pâtes fraîches en spectacle, pizza à la coupe au stand voisin. Il y a des tables communes au centre du marché.",
+    "pratique": {
+      "adresse": "Mercato di Testaccio, box 15, Via Beniamino Franklin 12e, 00153 Roma",
+      "horaires": "Lundi au samedi, le matin et le midi, environ 9 h à 15 h",
+      "fermeture": "Dimanche",
+      "reservation": "Sans réservation, on commande au stand.",
+      "tel": "339 1343344",
+      "site": "https://www.mordievai.it"
+    },
+    "conseil": "Déjeuner uniquement, le marché ferme l'après-midi. À combiner avec la Pyramide de Cestius, à dix minutes à pied."
+  },
+  {
+    "categorie": "manger",
+    "id": "bar-del-fico",
+    "nom": "Bar del Fico",
+    "type": "bar",
+    "quartier": "Centre historique, derrière Piazza Navona",
+    "budget": "€€",
+    "prix": "8 à 15 € par personne pour l'apéritif",
+    "lat": 41.89942,
+    "lon": 12.47066,
+    "duree": 60,
+    "resume": "Le bar historique de la petite place du figuier, avec ses joueurs d'échecs en terrasse et son apéritif à l'ombre, à deux pas de Piazza Navona.",
+    "pourquoi": "Depuis 1922, ce bar occupe une placette cachée derrière Piazza Navona, avec un figuier au milieu et des habitués qui jouent aux échecs sur les tables de la terrasse. L'endroit vit du petit-déjeuner jusqu'à la nuit, et l'heure de l'apéritif est la plus agréable : on s'installe dehors avec un verre, des olives et des chips, et on regarde passer le quartier. Le restaurant attenant sert aussi une cuisine simple et correcte.",
+    "commander": "Un spritz, un negroni ou un verre de blanc du Latium pour les parents, accompagnés des petites assiettes à partager. Le café du matin y est bon aussi, et le tiramisu maison a ses fans.",
+    "enfants": "Les enfants ont droit à un spritz sans alcool ou à un jus pressé, et ils peuvent regarder les parties d'échecs, voire en commencer une. La place est piétonne et tranquille, ils peuvent bouger sans risque.",
+    "pratique": {
+      "adresse": "Piazza del Fico 26, 00186 Roma",
+      "horaires": "Tous les jours, environ 8 h 30 à 2 h",
+      "fermeture": "Ouvert tous les jours",
+      "reservation": "Sans réservation pour l'apéritif en terrasse.",
+      "tel": "06 68891373",
+      "site": "https://www.bardelfico.online"
+    },
+    "conseil": "Venez vers 18 h, avant la foule du soir. Piazza Navona est à trois minutes : idéal avant d'aller y admirer les fontaines illuminées."
+  },
+  {
+    "categorie": "manger",
+    "id": "freni-e-frizioni",
+    "nom": "Freni e Frizioni",
+    "type": "bar",
+    "quartier": "Trastevere, au bord du Tibre",
+    "budget": "€€",
+    "prix": "10 à 14 € par personne, buffet compris",
+    "lat": 41.89128,
+    "lon": 12.47067,
+    "duree": 60,
+    "resume": "L'apéritif le plus célèbre de Trastevere : pour le prix d'un verre, un grand buffet à volonté dans un ancien garage, sur une placette au-dessus du Tibre.",
+    "pourquoi": "Le nom signifie « freins et embrayages » : c'était un atelier de mécanique, transformé en bar avec ses murs bruts et ses lampes industrielles. La formule qui a fait sa réputation est l'apéritif à l'italienne : on achète une boisson et on se sert librement au buffet, principalement végétarien, avec pâtes, salades, couscous, légumes. La terrasse déborde sur la placette, au-dessus du fleuve, et l'ambiance est jeune et joyeuse.",
+    "commander": "Un cocktail de la carte, très soignée, ou un spritz, puis direction le buffet. Prenez une assiette pour chacun et faites plusieurs passages, le buffet se renouvelle pendant tout l'apéritif.",
+    "enfants": "Avec un soda ou un jus, les enfants ont le même accès au buffet, et ils adorent choisir eux-mêmes. Venez à 18 h 30, à l'ouverture : c'est calme, les tables sont libres, et ce dîner déguisé en apéritif remplace facilement un restaurant.",
+    "pratique": {
+      "adresse": "Via del Politeama 4, 00153 Roma",
+      "horaires": "Tous les jours 18 h 30 à 2 h, apéritif avec buffet de 18 h 30 à 21 h",
+      "fermeture": "Ouvert tous les jours",
+      "reservation": "Sans réservation.",
+      "tel": "06 45497499",
+      "site": "https://www.freniefrizioni.com"
+    },
+    "conseil": "Après 20 h le lieu devient bondé et très bruyant. Tôt, c'est parfait en famille ; ensuite, c'est plutôt pour les grands."
+  },
+  {
+    "categorie": "manger",
+    "id": "necci-dal-1924",
+    "nom": "Necci dal 1924",
+    "type": "bar",
+    "quartier": "Pigneto, quartier du street art",
+    "budget": "€€",
+    "prix": "8 à 25 € par personne selon le moment",
+    "lat": 41.88918,
+    "lon": 12.53029,
+    "duree": 75,
+    "resume": "Le café-jardin centenaire du Pigneto, ancien repaire de Pasolini, où les familles du quartier passent du petit-déjeuner à l'apéritif.",
+    "pourquoi": "Ouvert en 1924 comme laiterie, Necci est devenu le cœur du Pigneto, un ancien quartier ouvrier aujourd'hui couvert de fresques de street art et plein de petits bars. Le cinéaste Pasolini y avait ses habitudes et y a tourné des scènes de son premier film. Le grand jardin sous les arbres, avec ses tables dépareillées, accueille tout le monde, poussettes comprises, de 8 h du matin jusqu'à la nuit : café, déjeuner, gâteaux maison, apéritif.",
+    "commander": "À l'apéritif, un spritz ou un vin nature avec les planches à partager. Au déjeuner ou au dîner, les pâtes fraîches maison et les plats du jour sont simples et bons, et les gâteaux de la vitrine valent le détour.",
+    "enfants": "Le jardin est un terrain de jeu où les enfants peuvent bouger pendant que les parents prennent l'apéritif, et la carte propose des pâtes et des gâteaux qui font l'unanimité. Le quartier se visite ensuite comme un musée de rue, à la recherche des fresques.",
+    "pratique": {
+      "adresse": "Via Fanfulla da Lodi 68, 00176 Roma",
+      "horaires": "Tous les jours 8 h à 1 h, vendredi et samedi jusqu'à 2 h",
+      "fermeture": "Ouvert tous les jours",
+      "reservation": "Conseillée le soir et le dimanche midi, par téléphone.",
+      "tel": "06 97601552",
+      "site": "https://www.necci1924.com"
+    },
+    "conseil": "Métro C, station Pigneto, ou tram 5 et 14 depuis Termini. Le samedi, un marché se tient sur la Via del Pigneto, la rue piétonne voisine."
   }
 ];
 

@@ -141,6 +141,13 @@
     return MONUMENTS.find((m) => m.id === id) || null;
   }
 
+  /* Adresses "Où manger" : pas de photo, un emoji par type, pas de MP3 */
+  const estResto = (m) => m.categorie === 'manger';
+  const EMOJI_RESTO = { trattoria: '🍝', street: '🍕', bar: '🍹' };
+  const TYPES_RESTO = { trattoria: 'Trattoria', street: 'Pizza & street food', bar: 'Bar & apéritivo' };
+  const emojiResto = (m) => EMOJI_RESTO[m.type] || '🍴';
+  const typeResto = (m) => TYPES_RESTO[m.type] || 'Restaurant';
+
   const thumbUrl = (m) => `./img/${m.id}-thumb.jpg`;
   const photoUrl = (m) => `./img/${m.id}.jpg`;
   const audioNom = (m, pub) => `${m.id}-${pub}.mp3`;
@@ -193,10 +200,14 @@
       return `
         <li>
           <button class="lieu${vu ? ' is-visited' : ''}" type="button" data-id="${m.id}">
-            <img class="lieu-photo" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">
+            ${estResto(m)
+              ? `<span class="lieu-emoji lieu-emoji-resto" aria-hidden="true">${emojiResto(m)}</span>`
+              : `<img class="lieu-photo" src="${thumbUrl(m)}" alt="" width="56" height="56" loading="lazy" decoding="async">`}
             <span class="lieu-texte">
               <span class="lieu-nom">${escapeHtml(m.nom)}</span>
-              <span class="lieu-meta">${cat.label} · ${formatDuree(m.duree)}${vu ? ' · ✓ vu' : ''}</span>
+              <span class="lieu-meta">${estResto(m)
+                ? `${typeResto(m)} · ${escapeHtml(m.quartier)} · ${m.budget}`
+                : `${cat.label} · ${formatDuree(m.duree)}`}${vu ? ' · ✓ vu' : ''}</span>
             </span>
             <span class="lieu-dist">
               <span class="lieu-dist-val">${formatDistance(d)}</span>
@@ -232,6 +243,17 @@
 
   /** Icône d'un lieu : sa photo dans un cercle. */
   function makeIcon(m, selected) {
+    if (estResto(m)) {
+      const cls = ['marker-lieu', 'marker-manger'];
+      if (state.visited.has(m.id)) cls.push('is-visited');
+      if (selected) cls.push('is-selected');
+      return L.divIcon({
+        className: cls.join(' '),
+        html: `<span aria-hidden="true">${emojiResto(m)}</span>`,
+        iconSize: [40, 40],
+        iconAnchor: [20, 20]
+      });
+    }
     const classes = ['marker-photo'];
     if (state.visited.has(m.id)) classes.push('is-visited');
     if (selected) classes.push('is-selected');
@@ -311,7 +333,15 @@
     }
     state.miniLieu = m;
     state.markers[m.id].setIcon(makeIcon(m, true));
-    el.miniImg.src = thumbUrl(m);
+    if (estResto(m)) {
+      el.miniImg.hidden = true;
+      el.miniEmoji.hidden = false;
+      el.miniEmoji.textContent = emojiResto(m);
+    } else {
+      el.miniEmoji.hidden = true;
+      el.miniImg.hidden = false;
+      el.miniImg.src = thumbUrl(m);
+    }
     el.miniNom.textContent = m.nom;
     updateMiniMeta();
     el.mapMini.classList.add('is-visible');
@@ -322,7 +352,9 @@
   function updateMiniMeta() {
     if (!state.miniLieu) return;
     const d = distanceVers(state.miniLieu);
-    const parts = [formatDuree(state.miniLieu.duree)];
+    const parts = [estResto(state.miniLieu)
+      ? `${typeResto(state.miniLieu)} · ${state.miniLieu.budget}`
+      : formatDuree(state.miniLieu.duree)];
     if (d != null) parts.push(`${formatDistance(d)} · ${formatMarche(d)}`);
     el.miniMeta.textContent = parts.join(' · ');
   }
@@ -367,6 +399,8 @@
   function renderFiche() {
     const m = state.current;
     if (!m) return;
+    el.sheetActions.classList.toggle('is-resto', estResto(m));
+    if (estResto(m)) { renderFicheResto(m); return; }
     const cat = CATEGORIES[m.categorie];
     const d = distanceVers(m);
     const credit = state.credits[m.id];
@@ -396,6 +430,49 @@
         <h3>💡 Conseil pratique</h3>
         <p>${escapeHtml(m.conseil)}</p>
       </section>`;
+  }
+
+  /** Un ou plusieurs paragraphes HTML à partir d'un texte (sauts de ligne = paragraphes). */
+  const paragraphes = (t) => String(t || '').split(/\n+/).filter(Boolean).map((x) => `<p>${escapeHtml(x)}</p>`).join('');
+
+  /** Fiche d'une adresse "Où manger" : pas de photo ni de sélecteur, une fiche courte et pratique. */
+  function renderFicheResto(m) {
+    const d = distanceVers(m);
+    const p = m.pratique || {};
+    const ligne = (label, html) => html
+      ? `<div class="pratique-ligne"><span class="pratique-label">${label}</span><span class="pratique-val">${html}</span></div>`
+      : '';
+    const tel = p.tel ? `<a href="tel:${p.tel.replace(/\s/g, '')}">${escapeHtml(p.tel)}</a>` : '';
+    const site = p.site ? `<a href="${escapeHtml(p.site)}" target="_blank" rel="noopener">${escapeHtml(p.site.replace(/^https?:\/\/(www\.)?/, ''))}</a>` : '';
+    const maps = `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(m.nom + ', ' + (p.adresse || 'Roma'))}" target="_blank" rel="noopener">Horaires et avis du jour sur Google Maps</a>`;
+
+    el.sheetBody.innerHTML = `
+      <header class="fiche-head">
+        <span class="fiche-emoji" aria-hidden="true">${emojiResto(m)}</span>
+        <h2 id="fiche-titre">${escapeHtml(m.nom)}</h2>
+      </header>
+      <div class="fiche-meta">
+        <span class="meta">${typeResto(m)}</span>
+        <span class="meta">📍 ${escapeHtml(m.quartier)}</span>
+        <span class="meta">${m.budget} · ${escapeHtml(m.prix)}</span>
+        <span class="meta meta-dist" id="fiche-dist">${d != null ? `🚶 ${formatDistance(d)} · ${formatMarche(d)}` : '🚶 distance inconnue'}</span>
+      </div>
+      <p class="fiche-resume">${escapeHtml(m.resume)}</p>
+      <section class="fiche-section is-adultes"><h3>Pourquoi on aime</h3>${paragraphes(m.pourquoi)}</section>
+      <section class="fiche-section is-adultes"><h3>Quoi commander</h3>${paragraphes(m.commander)}</section>
+      <section class="fiche-section is-enfants"><h3>🧒 Avec les enfants</h3>${paragraphes(m.enfants)}</section>
+      <section class="fiche-section fiche-pratique">
+        <h3>Infos pratiques</h3>
+        ${ligne('Adresse', escapeHtml(p.adresse))}
+        ${ligne('Horaires *', escapeHtml(p.horaires))}
+        ${ligne('Fermé', escapeHtml(p.fermeture))}
+        ${ligne('Réservation', escapeHtml(p.reservation))}
+        ${ligne('Téléphone', tel)}
+        ${ligne('Site', site)}
+        ${ligne('Vérifier', maps)}
+        <p class="pratique-note">* Horaires habituels relevés en septembre 2026. Toujours revérifier sur le site du lieu ou sa page Google Maps avant d'y aller : les horaires et les jours de fermeture changent souvent.</p>
+      </section>
+      <section class="fiche-section fiche-conseil"><h3>💡 Conseil pratique</h3><p>${escapeHtml(m.conseil)}</p></section>`;
   }
 
   /** Change le guide (Adultes / Enfants) : texte affiché ET audio à écouter. */
@@ -472,6 +549,9 @@
 
   /** Texte complet d'un guide (pour la synthèse vocale de secours). */
   function texteGuide(m, pub) {
+    if (estResto(m)) {
+      return `${m.nom}. ${m.resume} Pourquoi on aime. ${m.pourquoi} Quoi commander. ${m.commander} Avec les enfants. ${m.enfants}`;
+    }
     const sections = m[pub] || [];
     return [m.nom + '.'].concat(sections.map((s) => `${s.titre}. ${s.texte}`)).join(' ');
   }
@@ -667,7 +747,7 @@
   function updateAudioBtn() {
     if (!el.btnAudio) return;
     const m = state.current;
-    const label = state.public === 'enfants' ? 'Enfants' : 'Adultes';
+    const label = m && estResto(m) ? 'la fiche' : (state.public === 'enfants' ? 'Enfants' : 'Adultes');
     const memeLecture = m && state.audioLieu === m && state.audioPublic === state.public && state.audioMode;
     const icone = el.btnAudio.querySelector('.btn-audio-icon');
 
@@ -689,7 +769,9 @@
     el.btnFwd.hidden = !mp3;
     if (!memeLecture) {
       el.audioFill.style.transform = 'scaleX(0)';
-      el.playerTime.textContent = m && !audioDispo(m, state.public)
+      el.playerTime.textContent = m && estResto(m)
+        ? 'Lecture avec la voix du téléphone'
+        : m && !audioDispo(m, state.public)
         ? 'Voix du téléphone (audio non généré)'
         : (m && state.audioManifest[audioNom(m, state.public)] ? `Durée : ${formatTemps(state.audioManifest[audioNom(m, state.public)].duree)}` : '');
     }
@@ -1040,6 +1122,8 @@
       miniOpen: $('#mini-open'),
       miniClose: $('#mini-close'),
       miniImg: $('#mini-img'),
+      miniEmoji: $('#mini-emoji'),
+      sheetActions: $('.sheet-actions'),
       miniNom: $('#mini-nom'),
       miniMeta: $('#mini-meta'),
       sheet: $('#sheet'),

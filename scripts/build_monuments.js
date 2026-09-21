@@ -13,7 +13,12 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.join(__dirname, '..');
-const { MONUMENTS, CATEGORIES } = require(path.join(ROOT, 'monuments.js'));
+const { MONUMENTS: TOUS, CATEGORIES: CATS_EXISTANTES } = require(path.join(ROOT, 'monuments.js'));
+// Les restaurants (categorie 'manger') viennent de content/restos.json, pas des part*.json
+const MONUMENTS = TOUS.filter((m) => m.categorie !== 'manger');
+const CATEGORIES = Object.assign({}, CATS_EXISTANTES, { manger: { label: 'Où manger', emoji: '🍝' } });
+const RESTOS = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'restos.json'), 'utf8'))
+  .map((r) => Object.assign({ categorie: 'manger' }, r));
 
 // 1. Charger tous les contenus rédigés
 const contenus = {};
@@ -85,12 +90,22 @@ const sortie = `/* =============================================================
      conseil     : astuce pratique (non lue à voix haute)
      adultes     : sections { titre, texte } du guide adultes
      enfants     : sections { titre, texte } du guide enfants (9-12 ans)
+   Les adresses "Où manger" (categorie 'manger') ont une structure propre :
+     type ('trattoria' | 'street' | 'bar'), quartier, budget, prix, resume,
+     pourquoi, commander, enfants (texte), pratique { adresse, horaires,
+     fermeture, reservation, tel, site }, conseil. Pas d'audio MP3 : la fiche
+     est lue par la voix du téléphone.
    ===================================================================== */
 
 const CATEGORIES = ${JSON.stringify(CATEGORIES, null, 2).replace(/"(\w+)":/g, '$1:')};
 
 const MONUMENTS = [
-${blocs.join(',\n')}
+${blocs.join(',\n')},
+
+  /* ------------------------------------------------------------------
+     OÙ MANGER — restaurants, street food, bars (source : content/restos.json)
+     ------------------------------------------------------------------ */
+${RESTOS.map((r) => '  ' + JSON.stringify(r, null, 2).replace(/\n/g, '\n  ')).join(',\n')}
 ];
 
 /* Export pour un éventuel usage en module (scripts Node) ; sans effet dans le navigateur. */
@@ -100,4 +115,4 @@ if (typeof module !== 'undefined' && module.exports) {
 `;
 
 fs.writeFileSync(path.join(ROOT, 'monuments.js'), sortie, 'utf8');
-console.log(`\nmonuments.js régénéré : ${MONUMENTS.length} lieux.`);
+console.log(`\nmonuments.js régénéré : ${MONUMENTS.length} lieux + ${RESTOS.length} adresses où manger.`);

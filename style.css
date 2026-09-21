@@ -865,3 +865,33 @@ button {
 .offline-progress { margin-bottom: 10px; font-size: 13px; color: var(--text-2); }
 .offline-status { margin: 8px 0 0; font-size: 13px; color: var(--green); font-weight: 600; }
 .offline-status:empty { display: none; }
+
+
+/* =====================================================================
+   V3 — Où manger (restaurants, street food, bars)
+   ===================================================================== */
+:root { --food: #1F8A70; --food-soft: rgba(31, 138, 112, 0.14); }
+@media (prefers-color-scheme: dark) { :root { --food: #34C29A; --food-soft: rgba(52, 194, 154, 0.2); } }
+
+.lieu-emoji-resto { background: var(--food-soft); }
+.marker-lieu.marker-manger { border-color: var(--food); font-size: 20px; }
+.marker-lieu.marker-manger.is-selected { border-color: var(--blue); }
+.fiche-resume {
+  margin: 0 0 14px 4px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.fiche-pratique .pratique-ligne {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 0.5px solid var(--sep);
+  font-size: 15px;
+}
+.fiche-pratique .pratique-ligne:last-of-type { border-bottom: 0; }
+.pratique-label { flex: 0 0 96px; color: var(--text-2); font-weight: 600; }
+.pratique-val { flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.pratique-val a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.pratique-note { margin: 10px 0 0 !important; font-size: 13px !important; color: var(--text-2); }
+.sheet-actions.is-resto .segmented { display: none; }

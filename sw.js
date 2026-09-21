@@ -47,7 +47,7 @@ const SHELL_FILES = [
   './icons/icon-512.png',
   './icons/icon-512-maskable.png',
   './icons/favicon-32.png'
-].concat(MONUMENTS.map((m) => `./img/${m.id}-thumb.jpg`));
+].concat(MONUMENTS.filter((m) => m.categorie !== 'manger').map((m) => `./img/${m.id}-thumb.jpg`));
 
 /* ---------- Installation : mise en cache de l'app ---------- */
 self.addEventListener('install', (event) => {

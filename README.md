@@ -33,6 +33,15 @@ lib/leaflet/          Leaflet 1.9.4 en local (pas de CDN, fonctionne hors-ligne)
 .github/workflows/    Déploiement GitHub Pages avec injection de version
 ```
 
+## Où manger
+
+15 adresses (6 trattorias, 6 pizza / street food, 3 bars-apéritivo) réparties par quartier, choisies pour les familles : institutions et pépites récentes, jamais de gastronomique. Elles apparaissent comme catégorie « Où manger » dans la liste (triée par distance) et sur la carte (marqueurs verts).
+
+- Source : `content/restos.json` (une entrée par adresse : type, quartier, budget, résumé, pourquoi on aime, quoi commander, avec les enfants, infos pratiques, conseil).
+- Pas de MP3 : la fiche est courte et le bouton « Écouter » utilise la voix du téléphone.
+- Les horaires et jours de fermeture ont été relevés en septembre 2026 et sont marqués d'un astérisque : chaque fiche renvoie vers le site du lieu et sa page Google Maps pour vérifier avant d'y aller.
+- Après modification : `node scripts/build_monuments.js` puis `git push`.
+
 ## Modifier un texte
 
 1. Éditer le lieu dans `content/partA.json` … `partD.json` (sections `adultes` / `enfants`, chacune `{ "titre", "texte" }`).

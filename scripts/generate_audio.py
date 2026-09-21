@@ -133,6 +133,8 @@ def main():
     # Tâches à générer (on saute les fichiers dont le texte n'a pas changé)
     taches = []
     for m in monuments:
+        if m.get("categorie") == "manger":
+            continue  # les fiches "Où manger" n'ont pas d'audio (lues par la voix du téléphone)
         for public in ("adultes", "enfants"):
             if not m.get(public):
                 continue
