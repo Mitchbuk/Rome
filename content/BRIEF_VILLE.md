@@ -4,11 +4,15 @@ Tu produis le CONTENU d'une ville pour l'application « en famille » (guide tou
 
 ## Palier de la ville
 
+Le palier se choisit d'après la richesse touristique (le nombre de lieux qui valent la visite avec des enfants), pas d'après la taille ou la population. Venise est minuscule mais offre autant que Lyon : c'est une grande ville. Le rayon, lui, s'adapte au terrain : il doit englober tous les lieux retenus, îles comprises, sans plus.
+
 | Palier | Exemples | Lieux | Adresses « Où manger » | Rayon « sur place » | Quartiers |
 |---|---|---|---|---|---|
-| Petite ville | Venise, Bruges, Séville | 15 à 25 | 6 à 8 | 5 km | 3 à 5 |
-| Grande ville | Rome, Lyon, Barcelone | 30 à 40 | 12 à 15 | 12 à 15 km | 6 à 10 |
+| Petite ville | Bruges, Avignon, Colmar | 15 à 25 | 6 à 8 | 3 à 5 km | 3 à 5 |
+| Grande ville | Rome, Lyon, Venise, Barcelone | 30 à 40 | 12 à 15 | 8 à 15 km | 6 à 10 |
 | Très grande ville | Paris, Londres, New York, Tokyo | 60 à 80 | 20 à 25 | 20 km | 10 à 14 |
+
+Prix du guide audio (information interne, ne pas l'écrire dans les textes) : 2,99 € pour une petite ville, 4,99 € pour une grande ou très grande ville.
 
 Pour une très grande ville, ajoute un champ `"incontournable": true` sur 15 à 20 lieux : l'app proposera un filtre « Incontournables » pour ne pas noyer la famille sous 80 fiches. Les quartiers sont obligatoires pour tous les paliers : ils structurent le mode « Préparer la visite » (liste groupée par quartier quand on est loin de la ville ou sans GPS).
 
