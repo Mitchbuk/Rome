@@ -30,6 +30,47 @@
   /** Centre par défaut (Piazza Venezia) et zoom initial. */
   const ROME_CENTER = [41.8955, 12.4823];
   const ZOOM_INITIAL = 14;
+
+  /**
+   * La ville : un centre et un rayon. À l'intérieur, "Autour de moi" trie par
+   * distance ; à l'extérieur (chez soi, dans le train), la liste passe en mode
+   * "Préparer la visite", groupée par quartier, et la carte reste sur la ville.
+   */
+  const VILLE = { nom: 'Rome', centre: ROME_CENTER, rayon: 15000 };
+
+  /** Quartiers, dans l'ordre d'affichage du mode "Préparer la visite". */
+  const QUARTIERS = [
+    { id: 'antique',   label: 'Colisée, Forum et Palatin',        centre: [41.8905, 12.4890] },
+    { id: 'centre',    label: 'Centre historique',                centre: [41.8990, 12.4780] },
+    { id: 'venezia',   label: 'Piazza Venezia et Capitole',       centre: [41.8945, 12.4825] },
+    { id: 'sud',       label: 'Aventin, Bouche de la Vérité, Circus', centre: [41.8860, 12.4810] },
+    { id: 'vatican',   label: 'Vatican et Château Saint-Ange',    centre: [41.9030, 12.4570] },
+    { id: 'trastevere', label: 'Trastevere, Ghetto et Janicule', centre: [41.8905, 12.4700] },
+    { id: 'testaccio', label: 'Testaccio et Ostiense',            centre: [41.8770, 12.4780] },
+    { id: 'esquilin',  label: 'Esquilin et Latran',               centre: [41.8920, 12.5010] },
+    { id: 'nord',      label: 'Piazza del Popolo et Villa Borghèse', centre: [41.9110, 12.4800] },
+    { id: 'appia',     label: 'Via Appia et catacombes',          centre: [41.8560, 12.5170] },
+    { id: 'ailleurs',  label: 'Un peu plus loin',                 centre: null }
+  ];
+  const QUARTIER_PAR_ID = {
+    colisee: 'antique', 'arc-constantin': 'antique', 'forum-romain': 'antique', palatin: 'antique',
+    'colonne-trajane': 'antique', 'thermes-caracalla': 'sud',
+    pantheon: 'centre', 'fontaine-trevi': 'centre', 'place-espagne': 'centre', 'piazza-navona': 'centre',
+    'campo-de-fiori': 'centre', 'largo-argentina': 'centre', 'via-del-corso': 'centre',
+    'piazza-venezia': 'venezia', capitole: 'venezia',
+    'circus-maximus': 'sud', 'bocca-verita': 'sud', aventin: 'sud',
+    'piazza-del-popolo': 'nord', 'villa-borghese': 'nord',
+    'saint-jean-latran': 'esquilin', 'saint-clement': 'esquilin', 'sainte-marie-majeure': 'esquilin',
+    ghetto: 'trastevere', 'ile-tiberine': 'trastevere', trastevere: 'trastevere', janicule: 'trastevere',
+    'chateau-saint-ange': 'vatican', 'place-saint-pierre': 'vatican', 'basilique-saint-pierre': 'vatican', 'musees-vatican': 'vatican',
+    'pyramide-cestius': 'testaccio', 'via-appia': 'appia', catacombes: 'appia',
+    'armando-pantheon': 'centre', 'supplizio': 'centre', 'antico-forno-roscioli': 'centre', 'bar-del-fico': 'centre',
+    'da-enzo-al-29': 'trastevere', 'trapizzino-trastevere': 'trastevere', 'freni-e-frizioni': 'trastevere',
+    'flavio-velavevodetto': 'testaccio', 'pizzeria-da-remo': 'testaccio', 'mordi-e-vai': 'testaccio', 'trattoria-pennestri': 'testaccio',
+    'trattoria-monti': 'esquilin', 'pizzarium-bonci': 'vatican',
+    'cesare-al-casaletto': 'ailleurs', 'necci-dal-1924': 'ailleurs'
+  };
+  const quartierDe = (m) => QUARTIER_PAR_ID[m.id] || 'ailleurs';
   /** Zone préchargée pour le hors-ligne : centre historique + Vatican + début de la Via Appia. */
   const PRELOAD_BOUNDS = { north: 41.925, south: 41.850, west: 12.430, east: 12.535 };
   const PRELOAD_ZOOMS = [12, 13, 14, 15, 16];
@@ -68,7 +109,8 @@
     // téléchargements
     preloading: false,
     mediaLoading: false,
-    // rendu de liste (throttle)
+    // rendu de liste (throttle) et mode courant (sur place / préparer)
+    listeSurPlace: null,
     listTimer: null,
     lastListRender: 0,
     swRegistration: null
@@ -97,6 +139,7 @@
   function formatDistance(m) {
     if (m == null || !isFinite(m)) return '—';
     if (m < 1000) return `${Math.max(10, Math.round(m / 10) * 10)} m`;
+    if (m >= 100000) return `${Math.round(m / 1000).toLocaleString('fr-FR')} km`;
     return `${(m / 1000).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} km`;
   }
 
@@ -135,6 +178,23 @@
   function distanceVers(m) {
     if (!state.position) return null;
     return distanceM(state.position.lat, state.position.lon, m.lat, m.lon);
+  }
+
+  /** Distance entre la position actuelle et le centre de la ville (null si pas de GPS). */
+  function distanceVille() {
+    if (!state.position) return null;
+    return distanceM(state.position.lat, state.position.lon, VILLE.centre[0], VILLE.centre[1]);
+  }
+
+  /** Sommes-nous dans la ville ? (position connue et à moins de VILLE.rayon du centre) */
+  function dansLaVille() {
+    const d = distanceVille();
+    return d != null && d <= VILLE.rayon;
+  }
+
+  /** Distance à afficher : seulement quand on est sur place (sinon "700 km · 9 h à pied" n'a aucun sens). */
+  function distanceAffichable(m) {
+    return dansLaVille() ? distanceVers(m) : null;
   }
 
   function lieuParId(id) {
@@ -205,12 +265,23 @@
     let restos = MONUMENTS.filter(estResto);
     if (state.filter === 'manger') principal = [];
     else if (state.filter !== 'tous') { principal = principal.filter((m) => m.categorie === state.filter); restos = []; }
+    const surPlace = dansLaVille();
     const trier = (arr) => {
-      const avecDist = arr.map((m) => ({ m, d: distanceVers(m) }));
-      if (state.position) avecDist.sort((a, b) => a.d - b.d);
+      const avecDist = arr.map((m) => ({ m, d: surPlace ? distanceVers(m) : null }));
+      if (surPlace) avecDist.sort((a, b) => a.d - b.d);
       return avecDist;
     };
-    return { principal: trier(principal), restos: trier(restos) };
+    return { principal: trier(principal), restos: trier(restos), surPlace };
+  }
+
+  /** Bandeau au-dessus de la liste : sur place, rien ; loin ou sans GPS, "Préparer la visite". */
+  function updateBandeauVille(surPlace) {
+    if (surPlace) { el.listeLoin.hidden = true; return; }
+    const d = distanceVille();
+    el.listeLoinTexte.textContent = d == null
+      ? `Lieux groupés par quartier pour organiser vos journées. Le tri par distance s'activera automatiquement à ${VILLE.nom}.`
+      : `Vous êtes à ${formatDistance(d)} de ${VILLE.nom}. Lieux groupés par quartier pour préparer la visite ; le tri par distance s'activera automatiquement sur place.`;
+    el.listeLoin.hidden = false;
   }
 
   /** HTML d'un élément de liste. */
@@ -230,7 +301,7 @@
             : `${cat.label} · ${formatDuree(m.duree)}`}${vu ? ' · ✓ vu' : ''}</span>
         </span>
         <span class="lieu-dist">
-          <span class="lieu-dist-val">${formatDistance(d)}</span>
+          <span class="lieu-dist-val">${d != null ? formatDistance(d) : ''}</span>
           <span class="lieu-dist-sub">${d != null ? formatMarche(d) : ''}</span>
         </span>
         <span class="lieu-chevron" aria-hidden="true">›</span>
@@ -247,10 +318,24 @@
    */
   function renderListe(force) {
     state.lastListRender = Date.now();
-    const { principal, restos } = lieuxTries();
+    const { principal, restos, surPlace } = lieuxTries();
+    // Changement de mode (sur place / préparer) : les distances apparaissent ou disparaissent partout
+    if (state.listeSurPlace !== surPlace) { force = true; state.listeSurPlace = surPlace; }
+    updateBandeauVille(surPlace);
+
     const ordre = [];
-    principal.forEach((x) => ordre.push({ key: x.m.id, x }));
-    if (restos.length && state.filter === 'tous') ordre.push({ key: '__section__', x: null });
+    if (surPlace) {
+      principal.forEach((x) => ordre.push({ key: x.m.id, x }));
+    } else {
+      // Mode "Préparer la visite" : groupé par quartier, dans l'ordre géographique
+      for (const q of QUARTIERS) {
+        const membres = principal.filter((x) => quartierDe(x.m) === q.id);
+        if (!membres.length) continue;
+        ordre.push({ key: `__q_${q.id}`, x: null, label: q.label });
+        membres.forEach((x) => ordre.push({ key: x.m.id, x }));
+      }
+    }
+    if (restos.length && state.filter === 'tous') ordre.push({ key: '__section__', x: null, label: '🍝 Où manger' });
     restos.forEach((x) => ordre.push({ key: x.m.id, x }));
 
     const existants = new Map();
@@ -258,17 +343,19 @@
     if (force) el.liste.innerHTML = '';
 
     let ref = null;
-    for (const { key, x } of ordre) {
+    for (const { key, x, label } of ordre) {
       let li = existants.get(key);
       if (li) {
         existants.delete(key);
         if (x) {
-          li.querySelector('.lieu-dist-val').textContent = formatDistance(x.d);
+          li.querySelector('.lieu-dist-val').textContent = x.d != null ? formatDistance(x.d) : '';
           li.querySelector('.lieu-dist-sub').textContent = x.d != null ? formatMarche(x.d) : '';
         }
       } else {
         const tmp = document.createElement('ul');
-        tmp.innerHTML = x ? ligneLieu(x.m, x.d) : `<li data-id="__section__" class="liste-section" aria-hidden="true">🍝 Où manger</li>`;
+        tmp.innerHTML = x
+          ? ligneLieu(x.m, x.d)
+          : `<li data-id="${key}" class="liste-section${key === '__section__' ? '' : ' is-quartier'}" aria-hidden="true">${escapeHtml(label)}</li>`;
         li = tmp.firstElementChild;
       }
       // Ne déplace l'élément que s'il n'est pas déjà à la bonne place
@@ -277,7 +364,6 @@
       ref = li;
     }
     existants.forEach((li) => li.remove());
-    el.listeHint.hidden = !!state.position;
   }
 
   /** Re-rendu de la liste au plus toutes les 1,5 s (le GPS envoie des positions très souvent). */
@@ -369,7 +455,9 @@
         interactive: false,
         zIndexOffset: 1000
       }).addTo(state.map);
-      if (!state.userMovedMap) state.map.setView(ll, 15);
+      // Premier signal GPS : on ne recentre sur soi que si l'on est dans la ville
+      // (depuis Lyon, la carte resterait sur Lyon, sans aucun marqueur)
+      if (!state.userMovedMap && dansLaVille()) state.map.setView(ll, 15);
     } else {
       state.userMarker.setLatLng(ll);
       state.accuracyCircle.setLatLng(ll).setRadius(radius);
@@ -378,7 +466,12 @@
 
   function centrerSurMoi() {
     if (!state.map) return;
-    if (state.position) {
+    if (state.position && !dansLaVille()) {
+      // Loin de la ville : recentrer sur soi afficherait une carte vide. On recadre sur la ville.
+      state.userMovedMap = true;
+      state.map.setView(VILLE.centre, ZOOM_INITIAL, { animate: true });
+      toast(`Vous êtes à ${formatDistance(distanceVille())} de ${VILLE.nom} · la carte reste sur ${VILLE.nom}`);
+    } else if (state.position) {
       state.map.setView([state.position.lat, state.position.lon], Math.max(state.map.getZoom(), 16), { animate: true });
     } else {
       toast('Position GPS pas encore disponible…');
@@ -405,7 +498,7 @@
 
   function updateMiniMeta() {
     if (!state.miniLieu) return;
-    const d = distanceVers(state.miniLieu);
+    const d = distanceAffichable(state.miniLieu);
     const parts = [estResto(state.miniLieu)
       ? `${typeResto(state.miniLieu)} · ${state.miniLieu.budget}`
       : formatDuree(state.miniLieu.duree)];
@@ -472,7 +565,7 @@
     el.sheetActions.classList.toggle('is-resto', estResto(m));
     if (estResto(m)) { renderFicheResto(m); return; }
     const cat = CATEGORIES[m.categorie];
-    const d = distanceVers(m);
+    const d = distanceAffichable(m);
     const credit = state.credits[m.id];
     const sections = m[state.public] || [];
     const estEnfants = state.public === 'enfants';
@@ -487,7 +580,7 @@
       </header>
       <div class="fiche-meta">
         <span class="meta">⏱ ${formatDuree(m.duree)}</span>
-        <span class="meta meta-dist" id="fiche-dist">${d != null ? `📍 ${formatDistance(d)} · ${formatMarche(d)}` : '📍 distance inconnue'}</span>
+        ${d != null ? `<span class="meta meta-dist" id="fiche-dist">📍 ${formatDistance(d)} · ${formatMarche(d)}</span>` : ''}
         <span class="meta">${cat.emoji} ${cat.label}</span>
       </div>
       <p class="fiche-public">${estEnfants ? '🧒 Guide des enfants (9–12 ans)' : '👨‍👩‍👧 Guide des adultes'}</p>
@@ -507,7 +600,7 @@
 
   /** Fiche d'une adresse "Où manger" : pas de photo ni de sélecteur, une fiche courte et pratique. */
   function renderFicheResto(m) {
-    const d = distanceVers(m);
+    const d = distanceAffichable(m);
     const p = m.pratique || {};
     const ligne = (label, html) => html
       ? `<div class="pratique-ligne"><span class="pratique-label">${label}</span><span class="pratique-val">${html}</span></div>`
@@ -536,7 +629,7 @@
         <span class="meta">${typeResto(m)}</span>
         <span class="meta">📍 ${escapeHtml(m.quartier)}</span>
         <span class="meta">${m.budget} · ${escapeHtml(m.prix)}</span>
-        <span class="meta meta-dist" id="fiche-dist">${d != null ? `🚶 ${formatDistance(d)} · ${formatMarche(d)}` : '🚶 distance inconnue'}</span>
+        ${d != null ? `<span class="meta meta-dist" id="fiche-dist">🚶 ${formatDistance(d)} · ${formatMarche(d)}</span>` : ''}
       </div>
       <p class="fiche-resume">${escapeHtml(m.resume)}</p>
       <section class="fiche-section is-adultes"><h3>Pourquoi on aime</h3>${paragraphes(m.pourquoi)}</section>
@@ -591,7 +684,7 @@
   function updateSheetDistance() {
     if (!state.current) return;
     const node = $('#fiche-dist');
-    const d = distanceVers(state.current);
+    const d = distanceAffichable(state.current);
     if (node && d != null) node.textContent = `📍 ${formatDistance(d)} · ${formatMarche(d)}`;
   }
 
@@ -892,7 +985,11 @@
   function onPosition(pos) {
     state.position = { lat: pos.coords.latitude, lon: pos.coords.longitude };
     state.accuracy = pos.coords.accuracy;
-    setGps(`GPS actif · précision ${Math.round(pos.coords.accuracy)} m`);
+    el.listeHint.hidden = true;
+    const dv = distanceVille();
+    setGps(dv > VILLE.rayon
+      ? `GPS actif · vous êtes à ${formatDistance(dv)} de ${VILLE.nom}`
+      : `GPS actif · précision ${Math.round(pos.coords.accuracy)} m`);
     updateUserMarker();
     updateMiniMeta();
     updateSheetDistance();
@@ -1195,6 +1292,8 @@
       liste: $('#liste'),
       listeScroll: $('.liste-scroll'),
       listeHint: $('#liste-hint'),
+      listeLoin: $('#liste-loin'),
+      listeLoinTexte: $('#liste-loin-texte'),
       btnHintGps: $('#btn-hint-gps'),
       chips: $('#chips'),
       btnCenter: $('#btn-center'),

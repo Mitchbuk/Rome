@@ -11,7 +11,7 @@ En ligne : <https://mitchbuk.github.io/Rome/>
 - **Sélecteur Adultes / Enfants** dans chaque fiche : il change le texte affiché et le texte lu. Le choix est mémorisé sur chaque téléphone.
 - **Écouter le guide** : lecture avec des **voix neuronales naturelles** (MP3 pré-générés sur PC, voir plus bas), contrôles sur l'écran verrouillé, avance/recul de 15 s. Si un MP3 n'est pas disponible, la synthèse vocale de l'iPhone prend le relais.
 - **Carte** Leaflet + OpenStreetMap, marqueurs photo, point bleu GPS, mini-fiche, préchargement du centre de Rome.
-- **Autour de moi** : liste triée en temps réel par distance, temps de marche, filtres par catégorie.
+- **Autour de moi** : sur place (à moins de 15 km du centre de Rome), liste triée en temps réel par distance avec temps de marche ; loin de Rome ou sans GPS, mode « Préparer la visite » : lieux groupés par quartier, sans distances, et la carte reste centrée sur Rome. La bascule est automatique. Filtres par catégorie.
 - **Hors-ligne** : Service Worker (app + vignettes précachées, tuiles vues, audios et photos téléchargeables en un bouton), mise à jour automatique à chaque déploiement.
 - **iOS** : mode standalone plein écran, zones sûres (encoche / Dynamic Island / barre de balayage), mode sombre automatique, transitions GPU, actions dans le tiers inférieur de l'écran (deux onglets : Carte, Autour de moi).
 

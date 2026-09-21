@@ -84,6 +84,14 @@
             <p>Activez la localisation pour trier les lieux du plus proche au plus lointain.</p>
             <button id="btn-hint-gps" class="btn btn-small btn-primary" type="button">Activer la localisation</button>
           </div>
+          <!-- Loin de la ville (ou sans GPS) : mode "Préparer la visite" -->
+          <div id="liste-loin" class="liste-loin" hidden>
+            <span class="liste-loin-icone" aria-hidden="true">🧳</span>
+            <div>
+              <strong>Préparer la visite</strong>
+              <p id="liste-loin-texte"></p>
+            </div>
+          </div>
           <ul id="liste" class="liste"></ul>
 
           <!-- Mode hors-ligne : téléchargement des médias -->
