@@ -909,13 +909,13 @@
     if (err.code === 1) el.listeHint.hidden = false;
   }
 
-  /** Bouton GPS : force une nouvelle mesure précise et recentre la carte. */
+  /** Force une nouvelle mesure précise (bouton bleu de la carte, "Activer la localisation"). */
   function rafraichirGps() {
     if (!('geolocation' in navigator)) { toast('Localisation non disponible'); return; }
     demarrerGeoloc();
-    el.btnGps.classList.add('is-busy');
+    el.btnCenter.classList.add('is-busy');
     navigator.geolocation.getCurrentPosition((pos) => {
-      el.btnGps.classList.remove('is-busy');
+      el.btnCenter.classList.remove('is-busy');
       onPosition(pos);
       renderListe();
       const precision = Math.round(pos.coords.accuracy);
@@ -928,7 +928,7 @@
         toast(`Liste retriée depuis votre position · précision ${precision} m`);
       }
     }, (err) => {
-      el.btnGps.classList.remove('is-busy');
+      el.btnCenter.classList.remove('is-busy');
       onGeoError(err);
       toast(err.code === 1 ? 'Autorisez la localisation dans les Réglages' : 'Pas de signal GPS pour le moment');
     }, { enableHighAccuracy: true, maximumAge: 0, timeout: 15000 });
@@ -1131,7 +1131,6 @@
   function lierEvenements() {
     // Onglets
     document.querySelectorAll('.tab[data-tab]').forEach((t) => t.addEventListener('click', () => showTab(t.dataset.tab)));
-    el.btnGps.addEventListener('click', rafraichirGps);
 
     // Carte
     el.btnCenter.addEventListener('click', centrerSurMoi);
@@ -1198,7 +1197,6 @@
       listeHint: $('#liste-hint'),
       btnHintGps: $('#btn-hint-gps'),
       chips: $('#chips'),
-      btnGps: $('#btn-gps'),
       btnCenter: $('#btn-center'),
       btnPreload: $('#btn-preload'),
       btnPreload2: $('#btn-preload-2'),

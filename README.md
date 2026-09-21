@@ -13,7 +13,7 @@ En ligne : <https://mitchbuk.github.io/Rome/>
 - **Carte** Leaflet + OpenStreetMap, marqueurs photo, point bleu GPS, mini-fiche, préchargement du centre de Rome.
 - **Autour de moi** : liste triée en temps réel par distance, temps de marche, filtres par catégorie.
 - **Hors-ligne** : Service Worker (app + vignettes précachées, tuiles vues, audios et photos téléchargeables en un bouton), mise à jour automatique à chaque déploiement.
-- **iOS** : mode standalone plein écran, zones sûres (encoche / Dynamic Island / barre de balayage), mode sombre automatique, transitions GPU, actions dans le tiers inférieur de l'écran.
+- **iOS** : mode standalone plein écran, zones sûres (encoche / Dynamic Island / barre de balayage), mode sombre automatique, transitions GPU, actions dans le tiers inférieur de l'écran (deux onglets : Carte, Autour de moi).
 
 ## Structure
 

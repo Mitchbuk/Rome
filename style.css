@@ -987,7 +987,3 @@ button {
   background: var(--sep);
 }
 
-/* Bouton "Ma position" dans la barre du bas : une action, pas un onglet */
-.tab-action { color: var(--blue); }
-.tab-action.is-busy .tab-icon { animation: spin 0.9s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
