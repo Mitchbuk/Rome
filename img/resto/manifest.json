@@ -66,5 +66,53 @@
   "necci-dal-1924": {
     "source": "logo",
     "url": "https://www.necci1924.com/apple-icon-114x114.png"
+  },
+  "giolitti": {
+    "source": "commons",
+    "fichier": "File:GiolittiCafeRoma.jpg",
+    "auteur": "Chino at en.wikipedia",
+    "licence": "Public domain"
+  },
+  "gelateria-del-teatro": {
+    "source": "commons",
+    "fichier": "File:Roma, Via dei Coronari di notte (2).jpg",
+    "auteur": "Palickap",
+    "licence": "CC BY-SA 4.0"
+  },
+  "pompi": {
+    "source": "logo",
+    "url": "https://barpompi.it/wp-content/uploads/2019/11/cropped-cropped-site_id-180x180.png"
+  },
+  "emma-pizzeria": {
+    "source": "favicon-google",
+    "url": "https://www.google.com/s2/favicons?domain=emmapizzeria.com&sz=256"
+  },
+  "da-francesco": {
+    "source": "logo",
+    "url": "https://www.dafrancesco.it/wp-content/uploads/2020/09/cropped-favicon-da_francesco-roma-1-180x180.jpg"
+  },
+  "ai-marmi": {
+    "source": "commons",
+    "fichier": "File:Roma Trastevere Pizzeria Panattoni.jpg",
+    "auteur": "Gobbler",
+    "licence": "CC BY-SA 3.0"
+  },
+  "mercato-centrale": {
+    "source": "favicon-google",
+    "url": "https://www.google.com/s2/favicons?domain=www.mercatocentrale.it&sz=256"
+  },
+  "allo-sbarco-di-enea": {
+    "source": "logo",
+    "url": "https://www.allosbarcodienea.com/wp-content/uploads/2019/04/cropped-icona-180x180.jpg"
+  },
+  "hostaria-antica-roma": {
+    "source": "og",
+    "url": "https://hostarianticaroma.it/wp-content/uploads/2024/06/anticahostaria-header-1.webp"
+  },
+  "osteria-dell-angelo": {
+    "source": "commons",
+    "fichier": "File:Via Ottaviano - Roma - panoramio.jpg",
+    "auteur": "Urantia",
+    "licence": "CC BY-SA 3.0"
   }
 }

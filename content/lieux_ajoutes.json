@@ -1,0 +1,263 @@
+[
+  {
+    "id": "musees-capitolins",
+    "nom": "Musées du Capitole",
+    "categorie": "musee",
+    "lat": 41.8929,
+    "lon": 12.4826,
+    "duree": 120,
+    "conseil": "Réservez en ligne pour éviter la file. Le passage souterrain qui relie les deux palais offre une vue spectaculaire sur le Forum. La terrasse du café, au dernier étage, est l'une des plus belles de Rome. Comptez deux heures."
+  },
+  {
+    "id": "domus-palazzo-valentini",
+    "nom": "Domus romaines du palais Valentini",
+    "categorie": "antique",
+    "lat": 41.8961,
+    "lon": 12.4836,
+    "duree": 75,
+    "conseil": "Visite guidée uniquement, par petits groupes et à heures fixes, avec des créneaux en français certains jours : réservez longtemps à l'avance. Comptez une heure et quart. C'est une excellente visite pour un jour de pluie ou de grosse chaleur."
+  },
+  {
+    "id": "domus-aurea",
+    "nom": "Domus Aurea",
+    "categorie": "antique",
+    "lat": 41.8913,
+    "lon": 12.4955,
+    "duree": 75,
+    "conseil": "La Domus Aurea ne se visite qu'en visite guidée, surtout le week-end, sur réservation obligatoire. Il y fait frais toute l'année, autour de dix degrés : prévoyez un pull, même en été. La visite comprend un casque de réalité virtuelle, déconseillé aux plus jeunes."
+  },
+  {
+    "id": "celio-case-romane",
+    "nom": "Maisons romaines du Celio",
+    "categorie": "antique",
+    "lat": 41.8864,
+    "lon": 12.4919,
+    "duree": 60,
+    "conseil": "Les maisons romaines se visitent certains jours seulement : vérifiez l'ouverture avant de venir. Comptez une heure. Juste à côté, le parc de la Villa Celimontana offre de l'ombre, des pelouses et une aire de jeux, à deux pas du Colisée."
+  },
+  {
+    "id": "saint-louis-des-francais",
+    "nom": "Saint-Louis-des-Français",
+    "categorie": "eglise",
+    "lat": 41.8995,
+    "lon": 12.4746,
+    "duree": 30,
+    "conseil": "L'entrée est gratuite. Les trois Caravage sont dans la dernière chapelle à gauche, près de l'autel : une pièce dans le boîtier allume l'éclairage pour quelques minutes. L'église ferme à l'heure du déjeuner. Épaules et genoux couverts."
+  },
+  {
+    "id": "minerve-elephant",
+    "nom": "Santa Maria sopra Minerva et l'éléphant du Bernin",
+    "categorie": "eglise",
+    "lat": 41.898,
+    "lon": 12.4778,
+    "duree": 30,
+    "conseil": "L'entrée de l'église est gratuite, et l'éléphant se voit à toute heure sur la place. Juste derrière le Panthéon, c'est une halte idéale de vingt minutes. Épaules et genoux couverts pour entrer."
+  },
+  {
+    "id": "saint-ignace",
+    "nom": "Saint-Ignace et sa fausse coupole",
+    "categorie": "eglise",
+    "lat": 41.899,
+    "lon": 12.4799,
+    "duree": 30,
+    "conseil": "L'entrée est gratuite. Placez-vous sur le disque de marbre au milieu de la nef pour voir l'illusion du plafond. Un grand miroir installé dans la nef permet de l'admirer sans se tordre le cou. La place devant l'église, en forme de décor de théâtre, vaut aussi le coup d'œil."
+  },
+  {
+    "id": "quirinal",
+    "nom": "Place et palais du Quirinal",
+    "categorie": "place",
+    "lat": 41.8995,
+    "lon": 12.4871,
+    "duree": 40,
+    "conseil": "La place est accessible librement. La relève de la garde a lieu chaque jour dans l'après-midi, avec une cérémonie plus solennelle certains dimanches : vérifiez l'horaire sur le site de la présidence. Le palais se visite sur réservation, certains jours seulement."
+  },
+  {
+    "id": "ara-pacis",
+    "nom": "Ara Pacis, l'autel de la Paix",
+    "categorie": "musee",
+    "lat": 41.9062,
+    "lon": 12.4757,
+    "duree": 45,
+    "conseil": "Comptez trois quarts d'heure. Le musée propose parfois des visites en réalité augmentée qui redonnent leurs couleurs aux sculptures : renseignez-vous. Le mausolée d'Auguste, juste en face, se combine idéalement avec la visite."
+  },
+  {
+    "id": "mausolee-auguste",
+    "nom": "Mausolée d'Auguste",
+    "categorie": "antique",
+    "lat": 41.906,
+    "lon": 12.4766,
+    "duree": 45,
+    "conseil": "Rouvert en 2021 après de longues restaurations, le mausolée se visite sur réservation, par créneaux horaires. Comptez trois quarts d'heure. Il se combine idéalement avec l'Ara Pacis, juste en face."
+  },
+  {
+    "id": "saint-pierre-aux-liens",
+    "nom": "Saint-Pierre-aux-Liens et le Moïse de Michel-Ange",
+    "categorie": "eglise",
+    "lat": 41.8938,
+    "lon": 12.493,
+    "duree": 30,
+    "conseil": "L'entrée est gratuite. L'église est souvent fermée entre midi et le milieu de l'après-midi : visez le matin. On y accède par un escalier depuis la via Cavour, ou par la place en haut. À dix minutes à pied du Colisée."
+  },
+  {
+    "id": "ostie-antique",
+    "nom": "Ostie antique",
+    "categorie": "antique",
+    "lat": 41.7554,
+    "lon": 12.2922,
+    "duree": 240,
+    "conseil": "Prévoyez une demi-journée. Train Roma-Lido depuis la gare de Porta San Paolo, à côté du métro Piramide, arrêt Ostia Antica, puis cinq minutes à pied : le trajet est couvert par le billet de transport urbain. Le site est fermé le lundi. Emportez pique-nique, eau et chapeaux : l'ombre des pins ne suffit pas toujours."
+  },
+  {
+    "id": "galerie-borghese",
+    "nom": "Galerie Borghèse",
+    "categorie": "musee",
+    "lat": 41.9142,
+    "lon": 12.4921,
+    "duree": 120,
+    "conseil": "Réservation obligatoire, souvent plusieurs semaines à l'avance, pour un créneau de deux heures. Arrivez une demi-heure avant pour déposer les sacs au vestiaire, obligatoire. Le musée est fermé le lundi. Combinez avec une promenade dans le parc de la villa Borghèse."
+  },
+  {
+    "id": "palais-massimo",
+    "nom": "Palais Massimo, Musée national romain",
+    "categorie": "musee",
+    "lat": 41.9013,
+    "lon": 12.4977,
+    "duree": 90,
+    "conseil": "Comptez une heure et demie. Le musée est à deux minutes de la gare Termini et rarement bondé. Commencez par le deuxième étage et ses fresques, puis descendez. Le billet donne accès à d'autres sites du Musée national romain, dont les thermes de Dioclétien, à valider dans un délai limité."
+  },
+  {
+    "id": "palais-barberini",
+    "nom": "Palais Barberini, galerie d'Art ancien",
+    "categorie": "musee",
+    "lat": 41.9034,
+    "lon": 12.4901,
+    "duree": 90,
+    "conseil": "Comptez une heure et demie. Le musée est fermé le lundi. Métro ligne A, arrêt Barberini. En sortant, admirez sur la place la fontaine du Triton du Bernin et, au coin de la via Veneto, la petite fontaine des Abeilles."
+  },
+  {
+    "id": "galerie-doria-pamphilj",
+    "nom": "Galerie Doria Pamphilj",
+    "categorie": "musee",
+    "lat": 41.898,
+    "lon": 12.4812,
+    "duree": 90,
+    "conseil": "Comptez une heure et demie. L'entrée se trouve via del Corso, à deux pas de la place de Venise. L'audioguide est inclus. C'est un musée privé, souvent calme, idéal quand il pleut ou qu'il fait très chaud."
+  },
+  {
+    "id": "centrale-montemartini",
+    "nom": "Centrale Montemartini",
+    "categorie": "musee",
+    "lat": 41.8671,
+    "lon": 12.4786,
+    "duree": 75,
+    "conseil": "Comptez une heure et quart. Le musée est fermé le lundi. Métro ligne B, arrêt Garbatella, puis dix minutes à pied, ou bus depuis la pyramide. Rarement fréquenté, il se visite au calme. Le quartier voisin de la Garbatella mérite une petite promenade."
+  },
+  {
+    "id": "capucins",
+    "nom": "Crypte des Capucins",
+    "categorie": "eglise",
+    "lat": 41.9043,
+    "lon": 12.4886,
+    "duree": 45,
+    "conseil": "Comptez trois quarts d'heure avec le petit musée. Les photos sont interdites dans la crypte. Le lieu peut impressionner les plus jeunes : préparez-les avant la visite. Métro ligne A, arrêt Barberini, à deux minutes à pied."
+  },
+  {
+    "id": "explora",
+    "nom": "Explora, le musée des enfants",
+    "categorie": "musee",
+    "lat": 41.9139,
+    "lon": 12.4726,
+    "duree": 120,
+    "conseil": "Pour les enfants jusqu'à onze ans environ. Les visites se font par créneaux d'une heure trois quarts, qu'il vaut mieux réserver en ligne, surtout le week-end. Fermé le lundi. À dix minutes à pied de la place du Peuple. Un restaurant et un jardin se trouvent sur place."
+  },
+  {
+    "id": "bioparco",
+    "nom": "Bioparco, le zoo de Rome",
+    "categorie": "quartier",
+    "lat": 41.9176,
+    "lon": 12.4868,
+    "duree": 180,
+    "conseil": "Prévoyez au moins deux à trois heures. Achetez les billets en ligne pour éviter la file. Les repas des animaux, annoncés à l'entrée, sont les meilleurs moments. Pique-nique possible sur les aires prévues. Le zoo est dans le parc de la villa Borghèse, accessible en tramway."
+  },
+  {
+    "id": "ecole-gladiateurs",
+    "nom": "École de gladiateurs",
+    "categorie": "antique",
+    "lat": 41.8723,
+    "lon": 12.5027,
+    "duree": 120,
+    "conseil": "Réservation obligatoire, dès six ans, pour un cours d'environ deux heures. C'est une activité chère : comparez avant de réserver. Les parents accompagnateurs assistent et visitent le petit musée. Tenue de sport et baskets conseillées. L'école est juste après la porte Saint-Sébastien, au début de la via Appia."
+  },
+  {
+    "id": "parc-aqueducs",
+    "nom": "Parc des Aqueducs",
+    "categorie": "antique",
+    "lat": 41.853,
+    "lon": 12.56,
+    "duree": 90,
+    "conseil": "Accès libre et gratuit. Métro ligne A, arrêt Giulio Agricola ou Subaugusta, puis quelques minutes à pied. Très peu d'ombre : venez le matin ou en fin de journée, avec eau et chapeaux. Idéal pour un pique-nique ou une balade à vélo."
+  },
+  {
+    "id": "saint-paul-hors-les-murs",
+    "nom": "Basilique Saint-Paul-hors-les-Murs",
+    "categorie": "eglise",
+    "lat": 41.8587,
+    "lon": 12.4769,
+    "duree": 60,
+    "conseil": "L'entrée de la basilique est gratuite, le cloître est payant pour une somme modeste. Métro ligne B, arrêt Basilica San Paolo, puis cinq minutes à pied. Épaules et genoux couverts. Se combine avec la Centrale Montemartini, sur la même avenue."
+  },
+  {
+    "id": "monti",
+    "nom": "Monti, le plus vieux quartier",
+    "categorie": "quartier",
+    "lat": 41.8949,
+    "lon": 12.4909,
+    "duree": 90,
+    "conseil": "Métro ligne B, arrêt Cavour. Le quartier se découvre à pied, sans itinéraire précis. Le week-end, un marché d'artisans et de créateurs se tient souvent dans un hôtel de la via Cavour. Santa Prassede ferme à l'heure du déjeuner, et une pièce allume la chapelle Saint-Zénon."
+  },
+  {
+    "id": "marche-testaccio",
+    "nom": "Testaccio, son marché et le mont des amphores",
+    "categorie": "quartier",
+    "lat": 41.8776,
+    "lon": 12.4733,
+    "duree": 90,
+    "conseil": "Le marché est ouvert du lundi au samedi, du matin au milieu de l'après-midi, et fermé le dimanche. Venez à l'heure du déjeuner pour goûter les sandwiches des stands. Métro ligne B, arrêt Piramide, puis dix minutes à pied."
+  },
+  {
+    "id": "villa-doria-pamphilj",
+    "nom": "Villa Doria Pamphilj",
+    "categorie": "quartier",
+    "lat": 41.8858,
+    "lon": 12.455,
+    "duree": 120,
+    "conseil": "Accès libre et gratuit, de l'aube au coucher du soleil. L'entrée la plus pratique est celle de la porte San Pancrazio, en haut du Janicule. Le parc est immense : choisissez une partie, autour du lac par exemple. Pique-nique possible, peu de kiosques."
+  },
+  {
+    "id": "villa-farnesina",
+    "nom": "Villa Farnesina",
+    "categorie": "musee",
+    "lat": 41.8935,
+    "lon": 12.4671,
+    "duree": 60,
+    "conseil": "Comptez une heure. Les horaires sont limités : ouverte en semaine et certains dimanches seulement, vérifiez avant de venir. Entrée via della Lungara, dans le Trastevere, à dix minutes à pied de l'île Tibérine. Le jardin se visite aussi."
+  },
+  {
+    "id": "villa-torlonia",
+    "nom": "Villa Torlonia et la maison des Hiboux",
+    "categorie": "quartier",
+    "lat": 41.9142,
+    "lon": 12.5117,
+    "duree": 120,
+    "conseil": "Le parc est gratuit, les musées payants et fermés le lundi. Les abris antiaériens et le bunker se visitent uniquement avec un guide, sur réservation. Aires de jeux dans le parc. Bus depuis Termini, sur la via Nomentana."
+  },
+  {
+    "id": "villa-giulia",
+    "nom": "Villa Giulia, musée des Étrusques",
+    "categorie": "musee",
+    "lat": 41.9186,
+    "lon": 12.4776,
+    "duree": 90,
+    "conseil": "Comptez une heure et demie. Le musée est fermé le lundi. Il est rarement bondé. Tramway ou quinze minutes à pied depuis la place du Peuple, en longeant le parc de la villa Borghèse. Le jardin et le temple reconstitué méritent un tour."
+  }
+]

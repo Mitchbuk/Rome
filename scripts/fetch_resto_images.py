@@ -48,6 +48,16 @@ COMMONS = {
     "bar-del-fico": "Bar del Fico Roma",
     "freni-e-frizioni": "Freni e Frizioni Trastevere",
     "necci-dal-1924": "Necci Pigneto",
+    "giolitti": "GiolittiCafeRoma",
+    "gelateria-del-teatro": "Via dei Coronari Roma",
+    "pompi": "Via della Croce Roma",
+    "emma-pizzeria": "Via del Monte della Farina Roma",
+    "da-francesco": "Piazza del Fico Roma",
+    "ai-marmi": "Roma Trastevere Pizzeria Panattoni",
+    "mercato-centrale": "Mercato Centrale Roma Termini",
+    "allo-sbarco-di-enea": "Ostia Antica borgo",
+    "hostaria-antica-roma": "Colombario dei liberti di Augusto Via Appia",
+    "osteria-dell-angelo": "Via Ottaviano Roma panoramio",
 }
 
 
@@ -142,7 +152,8 @@ def traiter(r, manifest):
     if r.get("image"):
         essais.append(("manuel", r["image"]))
     site = (r.get("pratique") or {}).get("site")
-    if site:
+    # Une page Facebook ou Instagram ne donne que le logo du réseau social, pas celui de l'adresse
+    if site and not re.search(r"facebook\.com|instagram\.com", site):
         essais += logo_du_site(site)
         hote = urllib.parse.urlparse(site).netloc
         essais.append(("favicon-google", f"https://www.google.com/s2/favicons?domain={hote}&sz=256"))

@@ -36,7 +36,7 @@
    * distance ; à l'extérieur (chez soi, dans le train), la liste passe en mode
    * "Préparer la visite", groupée par quartier, et la carte reste sur la ville.
    */
-  const VILLE = { nom: 'Rome', centre: ROME_CENTER, rayon: 15000 };
+  const VILLE = { nom: 'Rome', centre: ROME_CENTER, rayon: 25000 }; // 25 km : jusqu'à Ostie antique
 
   /** Quartiers, dans l'ordre d'affichage du mode "Préparer la visite". */
   const QUARTIERS = [
@@ -47,9 +47,10 @@
     { id: 'vatican',   label: 'Vatican et Château Saint-Ange',    centre: [41.9030, 12.4570] },
     { id: 'trastevere', label: 'Trastevere, Ghetto et Janicule', centre: [41.8905, 12.4700] },
     { id: 'testaccio', label: 'Testaccio et Ostiense',            centre: [41.8770, 12.4780] },
-    { id: 'esquilin',  label: 'Esquilin et Latran',               centre: [41.8920, 12.5010] },
+    { id: 'esquilin',  label: 'Monti, Esquilin et Latran',        centre: [41.8920, 12.5010] },
     { id: 'nord',      label: 'Piazza del Popolo et Villa Borghèse', centre: [41.9110, 12.4800] },
-    { id: 'appia',     label: 'Via Appia et catacombes',          centre: [41.8560, 12.5170] },
+    { id: 'appia',     label: 'Via Appia, catacombes et aqueducs', centre: [41.8560, 12.5170] },
+    { id: 'ostie',     label: 'Ostie antique',                    centre: [41.7554, 12.2922] },
     { id: 'ailleurs',  label: 'Un peu plus loin',                 centre: null }
   ];
   const QUARTIER_PAR_ID = {
@@ -64,15 +65,37 @@
     ghetto: 'trastevere', 'ile-tiberine': 'trastevere', trastevere: 'trastevere', janicule: 'trastevere',
     'chateau-saint-ange': 'vatican', 'place-saint-pierre': 'vatican', 'basilique-saint-pierre': 'vatican', 'musees-vatican': 'vatican',
     'pyramide-cestius': 'testaccio', 'via-appia': 'appia', catacombes: 'appia',
+    // Lieux ajoutés (Rome très grande ville)
+    'musees-capitolins': 'venezia', 'domus-palazzo-valentini': 'venezia',
+    'domus-aurea': 'antique', 'celio-case-romane': 'antique',
+    'saint-louis-des-francais': 'centre', 'minerve-elephant': 'centre', 'saint-ignace': 'centre', quirinal: 'centre',
+    'palais-barberini': 'centre', 'galerie-doria-pamphilj': 'centre', capucins: 'centre',
+    'ara-pacis': 'nord', 'mausolee-auguste': 'nord', 'galerie-borghese': 'nord', explora: 'nord', bioparco: 'nord',
+    'villa-torlonia': 'nord', 'villa-giulia': 'nord',
+    'saint-pierre-aux-liens': 'esquilin', 'palais-massimo': 'esquilin', monti: 'esquilin',
+    'centrale-montemartini': 'testaccio', 'marche-testaccio': 'testaccio', 'saint-paul-hors-les-murs': 'testaccio',
+    'ecole-gladiateurs': 'appia', 'parc-aqueducs': 'appia',
+    'villa-doria-pamphilj': 'trastevere', 'villa-farnesina': 'trastevere',
+    'ostie-antique': 'ostie',
     'armando-pantheon': 'centre', 'supplizio': 'centre', 'antico-forno-roscioli': 'centre', 'bar-del-fico': 'centre',
     'da-enzo-al-29': 'trastevere', 'trapizzino-trastevere': 'trastevere', 'freni-e-frizioni': 'trastevere',
     'flavio-velavevodetto': 'testaccio', 'pizzeria-da-remo': 'testaccio', 'mordi-e-vai': 'testaccio', 'trattoria-pennestri': 'testaccio',
     'trattoria-monti': 'esquilin', 'pizzarium-bonci': 'vatican',
-    'cesare-al-casaletto': 'ailleurs', 'necci-dal-1924': 'ailleurs'
+    'cesare-al-casaletto': 'ailleurs', 'necci-dal-1924': 'ailleurs',
+    giolitti: 'centre', 'gelateria-del-teatro': 'centre', pompi: 'centre', 'emma-pizzeria': 'centre', 'da-francesco': 'centre',
+    'ai-marmi': 'trastevere', 'mercato-centrale': 'esquilin', 'allo-sbarco-di-enea': 'ostie',
+    'hostaria-antica-roma': 'appia', 'osteria-dell-angelo': 'vatican'
   };
   const quartierDe = (m) => QUARTIER_PAR_ID[m.id] || 'ailleurs';
-  /** Zone préchargée pour le hors-ligne : centre historique + Vatican + début de la Via Appia. */
-  const PRELOAD_BOUNDS = { north: 41.925, south: 41.850, west: 12.430, east: 12.535 };
+  /**
+   * Zones préchargées pour le hors-ligne : centre historique + Vatican + début de la Via Appia,
+   * puis deux petites zones isolées, le parc des Aqueducs et Ostie antique.
+   */
+  const PRELOAD_ZONES = [
+    { north: 41.925, south: 41.850, west: 12.430, east: 12.535 },
+    { north: 41.862, south: 41.845, west: 12.550, east: 12.572 },
+    { north: 41.762, south: 41.748, west: 12.280, east: 12.302 }
+  ];
   const PRELOAD_ZOOMS = [12, 13, 14, 15, 16];
   const TAILLE_TUILE_KO = 25; // estimation moyenne pour l'affichage
   const SAUT_SECONDES = 15;   // boutons ⏪ / ⏩ du lecteur
@@ -264,6 +287,7 @@
     let principal = MONUMENTS.filter((m) => !estResto(m));
     let restos = MONUMENTS.filter(estResto);
     if (state.filter === 'manger') principal = [];
+    else if (state.filter === 'incontournables') { principal = principal.filter((m) => m.incontournable); restos = []; }
     else if (state.filter !== 'tous') { principal = principal.filter((m) => m.categorie === state.filter); restos = []; }
     const surPlace = dansLaVille();
     const trier = (arr) => {
@@ -374,7 +398,7 @@
   }
 
   function renderChips() {
-    const chips = [{ id: 'tous', label: 'Tous' }].concat(
+    const chips = [{ id: 'tous', label: 'Tous' }, { id: 'incontournables', label: '⭐ Incontournables' }].concat(
       Object.entries(CATEGORIES).map(([id, c]) => ({ id, label: `${c.emoji} ${c.label}` }))
     );
     el.chips.innerHTML = chips.map((c) =>
@@ -1041,11 +1065,10 @@
     return Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * Math.pow(2, z));
   }
 
-  /** Liste des URLs de tuiles couvrant PRELOAD_BOUNDS aux zooms choisis. */
+  /** Liste des URLs de tuiles couvrant PRELOAD_ZONES aux zooms choisis. */
   function listeTuiles() {
     const urls = [];
-    const b = PRELOAD_BOUNDS;
-    for (const z of PRELOAD_ZOOMS) {
+    for (const b of PRELOAD_ZONES) for (const z of PRELOAD_ZOOMS) {
       const x0 = lon2tile(b.west, z), x1 = lon2tile(b.east, z);
       const y0 = lat2tile(b.north, z), y1 = lat2tile(b.south, z);
       for (let x = x0; x <= x1; x++) {
@@ -1054,7 +1077,7 @@
         }
       }
     }
-    return urls;
+    return [...new Set(urls)]; // les zones se recouvrent aux petits zooms
   }
 
   /**
@@ -1090,7 +1113,7 @@
 
     const urls = listeTuiles();
     const mo = Math.round((urls.length * TAILLE_TUILE_KO) / 1024);
-    if (!window.confirm(`Télécharger la carte du centre de Rome et du Vatican pour le mode hors-ligne ?\n\n${urls.length} tuiles, environ ${mo} Mo. À faire une seule fois, de préférence en Wi-Fi.`)) return;
+    if (!window.confirm(`Télécharger la carte de Rome, du Vatican et d'Ostie antique pour le mode hors-ligne ?\n\n${urls.length} tuiles, environ ${mo} Mo. À faire une seule fois, de préférence en Wi-Fi.`)) return;
 
     state.preloading = true;
     el.btnPreload.classList.add('is-busy');

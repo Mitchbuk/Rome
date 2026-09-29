@@ -15,8 +15,23 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const { MONUMENTS: TOUS, CATEGORIES: CATS_EXISTANTES } = require(path.join(ROOT, 'monuments.js'));
 // Les restaurants (categorie 'manger') viennent de content/restos.json, pas des part*.json
-const MONUMENTS = TOUS.filter((m) => m.categorie !== 'manger');
-const CATEGORIES = Object.assign({}, CATS_EXISTANTES, { manger: { label: 'Où manger', emoji: '🍝' } });
+const lireJson = (f, defaut) => {
+  try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'content', f), 'utf8')); } catch (e) { return defaut; }
+};
+// Lieux ajoutés (passage de Rome en très grande ville) : données de base dans content/lieux_ajoutes.json.
+// Ils remplacent la version déjà présente dans monuments.js, pour que les corrections soient prises en compte.
+const AJOUTES = lireJson('lieux_ajoutes.json', []);
+const idsAjoutes = new Set(AJOUTES.map((m) => m.id));
+const MONUMENTS = TOUS.filter((m) => m.categorie !== 'manger' && !idsAjoutes.has(m.id)).concat(AJOUTES);
+// Lieux mis en avant par le filtre "Incontournables"
+const INCONTOURNABLES = new Set(lireJson('incontournables.json', []));
+const CATEGORIES = {};
+for (const [id, c] of Object.entries(CATS_EXISTANTES)) {
+  if (id === 'manger' || id === 'musee') continue;
+  CATEGORIES[id] = c;
+  if (id === 'vatican') CATEGORIES.musee = { label: 'Musées', emoji: '🖼️' };
+}
+CATEGORIES.manger = { label: 'Où manger', emoji: '🍝' };
 // Image de chaque adresse (logo du site ou photo), produite par scripts/fetch_resto_images.py
 let imagesRestos = {};
 try { imagesRestos = JSON.parse(fs.readFileSync(path.join(ROOT, 'img', 'resto', 'manifest.json'), 'utf8')); } catch (e) { /* pas encore générées */ }
@@ -72,7 +87,7 @@ const blocs = MONUMENTS.map((m) => {
   return `  {
     id: ${q(m.id)},
     nom: ${q(m.nom)},
-    categorie: ${q(m.categorie)},
+    categorie: ${q(m.categorie)},${INCONTOURNABLES.has(m.id) ? '\n    incontournable: true,' : ''}
     lat: ${m.lat}, lon: ${m.lon},
     duree: ${m.duree},
     conseil: ${q(m.conseil)},
@@ -96,7 +111,8 @@ const sortie = `/* =============================================================
    Chaque lieu contient :
      id          : identifiant unique (photos img/<id>.jpg, audios audio/<id>-*.mp3)
      nom         : nom affiché
-     categorie   : 'antique' | 'vatican' | 'place' | 'eglise' | 'quartier'
+     categorie   : 'antique' | 'vatican' | 'musee' | 'place' | 'eglise' | 'quartier'
+     incontournable : true pour les lieux du filtre "Incontournables" (content/incontournables.json)
      lat / lon   : coordonnées GPS (WGS84)
      duree       : temps de visite estimé, en minutes
      conseil     : astuce pratique (non lue à voix haute)

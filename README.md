@@ -7,11 +7,12 @@ En ligne : <https://mitchbuk.github.io/Rome/>
 
 ## Fonctionnalités
 
-- **34 lieux** (monuments, places, rues, Vatican), chacun avec une **photo**, un **guide adultes** (450–600 mots, sections titrées : histoire, architecture, à voir, anecdotes) et un **guide enfants 9–12 ans** (350–500 mots : « Imagine… », « Le savais-tu ? », défi d'observation, quiz), plus un conseil pratique, le temps de visite et les coordonnées GPS.
+- **63 lieux** (Rome antique, Vatican, musées, places, églises, quartiers et parcs, jusqu'à Ostie antique), chacun avec une **photo**, un **guide adultes** (450 à 600 mots, sections titrées : histoire, architecture, à voir, anecdotes) et un **guide enfants 9 à 12 ans** (350 à 500 mots : « Imagine », « Le savais-tu ? », défi d'observation, quiz), plus un conseil pratique, le temps de visite et les coordonnées GPS.
+- **Filtre « Incontournables »** : les 17 lieux à ne pas manquer, pour ne pas se noyer dans la liste. La liste des identifiants est dans `content/incontournables.json`.
 - **Sélecteur Adultes / Enfants** dans chaque fiche : il change le texte affiché et le texte lu. Le choix est mémorisé sur chaque téléphone.
 - **Écouter le guide** : lecture avec des **voix neuronales naturelles** (MP3 pré-générés sur PC, voir plus bas), contrôles sur l'écran verrouillé, avance/recul de 15 s. Si un MP3 n'est pas disponible, la synthèse vocale de l'iPhone prend le relais.
 - **Carte** Leaflet + OpenStreetMap, marqueurs photo, point bleu GPS, mini-fiche, préchargement du centre de Rome.
-- **Autour de moi** : sur place (à moins de 15 km du centre de Rome), liste triée en temps réel par distance avec temps de marche ; loin de Rome ou sans GPS, mode « Préparer la visite » : lieux groupés par quartier, sans distances, et la carte reste centrée sur Rome. La bascule est automatique. Filtres par catégorie.
+- **Autour de moi** : sur place (à moins de 25 km du centre de Rome, pour inclure Ostie antique), liste triée en temps réel par distance avec temps de marche ; loin de Rome ou sans GPS, mode « Préparer la visite » : lieux groupés par quartier, sans distances, et la carte reste centrée sur Rome. La bascule est automatique. Filtres par catégorie.
 - **Hors-ligne** : Service Worker (app + vignettes précachées, tuiles vues, audios et photos téléchargeables en un bouton), mise à jour automatique à chaque déploiement.
 - **iOS** : mode standalone plein écran, zones sûres (encoche / Dynamic Island / barre de balayage), mode sombre automatique, transitions GPU, actions dans le tiers inférieur de l'écran (deux onglets : Carte, Autour de moi).
 
@@ -24,7 +25,9 @@ app.js                Carte, liste, fiche, lecteur audio, GPS, hors-ligne, Servi
 monuments.js          Base de données des lieux — GÉNÉRÉ par scripts/build_monuments.js
 sw.js                 Service Worker : cache versionné de l'app + tuiles + médias (Range)
 manifest.json         Manifeste PWA
-content/part*.json    Textes rédigés (adultes / enfants) par lieu — la source à éditer
+content/part*.json    Textes rédigés (adultes / enfants) par lieu, la source à éditer
+content/lieux_ajoutes.json  Données de base des lieux ajoutés en très grande ville (nom, catégorie, GPS, durée, conseil)
+content/incontournables.json  Identifiants du filtre Incontournables
 img/                  Photos (900 px) et vignettes (240 px) + credits.json
 audio/                MP3 des guides (<id>-adultes.mp3, <id>-enfants.mp3) + manifest.json
 scripts/              build_monuments.js, fetch_images.py, generate_audio.py
@@ -35,7 +38,7 @@ lib/leaflet/          Leaflet 1.9.4 en local (pas de CDN, fonctionne hors-ligne)
 
 ## Où manger
 
-15 adresses (6 trattorias, 6 pizza / street food, 3 bars-apéritivo) réparties par quartier, choisies pour les familles : institutions et pépites récentes, jamais de gastronomique. Dans « Autour de moi », elles forment une section « Où manger » en fin de liste (filtre Tous) ou s'affichent seules (filtre Où manger) ; sur la carte, leurs marqueurs ont un anneau vert.
+25 adresses (trattorias et pizzerias, street food, glaces et tiramisù, bars-apéritivo) réparties par quartier, choisies pour les familles : institutions et pépites récentes, jamais de gastronomique. Dans « Autour de moi », elles forment une section « Où manger » en fin de liste (filtre Tous) ou s'affichent seules (filtre Où manger) ; sur la carte, leurs marqueurs ont un anneau vert.
 
 - Source : `content/restos.json` (une entrée par adresse : type, quartier, budget, résumé, pourquoi on aime, quoi commander, avec les enfants, infos pratiques, conseil).
 - Images : `python scripts/fetch_resto_images.py` récupère le logo du site officiel (icône Apple ou image de partage), sinon une photo du lieu sur Wikimedia Commons, dans `img/resto/`. Pour imposer une image : champ `"image": "https://…"` dans `restos.json`.
@@ -57,7 +60,7 @@ Les modèles de synthèse vocale de Hugging Face (Kokoro, Piper, XTTS…) sont t
 
 ```bash
 pip install edge-tts
-python scripts/generate_audio.py            # tous les lieux (≈ 70 fichiers, ≈ 80 Mo)
+python scripts/generate_audio.py            # tous les lieux (126 fichiers)
 python scripts/generate_audio.py colisee    # un seul lieu
 python scripts/generate_audio.py --voix-adultes fr-FR-DeniseNeural --voix-enfants fr-FR-EloiseNeural --force
 ```
