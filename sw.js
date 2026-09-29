@@ -37,6 +37,8 @@ const SHELL_FILES = [
   './audio/manifest.json',
   './lib/leaflet/leaflet.js',
   './lib/leaflet/leaflet.css',
+  './lib/leaflet.markercluster/leaflet.markercluster.js',
+  './lib/leaflet.markercluster/MarkerCluster.css',
   './lib/leaflet/images/marker-icon.png',
   './lib/leaflet/images/marker-icon-2x.png',
   './lib/leaflet/images/marker-shadow.png',

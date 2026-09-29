@@ -917,7 +917,9 @@ button {
 .marker-photo.is-logo { background: #fff; }
 .marker-photo.is-logo img { object-fit: contain; padding: 3px; }
 /* Marqueur "Où manger" : anneau violet épais + badge picto qui déborde du cercle */
-.marker-manger-wrap { position: relative; width: 46px; height: 46px; }
+/* Pas de position ici : Leaflet place chaque marqueur en position absolue. Un "position: relative"
+   remettait les marqueurs dans le flux, empilés les uns sous les autres, donc décalés vers le bas. */
+.marker-manger-wrap { width: 46px; height: 46px; }
 .marker-manger-wrap .marker-photo { display: block; width: 46px; height: 46px; }
 .marker-photo.is-manger:not(.is-visited):not(.is-selected) {
   box-shadow: 0 0 0 3.5px var(--food), 0 3px 10px rgba(0, 0, 0, 0.35);
@@ -1004,3 +1006,28 @@ button {
   background: var(--sep);
 }
 
+
+/* ---------- Groupes de marqueurs (zoom arrière) ---------- */
+/* Pas de position ici non plus : Leaflet place le groupe en position absolue. */
+.marker-groupe { width: 52px; height: 52px; }
+.marker-groupe .marker-photo {
+  display: block;
+  width: 52px;
+  height: 52px;
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 6px rgba(255, 255, 255, 0.85), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.marker-groupe .groupe-nombre {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 13px;
+  border: 2px solid #fff;
+  background: var(--accent);
+  color: #fff;
+  font: 700 14px/22px -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}

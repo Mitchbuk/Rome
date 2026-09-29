@@ -435,6 +435,24 @@
     });
   }
 
+  /**
+   * Icône d'un groupe : la photo du lieu le plus marquant du groupe (incontournable, sinon
+   * monument, sinon adresse) et une pastille avec le nombre de lieux regroupés.
+   */
+  function iconeGroupe(cluster) {
+    const lieux = cluster.getAllChildMarkers().map((mk) => mk.options.lieu);
+    const rang = (m) => (m.incontournable ? 0 : estResto(m) ? 2 : 1);
+    const vedette = lieux.slice().sort((a, b) => rang(a) - rang(b))[0];
+    const n = lieux.length;
+    return L.divIcon({
+      className: 'marker-groupe',
+      html: `<span class="marker-photo${estLogo(vedette) ? ' is-logo' : ''}"><img src="${thumbUrl(vedette)}" alt="" draggable="false"></span>`
+        + `<span class="groupe-nombre">${n}</span>`,
+      iconSize: [52, 52],
+      iconAnchor: [26, 26]
+    });
+  }
+
   function initMap() {
     const map = L.map('map', {
       zoomControl: false,          // le pincement suffit sur iPhone
@@ -453,12 +471,23 @@
 
     map.setView(ROME_CENTER, ZOOM_INITIAL);
 
+    // Regroupement des marqueurs proches : un cercle photo avec le nombre de lieux.
+    // Un tap sur le groupe zoome dessus ; à partir du zoom 17, tous les marqueurs sont séparés.
+    const groupe = L.markerClusterGroup({
+      maxClusterRadius: 60,
+      disableClusteringAtZoom: 17,
+      spiderfyOnMaxZoom: false,
+      showCoverageOnHover: false,
+      iconCreateFunction: iconeGroupe
+    });
     MONUMENTS.forEach((m) => {
-      const marker = L.marker([m.lat, m.lon], { icon: makeIcon(m), title: m.nom, riseOnHover: true });
+      const marker = L.marker([m.lat, m.lon], { icon: makeIcon(m), title: m.nom, riseOnHover: true, lieu: m });
       marker.on('click', () => showMini(m));
-      marker.addTo(map);
+      groupe.addLayer(marker);
       state.markers[m.id] = marker;
     });
+    groupe.addTo(map);
+    state.groupe = groupe;
 
     map.on('click', hideMini);
     map.on('dragstart', () => { state.userMovedMap = true; });
@@ -728,7 +757,7 @@
     setTimeout(() => {
       state.map.invalidateSize();
       state.map.setView([m.lat, m.lon], 17, { animate: false });
-      showMini(m);
+      state.groupe.zoomToShowLayer(state.markers[m.id], () => showMini(m));
     }, 260);
   }
 
