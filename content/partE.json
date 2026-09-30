@@ -3,7 +3,7 @@
     "adultes": [
       {
         "titre": "Le plus vieux musée du monde",
-        "texte": "En 1471, le pape Sixte IV offre au peuple romain un ensemble de statues de bronze antiques, dont la célèbre louve. Ce don est considéré comme l'acte de naissance du plus ancien musée public du monde. Les collections s'enrichissent ensuite au fil des siècles et sont ouvertes au public dès le dix-huitième siècle. Elles occupent deux palais qui se font face sur la place du Capitole, reliés par une galerie souterraine. Le palais des Conservateurs abritait les magistrats de la ville, le Palais neuf fut construit en face pour lui répondre. Au centre de la place, le palais sénatorial abrite toujours la mairie de Rome."
+        "texte": "En 1471, le pape Sixte IV offre au peuple romain un ensemble de statues de bronze antiques, dont la célèbre louve. Ce don est considéré comme l'acte de naissance du plus ancien musée public du monde. Les collections s'enrichissent ensuite au fil des siècles et sont ouvertes au public dès le dix-huitième siècle. Elles occupent deux palais qui se font face sur la place du Capitole, reliés par une galerie souterraine. Le palais des Conservateurs, à droite en montant la cordonata, abritait les magistrats de la ville, le Palais neuf fut construit en face, à gauche, pour lui répondre. Au centre de la place, le palais sénatorial abrite toujours la mairie de Rome."
       },
       {
         "titre": "La place de Michel-Ange",
@@ -11,7 +11,7 @@
       },
       {
         "titre": "La louve et Marc Aurèle",
-        "texte": "La Louve du Capitole, symbole de Rome, allaite les jumeaux Romulus et Rémus. La louve de bronze a longtemps été crue étrusque, mais des analyses récentes suggèrent qu'elle pourrait dater du Moyen Âge. Les jumeaux, eux, ont été ajoutés à la Renaissance. Plus loin, la statue équestre originale de Marc Aurèle, en bronze doré, est la seule statue équestre antique de ce type conservée intacte. Elle a survécu parce qu'on la croyait représenter Constantin, le premier empereur chrétien."
+        "texte": "La Louve du Capitole, symbole de Rome, allaite les jumeaux Romulus et Rémus. La louve de bronze a longtemps été crue étrusque, mais des analyses récentes suggèrent qu'elle pourrait dater du Moyen Âge. Les jumeaux, eux, ont été ajoutés à la Renaissance. Plus loin, la statue équestre originale de Marc Aurèle, en bronze doré, est la seule statue équestre antique de ce type conservée intacte. Elle a survécu parce qu'on la croyait représenter Constantin, le premier empereur chrétien. Elle se trouve dans la grande salle vitrée du palais des Conservateurs."
       },
       {
         "titre": "Le géant démonté",
@@ -19,7 +19,7 @@
       },
       {
         "titre": "Chefs-d'œuvre antiques",
-        "texte": "Les salles abritent certaines des plus belles sculptures antiques. On y voit le Tireur d'épine, un garçon qui retire une épine de son pied, le Galate mourant, un guerrier blessé d'une émouvante humanité, ou la Vénus du Capitole. On y voit aussi une grande collection de bustes d'empereurs et de philosophes, alignés sur des étagères comme dans une réunion de famille. La pinacothèque présente des tableaux du Caravage, de Titien et de Rubens."
+        "texte": "Les salles abritent certaines des plus belles sculptures antiques. On y voit le Tireur d'épine, un garçon qui retire une épine de son pied, le Galate mourant, un guerrier blessé d'une émouvante humanité, ou la Vénus du Capitole. Le Tireur d'épine se trouve au premier étage du palais des Conservateurs, le Galate mourant et la Vénus au premier étage du Palais neuf. On y voit aussi une grande collection de bustes d'empereurs et de philosophes, alignés sur des étagères comme dans une réunion de famille. La pinacothèque, au deuxième étage du palais des Conservateurs, présente des tableaux du Caravage, de Titien et de Rubens."
       },
       {
         "titre": "La vue sur le Forum",
@@ -29,7 +29,7 @@
     "enfants": [
       {
         "titre": "Un géant en pièces détachées",
-        "texte": "Dans cette cour, regarde bien. Il y a une tête plus grande que toi, une main avec un doigt pointé vers le ciel, un pied énorme et un genou. On dirait les restes d'un géant qu'on aurait démonté. C'était une statue d'empereur haute comme un immeuble de quatre étages, celle de Constantin, un empereur romain. Aujourd'hui, il n'en reste que des morceaux posés dans une cour, et tu vas pouvoir te photographier à côté de ses orteils."
+        "texte": "Dans cette cour du palais des Conservateurs, regarde bien. Il y a une tête plus grande que toi, une main avec un doigt pointé vers le ciel, un pied énorme et un genou. On dirait les restes d'un géant qu'on aurait démonté. C'était une statue d'empereur haute comme un immeuble de quatre étages, celle de Constantin, un empereur romain. Aujourd'hui, il n'en reste que des morceaux posés dans une cour, et tu vas pouvoir te photographier à côté de ses orteils."
       },
       {
         "titre": "La louve de Rome",
@@ -37,7 +37,7 @@
       },
       {
         "titre": "Le garçon à l'épine",
-        "texte": "Cherche une petite statue de bronze : un garçon assis qui tire une épine de son pied, très concentré. Il est là depuis des siècles et n'a jamais réussi à la retirer ! Cette statue était si célèbre à la Renaissance que beaucoup d'artistes l'ont copiée. Regarde son visage : il serre les lèvres comme toi quand tu te retires une écharde."
+        "texte": "Cherche, au premier étage du palais des Conservateurs, une petite statue de bronze : un garçon assis qui tire une épine de son pied, très concentré. Il est là depuis des siècles et n'a jamais réussi à la retirer ! Cette statue était si célèbre à la Renaissance que beaucoup d'artistes l'ont copiée. Regarde son visage : il serre les lèvres comme toi quand tu te retires une écharde."
       },
       {
         "titre": "Le cavalier qui a échappé au feu",
@@ -45,7 +45,7 @@
       },
       {
         "titre": "Le défi du Capitole",
-        "texte": "Dans la cour, trouve la tête géante, la main au doigt levé et le pied de Constantin. Compare la taille de ta main à celle d'un de ses doigts. Dans les salles, trouve la louve, le garçon à l'épine et l'empereur à cheval. Dans le couloir souterrain, cherche la grande fenêtre sur le Forum et trouve le Colisée au loin."
+        "texte": "Dans la cour du palais des Conservateurs, trouve la tête géante, la main au doigt levé et le pied de Constantin. Compare la taille de ta main à celle d'un de ses doigts. Dans les salles de ce même palais, trouve la louve, le garçon à l'épine et l'empereur à cheval. Dans le couloir souterrain, cherche la grande fenêtre sur le Forum et trouve le Colisée au loin, tout au bout du Forum."
       },
       {
         "titre": "Le quiz",
@@ -131,7 +131,7 @@
       },
       {
         "titre": "Un site fragile",
-        "texte": "La Domus Aurea est un site difficile à conserver. Le poids du parc et des arbres qui la recouvrent, l'humidité et les infiltrations d'eau menacent les voûtes et les peintures. C'est pourquoi les visites sont limitées et encadrées. Au-dessus, le parc du Colle Oppio offre de l'ombre, des bancs, une aire de jeux et une belle vue sur le Colisée. C'est l'endroit idéal pour une pause avant ou après la visite. Réservez longtemps à l'avance : les places sont peu nombreuses et les visites ne sont organisées que certains jours de la semaine."
+        "texte": "La Domus Aurea est un site difficile à conserver. Le poids du parc et des arbres qui la recouvrent, l'humidité et les infiltrations d'eau menacent les voûtes et les peintures. C'est pourquoi les visites sont limitées et encadrées. Au-dessus, le parc du Colle Oppio offre de l'ombre, des bancs, une aire de jeux et une belle vue sur le Colisée, tout proche, au sud-ouest. C'est l'endroit idéal pour une pause avant ou après la visite. Réservez longtemps à l'avance : les places sont peu nombreuses et les visites ne sont organisées que certains jours de la semaine."
       }
     ],
     "enfants": [
@@ -165,7 +165,7 @@
     "adultes": [
       {
         "titre": "Une ville sous une église",
-        "texte": "Sur la colline du Celio, à quelques minutes du Colisée, la basilique des Saints-Jean-et-Paul cache un trésor sous ses fondations. On y descend dans un ensemble d'une vingtaine de pièces appartenant à plusieurs maisons romaines, construites entre le deuxième et le quatrième siècle. Elles comprenaient des boutiques, des logements populaires et une riche demeure. Leurs murs sont couverts de peintures parmi les mieux conservées de Rome. L'ensemble se visite par un accès discret, sur le côté de la basilique, en descendant quelques marches vers le passé."
+        "texte": "Sur la colline du Celio, à quelques minutes du Colisée, la basilique des Saints-Jean-et-Paul cache un trésor sous ses fondations. On y descend dans un ensemble d'une vingtaine de pièces appartenant à plusieurs maisons romaines, construites entre le deuxième et le quatrième siècle. Elles comprenaient des boutiques, des logements populaires et une riche demeure. Leurs murs sont couverts de peintures parmi les mieux conservées de Rome. L'ensemble se visite par un accès discret, sur le côté de la basilique, en descendant quelques marches vers le passé. L'entrée donne sur le clivus Scauri, la ruelle en pente qui borde la basilique."
       },
       {
         "titre": "La légende de Jean et Paul",
@@ -181,7 +181,7 @@
       },
       {
         "titre": "Le Celio, colline paisible",
-        "texte": "Le Celio est l'une des sept collines de Rome, et l'une des plus calmes. Ses rues bordées de murs anciens, de jardins et de couvents semblent loin de l'agitation du Colisée tout proche. La montée depuis le Colisée, par le clivus Scauri, une ruelle antique enjambée d'arcs de soutien, est l'une des plus belles de Rome. Le parc de la Villa Celimontana, avec ses grands arbres, ses allées et son aire de jeux, offre une pause bienvenue."
+        "texte": "Le Celio est l'une des sept collines de Rome, et l'une des plus calmes. Ses rues bordées de murs anciens, de jardins et de couvents semblent loin de l'agitation du Colisée tout proche. La montée depuis le Colisée, par le clivus Scauri, une ruelle antique enjambée d'arcs de soutien, est l'une des plus belles de Rome. Le parc de la Villa Celimontana, avec ses grands arbres, ses allées et son aire de jeux, offre une pause bienvenue. Il s'étend au sud-est de la basilique."
       },
       {
         "titre": "Une visite hors des foules",
@@ -207,7 +207,7 @@
       },
       {
         "titre": "Le défi des maisons romaines",
-        "texte": "Dans les maisons souterraines, trouve la grande peinture de la mer et compte les bateaux. Cherche un personnage qui prie les bras levés. Dans le petit musée, trouve une amphore, ce grand pot pointu qui servait à transporter l'huile ou le vin, et une lampe à huile. Ensuite, dans la rue aux arches, compte les arches au-dessus de ta tête."
+        "texte": "Pour entrer, cherche la porte sur le côté de l'église, en bas de quelques marches, dans la rue en pente qui longe l'église. Dans les maisons souterraines, trouve la grande peinture de la mer et compte les bateaux. Cherche un personnage qui prie les bras levés. Dans le petit musée, trouve une amphore, ce grand pot pointu qui servait à transporter l'huile ou le vin, et une lampe à huile. Ensuite, dans la rue aux arches, compte les arches au-dessus de ta tête."
       },
       {
         "titre": "Le quiz",
@@ -223,7 +223,7 @@
       },
       {
         "titre": "Les Français de Rome",
-        "texte": "Pendant des siècles, l'église a servi de lieu de rencontre et de sépulture pour les Français installés à Rome : artistes, diplomates, religieux et soldats. De nombreux monuments funéraires en témoignent, dont celui du peintre Claude Lorrain. On y trouve aussi le tombeau de Pauline de Beaumont, une amie de Chateaubriand, qui lui fit élever ce monument. L'intérieur, décoré de marbres, de dorures et de stucs, est somptueux. Plusieurs chapelles sont décorées de fresques des dix-septième et dix-huitième siècles, dont celle de sainte Cécile, peinte par le Dominiquin."
+        "texte": "Pendant des siècles, l'église a servi de lieu de rencontre et de sépulture pour les Français installés à Rome : artistes, diplomates, religieux et soldats. De nombreux monuments funéraires en témoignent, dont celui du peintre Claude Lorrain. On y trouve aussi le tombeau de Pauline de Beaumont, une amie de Chateaubriand, qui lui fit élever ce monument. L'intérieur, décoré de marbres, de dorures et de stucs, est somptueux. Plusieurs chapelles sont décorées de fresques des dix-septième et dix-huitième siècles, dont celle de sainte Cécile, dans la deuxième chapelle de droite, peinte par le Dominiquin."
       },
       {
         "titre": "Les trois Caravage",
@@ -231,7 +231,7 @@
       },
       {
         "titre": "La Vocation de saint Matthieu",
-        "texte": "Le plus célèbre des trois tableaux montre le moment où le Christ appelle Matthieu, un collecteur d'impôts, à le suivre. La scène se passe dans une salle sombre, où des hommes comptent de l'argent autour d'une table. Un rayon de lumière traverse le tableau et désigne l'élu. La main tendue du Christ reprend celle d'Adam dans la Création peinte par Michel-Ange à la chapelle Sixtine. Les historiens discutent encore pour savoir lequel des personnages est Matthieu."
+        "texte": "Le plus célèbre des trois tableaux, sur le mur de gauche de la chapelle, montre le moment où le Christ appelle Matthieu, un collecteur d'impôts, à le suivre. La scène se passe dans une salle sombre, où des hommes comptent de l'argent autour d'une table. Un rayon de lumière traverse le tableau et désigne l'élu. La main tendue du Christ reprend celle d'Adam dans la Création peinte par Michel-Ange à la chapelle Sixtine. Les historiens discutent encore pour savoir lequel des personnages est Matthieu."
       },
       {
         "titre": "Un visage caché dans le Martyre",
@@ -243,13 +243,13 @@
       },
       {
         "titre": "Une visite rapide et gratuite",
-        "texte": "L'église est gratuite et se visite en une demi-heure. Devant la chapelle, un boîtier permet d'allumer l'éclairage en glissant une pièce : prévoyez de la monnaie. Le temps que la lumière s'éteigne, observez comment le peintre guide le regard. L'église est souvent fermée entre midi et le milieu de l'après-midi. Elle se combine idéalement avec la place Navone et le Panthéon, tout proches. Rendez-vous ensuite sur la place voisine, où la façade du palais Madama abrite le Sénat italien. Les enfants aiment chercher les salamandres sculptées sur la façade de l'église."
+        "texte": "L'église est gratuite et se visite en une demi-heure. Devant la chapelle, un boîtier permet d'allumer l'éclairage en glissant une pièce : prévoyez de la monnaie. Le temps que la lumière s'éteigne, observez comment le peintre guide le regard. L'église est souvent fermée entre midi et le milieu de l'après-midi. Elle se combine idéalement avec la place Navone et le Panthéon, tout proches. Rendez-vous ensuite sur la place voisine, où la façade du palais Madama abrite le Sénat italien. Les enfants aiment chercher les salamandres sculptées sur la façade de l'église, aux deux extrémités."
       }
     ],
     "enfants": [
       {
         "titre": "Une pièce pour faire la lumière",
-        "texte": "Glisse une pièce dans la petite boîte de cette chapelle plongée dans la pénombre, et regarde : d'un coup, la lumière s'allume sur trois immenses tableaux. Des personnages sortent de l'ombre comme sur une scène de théâtre. Ces peintures ont été faites il y a plus de quatre cents ans par un peintre célèbre et bagarreur, le Caravage. Et cette église appartient à la France, en plein cœur de Rome."
+        "texte": "Va jusqu'à la dernière chapelle à gauche, près de l'autel. Glisse une pièce dans la petite boîte de cette chapelle plongée dans la pénombre, et regarde : d'un coup, la lumière s'allume sur trois immenses tableaux. Des personnages sortent de l'ombre comme sur une scène de théâtre. Ces peintures ont été faites il y a plus de quatre cents ans par un peintre célèbre et bagarreur, le Caravage. Et cette église appartient à la France, en plein cœur de Rome."
       },
       {
         "titre": "Qui est Matthieu ?",
@@ -257,7 +257,7 @@
       },
       {
         "titre": "Le rayon de lumière",
-        "texte": "Regarde bien le tableau de Jésus et de Matthieu. Un rayon de lumière traverse la pièce, du haut à droite vers les hommes assis autour de la table. On dirait qu'il suit le doigt de Jésus. Le Caravage adorait jouer avec la lumière et l'ombre, comme un projecteur au théâtre. Il voulait qu'on regarde exactement là où il le décidait."
+        "texte": "Regarde bien le tableau de Jésus et de Matthieu, sur le mur de gauche de la chapelle. Un rayon de lumière traverse la pièce, du haut à droite vers les hommes assis autour de la table. On dirait qu'il suit le doigt de Jésus. Le Caravage adorait jouer avec la lumière et l'ombre, comme un projecteur au théâtre. Il voulait qu'on regarde exactement là où il le décidait."
       },
       {
         "titre": "Un peintre à la vie agitée",
@@ -265,7 +265,7 @@
       },
       {
         "titre": "Le défi de la chapelle",
-        "texte": "Glisse une pièce pour allumer la lumière, puis compte les personnages du tableau de Jésus et de Matthieu. Trouve le rayon de lumière, les pièces de monnaie sur la table et une plume sur un chapeau. Dans le tableau de droite, cherche l'ange qui plonge du ciel. Cherche aussi, au fond et à gauche du centre, un homme barbu qui assiste à la scène. Selon la tradition, c'est le Caravage lui-même, qui s'est peint dans son tableau ! Dehors, cherche sur la façade une salamandre, l'emblème d'un roi de France."
+        "texte": "Glisse une pièce pour allumer la lumière, puis compte les personnages du tableau de Jésus et de Matthieu, sur le mur de gauche. Trouve le rayon de lumière, les pièces de monnaie sur la table et une plume sur un chapeau. Dans le tableau de droite, cherche l'ange qui plonge du ciel. Cherche aussi, au fond et à gauche du centre, un homme barbu qui assiste à la scène. Selon la tradition, c'est le Caravage lui-même, qui s'est peint dans son tableau ! Dehors, cherche sur la façade, aux deux extrémités, une salamandre, l'emblème d'un roi de France."
       },
       {
         "titre": "Le quiz",
@@ -281,11 +281,11 @@
       },
       {
         "titre": "Un ciel étoilé",
-        "texte": "La façade, sobre et presque austère, ne laisse rien deviner de l'intérieur. En entrant, on découvre une nef dont les voûtes sont peintes en bleu profond et semées d'étoiles dorées. Ce décor date du dix-neuvième siècle, quand l'église a été restaurée dans un style néogothique. Sur la façade, de petites plaques gravées indiquent le niveau atteint par les crues du Tibre au fil des siècles, parfois à hauteur d'homme."
+        "texte": "La façade, sobre et presque austère, ne laisse rien deviner de l'intérieur. En entrant, on découvre une nef dont les voûtes sont peintes en bleu profond et semées d'étoiles dorées. Ce décor date du dix-neuvième siècle, quand l'église a été restaurée dans un style néogothique. Sur la façade, du côté droit, de petites plaques gravées indiquent le niveau atteint par les crues du Tibre au fil des siècles, parfois à hauteur d'homme."
       },
       {
         "titre": "Le Christ de Michel-Ange",
-        "texte": "Près de l'autel se dresse le Christ ressuscité de Michel-Ange, un Christ nu tenant la croix, sculpté au début du seizième siècle. Une draperie de bronze a été ajoutée plus tard par pudeur. Le pied du Christ porte une sandale de métal, pour le protéger des baisers des fidèles qui l'usaient. L'église conserve aussi la tombe du peintre Fra Angelico et le corps de sainte Catherine de Sienne, sous l'autel. Galilée fut jugé dans le couvent voisin en 1633, où il dut renoncer publiquement à ses idées sur le mouvement de la Terre."
+        "texte": "Près de l'autel, sur la gauche, se dresse le Christ ressuscité de Michel-Ange, un Christ nu tenant la croix, sculpté au début du seizième siècle. Une draperie de bronze a été ajoutée plus tard par pudeur. Le pied du Christ porte une sandale de métal, pour le protéger des baisers des fidèles qui l'usaient. L'église conserve aussi la tombe du peintre Fra Angelico et le corps de sainte Catherine de Sienne, sous l'autel. Galilée fut jugé dans le couvent voisin en 1633, où il dut renoncer publiquement à ses idées sur le mouvement de la Terre."
       },
       {
         "titre": "La chapelle Carafa",
@@ -311,15 +311,15 @@
       },
       {
         "titre": "Le ciel dans l'église",
-        "texte": "Entre dans l'église juste derrière l'éléphant. Lève les yeux : le plafond est peint en bleu nuit, couvert d'étoiles dorées, comme un ciel étoilé. C'est la seule grande église de Rome de style gothique, avec des arcs pointus comme dans les cathédrales de France. Cherche aussi, sur la façade dehors, de petites plaques qui montrent jusqu'où l'eau du fleuve est montée pendant les inondations."
+        "texte": "Entre dans l'église juste derrière l'éléphant. Lève les yeux : le plafond est peint en bleu nuit, couvert d'étoiles dorées, comme un ciel étoilé. C'est la seule grande église de Rome de style gothique, avec des arcs pointus comme dans les cathédrales de France. Cherche aussi, sur la façade dehors, du côté droit, de petites plaques qui montrent jusqu'où l'eau du fleuve est montée pendant les inondations."
       },
       {
         "titre": "Le pied de métal",
-        "texte": "Près de l'autel, une statue de Jésus tenant une croix a été sculptée par Michel-Ange. Regarde son pied : il porte une sandale en métal. Pourquoi ? Parce que pendant des siècles, les fidèles venaient l'embrasser, et le marbre s'usait. On a donc protégé son pied. Cherche-le, mais ne l'embrasse pas !"
+        "texte": "Près de l'autel, sur la gauche, une statue de Jésus tenant une croix a été sculptée par Michel-Ange. Regarde son pied : il porte une sandale en métal. Pourquoi ? Parce que pendant des siècles, les fidèles venaient l'embrasser, et le marbre s'usait. On a donc protégé son pied. Cherche-le, mais ne l'embrasse pas !"
       },
       {
         "titre": "Le défi de l'éléphant",
-        "texte": "Fais le tour de l'éléphant et observe sa couverture brodée, sa trompe et ses oreilles. Cherche les dessins égyptiens sur l'obélisque : un oiseau, un œil, un serpent. Vérifie dans quelle direction pointe sa queue. Dans l'église, trouve le plafond étoilé et la sandale de métal. Dehors, sur la façade, trouve la plaque d'inondation la plus haute."
+        "texte": "Fais le tour de l'éléphant et observe sa couverture brodée, sa trompe et ses oreilles. Cherche les dessins égyptiens sur l'obélisque : un oiseau, un œil, un serpent. Vérifie dans quelle direction pointe sa queue. Dans l'église, trouve le plafond étoilé et la sandale de métal. Dehors, sur la façade, du côté droit, trouve la plaque d'inondation la plus haute."
       },
       {
         "titre": "Le quiz",
@@ -339,11 +339,11 @@
       },
       {
         "titre": "La fausse coupole",
-        "texte": "L'église devait avoir une vraie coupole, mais le projet fut abandonné, faute d'argent et à cause, dit-on, de l'opposition des voisins dominicains qui craignaient de perdre leur lumière. Andrea Pozzo peignit alors une coupole en trompe-l'œil sur une toile plane, ronde, de dix-sept mètres de diamètre. Vue depuis le bon endroit, elle paraît parfaitement réelle, avec ses colonnes et sa lanterne. Vue de côté, l'illusion se déforme. Le trompe-l'œil a été restauré à plusieurs reprises, la toile ayant souffert de l'humidité et de la fumée des cierges."
+        "texte": "L'église devait avoir une vraie coupole, mais le projet fut abandonné, faute d'argent et à cause, dit-on, de l'opposition des voisins dominicains qui craignaient de perdre leur lumière. Andrea Pozzo peignit alors, au-dessus du croisement de la nef et du transept, une coupole en trompe-l'œil sur une toile plane, ronde, de dix-sept mètres de diamètre. Vue depuis le bon endroit, elle paraît parfaitement réelle, avec ses colonnes et sa lanterne. Vue de côté, l'illusion se déforme. Le trompe-l'œil a été restauré à plusieurs reprises, la toile ayant souffert de l'humidité et de la fumée des cierges."
       },
       {
         "titre": "Le disque de marbre",
-        "texte": "Pour profiter pleinement des illusions, il faut se placer au bon endroit. Un disque de marbre jaune, incrusté dans le sol au milieu de la nef, indique le point de vue idéal pour le plafond. Un autre marque celui de la fausse coupole. En se déplaçant, on voit les colonnes peintes se tordre et l'architecture se déformer. Un grand miroir posé dans la nef permet aussi d'admirer le plafond sans se tordre le cou."
+        "texte": "Pour profiter pleinement des illusions, il faut se placer au bon endroit. Un disque de marbre jaune, incrusté dans le sol au milieu de la nef, indique le point de vue idéal pour le plafond. Un autre, un peu plus loin vers l'autel, marque celui de la fausse coupole. En se déplaçant, on voit les colonnes peintes se tordre et l'architecture se déformer. Un grand miroir posé dans la nef permet aussi d'admirer le plafond sans se tordre le cou."
       },
       {
         "titre": "La place Sant'Ignazio",
@@ -365,7 +365,7 @@
       },
       {
         "titre": "Le cercle magique",
-        "texte": "Au milieu de l'église, cherche par terre un disque de marbre jaune. Place-toi exactement dessus et regarde le plafond : les colonnes peintes paraissent parfaitement droites et hautes. Maintenant, fais quelques pas de côté : les colonnes se tordent et penchent bizarrement ! C'est la magie de la perspective. Il y a un autre disque pour la fausse coupole."
+        "texte": "Au milieu de l'église, cherche par terre un disque de marbre jaune. Place-toi exactement dessus et regarde le plafond : les colonnes peintes paraissent parfaitement droites et hautes. Maintenant, fais quelques pas de côté : les colonnes se tordent et penchent bizarrement ! C'est la magie de la perspective. Il y a un autre disque, un peu plus loin vers l'autel, pour la fausse coupole."
       },
       {
         "titre": "Les quatre continents",
@@ -373,7 +373,7 @@
       },
       {
         "titre": "Le défi des illusions",
-        "texte": "Trouve le disque de marbre au sol et regarde le plafond depuis cet endroit, puis depuis un coin de l'église. Cherche la fausse coupole et essaie de deviner à quel moment l'illusion disparaît. Dans les coins du plafond, trouve un crocodile et un chameau. Dehors, sur la place, compte les maisons aux formes arrondies qui ressemblent à des commodes."
+        "texte": "Trouve le disque de marbre au sol et regarde le plafond depuis cet endroit, puis depuis un coin de l'église. Cherche la fausse coupole, au-dessus du croisement de la nef et du transept, et essaie de deviner à quel moment l'illusion disparaît. Dans les coins du plafond, trouve un crocodile et un chameau. Dehors, sur la place, compte les maisons aux formes arrondies qui ressemblent à des commodes."
       },
       {
         "titre": "Le quiz",
@@ -401,11 +401,11 @@
       },
       {
         "titre": "Une vue sur Rome",
-        "texte": "Depuis la balustrade de la place, la vue s'étend sur les toits de Rome jusqu'à la coupole de Saint-Pierre, qui se dessine au loin. C'est l'un des plus beaux panoramas du centre, particulièrement au coucher du soleil. En face du palais, les anciennes écuries papales, les Scuderie del Quirinale, accueillent de grandes expositions d'art. Elles offrent, depuis leur escalier vitré, une autre belle vue sur la ville. Le soir, la place se vide et devient l'une des plus calmes du centre."
+        "texte": "Le palais occupe un côté de la place, et la balustrade ferme le côté ouest, face à lui. Depuis la balustrade de la place, la vue s'étend sur les toits de Rome jusqu'à la coupole de Saint-Pierre, qui se dessine au loin. C'est l'un des plus beaux panoramas du centre, particulièrement au coucher du soleil. En face du palais, les anciennes écuries papales, les Scuderie del Quirinale, accueillent de grandes expositions d'art. Elles offrent, depuis leur escalier vitré, une autre belle vue sur la ville. Le soir, la place se vide et devient l'une des plus calmes du centre."
       },
       {
         "titre": "Les églises voisines",
-        "texte": "Dans la rue qui longe le palais, la via del Quirinale, deux petites églises baroques rivalisent de génie. Sant'Andrea al Quirinale est l'œuvre du Bernin, qui la considérait comme sa plus réussie. San Carlo alle Quattro Fontane est celle de Borromini, son grand rival. Toutes deux sont de taille modeste mais d'une inventivité étonnante. Au carrefour des Quatre-Fontaines, quatre fontaines ornent les angles des maisons."
+        "texte": "Dans la rue qui longe le palais, la via del Quirinale, deux petites églises baroques rivalisent de génie. Sant'Andrea al Quirinale est l'œuvre du Bernin, qui la considérait comme sa plus réussie. San Carlo alle Quattro Fontane est celle de Borromini, son grand rival. Toutes deux sont de taille modeste mais d'une inventivité étonnante. Depuis la place, elles se trouvent à l'est : Sant'Andrea al Quirinale d'abord, puis San Carlo alle Quattro Fontane. Au carrefour des Quatre-Fontaines, quatre fontaines ornent les angles des maisons."
       }
     ],
     "enfants": [
@@ -423,11 +423,11 @@
       },
       {
         "titre": "Deux architectes rivaux",
-        "texte": "Dans la rue à côté du palais, deux petites églises se font presque face. L'une a été construite par le Bernin, l'autre par Borromini. Ces deux architectes géniaux se détestaient et voulaient chacun prouver qu'il était le meilleur. Les deux églises sont petites, mais pleines d'idées étonnantes, avec des coupoles en forme d'œuf et des décorations surprenantes."
+        "texte": "Dans la rue à côté du palais, deux petites églises se font presque face. Pour les trouver, quitte la place vers l'est : elles sont à quelques minutes de marche. L'une a été construite par le Bernin, l'autre par Borromini. Ces deux architectes géniaux se détestaient et voulaient chacun prouver qu'il était le meilleur. Les deux églises sont petites, mais pleines d'idées étonnantes, avec des coupoles en forme d'œuf et des décorations surprenantes."
       },
       {
         "titre": "Le défi du Quirinal",
-        "texte": "Sur la place, trouve les deux jumeaux et leurs chevaux, l'obélisque et la grande vasque de pierre. Observe les gardes devant le palais : combien sont-ils ? Regarde la crinière de leur casque. Si tu assistes à la relève, compte les roulements de tambour. Depuis la balustrade, cherche la coupole de Saint-Pierre au loin."
+        "texte": "Sur la place, trouve les deux jumeaux et leurs chevaux, l'obélisque et la grande vasque de pierre. Observe les gardes devant le palais : combien sont-ils ? Regarde la crinière de leur casque. Si tu assistes à la relève, compte les roulements de tambour. Depuis la balustrade, au bord ouest de la place, cherche la coupole de Saint-Pierre au loin."
       },
       {
         "titre": "Le quiz",
@@ -443,11 +443,11 @@
       },
       {
         "titre": "La famille impériale en procession",
-        "texte": "Sur les longs côtés de l'enceinte, une procession sculptée montre Auguste, sa famille, des prêtres et des magistrats en marche vers un sacrifice. Les personnages sont représentés avec un grand naturel. On reconnaît des adultes en toge qui bavardent, et même de jeunes enfants de la famille qui s'accrochent à la toge d'un adulte ou se tournent vers leurs parents. C'est l'une des premières fois que l'art romain montre ainsi des enfants."
+        "texte": "Sur les longs côtés de l'enceinte, une procession sculptée montre Auguste, sa famille, des prêtres et des magistrats en marche vers un sacrifice. La scène la mieux conservée, celle de la famille impériale, se trouve sur le long mur de droite quand on fait face à l'escalier d'entrée. Les personnages sont représentés avec un grand naturel. On reconnaît des adultes en toge qui bavardent, et même de jeunes enfants de la famille qui s'accrochent à la toge d'un adulte ou se tournent vers leurs parents. C'est l'une des premières fois que l'art romain montre ainsi des enfants."
       },
       {
         "titre": "Les mythes de Rome",
-        "texte": "Les petits côtés de l'autel sont ornés de scènes mythologiques. On y voit Énée, le héros troyen dont les Romains se disaient les descendants, offrant un sacrifice. Un autre relief évoque Romulus et Rémus, allaités par la louve. Une grande figure féminine entourée d'enfants, d'animaux et de végétation symbolise la fertilité et la prospérité apportées par la paix. Le bas de l'enceinte est couvert d'un magnifique décor de rinceaux végétaux. Chaque feuille, chaque tige et chaque petit animal caché y est sculpté avec une précision étonnante."
+        "texte": "Les petits côtés de l'autel sont ornés de scènes mythologiques. On y voit Énée, le héros troyen dont les Romains se disaient les descendants, offrant un sacrifice, sur la face de l'entrée, celle de l'escalier. Un autre relief évoque Romulus et Rémus, allaités par la louve. Une grande figure féminine, sur la face arrière, entourée d'enfants, d'animaux et de végétation symbolise la fertilité et la prospérité apportées par la paix. Le bas de l'enceinte est couvert d'un magnifique décor de rinceaux végétaux. Chaque feuille, chaque tige et chaque petit animal caché y est sculpté avec une précision étonnante."
       },
       {
         "titre": "Un puzzle reconstitué",
@@ -459,7 +459,7 @@
       },
       {
         "titre": "Le pavillon de 1938",
-        "texte": "Sur le mur extérieur du musée, face au Tibre, on lit en grandes lettres les Res Gestae Divi Augusti, le récit des exploits d'Auguste, qu'il avait lui-même fait graver. Cette inscription date du premier pavillon, construit en 1938 par le régime de Mussolini pour le bimillénaire d'Auguste. L'autel avait alors été remonté près du mausolée. C'est le dernier vestige de ce pavillon, remplacé par celui de Richard Meier en 2006."
+        "texte": "Sur le mur extérieur du musée, côté via di Ripetta, face au mausolée d'Auguste, on lit en grandes lettres les Res Gestae Divi Augusti, le récit des exploits d'Auguste, qu'il avait lui-même fait graver. Cette inscription date du premier pavillon, construit en 1938 par le régime de Mussolini pour le bimillénaire d'Auguste. L'autel avait alors été remonté près du mausolée. C'est le dernier vestige de ce pavillon, remplacé par celui de Richard Meier en 2006."
       },
       {
         "titre": "Les couleurs perdues",
@@ -477,7 +477,7 @@
       },
       {
         "titre": "Les enfants de l'empereur",
-        "texte": "Sur les grands côtés de l'autel, cherche les enfants sculptés dans la procession. L'un d'eux tire sur la toge d'un adulte pour qu'on le prenne dans les bras. Un autre se retourne, un peu distrait. Les sculpteurs romains n'avaient presque jamais montré d'enfants aussi naturels. On a l'impression qu'ils s'ennuient pendant la cérémonie, comme tous les enfants !"
+        "texte": "Sur les grands côtés de l'autel, cherche les enfants sculptés dans la procession. L'un d'eux tire sur la toge d'un adulte pour qu'on le prenne dans les bras, sur le long mur de droite quand on fait face à l'escalier d'entrée. Un autre se retourne, un peu distrait. Les sculpteurs romains n'avaient presque jamais montré d'enfants aussi naturels. On a l'impression qu'ils s'ennuient pendant la cérémonie, comme tous les enfants !"
       },
       {
         "titre": "Des sculptures en couleurs",
@@ -485,7 +485,7 @@
       },
       {
         "titre": "Le défi de l'autel",
-        "texte": "Fais le tour de l'autel et trouve les enfants dans la procession, la louve avec les jumeaux, et une femme entourée d'animaux et de fruits. Dans le bas des murs, suis du doigt, sans toucher, les longues tiges de plantes qui s'enroulent. Cherche un petit animal caché dans les feuillages : un oiseau, un lézard ou un serpent. Par la fenêtre, trouve le grand tombeau rond d'Auguste."
+        "texte": "Fais le tour de l'autel et trouve les enfants dans la procession, la louve avec les jumeaux, et une femme entourée d'animaux et de fruits. La louve est sur la face de l'escalier, et la femme aux animaux sur la face arrière. Dans le bas des murs, suis du doigt, sans toucher, les longues tiges de plantes qui s'enroulent. Cherche un petit animal caché dans les feuillages : un oiseau, un lézard ou un serpent. Par la fenêtre, trouve le grand tombeau rond d'Auguste, à l'est, du côté opposé au fleuve."
       },
       {
         "titre": "Le quiz",
@@ -517,7 +517,7 @@
       },
       {
         "titre": "Autour du mausolée",
-        "texte": "Faites le tour de la piazza Augusto Imperatore, réaménagée et ouverte aux piétons : on y lit les grandes inscriptions latines des façades des années trente. Juste en face, de l'autre côté de la rue, l'Ara Pacis a été construite pour le même empereur. Ensemble, ils racontent l'histoire d'Auguste, de la paix qu'il a imposée et de la gloire qu'il voulait laisser à la postérité. La place du Peuple et la via del Corso sont à quelques minutes à pied."
+        "texte": "Faites le tour de la piazza Augusto Imperatore, réaménagée et ouverte aux piétons : on y lit les grandes inscriptions latines des façades des années trente. Juste en face, de l'autre côté de la rue, du côté du Tibre, l'Ara Pacis a été construite pour le même empereur. Ensemble, ils racontent l'histoire d'Auguste, de la paix qu'il a imposée et de la gloire qu'il voulait laisser à la postérité. La place du Peuple, au nord du mausolée, et la via del Corso, à l'est, sont à quelques minutes à pied."
       }
     ],
     "enfants": [
@@ -539,7 +539,7 @@
       },
       {
         "titre": "Le défi du mausolée",
-        "texte": "Fais le tour du tombeau par la place et compte les anneaux de murs que tu devines, les uns derrière les autres. Compare la hauteur d'un mur à celle d'une porte d'immeuble. Cherche ensuite les grandes inscriptions en latin sur les bâtiments autour de la place. En face, trouve le musée de verre qui abrite l'autel de la paix."
+        "texte": "Fais le tour du tombeau par la place et compte les anneaux de murs que tu devines, les uns derrière les autres. Compare la hauteur d'un mur à celle d'une porte d'immeuble. Cherche ensuite les grandes inscriptions en latin sur les bâtiments autour de la place. En face, du côté du Tibre, trouve le musée de verre qui abrite l'autel de la paix."
       },
       {
         "titre": "Le quiz",
@@ -555,7 +555,7 @@
       },
       {
         "titre": "Le Moïse",
-        "texte": "L'église est surtout célèbre pour le Moïse de Michel-Ange, l'une des plus grandes sculptures de la Renaissance. Assis, le prophète tient les tables de la Loi sous son bras. Il tourne la tête, le regard intense, comme s'il venait de découvrir son peuple adorant le veau d'or. Sa barbe immense, que ses doigts caressent, et ses muscles tendus donnent une impression de puissance contenue. On le dirait prêt à se lever."
+        "texte": "L'église est surtout célèbre pour le Moïse de Michel-Ange, l'une des plus grandes sculptures de la Renaissance. Il se trouve au fond de l'église, dans le bras droit du transept. Assis, le prophète tient les tables de la Loi sous son bras. Il tourne la tête, le regard intense, comme s'il venait de découvrir son peuple adorant le veau d'or. Sa barbe immense, que ses doigts caressent, et ses muscles tendus donnent une impression de puissance contenue. On le dirait prêt à se lever."
       },
       {
         "titre": "Les cornes de Moïse",
@@ -593,7 +593,7 @@
       },
       {
         "titre": "Le défi du Moïse",
-        "texte": "Approche-toi du Moïse et trouve les deux petites cornes sur sa tête. Regarde comment ses doigts jouent avec sa longue barbe. Cherche sur son genou droit une petite marque, celle du coup de marteau de la légende. Trouve ensuite les deux statues de femmes à ses côtés. Enfin, va voir les chaînes de saint Pierre sous l'autel et compte leurs anneaux, si tu peux."
+        "texte": "Approche-toi du Moïse, au fond de l'église, dans le bras droit du transept, et trouve les deux petites cornes sur sa tête. Regarde comment ses doigts jouent avec sa longue barbe. Cherche sur son genou droit une petite marque, celle du coup de marteau de la légende. Trouve ensuite les deux statues de femmes à ses côtés. Enfin, va voir les chaînes de saint Pierre sous l'autel et compte leurs anneaux, si tu peux."
       },
       {
         "titre": "Le quiz",
@@ -609,7 +609,7 @@
       },
       {
         "titre": "Une ville entière",
-        "texte": "Ostie est souvent comparée à Pompéi, et elle a l'avantage d'être tout près de Rome et bien moins fréquentée. Mais ici, pas d'éruption : la ville a décliné lentement quand le port s'est ensablé, puis elle a été abandonnée et recouverte par la terre et les dépôts du fleuve. Aujourd'hui, la mer est à plusieurs kilomètres. On se promène dans les rues pavées, entre les maisons, les boutiques, les entrepôts, les temples et les thermes, sur près de deux kilomètres."
+        "texte": "Ostie est souvent comparée à Pompéi, et elle a l'avantage d'être tout près de Rome et bien moins fréquentée. Mais ici, pas d'éruption : la ville a décliné lentement quand le port s'est ensablé, puis elle a été abandonnée et recouverte par la terre et les dépôts du fleuve. Aujourd'hui, la mer est à plusieurs kilomètres. On se promène dans les rues pavées, entre les maisons, les boutiques, les entrepôts, les temples et les thermes, sur près de deux kilomètres. On entre par la porte Romana, à l'est, et la grande rue principale, le decumanus, file vers l'ouest : presque tout se trouve le long de cette rue."
       },
       {
         "titre": "Le Forum et le Capitolium",
@@ -617,7 +617,7 @@
       },
       {
         "titre": "Le théâtre et la place des Corporations",
-        "texte": "Le long du decumanus, la grande rue principale, se dresse un théâtre construit sous Auguste, qui accueille encore des spectacles en été. On peut s'asseoir sur ses gradins et tester l'acoustique. Derrière la scène s'étend la place des Corporations, entourée des bureaux des armateurs et des marchands venus de tout l'Empire. Devant chacun, une mosaïque noire et blanche indique son activité ou son origine : des navires, des dauphins, un phare, un éléphant pour un marchand africain."
+        "texte": "Le long du decumanus, la grande rue principale, se dresse un théâtre construit sous Auguste, qui accueille encore des spectacles en été. On peut s'asseoir sur ses gradins et tester l'acoustique. Derrière la scène, au nord, s'étend la place des Corporations, entourée des bureaux des armateurs et des marchands venus de tout l'Empire. Devant chacun, une mosaïque noire et blanche indique son activité ou son origine : des navires, des dauphins, un phare, un éléphant pour un marchand africain."
       },
       {
         "titre": "La vie quotidienne",
@@ -643,19 +643,19 @@
       },
       {
         "titre": "Les toilettes pour vingt",
-        "texte": "À Ostie, tu peux voir des toilettes publiques romaines : une longue rangée de sièges en marbre avec des trous, côte à côte, sans aucune séparation. Les Romains s'y asseyaient ensemble et bavardaient ! Sous les sièges, de l'eau coulait en permanence pour tout emporter. À la place du papier, ils utilisaient une éponge au bout d'un bâton, qu'ils rinçaient dans une rigole. Pas très hygiénique, non ?"
+        "texte": "À Ostie, tu peux voir des toilettes publiques romaines : une longue rangée de sièges en marbre avec des trous, côte à côte, sans aucune séparation. Ces toilettes sont près des thermes du Forum. Les Romains s'y asseyaient ensemble et bavardaient ! Sous les sièges, de l'eau coulait en permanence pour tout emporter. À la place du papier, ils utilisaient une éponge au bout d'un bâton, qu'ils rinçaient dans une rigole. Pas très hygiénique, non ?"
       },
       {
         "titre": "Le bar romain",
-        "texte": "Dans une petite rue, cherche le thermopolium, un bar romain vieux de presque deux mille ans. Il a encore son comptoir en marbre, ses étagères pour poser les plats et une peinture de fruits sur le mur. Les Romains venaient y manger sur le pouce, boire du vin coupé d'eau et discuter. Imagine le bruit, les odeurs de cuisine et les clients pressés à l'heure du déjeuner."
+        "texte": "Dans une petite rue près du Forum, la via di Diana, cherche le thermopolium, un bar romain vieux de presque deux mille ans. Il a encore son comptoir en marbre, ses étagères pour poser les plats et une peinture de fruits sur le mur. Les Romains venaient y manger sur le pouce, boire du vin coupé d'eau et discuter. Imagine le bruit, les odeurs de cuisine et les clients pressés à l'heure du déjeuner."
       },
       {
         "titre": "La blanchisserie romaine",
-        "texte": "Dans la via degli Augustali, cherche la fullonica, l'atelier où les Romains lavaient, foulaient et teignaient les tissus. Tu peux encore voir ses grandes cuves. Plusieurs guides la citent comme une étape amusante avec les enfants, comme les toilettes et la boulangerie de Silvano."
+        "texte": "Dans la via degli Augustali, en face du théâtre, de l'autre côté de la grande rue, cherche la fullonica, l'atelier où les Romains lavaient, foulaient et teignaient les tissus. Tu peux encore voir ses grandes cuves. Plusieurs guides la citent comme une étape amusante avec les enfants, comme les toilettes et la boulangerie de Silvano."
       },
       {
         "titre": "Le défi d'Ostie",
-        "texte": "Sur la place des Corporations, trouve la mosaïque avec un éléphant, puis celle avec un phare et un bateau. Au théâtre, monte en haut des gradins et demande à quelqu'un de parler sur la scène : entends-tu bien ? Cherche les toilettes collectives et compte les sièges. Dans les thermes de Neptune, trouve le dieu de la mer et ses chevaux à queue de poisson. Dans la via degli Augustali, retrouve les grandes cuves de la fullonica."
+        "texte": "Sur la place des Corporations, derrière le théâtre, trouve la mosaïque avec un éléphant, puis celle avec un phare et un bateau. Au théâtre, monte en haut des gradins et demande à quelqu'un de parler sur la scène : entends-tu bien ? Cherche les toilettes collectives, près des thermes du Forum, et compte les sièges. Dans les thermes de Neptune, trouve le dieu de la mer et ses chevaux à queue de poisson. Dans la via degli Augustali, retrouve les grandes cuves de la fullonica."
       },
       {
         "titre": "Le quiz",
@@ -683,7 +683,7 @@
       },
       {
         "titre": "Les Caravage et les peintres",
-        "texte": "Le cardinal fut l'un des premiers admirateurs du Caravage, et la galerie possède plusieurs de ses tableaux. Le Jeune Garçon à la corbeille de fruits et le Bacchus malade sont des œuvres de jeunesse. Dans David avec la tête de Goliath, peint à la fin de sa vie, le peintre a donné ses propres traits au géant décapité. À l'étage, la pinacothèque réunit Raphaël, avec sa Déposition, Titien, avec l'Amour sacré et l'Amour profane, et bien d'autres."
+        "texte": "Le cardinal fut l'un des premiers admirateurs du Caravage, et la galerie possède plusieurs de ses tableaux. Ils se trouvent au rez-de-chaussée, parmi les sculptures. Le Jeune Garçon à la corbeille de fruits et le Bacchus malade sont des œuvres de jeunesse. Dans David avec la tête de Goliath, peint à la fin de sa vie, le peintre a donné ses propres traits au géant décapité. À l'étage, la pinacothèque réunit Raphaël, avec sa Déposition, Titien, avec l'Amour sacré et l'Amour profane, et bien d'autres."
       },
       {
         "titre": "Deux heures, pas plus",
@@ -713,7 +713,7 @@
       },
       {
         "titre": "Le défi Borghèse",
-        "texte": "Tourne lentement autour d'Apollon et Daphné et trouve les feuilles, l'écorce et les racines. Dans l'Enlèvement de Proserpine, cherche les larmes sur le visage de la jeune femme et le chien à trois têtes. Trouve la pomme dans la main de Pauline. Dans les tableaux du Caravage, cherche le panier de fruits et compte les fruits que tu reconnais. Enfin, trouve les deux autoportraits de la galerie : le visage du David du Bernin et celui du Goliath du Caravage."
+        "texte": "Tourne lentement autour d'Apollon et Daphné et trouve les feuilles, l'écorce et les racines. Dans l'Enlèvement de Proserpine, cherche les larmes sur le visage de la jeune femme et le chien à trois têtes, aux pieds du dieu. Trouve la pomme dans la main de Pauline. Au rez-de-chaussée, dans les tableaux du Caravage, cherche le panier de fruits et compte les fruits que tu reconnais. Enfin, trouve les deux autoportraits de la galerie : le visage du David du Bernin et celui du Goliath du Caravage."
       },
       {
         "titre": "Le quiz",
@@ -737,7 +737,7 @@
       },
       {
         "titre": "Le Pugiliste au repos",
-        "texte": "Au rez-de-chaussée et au premier étage se trouvent les sculptures. La plus émouvante est un bronze grec, le Pugiliste au repos. Un boxeur assis, épuisé, tourne la tête, le visage marqué par les coups. Son nez est cassé, ses oreilles gonflées, et du sang coule de ses blessures, figuré par des incrustations de cuivre. On voit aussi le Discobole, lanceur de disque célèbre, et un sarcophage sculpté d'une bataille furieuse contre les barbares."
+        "texte": "Au rez-de-chaussée et au premier étage se trouvent les sculptures. La plus émouvante est un bronze grec, le Pugiliste au repos. Un boxeur assis, épuisé, tourne la tête, le visage marqué par les coups. Son nez est cassé, ses oreilles gonflées, et du sang coule de ses blessures, figuré par des incrustations de cuivre. On voit aussi le Discobole, lanceur de disque célèbre, et un sarcophage sculpté d'une bataille furieuse contre les barbares. Le Pugiliste est au rez-de-chaussée, le Discobolo et le sarcophage au premier étage."
       },
       {
         "titre": "La petite momie",
@@ -759,7 +759,7 @@
       },
       {
         "titre": "Le boxeur fatigué",
-        "texte": "Dans une salle, un boxeur en bronze est assis, tout épuisé après un combat. Regarde son visage : son nez est cassé, ses oreilles sont gonflées et il a des blessures sur les joues. Le sculpteur a même ajouté du cuivre rouge pour montrer les gouttes de sang. Ses mains sont encore entourées de lanières de cuir, les gants de boxe de l'époque. Il a l'air de dire : c'était dur."
+        "texte": "Dans une salle du rez-de-chaussée, un boxeur en bronze est assis, tout épuisé après un combat. Regarde son visage : son nez est cassé, ses oreilles sont gonflées et il a des blessures sur les joues. Le sculpteur a même ajouté du cuivre rouge pour montrer les gouttes de sang. Ses mains sont encore entourées de lanières de cuir, les gants de boxe de l'époque. Il a l'air de dire : c'était dur."
       },
       {
         "titre": "Les pièces de monnaie",
@@ -767,7 +767,7 @@
       },
       {
         "titre": "Le défi du musée",
-        "texte": "Dans le jardin de Livie, compte les oiseaux que tu vois et cherche une cage. Trouve le boxeur et les gouttes de sang en cuivre sur son corps. Cherche le lanceur de disque et imite sa position. Sur un grand sarcophage, trouve des soldats à cheval et des barbares avec de longues barbes. Au sous-sol, cherche la pièce la plus ancienne."
+        "texte": "Dans le jardin de Livie, au deuxième étage, compte les oiseaux que tu vois et cherche une cage. Trouve le boxeur, au rez-de-chaussée, et les gouttes de sang en cuivre sur son corps. Cherche le lanceur de disque au premier étage et imite sa position. Sur un grand sarcophage du premier étage, trouve des soldats à cheval et des barbares avec de longues barbes. Au sous-sol, cherche la pièce la plus ancienne."
       },
       {
         "titre": "Le quiz",
@@ -787,7 +787,7 @@
       },
       {
         "titre": "Le plafond de Pierre de Cortone",
-        "texte": "Le grand salon est couvert par une fresque immense de Pierre de Cortone, le Triomphe de la divine Providence, peinte dans les années 1630. Des dizaines de personnages semblent flotter dans le ciel, au-delà d'une architecture peinte. Au centre, trois abeilles géantes, entourées d'une couronne de laurier, rappellent l'emblème des Barberini. L'effet est vertigineux. Des bancs permettent de l'admirer tranquillement, la tête renversée."
+        "texte": "Le grand salon, au premier étage, est couvert par une fresque immense de Pierre de Cortone, le Triomphe de la divine Providence, peinte dans les années 1630. Des dizaines de personnages semblent flotter dans le ciel, au-delà d'une architecture peinte. Au centre, trois abeilles géantes, entourées d'une couronne de laurier, rappellent l'emblème des Barberini. L'effet est vertigineux. Des bancs permettent de l'admirer tranquillement, la tête renversée."
       },
       {
         "titre": "La Fornarina de Raphaël",
@@ -803,7 +803,7 @@
       },
       {
         "titre": "La place Barberini",
-        "texte": "En sortant, la place Barberini est ornée de la fontaine du Triton, sculptée par le Bernin en 1643. Un triton, créature marine, agenouillé sur une coquille portée par quatre dauphins, souffle un jet d'eau dans un coquillage. Là encore, on repère les abeilles des Barberini. Au coin de la via Veneto, la petite fontaine des Abeilles, du même artiste, servait d'abreuvoir. La crypte des Capucins, avec son étonnant décor d'ossements, n'est qu'à quelques pas."
+        "texte": "En sortant, la place Barberini est ornée de la fontaine du Triton, sculptée par le Bernin en 1643. Un triton, créature marine, agenouillé sur une coquille portée par quatre dauphins, souffle un jet d'eau dans un coquillage. Là encore, on repère les abeilles des Barberini. Au coin de la via Veneto, au nord de la place, la petite fontaine des Abeilles, du même artiste, servait d'abreuvoir. La crypte des Capucins, avec son étonnant décor d'ossements, n'est qu'à quelques pas, un peu plus haut sur la via Veneto."
       }
     ],
     "enfants": [
@@ -817,7 +817,7 @@
       },
       {
         "titre": "Le plafond qui s'envole",
-        "texte": "Dans la plus grande salle, lève les yeux. Le plafond est entièrement peint, avec des dizaines de personnages qui flottent dans le ciel, des nuages et des anges. Au milieu, trois énormes abeilles volent dans une couronne de feuilles. Assieds-toi sur un banc et renverse la tête pour mieux voir. Imagine le peintre, couché sur un échafaudage, qui a mis des années à le peindre."
+        "texte": "Dans la plus grande salle, au premier étage, lève les yeux. Le plafond est entièrement peint, avec des dizaines de personnages qui flottent dans le ciel, des nuages et des anges. Au milieu, trois énormes abeilles volent dans une couronne de feuilles. Assieds-toi sur un banc et renverse la tête pour mieux voir. Imagine le peintre, couché sur un échafaudage, qui a mis des années à le peindre."
       },
       {
         "titre": "La fille du boulanger",
@@ -825,7 +825,7 @@
       },
       {
         "titre": "Le défi des abeilles",
-        "texte": "Compte les abeilles que tu trouves dans le palais : sur le plafond, les portes, les cadres. Monte quelques marches de l'escalier en colimaçon. Trouve le bracelet avec le nom de Raphaël. En sortant, cherche sur la place le triton qui souffle de l'eau dans un coquillage, et les dauphins sous lui. Au coin de la rue, trouve la fontaine des abeilles."
+        "texte": "Compte les abeilles que tu trouves dans le palais : sur le plafond, les portes, les cadres. Monte quelques marches de l'escalier en colimaçon. Trouve le bracelet avec le nom de Raphaël. En sortant, cherche sur la place, en son centre, le triton qui souffle de l'eau dans un coquillage, et les dauphins sous lui. Au coin de la rue, à l'angle nord de la place, là où commence la via Veneto, trouve la fontaine des abeilles."
       },
       {
         "titre": "Le quiz",
@@ -849,11 +849,11 @@
       },
       {
         "titre": "La galerie des Glaces",
-        "texte": "La visite passe par la galerie des Glaces, une longue salle dorée du dix-huitième siècle, dont les miroirs, les dorures et le plafond peint rappellent Versailles. Les fenêtres donnent sur la via del Corso, dont on entend à peine le bruit. Dans les appartements, on découvre des salons d'apparat, une salle de bal, une petite chapelle et des meubles d'époque. On a l'impression de visiter une maison de famille, plus qu'un musée. Le palais compte plus de mille pièces, dont une petite partie seulement est ouverte au public."
+        "texte": "La visite passe par la galerie des Glaces, une longue salle dorée du dix-huitième siècle, dont les miroirs, les dorures et le plafond peint rappellent Versailles. Des fenêtres s'ouvrent des deux côtés, ce qui la rend très lumineuse. Dans les appartements, on découvre des salons d'apparat, une salle de bal, une petite chapelle et des meubles d'époque. On a l'impression de visiter une maison de famille, plus qu'un musée. Le palais compte plus de mille pièces, dont une petite partie seulement est ouverte au public."
       },
       {
         "titre": "Caravage, Raphaël et les autres",
-        "texte": "Les murs sont couverts de tableaux, parfois cinq ou six rangs superposés. On y trouve deux œuvres de jeunesse du Caravage, le Repos pendant la fuite en Égypte, où un ange joue du violon, et la Madeleine repentante. On trouve aussi un double portrait de Raphaël, des œuvres du Titien, de Brueghel l'Ancien, d'Annibal Carrache et du Lorrain. Les numéros des tableaux renvoient à un petit guide, dans l'esprit des anciennes galeries princières."
+        "texte": "Les murs sont couverts de tableaux, parfois cinq ou six rangs superposés. On y trouve deux œuvres de jeunesse du Caravage, le Repos pendant la fuite en Égypte, où un ange joue du violon, et la Madeleine repentante. Elles sont accrochées dans une petite salle qui donne sur la via del Corso, au bout de la galerie des Glaces. On trouve aussi un double portrait de Raphaël, des œuvres du Titien, de Brueghel l'Ancien, d'Annibal Carrache et du Lorrain. Les numéros des tableaux renvoient à un petit guide, dans l'esprit des anciennes galeries princières."
       },
       {
         "titre": "Une visite hors du temps",
@@ -875,7 +875,7 @@
       },
       {
         "titre": "L'ange violoniste",
-        "texte": "Cherche le tableau du Caravage où Marie se repose avec l'enfant Jésus pendant un long voyage. Au milieu, un ange joue du violon, de dos, avec de grandes ailes. Joseph, le vieil homme barbu, lui tient la partition pour qu'il puisse lire les notes. Regarde aussi l'âne, qui semble écouter la musique avec ses grands yeux. C'est un moment de calme au milieu du voyage."
+        "texte": "Cherche le tableau du Caravage où Marie se repose avec l'enfant Jésus pendant un long voyage. Au milieu, un ange joue du violon, de dos, avec de grandes ailes. Joseph, le vieil homme barbu, lui tient la partition pour qu'il puisse lire les notes. Regarde aussi l'âne, qui semble écouter la musique avec ses grands yeux. C'est un moment de calme au milieu du voyage. Ce tableau est dans une petite salle qui donne sur la grande rue, au bout de la galerie des miroirs."
       },
       {
         "titre": "Le défi de la galerie",
@@ -937,15 +937,15 @@
       },
       {
         "titre": "Les femmes guerrières",
-        "texte": "Dans une salle, des statues racontent une grande bataille entre des Grecs et les Amazones. Les Amazones étaient des guerrières légendaires, très courageuses, qui combattaient à cheval avec des arcs et des haches. Ces sculptures décoraient autrefois le haut d'un temple dédié au dieu Apollon, à Rome. Cherche une Amazone à cheval et un guerrier avec un bouclier."
+        "texte": "Dans une salle, celle des machines, des statues racontent une grande bataille entre des Grecs et les Amazones. Les Amazones étaient des guerrières légendaires, très courageuses, qui combattaient à cheval avec des arcs et des haches. Ces sculptures décoraient autrefois le haut d'un temple dédié au dieu Apollon, à Rome. Cherche une Amazone à cheval et un guerrier avec un bouclier."
       },
       {
         "titre": "La poupée de Crepereia",
-        "texte": "Dans la salle des colonnes, cherche une poupée d'ivoire dont les bras et les jambes bougent ! Elle faisait partie des affaires d'une jeune Romaine, Crepereia Tryphaena, qui a vécu au milieu du deuxième siècle. On les a découvertes en 1889 dans un sarcophage intact, avec des bijoux en or et un fuseau en ambre."
+        "texte": "Dans la salle des colonnes ou dans l'une des deux petites salles voisines, cherche une poupée d'ivoire dont les bras et les jambes bougent ! Elle faisait partie des affaires d'une jeune Romaine, Crepereia Tryphaena, qui a vécu au milieu du deuxième siècle. On les a découvertes en 1889 dans un sarcophage intact, avec des bijoux en or et un fuseau en ambre."
       },
       {
         "titre": "Le défi de la centrale",
-        "texte": "Cherche une statue cachée derrière une machine. Trouve le train du pape et compte ses voitures. Trouve la grande roue d'un moteur et compte ses rayons. Cherche une déesse avec un casque sur la tête : c'est Athéna, la déesse de la sagesse. Dans la salle des chaudières, trouve des animaux dans la grande mosaïque de chasse. Enfin, cherche un cadran avec une aiguille."
+        "texte": "Cherche une statue cachée derrière une machine. Trouve le train du pape, dans la seconde salle des chaudières, et compte ses voitures. Trouve la grande roue d'un moteur et compte ses rayons. Cherche une déesse avec un casque sur la tête : c'est Athéna, la déesse de la sagesse. Dans la salle des chaudières, trouve des animaux dans la grande mosaïque de chasse. Enfin, cherche un cadran avec une aiguille."
       },
       {
         "titre": "Le quiz",
@@ -957,7 +957,7 @@
     "adultes": [
       {
         "titre": "Une église discrète",
-        "texte": "En haut de la via Veneto, à deux pas de la place Barberini, se dresse l'église Santa Maria della Concezione, construite au dix-septième siècle pour les frères capucins. Son fondateur, le cardinal Antonio Barberini, frère du pape Urbain VIII, était lui-même capucin. Il choisit d'y être enterré sous une dalle portant une inscription célèbre : ici gisent poussière, cendre et rien. L'église abrite aussi un beau Saint Michel terrassant le démon, peint par Guido Reni."
+        "texte": "En haut de la via Veneto, à deux pas de la place Barberini, se dresse l'église Santa Maria della Concezione, construite au dix-septième siècle pour les frères capucins. Son fondateur, le cardinal Antonio Barberini, frère du pape Urbain VIII, était lui-même capucin. Il choisit d'y être enterré sous une dalle portant une inscription célèbre : ici gisent poussière, cendre et rien. La dalle se trouve devant le maître-autel. L'église abrite aussi, dans la première chapelle à droite, un beau Saint Michel terrassant le démon, peint par Guido Reni."
       },
       {
         "titre": "Une crypte d'ossements",
@@ -1173,7 +1173,7 @@
     "adultes": [
       {
         "titre": "Les arches dans la campagne",
-        "texte": "Au sud-est de Rome, à une vingtaine de minutes du centre en métro, le parc des Aqueducs offre l'un des paysages les plus spectaculaires de la région. Dans une vaste prairie, de longues rangées d'arches antiques s'étirent à perte de vue, au milieu des pins et des moutons. C'est une partie du parc régional de la via Appia antique. Le lieu donne une idée de la campagne romaine telle que la peignaient les voyageurs d'autrefois."
+        "texte": "Au sud-est de Rome, à une vingtaine de minutes du centre en métro, le parc des Aqueducs offre l'un des paysages les plus spectaculaires de la région. En sortant de la station Giulio Agricola, les grandes arches se trouvent vers le sud. Dans une vaste prairie, de longues rangées d'arches antiques s'étirent à perte de vue, au milieu des pins et des moutons. C'est une partie du parc régional de la via Appia antique. Le lieu donne une idée de la campagne romaine telle que la peignaient les voyageurs d'autrefois."
       },
       {
         "titre": "L'eau de Rome",
@@ -1189,7 +1189,7 @@
       },
       {
         "titre": "La villa des Sette Bassi et les tombes",
-        "texte": "Autour des aqueducs, on découvre d'autres vestiges : des restes de villas romaines, de petites tombes et un ancien moulin. Une rigole d'eau, la Marana, traverse encore le parc. Elle est alimentée par un canal médiéval. Tout près, la villa des Sette Bassi, l'une des plus grandes villas de la campagne romaine, dresse ses ruines de brique. Les promeneurs croisent aussi parfois un troupeau de moutons, gardé par un berger."
+        "texte": "Autour des aqueducs, on découvre d'autres vestiges : des restes de villas romaines, de petites tombes et un ancien moulin. Une rigole d'eau, la Marana, traverse encore le parc. Elle est alimentée par un canal médiéval. À un peu plus d'un kilomètre au sud-est des arches, la villa des Sette Bassi, l'une des plus grandes villas de la campagne romaine, dresse ses ruines de brique. Les promeneurs croisent aussi parfois un troupeau de moutons, gardé par un berger."
       },
       {
         "titre": "Une balade en famille",
@@ -1199,7 +1199,7 @@
     "enfants": [
       {
         "titre": "Un pont qui transporte l'eau",
-        "texte": "À quoi peut servir un pont immense, fait de dizaines d'arches en pierre, qui traverse la campagne sur des kilomètres ? Pas aux gens ni aux chars : il transporte de l'eau ! Tout en haut, un canal amenait l'eau fraîche des montagnes jusqu'à Rome. C'est un aqueduc, et tu peux en voir plusieurs dans le parc des Aqueducs, au milieu des prairies."
+        "texte": "À quoi peut servir un pont immense, fait de dizaines d'arches en pierre, qui traverse la campagne sur des kilomètres ? Pas aux gens ni aux chars : il transporte de l'eau ! Tout en haut, un canal amenait l'eau fraîche des montagnes jusqu'à Rome. C'est un aqueduc, et tu peux en voir plusieurs dans le parc des Aqueducs, au milieu des prairies. En sortant du métro Giulio Agricola, marche vers le sud pour les rejoindre."
       },
       {
         "titre": "L'eau qui descend toute seule",
@@ -1247,11 +1247,11 @@
       },
       {
         "titre": "Le cloître",
-        "texte": "Le cloître, épargné par les flammes, est l'un des plus beaux de Rome. Construit au début du treizième siècle, en partie par la famille de marbriers Vassalletto, il est entouré de petites colonnes de formes variées, droites, torsadées ou en spirale. Elles sont incrustées de mosaïques de marbre coloré et doré. Au centre, un jardin de roses et de palmiers invite au calme. Le cloître abrite aussi des fragments de sarcophages et d'inscriptions anciennes."
+        "texte": "Le cloître, épargné par les flammes, est l'un des plus beaux de Rome. On y accède par le bas-côté gauche de la basilique. Construit au début du treizième siècle, en partie par la famille de marbriers Vassalletto, il est entouré de petites colonnes de formes variées, droites, torsadées ou en spirale. Elles sont incrustées de mosaïques de marbre coloré et doré. Au centre, un jardin de roses et de palmiers invite au calme. Le cloître abrite aussi des fragments de sarcophages et d'inscriptions anciennes."
       },
       {
         "titre": "Une basilique à part",
-        "texte": "Comme les autres basiliques majeures, Saint-Paul appartient au Saint-Siège, même si elle est située sur le territoire italien. Elle est tenue par des moines bénédictins, qui vivent dans l'abbaye voisine. Devant la façade, un grand portique entoure un jardin de palmiers, avec une statue de saint Paul tenant une épée, l'instrument de son martyre. La basilique est beaucoup moins fréquentée que Saint-Pierre, ce qui permet de l'apprécier au calme."
+        "texte": "Comme les autres basiliques majeures, Saint-Paul appartient au Saint-Siège, même si elle est située sur le territoire italien. Elle est tenue par des moines bénédictins, qui vivent dans l'abbaye voisine. Devant la façade, un grand portique entoure un jardin de palmiers, avec une statue de saint Paul en son centre, tenant une épée, l'instrument de son martyre. La basilique est beaucoup moins fréquentée que Saint-Pierre, ce qui permet de l'apprécier au calme."
       }
     ],
     "enfants": [
@@ -1273,7 +1273,7 @@
       },
       {
         "titre": "Le défi de Saint-Paul",
-        "texte": "Compte les colonnes d'une seule rangée de la nef. Trouve le portrait éclairé du pape actuel et une case vide. Cherche un animal fantastique sur le grand chandelier. Dans le cloître, trouve une colonne torsadée et une colonne en spirale décorée de mosaïque dorée. Dehors, trouve la statue de saint Paul et regarde ce qu'il tient à la main."
+        "texte": "Compte les colonnes d'une seule rangée de la nef. Trouve le portrait éclairé du pape actuel et une case vide. Cherche un animal fantastique sur le grand chandelier. Dans le cloître, qu'on atteint par le bas-côté gauche, trouve une colonne torsadée et une colonne en spirale décorée de mosaïque dorée. Dehors, au centre du jardin devant l'entrée, trouve la statue de saint Paul et regarde ce qu'il tient à la main."
       },
       {
         "titre": "Le quiz",
@@ -1289,7 +1289,7 @@
       },
       {
         "titre": "Le mur de la Subure",
-        "texte": "Au bout de la via Tor de' Conti, un mur de pierre gigantesque, haut d'une trentaine de mètres, se dresse encore. C'est le mur coupe-feu du forum d'Auguste, construit pour protéger les monuments impériaux des incendies fréquents dans la Subure. Il séparait ainsi le luxe du centre politique de la pauvreté des ruelles voisines. On mesure en le longeant l'écart qui existait entre les deux mondes, séparés seulement par quelques mètres."
+        "texte": "Au bout de la via Tor de' Conti, un mur de pierre gigantesque, haut d'une trentaine de mètres, se dresse encore. Ce mur se trouve à l'ouest de la place de la Madonna dei Monti. C'est le mur coupe-feu du forum d'Auguste, construit pour protéger les monuments impériaux des incendies fréquents dans la Subure. Il séparait ainsi le luxe du centre politique de la pauvreté des ruelles voisines. On mesure en le longeant l'écart qui existait entre les deux mondes, séparés seulement par quelques mètres."
       },
       {
         "titre": "La place de la Madonna dei Monti",
@@ -1327,15 +1327,15 @@
       },
       {
         "titre": "Le jardin du paradis",
-        "texte": "Dans une petite église du quartier, Santa Prassede, se cache une chapelle toute couverte d'or. Les murs et le plafond sont décorés de milliers de petits morceaux de verre doré, avec des anges et des saints. Les Romains l'appelaient le jardin du paradis. Il faut glisser une pièce pour allumer la lumière, et alors tout se met à briller. Elle a plus de mille ans."
+        "texte": "Dans une petite église du quartier, Santa Prassede, tout près de la basilique Sainte-Marie-Majeure, se cache une chapelle toute couverte d'or. Les murs et le plafond sont décorés de milliers de petits morceaux de verre doré, avec des anges et des saints. Les Romains l'appelaient le jardin du paradis. Il faut glisser une pièce pour allumer la lumière, et alors tout se met à briller. Elle a plus de mille ans."
       },
       {
         "titre": "Une pause au parc du Colle Oppio",
-        "texte": "Si tu as besoin de souffler, un grand parc de onze hectares t'attend à dix minutes de la via Cavour : le Colle Oppio. Tu y trouveras des aires de jeux, des ruines des thermes de Trajan et de Titus, et des terrasses avec vue sur le Colisée. Sous la pelouse se cache même la Domus Aurea, l'ancien palais de Néron. C'est une bonne pause entre deux visites, mais vas-y en journée, avec ta famille."
+        "texte": "Si tu as besoin de souffler, un grand parc de onze hectares t'attend au sud-est, à dix minutes de la via Cavour : le Colle Oppio. Tu y trouveras des aires de jeux, des ruines des thermes de Trajan et de Titus, et des terrasses avec vue sur le Colisée. Sous la pelouse se cache même la Domus Aurea, l'ancien palais de Néron. C'est une bonne pause entre deux visites, mais vas-y en journée, avec ta famille."
       },
       {
         "titre": "Le défi de Monti",
-        "texte": "Trouve le grand mur antique et essaie de deviner sa hauteur. Sur la place de la fontaine, compte les marches où s'assoient les Romains. Dans les rues, cherche une boutique qui vend quelque chose de fait à la main. À Santa Prassede, trouve un ange dans les mosaïques dorées. Enfin, cherche le nom d'une rue qui parle de serpents."
+        "texte": "Trouve le grand mur antique et essaie de deviner sa hauteur. Il longe la via Tor de' Conti, à l'ouest de la place de la fontaine. Sur la place de la fontaine, compte les marches où s'assoient les Romains. Dans les rues, cherche une boutique qui vend quelque chose de fait à la main. À Santa Prassede, trouve un ange dans les mosaïques dorées. Enfin, cherche le nom d'une rue qui parle de serpents. Cette rue passe tout près de la place de la fontaine."
       },
       {
         "titre": "Le quiz",
@@ -1351,7 +1351,7 @@
       },
       {
         "titre": "Le mont des amphores",
-        "texte": "Au bout du quartier se dresse une étrange colline de trente-cinq mètres de haut : le Monte Testaccio. Elle est entièrement formée de débris d'amphores, les grandes jarres de terre cuite qui servaient au transport de l'huile d'olive. On estime qu'elle contient des dizaines de millions d'amphores, venues surtout d'Espagne, jetées là pendant plus de deux siècles. Les amphores à huile ne pouvaient pas être réutilisées, car l'huile rancissait dans la terre cuite."
+        "texte": "Au bout du quartier, tout près du marché, vers le sud-est, se dresse une étrange colline de trente-cinq mètres de haut : le Monte Testaccio. Elle est entièrement formée de débris d'amphores, les grandes jarres de terre cuite qui servaient au transport de l'huile d'olive. On estime qu'elle contient des dizaines de millions d'amphores, venues surtout d'Espagne, jetées là pendant plus de deux siècles. Les amphores à huile ne pouvaient pas être réutilisées, car l'huile rancissait dans la terre cuite."
       },
       {
         "titre": "Une décharge bien organisée",
@@ -1363,7 +1363,7 @@
       },
       {
         "titre": "La fontaine des Amphores",
-        "texte": "Au centre de la place Testaccio, la fontaine des Amphores rend hommage à la colline voisine. Œuvre de Pietro Lombardi, inaugurée en 1927, elle est en travertin : un bouquet d'amphores se dresse au milieu de quatre bassins disposés en croix. Elle a été remise à sa place d'origine après le déménagement du marché."
+        "texte": "Au centre de la place Testaccio, au nord-est du marché, la fontaine des Amphores rend hommage à la colline voisine. Œuvre de Pietro Lombardi, inaugurée en 1927, elle est en travertin : un bouquet d'amphores se dresse au milieu de quatre bassins disposés en croix. Elle a été remise à sa place d'origine après le déménagement du marché."
       },
       {
         "titre": "Le berceau de la cuisine romaine",
@@ -1371,7 +1371,7 @@
       },
       {
         "titre": "Autour du marché",
-        "texte": "Le quartier se combine avec la pyramide de Cestius et le cimetière non catholique voisin, où reposent les poètes Keats et Shelley. Le quartier est aussi celui de l'AS Roma, l'un des deux grands clubs de football de la ville, fondé en 1927, dont le premier stade se trouvait ici. Le long du Tibre, un parc et des terrains de jeux accueillent les familles. Le soir, les bars et les restaurants s'animent, surtout autour du Monte Testaccio, où se trouvent des caves creusées dans la colline."
+        "texte": "Le quartier se combine avec la pyramide de Cestius et le cimetière non catholique voisin, où reposent les poètes Keats et Shelley. La pyramide et le cimetière se trouvent à l'est du quartier, près de la station de métro Piramide. Le quartier est aussi celui de l'AS Roma, l'un des deux grands clubs de football de la ville, fondé en 1927, dont le premier stade se trouvait ici. Le long du Tibre, un parc et des terrains de jeux accueillent les familles. Le soir, les bars et les restaurants s'animent, surtout autour du Monte Testaccio, où se trouvent des caves creusées dans la colline."
       }
     ],
     "enfants": [
@@ -1389,7 +1389,7 @@
       },
       {
         "titre": "La fontaine aux amphores",
-        "texte": "Sur la place du quartier, cherche une fontaine de pierre avec un bouquet d'amphores dressé au milieu de quatre bassins en croix. Elle a été inaugurée en 1927, en hommage à la colline des pots cassés. Elle est gratuite et facile à trouver."
+        "texte": "Sur la place du quartier, au nord-est du marché, cherche une fontaine de pierre avec un bouquet d'amphores dressé au milieu de quatre bassins en croix. Elle a été inaugurée en 1927, en hommage à la colline des pots cassés. Elle est gratuite et facile à trouver."
       },
       {
         "titre": "Le quartier du foot",
@@ -1397,7 +1397,7 @@
       },
       {
         "titre": "Le défi de Testaccio",
-        "texte": "Au marché, trouve les amphores sous les vitres du sol. Cherche un stand de fromages et demande le nom d'un fromage romain : le pecorino. Goûte un supplì et vérifie si le fromage fait un long fil quand tu mords. Sur la place, trouve la fontaine des Amphores et compte ses bassins. Autour de la colline, cherche des morceaux de terre cuite dans les murs. Enfin, repère un drapeau rouge et jaune."
+        "texte": "Au marché, trouve les amphores sous les vitres du sol. Cherche un stand de fromages et demande le nom d'un fromage romain : le pecorino. Goûte un supplì et vérifie si le fromage fait un long fil quand tu mords. Sur la place, trouve la fontaine des Amphores et compte ses bassins. Autour de la colline, qui se trouve tout près du marché, vers le sud-est, cherche des morceaux de terre cuite dans les murs. Enfin, repère un drapeau rouge et jaune."
       },
       {
         "titre": "Le quiz",
@@ -1413,7 +1413,7 @@
       },
       {
         "titre": "Le Casino du Bel Respiro",
-        "texte": "Au cœur du parc se dresse le Casino del Bel Respiro, une élégante villa baroque construite au milieu du dix-septième siècle par le sculpteur et architecte Alessandro Algardi. Sa façade est couverte de reliefs et de statues antiques. Devant elle s'étend un jardin à l'italienne, aux parterres de buis taillés en arabesques. Le bâtiment sert aujourd'hui aux réceptions officielles du gouvernement italien et ne se visite pas, mais on l'admire depuis les allées. Un jardin secret, entouré de haies, se cache aussi près du Casino."
+        "texte": "Au cœur du parc se dresse le Casino del Bel Respiro, une élégante villa baroque construite au milieu du dix-septième siècle par le sculpteur et architecte Alessandro Algardi. Sa façade est couverte de reliefs et de statues antiques. Devant elle s'étend un jardin à l'italienne, aux parterres de buis taillés en arabesques. Le bâtiment sert aujourd'hui aux réceptions officielles du gouvernement italien et ne se visite pas, mais on l'admire depuis les allées. Il se trouve à l'ouest de l'entrée de la porte San Pancrazio, à presque un kilomètre. Un jardin secret, entouré de haies, se cache aussi près du Casino."
       },
       {
         "titre": "Pins, lac et fontaines",
@@ -1447,7 +1447,7 @@
       },
       {
         "titre": "La villa du prince",
-        "texte": "Au cœur du parc, une belle villa blanche est décorée de statues et de sculptures anciennes. Elle a été construite il y a presque quatre cents ans pour un prince, le neveu d'un pape. Devant elle, un jardin est dessiné avec des petites haies taillées en forme de lettres et de dessins. Aujourd'hui, le gouvernement italien y reçoit ses invités importants. On ne peut pas entrer, mais on peut l'admirer."
+        "texte": "Au cœur du parc, une belle villa blanche est décorée de statues et de sculptures anciennes. Elle a été construite il y a presque quatre cents ans pour un prince, le neveu d'un pape. Devant elle, un jardin est dessiné avec des petites haies taillées en forme de lettres et de dessins. Aujourd'hui, le gouvernement italien y reçoit ses invités importants. On ne peut pas entrer, mais on peut l'admirer. Elle est à l'ouest de l'entrée de la porte San Pancrazio, à presque un kilomètre."
       },
       {
         "titre": "Le défi de la villa",
@@ -1497,7 +1497,7 @@
       },
       {
         "titre": "La nymphe et les dauphins",
-        "texte": "Dans une salle, cherche une jeune femme en robe rouge qui glisse sur la mer, debout sur un coquillage tiré par deux dauphins. C'est Galatée, une nymphe de la mer, peinte par Raphaël. Autour d'elle, des créatures mi-hommes mi-poissons soufflent dans des coquillages, et des petits amours volent dans le ciel avec leurs arcs. On dirait qu'on entend les vagues. Dans la même salle, un autre peintre, Sebastiano del Piombo, a peint un géant à un seul œil, le cyclope Polyphème. Il est assis sur un rocher, il a l'air triste, car il est amoureux de Galatée et elle ne veut pas de lui. Cherche le géant qui regarde la nymphe filer sur les vagues. Il porte un petit vêtement bleu, ajouté après coup."
+        "texte": "Dans une salle du rez-de-chaussée, cherche une jeune femme en robe rouge qui glisse sur la mer, debout sur un coquillage tiré par deux dauphins. C'est Galatée, une nymphe de la mer, peinte par Raphaël. Autour d'elle, des créatures mi-hommes mi-poissons soufflent dans des coquillages, et des petits amours volent dans le ciel avec leurs arcs. On dirait qu'on entend les vagues. Dans la même salle, un autre peintre, Sebastiano del Piombo, a peint un géant à un seul œil, le cyclope Polyphème. Il est assis sur un rocher, il a l'air triste, car il est amoureux de Galatée et elle ne veut pas de lui. Cherche le géant qui regarde la nymphe filer sur les vagues. Il porte un petit vêtement bleu, ajouté après coup."
       },
       {
         "titre": "Les graffitis des soldats",
@@ -1505,7 +1505,7 @@
       },
       {
         "titre": "Le défi de la Farnesina",
-        "texte": "Trouve Galatée et ses dauphins, puis le cyclope Polyphème sur son rocher. Au plafond de la même salle, cherche des signes du zodiaque. Dans la grande loggia, cherche dans les guirlandes des fruits et des légumes que tu connais : un épi de maïs, une citrouille, du raisin. À l'étage, place-toi au milieu de la salle des perspectives et regarde les fausses colonnes. Trouve un graffiti de soldat."
+        "texte": "Trouve Galatée et ses dauphins, puis le cyclope Polyphème sur son rocher. Au plafond de la même salle, cherche des signes du zodiaque. Dans la grande loggia, cherche dans les guirlandes des fruits et des légumes que tu connais : un épi de maïs, une citrouille, du raisin. Cette loggia est au rez-de-chaussée, juste à côté de la salle de Galatée. À l'étage, place-toi au milieu de la salle des perspectives et regarde les fausses colonnes. Trouve un graffiti de soldat."
       },
       {
         "titre": "Le quiz",
@@ -1529,7 +1529,7 @@
       },
       {
         "titre": "La maison des Hiboux",
-        "texte": "Le bâtiment le plus charmant du parc est la Casina delle Civette, la maison des Hiboux. D'abord cabane de style alpin, elle a été transformée au début du vingtième siècle par le prince Giovanni Torlonia en une petite maison de conte de fées. Tourelles, loggias et toits pointus lui donnent un air de château miniature. Elle abrite un musée consacré au vitrail de style Art nouveau. Des hiboux et des chouettes apparaissent partout dans la décoration, jusque sur les vitraux."
+        "texte": "Le bâtiment le plus charmant du parc est la Casina delle Civette, la maison des Hiboux. Elle se trouve à l'est du Casino Nobile, plus loin dans le parc quand on entre par la via Nomentana. D'abord cabane de style alpin, elle a été transformée au début du vingtième siècle par le prince Giovanni Torlonia en une petite maison de conte de fées. Tourelles, loggias et toits pointus lui donnent un air de château miniature. Elle abrite un musée consacré au vitrail de style Art nouveau. Des hiboux et des chouettes apparaissent partout dans la décoration, jusque sur les vitraux."
       },
       {
         "titre": "Les vitraux",
@@ -1559,7 +1559,7 @@
       },
       {
         "titre": "Le défi des hiboux",
-        "texte": "Dans la maison des Hiboux, compte tous les hiboux et les chouettes que tu trouves. Cherche un vitrail avec un papillon, un autre avec des fleurs. Place ta main dans un rayon de lumière coloré. Dans le parc, trouve le grand palais blanc avec ses colonnes, puis cherche une aire de jeux. Qui a trouvé le plus de hiboux ?"
+        "texte": "Dans la maison des Hiboux, compte tous les hiboux et les chouettes que tu trouves. Cherche un vitrail avec un papillon, un autre avec des fleurs. Place ta main dans un rayon de lumière coloré. Dans le parc, trouve le grand palais blanc avec ses colonnes, un peu à l'ouest de la maison des Hiboux, puis cherche une aire de jeux. Qui a trouvé le plus de hiboux ?"
       },
       {
         "titre": "Le quiz",
@@ -1591,7 +1591,7 @@
       },
       {
         "titre": "Le temple dans le jardin",
-        "texte": "Dans le jardin, un temple étrusque a été reconstitué à la fin du dix-neuvième siècle, d'après les vestiges d'un temple d'Alatri. Il donne une idée des couleurs vives et des décors de terre cuite qui ornaient les sanctuaires. Le musée est rarement bondé et très agréable à visiter. Avec des enfants, concentrez-vous sur le sarcophage des Époux, l'Apollon, les bijoux et les armes. Le parc de la villa Borghèse et le Bioparco sont tout proches."
+        "texte": "Dans le jardin, près du nymphée, un temple étrusque a été reconstitué à la fin du dix-neuvième siècle, d'après les vestiges d'un temple d'Alatri. Il donne une idée des couleurs vives et des décors de terre cuite qui ornaient les sanctuaires. Le musée est rarement bondé et très agréable à visiter. Avec des enfants, concentrez-vous sur le sarcophage des Époux, l'Apollon, les bijoux et les armes. Le parc de la villa Borghèse et le Bioparco sont tout proches."
       }
     ],
     "enfants": [
@@ -1613,7 +1613,7 @@
       },
       {
         "titre": "Le défi étrusque",
-        "texte": "Trouve le couple allongé et regarde leurs mains : que tenaient-ils ? Cherche l'Apollon qui marche et imite son pas. Dans les vitrines, trouve un casque, un miroir et un bijou en or. Cherche les plaques d'or écrites. Dans le jardin, trouve le temple coloré et compte ses colonnes. Qui trouvera le plus bel objet ?"
+        "texte": "Trouve le couple allongé et regarde leurs mains : que tenaient-ils ? Cherche l'Apollon qui marche et imite son pas. Dans les vitrines, trouve un casque, un miroir et un bijou en or. Cherche les plaques d'or écrites. Dans le jardin, près de la grande cour aux fontaines, trouve le temple coloré et compte ses colonnes. Qui trouvera le plus bel objet ?"
       },
       {
         "titre": "Le quiz",
@@ -1667,7 +1667,7 @@
       },
       {
         "titre": "Défi sur place",
-        "texte": "Dans le jardin secret, place-toi à l'entrée de la galerie et regarde la statue. Devine sa taille avec ton pouce, puis compare avec un adulte. Compte les colonnes d'un côté, puis dis si le couloir te paraît vraiment si court. Regarde bien le sol, et dis s'il te semble monter. Dehors, sur la façade, compte les statues dans les niches."
+        "texte": "Dans le jardin secret, place-toi à l'entrée de la galerie et regarde la statue. Devine sa taille avec ton pouce, puis compare avec un adulte. Compte les colonnes d'un côté, puis dis si le couloir te paraît vraiment si court. Regarde bien le sol, et dis s'il te semble monter. Dehors, sur la façade, au premier étage, compte les statues dans les niches."
       },
       {
         "titre": "Le quiz",
@@ -1695,11 +1695,11 @@
       },
       {
         "titre": "Le villino des Fées",
-        "texte": "Le villino des Fées est l'ensemble le plus célèbre du quartier. Il forme trois maisons asymétriques, aux formes très différentes. Elles rendent hommage à trois villes. Côté via Aterno, Florence apparaît avec les poètes Dante et Pétrarque et l'inscription Fiorenza Bella, devant la cathédrale. Côté via Brenta, Venise est représentée par le lion de Saint-Marc. Sur la troisième maison, Rome est symbolisée par la louve qui allaite Romulus et Remus. Marbre, travertin, brique, verre et céramique colorée se mélangent sur les façades."
+        "texte": "Le villino des Fées est l'ensemble le plus célèbre du quartier. Il se dresse en face de l'arc, de l'autre côté de la fontaine. Il forme trois maisons asymétriques, aux formes très différentes. Elles rendent hommage à trois villes. Côté via Aterno, Florence apparaît avec les poètes Dante et Pétrarque et l'inscription Fiorenza Bella, devant la cathédrale. Côté via Brenta, Venise est représentée par le lion de Saint-Marc. Sur la troisième maison, côté via Olona, Rome est symbolisée par la louve qui allaite Romulus et Remus. Marbre, travertin, brique, verre et céramique colorée se mélangent sur les façades."
       },
       {
         "titre": "L'araignée et le cinéma",
-        "texte": "Le palais de l'Araignée s'inspire de l'art assyrien et babylonien. Sa façade porte des dragons, des monstres, un chevalier, le mot Labor et une grande araignée au-dessus de l'entrée. Cette ambiance étrange a séduit le cinéma. Le réalisateur Dario Argento a tourné ici deux films d'horreur, Inferno et L'oiseau au plumage de cristal. Le quartier apparaît aussi dans House of Gucci, sorti en 2021. La place Mincio se traverse en quelques minutes, mais on y passe facilement une heure."
+        "texte": "Le palais de l'Araignée, à droite de la fontaine quand on arrive de l'arc, s'inspire de l'art assyrien et babylonien. Sa façade porte des dragons, des monstres, un chevalier, le mot Labor et une grande araignée au-dessus de l'entrée. Cette ambiance étrange a séduit le cinéma. Le réalisateur Dario Argento a tourné ici deux films d'horreur, Inferno et L'oiseau au plumage de cristal. Le quartier apparaît aussi dans House of Gucci, sorti en 2021. La place Mincio se traverse en quelques minutes, mais on y passe facilement une heure."
       }
     ],
     "enfants": [
@@ -1721,7 +1721,7 @@
       },
       {
         "titre": "Défi sur place",
-        "texte": "Compte les douze grenouilles de la fontaine, sans en oublier une. Trouve ensuite le lustre sous l'arche, puis repère le lion de Venise et la louve de Rome sur les maisons des Fées. Enfin, cherche l'araignée au-dessus d'une porte, et le mot Labor écrit sur la même façade. Bravo si tu les trouves toutes !"
+        "texte": "Compte les douze grenouilles de la fontaine, sans en oublier une. Trouve ensuite le lustre sous l'arche, puis repère le lion de Venise et la louve de Rome sur les maisons des Fées, en face de l'arche, derrière la fontaine. Enfin, cherche l'araignée au-dessus d'une porte, sur le palais à droite de la fontaine quand on arrive de l'arche, et le mot Labor écrit sur la même façade. Bravo si tu les trouves toutes !"
       },
       {
         "titre": "Le quiz",
@@ -1745,7 +1745,7 @@
       },
       {
         "titre": "La chapelle Cornaro",
-        "texte": "Le cardinal vénitien Federico Cornaro, qui vit de 1579 à 1653, veut y préparer sa tombe et honorer sa famille. Celle-ci compte alors sept cardinaux et un doge, le chef de Venise. Il confie le projet à Gian Lorenzo Bernini, le Bernin, entre 1647 et 1652. Le sculpteur transforme la chapelle en petit théâtre. Sur les côtés, huit membres de la famille, sculptés dans des loges, regardent la scène et discutent entre eux. Un seul était encore vivant à l'époque."
+        "texte": "Le cardinal vénitien Federico Cornaro, qui vit de 1579 à 1653, veut y préparer sa tombe et honorer sa famille. Celle-ci compte alors sept cardinaux et un doge, le chef de Venise. Il confie le projet à Gian Lorenzo Bernini, le Bernin, entre 1647 et 1652. Le sculpteur transforme la chapelle en petit théâtre. Sur les côtés, huit membres de la famille, sculptés dans des loges, regardent la scène et discutent entre eux. Un seul était encore vivant à l'époque. La chapelle se trouve dans le bras gauche de l'église, à gauche du maître-autel quand on le regarde depuis l'entrée."
       },
       {
         "titre": "L'Extase de sainte Thérèse",
@@ -1759,7 +1759,7 @@
     "enfants": [
       {
         "titre": "Un théâtre de marbre",
-        "texte": "Approche-toi de la petite chapelle de gauche : la scène te saute aux yeux, comme si le rideau venait de s'ouvrir. Un nuage de marbre, un ange, une sainte, et des rayons dorés qui brillent au-dessus. Le sculpteur Bernini, appelé le Bernin en français, a construit un vrai spectacle de lumière et de pierre. Il a fini son travail en 1652, il y a plus de trois cent soixante-dix ans."
+        "texte": "Approche-toi de la petite chapelle de gauche : la scène te saute aux yeux, comme si le rideau venait de s'ouvrir. Elle se trouve dans le bras gauche de l'église, quand on regarde l'autel. Un nuage de marbre, un ange, une sainte, et des rayons dorés qui brillent au-dessus. Le sculpteur Bernini, appelé le Bernin en français, a construit un vrai spectacle de lumière et de pierre. Il a fini son travail en 1652, il y a plus de trois cent soixante-dix ans."
       },
       {
         "titre": "Qui est la dame du nuage ?",
@@ -1795,11 +1795,11 @@
       },
       {
         "titre": "Une église à l'échelle romaine",
-        "texte": "L'intérieur donne le vertige. Le grand transept, la nef qui traverse l'église, dépasse quatre-vingt-dix mètres de long. Il est couvert de voûtes qui montent à vingt-neuf mètres. Huit colonnes de granit rouge, hautes de dix-sept mètres, ponctuent l'espace. Chacune est taillée dans un seul bloc. Les voûtes et une partie des murs viennent de l'Antiquité. On peut voir la grande statue de saint Bruno, sculptée par Houdon en 1766, et les portes de bronze du sculpteur polonais Igor Mitoraj, posées en 2006."
+        "texte": "L'intérieur donne le vertige. Le grand transept, la nef qui traverse l'église, dépasse quatre-vingt-dix mètres de long. Il est couvert de voûtes qui montent à vingt-neuf mètres. Huit colonnes de granit rouge, hautes de dix-sept mètres, ponctuent l'espace. Chacune est taillée dans un seul bloc. Les voûtes et une partie des murs viennent de l'Antiquité. On peut voir la grande statue de saint Bruno, sculptée par Houdon en 1766, et les portes de bronze du sculpteur polonais Igor Mitoraj, posées en 2006. Ces portes sont à l'entrée principale, du côté de la place de la République."
       },
       {
         "titre": "La méridienne de 1702",
-        "texte": "Sur le sol de la basilique court une longue ligne de bronze, incrustée dans une bande de marbre. C'est la méridienne, un cadran solaire géant d'environ quarante-cinq mètres. Le pape Clément onze la fait installer en 1702 par l'astronome Francesco Bianchini. À midi, un rayon de soleil entre par un petit trou percé très haut dans le mur et vient toucher la ligne. Au fil de l'année, le point lumineux se déplace, et les signes du zodiaque marquent le changement des saisons. À l'époque, l'instrument sert à vérifier le calendrier et à calculer la date de Pâques. Il fonctionne encore aujourd'hui."
+        "texte": "Sur le sol de la basilique, dans le bras droit du transept, à droite en entrant, court une longue ligne de bronze, incrustée dans une bande de marbre. C'est la méridienne, un cadran solaire géant d'environ quarante-cinq mètres. Le pape Clément onze la fait installer en 1702 par l'astronome Francesco Bianchini. À midi, un rayon de soleil entre par un petit trou percé très haut dans le mur et vient toucher la ligne. Au fil de l'année, le point lumineux se déplace, et les signes du zodiaque marquent le changement des saisons. À l'époque, l'instrument sert à vérifier le calendrier et à calculer la date de Pâques. Il fonctionne encore aujourd'hui."
       },
       {
         "titre": "Le musée et le grand cloître",
@@ -1821,7 +1821,7 @@
       },
       {
         "titre": "Le cadran solaire du sol",
-        "texte": "Baisse les yeux : une longue ligne de bronze traverse le sol de l'église. C'est un cadran solaire géant, long d'environ quarante-cinq mètres. Il a été installé en 1702. Tout en haut du mur, un petit trou laisse passer un rayon de soleil. À midi, la tache de lumière tombe pile sur la ligne. Le long de la ligne, des signes du zodiaque montrent les saisons. Au dix-huitième siècle, les savants s'en servaient pour vérifier le calendrier."
+        "texte": "Baisse les yeux : une longue ligne de bronze traverse le sol de l'église, dans le bras droit du grand transept, à droite en entrant. C'est un cadran solaire géant, long d'environ quarante-cinq mètres. Il a été installé en 1702. Tout en haut du mur, un petit trou laisse passer un rayon de soleil. À midi, la tache de lumière tombe pile sur la ligne. Le long de la ligne, des signes du zodiaque montrent les saisons. Au dix-huitième siècle, les savants s'en servaient pour vérifier le calendrier."
       },
       {
         "titre": "Le cloître aux animaux de marbre",
@@ -1829,7 +1829,7 @@
       },
       {
         "titre": "Défi sur place",
-        "texte": "Dans l'église, trouve la ligne de bronze au sol et compte les signes du zodiaque que tu peux voir. Repère ensuite les huit colonnes de granit rouge et devine combien d'enfants de ta taille il faudrait empiler pour atteindre le haut d'une seule. Dans le cloître du musée, cherche un animal sculpté dans le marbre et dis à voix haute lequel c'est."
+        "texte": "Dans l'église, trouve la ligne de bronze au sol et compte les signes du zodiaque que tu peux voir. Repère ensuite, dans le grand transept, les huit colonnes de granit rouge et devine combien d'enfants de ta taille il faudrait empiler pour atteindre le haut d'une seule. Dans le cloître du musée, cherche un animal sculpté dans le marbre et dis à voix haute lequel c'est."
       },
       {
         "titre": "Le quiz",
