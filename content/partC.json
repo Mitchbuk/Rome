@@ -18,6 +18,10 @@
         "texte": "Adossée au rempart, l'église Santa Maria del Popolo est l'un des trésors les plus accessibles de Rome. Une première chapelle fut élevée en 1099 par le pape Pascal II, et l'édifice actuel fut reconstruit entre 1472 et 1477 sous Sixte IV. La chapelle Chigi fut conçue par Raphaël vers 1513 pour le banquier Agostino Chigi, puis achevée un siècle plus tard par le Bernin, qui y ajouta les statues de Daniel et d'Habacuc. Près du chœur, la chapelle Cerasi abrite deux toiles majeures du Caravage, peintes en 1600 et 1601 : la Conversion de saint Paul et la Crucifixion de saint Pierre. Détail surprenant : le moine augustin Martin Luther logea dans le couvent voisin lors de son séjour à Rome en 1510, quelques années avant de déclencher la Réforme."
       },
       {
+        "titre": "Le noyer de Néron",
+        "texte": "Selon la légende, Néron aurait été enterré ici, sous un noyer. Son esprit, sous forme de corbeaux et de démons, aurait terrorisé les voyageurs qui entraient par la Porta Flaminia. En 1099, le pape Pascal II, guidé par une apparition de la Vierge, aurait fait abattre le noyer, brûler les ossements de Néron et les jeter dans le Tibre. Il aurait ensuite élevé une chapelle à la place : ce serait l'origine de Santa Maria del Popolo. Sur l'arc du maître-autel, des bas-reliefs montrent le pape en train de couper le noyer. La légende relie aussi le nom de la place aux peupliers, populus en latin."
+      },
+      {
         "titre": "Le Pincio au couchant",
         "texte": "La terrasse du Pincio, aménagée elle aussi par Valadier, domine la place d'une vingtaine de mètres. Dans l'Antiquité, la colline portait les jardins de Lucullus, un général gourmet dont les banquets étaient si fastueux qu'on en parle encore aujourd'hui. On y trouve des bustes d'Italiens illustres et une horloge à eau installée en 1867 par le père Giovanni Battista Embriaco. On y vient surtout pour la vue, qui embrasse la place, les coupoles de la ville et Saint-Pierre à l'horizon, au moment où le soleil se couche derrière le Vatican."
       }
@@ -42,6 +46,10 @@
       {
         "titre": "Le mur qui parle",
         "texte": "Voici un défi à faire à deux. Va jusqu'au grand mur en demi-cercle, derrière la fontaine de Neptune, le dieu de la mer avec son trident. Colle-toi tout au bout du mur et chuchote face à la pierre. Ton partenaire se place au milieu, l'oreille contre le mur. Il t'entend ? La courbe du mur guide la voix le long de la pierre, comme un tuyau invisible. Si ça ne marche pas, change de mur : celui d'en face, de l'autre côté de la place, a la même forme."
+      },
+      {
+        "titre": "Le noyer hanté de Néron",
+        "texte": "Selon la légende, l'empereur Néron aurait été enterré ici, sous un noyer, et son fantôme faisait peur aux voyageurs. On racontait que des corbeaux et des démons rôdaient sur la colline. En 1099, après une apparition de la Vierge, le pape Pascal II aurait fait abattre le noyer. Il aurait ensuite fait construire une chapelle à la place : ce serait l'origine de Santa Maria del Popolo. Dans l'église, cherche sur l'arc du maître-autel les petites sculptures où l'on voit le pape couper le noyer. Cette légende relie le nom de la place aux peupliers, dont on parle dans le quiz."
       },
       {
         "titre": "Le quiz",
@@ -103,7 +111,7 @@
       },
       {
         "titre": "Michel-Ange dessine une place",
-        "texte": "En 1536, le pape Paul III voulait offrir à l'empereur Charles Quint une entrée digne de son triomphe. Il confia à Michel-Ange le réaménagement de la place, alors boueuse et irrégulière. L'artiste imagina une place en forme de trapèze, ouverte vers la ville et non plus vers le Forum, et fermée par trois palais. Leurs façades sont rythmées par des pilastres géants, ces colonnes plates qui montent sur deux étages, une invention reprise dans toute l'Europe. Il dessina aussi la Cordonata, cet escalier en pente douce que l'on peut gravir à cheval, gardé en haut par les jumeaux divins Castor et Pollux. Michel-Ange mourut en 1564 sans voir son projet achevé. Le Palazzo Nuovo ne fut terminé qu'en 1654, et le dallage en étoile à douze branches, connu par une gravure de 1568, ne fut posé qu'en 1940."
+        "texte": "En 1536, le pape Paul III voulait offrir à l'empereur Charles Quint une entrée digne de son triomphe. Il confia à Michel-Ange le réaménagement de la place, alors boueuse et irrégulière. L'artiste imagina une place en forme de trapèze, ouverte vers la ville et non plus vers le Forum, et fermée par trois palais. Leurs façades sont rythmées par des pilastres géants, ces colonnes plates qui montent sur deux étages, une invention reprise dans toute l'Europe. Il dessina aussi la Cordonata, cet escalier en pente douce que l'on peut gravir à cheval, gardé en haut par les jumeaux divins Castor et Pollux. Au pied de l'escalier, deux lions égyptiens en basalte noir, venus très probablement du temple d'Isis et Sérapis du Champ de Mars, servent de fontaines depuis 1562. Il est arrivé, pour l'élection de deux papes au dix-septième siècle, que du vin blanc et du vin rouge en jaillissent. Michel-Ange mourut en 1564 sans voir son projet achevé. Le Palazzo Nuovo ne fut terminé qu'en 1654, et le dallage en étoile à douze branches, connu par une gravure de 1568, ne fut posé qu'en 1940."
       },
       {
         "titre": "Le cavalier qui a survécu",
@@ -111,25 +119,37 @@
       },
       {
         "titre": "Le plus ancien musée du monde",
-        "texte": "Les Musées capitolins sont nés en 1471, lorsque le pape Sixte IV offrit au peuple romain quelques bronzes antiques conservés au Latran. Parmi eux, la Louve, le Tireur d'épine et une tête colossale de Constantin. Ouverts au public en 1734, ils forment la plus ancienne collection publique du monde. Dans la cour du Palazzo dei Conservatori, on découvre les fragments du colosse en marbre de Constantin : une tête de deux mètres soixante, une main, un pied. Ils proviennent de la basilique de Maxence, et la statue entière atteignait environ douze mètres. Le Palazzo Nuovo abrite le Gaulois mourant et la Vénus capitoline. Un passage souterrain relie les deux palais en traversant le Tabularium, avec une vue imprenable sur le Forum."
+        "texte": "Les Musées capitolins sont nés en 1471, lorsque le pape Sixte IV offrit au peuple romain quelques bronzes antiques conservés au Latran. Ouverts au public en 1734, les musées forment la plus ancienne collection publique du monde. Dans la cour du Palazzo dei Conservatori, on découvre les fragments du colosse en marbre de Constantin : une tête de deux mètres soixante, une main, un pied. Ils proviennent de la basilique de Maxence, et la statue entière atteignait environ douze mètres. Le Palazzo Nuovo abrite le Gaulois mourant et la Vénus capitoline. Un passage souterrain relie les deux palais en traversant le Tabularium, avec une vue imprenable sur le Forum."
       },
       {
         "titre": "Louve, oies et poète couronné",
         "texte": "La Louve capitoline a longtemps été datée du cinquième siècle avant Jésus-Christ et attribuée aux Étrusques. Mais elle a été réexaminée en 2012, et les analyses suggèrent qu'elle a été coulée au Moyen Âge, vers le douzième siècle. Les jumeaux, eux, furent ajoutés à la fin du quinzième siècle. L'historien Tite-Live rapporte l'histoire des oies sacrées de Junon, dont les cris auraient réveillé la garnison lors de l'attaque des Gaulois, en 390 avant Jésus-Christ. En 1341, le poète Pétrarque reçut ici la couronne de laurier. Et c'est sur cette colline qu'en 1764, l'historien Edward Gibbon eut l'idée de son Histoire de la décadence et de la chute de l'Empire romain. À gauche, les 124 marches de l'Aracoeli furent construites en 1348 pour remercier la Vierge de la fin de la peste."
+      },
+      {
+        "titre": "Santa Maria in Aracoeli",
+        "texte": "La basilique Santa Maria in Aracoeli occupe le sommet nord de la colline, tout en haut de son escalier. L'église est célèbre pour le Santo Bambino, une statue de l'Enfant Jésus qui recevait des lettres d'enfants du monde entier. Volée en 1994, elle a été remplacée par une copie. Le parvis offre une vue superbe."
       }
     ],
     "enfants": [
       {
         "titre": "Le murmure de l'esclave",
-        "texte": "Que peut bien murmurer un esclave à l'oreille d'un général qui vient de gagner une guerre ? Réponse à la fin de l'histoire. Il y a 2 000 ans, ce général traverse Rome sur un char doré. Il a le visage peint en rouge, avec derrière lui des prisonniers enchaînés, des chariots remplis d'or et des soldats qui chantent. Toute la ville hurle de joie. Le cortège grimpe la colline où tu te trouves, jusqu'au temple de Jupiter, le plus grand dieu des Romains. Là, le général sacrifie des taureaux blancs et dépose sa couronne de laurier. Le Capitole était le point d'arrivée de tous les triomphes, l'endroit le plus sacré de tout l'Empire. Et l'esclave, lui, murmurait sans cesse : souviens-toi que tu n'es qu'un homme."
+        "texte": "Que peut bien murmurer un esclave à l'oreille d'un général qui vient de gagner une guerre ? Réponse à la fin de l'histoire. Il y a 2 000 ans, ce général traverse Rome sur un char doré. Toute la ville hurle de joie. Il a le visage peint en rouge, avec derrière lui des prisonniers enchaînés, des chariots remplis d'or et des soldats qui chantent. Le cortège grimpe la colline où tu te trouves, jusqu'au temple de Jupiter, le plus grand dieu des Romains. Là, le général sacrifie des taureaux blancs et dépose sa couronne de laurier. Le Capitole était le point d'arrivée de tous les triomphes, l'endroit le plus sacré de tout l'Empire. Et l'esclave, lui, murmurait sans cesse : souviens-toi que tu n'es qu'un homme."
       },
       {
         "titre": "Les oies qui sauvèrent Rome",
-        "texte": "Le savais-tu ? En 390 avant Jésus-Christ, les Gaulois ont envahi Rome. Les Romains se sont réfugiés sur le Capitole, la colline aux pentes raides. Une nuit, les Gaulois ont escaladé la falaise en silence. Les chiens de garde n'ont rien entendu. Mais les oies sacrées de la déesse Junon, qu'on avait épargnées malgré la famine, se sont mises à cacarder, c'est-à-dire à crier de toutes leurs forces, et à battre des ailes. Le soldat Marcus Manlius s'est réveillé, a repoussé le premier Gaulois dans le vide, et la colline a été sauvée. Ensuite, chaque année, les Romains ont promené une oie sur un coussin doré pour la remercier, et puni un chien pour sa paresse."
+        "texte": "Le savais-tu ? En 390 avant Jésus-Christ, les Gaulois ont envahi Rome. Les Romains se sont réfugiés sur le Capitole, la colline aux pentes raides. Une nuit, les Gaulois ont escaladé la falaise en silence. Les chiens de garde n'ont rien entendu. Mais les oies sacrées de la déesse Junon, qu'on avait épargnées malgré la famine, se sont mises à cacarder, c'est-à-dire à crier de toutes leurs forces. Elles ont aussi battu des ailes. Le soldat Marcus Manlius s'est réveillé, a repoussé le premier Gaulois dans le vide, et la colline a été sauvée. Ensuite, chaque année, les Romains ont promené une oie sur un coussin doré pour la remercier, et puni un chien pour sa paresse."
+      },
+      {
+        "titre": "Les lions de l'escalier",
+        "texte": "Au pied de l'escalier, deux lions égyptiens en pierre noire servent de fontaines. Ils viennent probablement d'un temple romain des dieux égyptiens. Pour l'élection de deux papes, du vin blanc et du vin rouge ont même coulé de leur gueule !"
       },
       {
         "titre": "Le colosse en morceaux",
         "texte": "Dans la cour du musée, tu tomberas sur une tête géante en marbre avec des yeux immenses qui regardent vers le haut, à côté d'une main énorme et d'un pied plus grand que toi. C'est tout ce qui reste d'une statue de l'empereur Constantin, haute comme un immeuble de quatre étages. Seuls la tête, les bras et les jambes étaient en marbre. Le corps était fait de briques et de bois recouverts de bronze, et tout cela a disparu. Le pouce, à lui seul, est presque aussi long que ton bras."
+      },
+      {
+        "titre": "Le Santo Bambino",
+        "texte": "Sur la colline, l'église Santa Maria in Aracoeli garde le Santo Bambino, une statue de l'Enfant Jésus. Des enfants du monde entier lui écrivaient des lettres ! Elle a été volée en 1994 et remplacée par une copie."
       },
       {
         "titre": "Le défi de l'étoile",
@@ -195,7 +215,7 @@
       },
       {
         "titre": "Santa Sabina, la basilique intacte",
-        "texte": "Élevée entre 422 et 432 à l'emplacement de la maison d'une riche Romaine nommée Sabina, l'église est la basilique des premiers temps chrétiens la mieux conservée de Rome. Ses vingt-quatre colonnes corinthiennes en marbre de Proconnèse et sa nef toute simple donnent une idée exacte d'une église du cinquième siècle. Ses grandes fenêtres ne sont pas en verre mais en sélénite, une pierre translucide qui filtre une lumière blonde. Sous le porche, les portes de cyprès sculptées vers 430 conservent dix-huit panneaux sur vingt-huit, dont l'une des plus anciennes représentations connues de la Crucifixion. Les dominicains y sont installés depuis 1222 : saint Dominique y vécut et saint Thomas d'Aquin y enseigna. L'oranger du cloître, que l'on aperçoit par une ouverture du vestibule, serait le descendant de celui que planta le fondateur de l'ordre."
+        "texte": "Élevée entre 422 et 432 à l'emplacement de la maison d'une riche Romaine nommée Sabina, l'église est la basilique des premiers temps chrétiens la mieux conservée de Rome. Ses vingt-quatre colonnes corinthiennes en marbre de Proconnèse et sa nef toute simple donnent une idée exacte d'une église du cinquième siècle. Ses grandes fenêtres ne sont pas en verre mais en sélénite, une pierre translucide qui filtre une lumière blonde. Sous le porche, les portes de cyprès sculptées vers 430 conservent dix-huit panneaux sur vingt-huit, dont l'une des plus anciennes représentations connues de la Crucifixion. À l'intérieur, à gauche de l'entrée, une pierre noire ronde de basalte est posée sur une colonne torsadée. Selon la légende, le diable l'aurait lancée sur saint Dominique en prière, et elle aurait fissuré la dalle d'une tombe de martyrs. Les fissures seraient ses griffes. Les archéologues y voient plutôt un ancien poids de balance romain. Les dominicains y sont installés depuis 1222 : saint Dominique y vécut et saint Thomas d'Aquin y enseigna. L'oranger du cloître, que l'on aperçoit par une ouverture du vestibule, serait le descendant de celui que planta le fondateur de l'ordre."
       },
       {
         "titre": "Le Jardin des Orangers",
@@ -218,6 +238,10 @@
       {
         "titre": "Une porte de 1 600 ans",
         "texte": "Le savais-tu ? Sous le porche de l'église Santa Sabina, tu verras une porte en bois de cyprès sculptée vers l'an 430, quand l'Empire romain existait encore. Elle a survécu aux incendies, aux guerres et aux pillages. Ses panneaux racontent la Bible comme une bande dessinée. Cherche en haut à gauche l'une des toutes premières images de Jésus sur la croix de toute l'histoire, avec deux petits bonshommes à ses côtés. À l'époque, les chrétiens n'osaient presque jamais représenter cette scène. Dans l'église, la lumière ne passe pas par du verre mais par de fines plaques de pierre translucide, qui laissent passer le jour, comme il y a 1 600 ans."
+      },
+      {
+        "titre": "La pierre du diable",
+        "texte": "Une fois dans l'église, cherche à gauche de l'entrée une pierre noire ronde, posée sur une colonne torsadée. Selon la légende, le diable l'a lancée sur saint Dominique en prière. Elle aurait fissuré la dalle d'une tombe de martyrs, et les fissures seraient les marques de ses griffes. Pour les archéologues, c'est un ancien poids de balance romain."
       },
       {
         "titre": "Un pays derrière une porte",
@@ -249,7 +273,7 @@
       },
       {
         "titre": "À voir à l'intérieur",
-        "texte": "Au-dessus de l'autel papal, où seul le pape peut célébrer la messe, se dresse le ciborium gothique de 1367, une sorte de grand dais de pierre. Il abrite les reliquaires qui, selon la tradition, contiennent les têtes de saint Pierre et de saint Paul. Devant, une dalle de bronze marque la tombe de Martin V, le pape qui ramena définitivement la papauté à Rome en 1420. Le plafond à caissons date du seizième siècle, et le sol de marbres colorés, œuvre de l'atelier des Cosmates, de 1425. Le cloître, réalisé vers 1230 par la famille Vassalletto, aligne des colonnettes torsadées incrustées de mosaïques. Le baptistère à huit côtés, fondé par Constantin et remodelé au cinquième siècle, servit de modèle à tous les baptistères d'Italie."
+        "texte": "Au-dessus de l'autel papal, où seul le pape peut célébrer la messe, se dresse le ciborium gothique de 1367, une sorte de grand dais de pierre. Il abrite les reliquaires qui, selon la tradition, contiennent les têtes de saint Pierre et de saint Paul. Devant, une dalle de bronze marque la tombe de Martin V, le pape qui ramena définitivement la papauté à Rome en 1420. Dans le transept, l'autel du Saint-Sacrement est encadré de quatre colonnes corinthiennes de bronze doré, antiques, du deuxième siècle. Selon une ancienne tradition, elles viendraient des proues de navires prises à Actium par Auguste, puis du temple de Jupiter Capitolin, mais leur origine reste discutée. Au-dessus de l'autel, un reliquaire conserve un morceau de bois de cèdre que la tradition présente comme la table de la Cène. Il ne se voit pas directement. Le plafond à caissons date du seizième siècle, et le sol de marbres colorés, œuvre de l'atelier des Cosmates, de 1425. Le cloître, réalisé vers 1230 par la famille Vassalletto, aligne des colonnettes torsadées incrustées de mosaïques. Le baptistère à huit côtés, fondé par Constantin et remodelé au cinquième siècle, servit de modèle à tous les baptistères d'Italie."
       },
       {
         "titre": "L'obélisque et la Scala Santa",
@@ -268,6 +292,10 @@
       {
         "titre": "Les portes du Sénat",
         "texte": "Les grandes portes de bronze au milieu de la façade ont environ 1 700 ans, mais elles n'ont pas été fabriquées pour l'église. Elles fermaient la Curie, le bâtiment du Forum romain où se réunissaient les sénateurs. Des milliers de fois, des hommes en toge les ont poussées pour aller débattre des guerres, des lois et des impôts de l'Empire. Un pape les a fait démonter et transporter ici en 1660. Quand tu passes devant, tu touches presque le même métal que les sénateurs romains."
+      },
+      {
+        "titre": "Les colonnes de bronze et la table",
+        "texte": "Dans le transept, quatre grandes colonnes de bronze doré entourent l'autel du Saint-Sacrement. Elles sont antiques : elles datent du deuxième siècle. Selon une vieille tradition, elles viendraient de l'avant de navires pris par l'empereur Auguste à la bataille d'Actium, puis du temple de Jupiter au Capitole. Personne n'en est vraiment sûr. Au-dessus de l'autel, un reliquaire garde un morceau de bois de cèdre que la tradition présente comme la table de la Cène. La Cène, c'est le dernier repas de Jésus avec ses apôtres. On ne peut pas le voir directement, mais tu peux l'imaginer !"
       },
       {
         "titre": "Le défi des géants",

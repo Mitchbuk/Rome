@@ -234,6 +234,10 @@
         "texte": "Le plus célèbre des trois tableaux montre le moment où le Christ appelle Matthieu, un collecteur d'impôts, à le suivre. La scène se passe dans une salle sombre, où des hommes comptent de l'argent autour d'une table. Un rayon de lumière traverse le tableau et désigne l'élu. La main tendue du Christ reprend celle d'Adam dans la Création peinte par Michel-Ange à la chapelle Sixtine. Les historiens discutent encore pour savoir lequel des personnages est Matthieu."
       },
       {
+        "titre": "Un visage caché dans le Martyre",
+        "texte": "Dans le Martyre de saint Matthieu, le tableau de droite, un personnage barbu se tient au fond, à gauche du centre, derrière l'assassin. Selon l'identification communément admise, c'est un autoportrait du Caravage, qui se peint en témoin de la scène. Elle repose sur la tradition critique, non sur un document du peintre."
+      },
+      {
         "titre": "Le peintre de la lumière",
         "texte": "Caravage, de son vrai nom Michelangelo Merisi, révolutionne la peinture de son temps. Il peint des saints sous les traits de gens ordinaires, pris dans la rue, avec leurs pieds sales et leurs visages marqués. Surtout, il fait surgir ses personnages de l'obscurité grâce à des contrastes violents de lumière et d'ombre. Sa vie fut aussi agitée que ses tableaux : querelles, bagarres, et même un meurtre qui le força à fuir Rome."
       },
@@ -261,7 +265,7 @@
       },
       {
         "titre": "Le défi de la chapelle",
-        "texte": "Glisse une pièce pour allumer la lumière, puis compte les personnages du tableau de Jésus et de Matthieu. Trouve le rayon de lumière, les pièces de monnaie sur la table et une plume sur un chapeau. Dans le tableau de droite, cherche l'ange qui plonge du ciel. Dehors, cherche sur la façade une salamandre, l'emblème d'un roi de France."
+        "texte": "Glisse une pièce pour allumer la lumière, puis compte les personnages du tableau de Jésus et de Matthieu. Trouve le rayon de lumière, les pièces de monnaie sur la table et une plume sur un chapeau. Dans le tableau de droite, cherche l'ange qui plonge du ciel. Cherche aussi, au fond et à gauche du centre, un homme barbu qui assiste à la scène. Selon la tradition, c'est le Caravage lui-même, qui s'est peint dans son tableau ! Dehors, cherche sur la façade une salamandre, l'emblème d'un roi de France."
       },
       {
         "titre": "Le quiz",
@@ -454,6 +458,10 @@
         "texte": "Depuis 2006, l'autel est abrité dans un pavillon de verre et de travertin blanc conçu par l'architecte américain Richard Meier. C'est le premier bâtiment moderne construit dans le centre historique de Rome depuis des décennies. Il a été très critiqué à son inauguration, jugé trop moderne à côté des monuments anciens. Sa lumière naturelle met pourtant parfaitement en valeur les reliefs, visibles de tous les côtés. Au sous-sol, une maquette et des panneaux expliquent l'histoire de sa découverte."
       },
       {
+        "titre": "Le pavillon de 1938",
+        "texte": "Sur le mur extérieur du musée, face au Tibre, on lit en grandes lettres les Res Gestae Divi Augusti, le récit des exploits d'Auguste, qu'il avait lui-même fait graver. Cette inscription date du premier pavillon, construit en 1938 par le régime de Mussolini pour le bimillénaire d'Auguste. L'autel avait alors été remonté près du mausolée. C'est le dernier vestige de ce pavillon, remplacé par celui de Richard Meier en 2006."
+      },
+      {
         "titre": "Les couleurs perdues",
         "texte": "Comme la plupart des sculptures antiques, l'Ara Pacis était à l'origine peinte de couleurs vives. Les traces de pigments ont presque entièrement disparu. Le musée propose parfois des visites en réalité augmentée qui restituent ces couleurs et font revivre la cérémonie. Le pavillon abrite aussi des expositions temporaires. Son grand mur donne sur l'avenue qui longe le Tibre, et sa terrasse fait face au mausolée d'Auguste."
       }
@@ -504,12 +512,12 @@
         "texte": "Dans les années trente, le régime de Mussolini, qui se présentait comme l'héritier d'Auguste, fait démolir la salle de concert et les maisons qui entouraient le mausolée. Il crée autour une grande place aux bâtiments monumentaux, la piazza Augusto Imperatore, dont on voit encore les façades et les inscriptions. Le monument, dégagé, reste ensuite longtemps à l'abandon, envahi par la végétation et fermé au public. Mussolini voulait faire de ce lieu un symbole de la continuité entre la Rome antique et son régime."
       },
       {
-        "titre": "Une longue restauration",
-        "texte": "Après des décennies de fermeture, le mausolée a été restauré grâce au soutien d'une grande fondation privée, et rouvert au public en 2021. La visite permet de pénétrer dans les couloirs concentriques et jusqu'à la chambre centrale, où reposaient les cendres de l'empereur. On mesure l'épaisseur colossale des murs et l'ingéniosité de la construction. Des panneaux et des reconstitutions retracent les différentes époques du monument."
+        "titre": "Un chantier qui n'en finit pas",
+        "texte": "Après des décennies d'abandon, le mausolée a été restauré grâce au soutien d'une grande fondation privée et rouvert au public en 2021. Il a refermé ses portes l'année suivante pour la dernière phase des travaux : un musée intérieur, conçu avec l'architecte néerlandais Rem Koolhaas, doit y ouvrir, avec une réouverture annoncée pour la fin 2026. En attendant, on mesure depuis la place l'ampleur des cylindres de maçonnerie emboîtés et l'épaisseur colossale des murs."
       },
       {
-        "titre": "Une visite à combiner",
-        "texte": "Les créneaux de visite sont limités : réservez à l'avance. La visite se combine idéalement avec l'Ara Pacis, construite pour le même empereur et installée juste en face, de l'autre côté de la rue. Ensemble, ils racontent l'histoire d'Auguste, de la paix qu'il a imposée et de la gloire qu'il voulait laisser à la postérité. La place du Peuple et la via del Corso sont à quelques minutes à pied. Le quartier compte de nombreux cafés et glaciers pour une pause après la visite."
+        "titre": "Autour du mausolée",
+        "texte": "Faites le tour de la piazza Augusto Imperatore, réaménagée et ouverte aux piétons : on y lit les grandes inscriptions latines des façades des années trente. Juste en face, de l'autre côté de la rue, l'Ara Pacis a été construite pour le même empereur. Ensemble, ils racontent l'histoire d'Auguste, de la paix qu'il a imposée et de la gloire qu'il voulait laisser à la postérité. La place du Peuple et la via del Corso sont à quelques minutes à pied."
       }
     ],
     "enfants": [
@@ -527,11 +535,11 @@
       },
       {
         "titre": "Au cœur du tombeau",
-        "texte": "Pendant la visite, tu vas marcher dans des couloirs ronds, les uns à l'intérieur des autres, comme les anneaux d'un arbre. Tout au centre se trouve une petite pièce où l'on déposait les cendres de l'empereur dans une urne. Les murs sont si épais que le bruit de la ville disparaît. Tu auras l'impression d'entrer dans le cœur d'une colline."
+        "texte": "À l'intérieur, des couloirs ronds sont emboîtés les uns dans les autres, comme les anneaux d'un arbre. Tout au centre se trouve une petite pièce où l'on déposait les cendres de l'empereur dans une urne. Pour l'instant, le tombeau est fermé : des ouvriers y installent un musée. Mais depuis la place, tu vois déjà ses murs géants, si épais qu'ils ont traversé deux mille ans."
       },
       {
         "titre": "Le défi du mausolée",
-        "texte": "Pendant la visite, compte les couloirs ronds que tu traverses avant d'arriver au centre. Touche des yeux l'épaisseur d'un mur et compare-la à la longueur de ton lit. Dehors, sur la grande place autour du tombeau, cherche les grandes inscriptions en latin sur les bâtiments. En face, trouve le musée de verre qui abrite l'autel de la paix."
+        "texte": "Fais le tour du tombeau par la place et compte les anneaux de murs que tu devines, les uns derrière les autres. Compare la hauteur d'un mur à celle d'une porte d'immeuble. Cherche ensuite les grandes inscriptions en latin sur les bâtiments autour de la place. En face, trouve le musée de verre qui abrite l'autel de la paix."
       },
       {
         "titre": "Le quiz",
@@ -604,6 +612,10 @@
         "texte": "Ostie est souvent comparée à Pompéi, et elle a l'avantage d'être tout près de Rome et bien moins fréquentée. Mais ici, pas d'éruption : la ville a décliné lentement quand le port s'est ensablé, puis elle a été abandonnée et recouverte par la terre et les dépôts du fleuve. Aujourd'hui, la mer est à plusieurs kilomètres. On se promène dans les rues pavées, entre les maisons, les boutiques, les entrepôts, les temples et les thermes, sur près de deux kilomètres."
       },
       {
+        "titre": "Le Forum et le Capitolium",
+        "texte": "Le centre de la ville est le Forum, dominé par le Capitolium. Ce grand temple de brique, élevé vers 120 sous Hadrien, est dédié à Jupiter, Junon et Minerve. C'est le plus grand sanctuaire d'Ostie, et on l'aperçoit de loin depuis la plupart du site. Les thermes du Forum, un vaste ensemble thermal, se trouvent tout près."
+      },
+      {
         "titre": "Le théâtre et la place des Corporations",
         "texte": "Le long du decumanus, la grande rue principale, se dresse un théâtre construit sous Auguste, qui accueille encore des spectacles en été. On peut s'asseoir sur ses gradins et tester l'acoustique. Derrière la scène s'étend la place des Corporations, entourée des bureaux des armateurs et des marchands venus de tout l'Empire. Devant chacun, une mosaïque noire et blanche indique son activité ou son origine : des navires, des dauphins, un phare, un éléphant pour un marchand africain."
       },
@@ -638,8 +650,12 @@
         "texte": "Dans une petite rue, cherche le thermopolium, un bar romain vieux de presque deux mille ans. Il a encore son comptoir en marbre, ses étagères pour poser les plats et une peinture de fruits sur le mur. Les Romains venaient y manger sur le pouce, boire du vin coupé d'eau et discuter. Imagine le bruit, les odeurs de cuisine et les clients pressés à l'heure du déjeuner."
       },
       {
+        "titre": "La blanchisserie romaine",
+        "texte": "Dans la via degli Augustali, cherche la fullonica, l'atelier où les Romains lavaient, foulaient et teignaient les tissus. Tu peux encore voir ses grandes cuves. Plusieurs guides la citent comme une étape amusante avec les enfants, comme les toilettes et la boulangerie de Silvano."
+      },
+      {
         "titre": "Le défi d'Ostie",
-        "texte": "Sur la place des Corporations, trouve la mosaïque avec un éléphant, puis celle avec un phare et un bateau. Au théâtre, monte en haut des gradins et demande à quelqu'un de parler sur la scène : entends-tu bien ? Cherche les toilettes collectives et compte les sièges. Dans les thermes de Neptune, trouve le dieu de la mer et ses chevaux à queue de poisson."
+        "texte": "Sur la place des Corporations, trouve la mosaïque avec un éléphant, puis celle avec un phare et un bateau. Au théâtre, monte en haut des gradins et demande à quelqu'un de parler sur la scène : entends-tu bien ? Cherche les toilettes collectives et compte les sièges. Dans les thermes de Neptune, trouve le dieu de la mer et ses chevaux à queue de poisson. Dans la via degli Augustali, retrouve les grandes cuves de la fullonica."
       },
       {
         "titre": "Le quiz",
@@ -655,7 +671,7 @@
       },
       {
         "titre": "Le Bernin, sculpteur prodige",
-        "texte": "Le cardinal repère très tôt le talent du jeune Gian Lorenzo Bernini, le Bernin, et lui commande plusieurs groupes de marbre, réalisés alors qu'il a une vingtaine d'années. L'Enlèvement de Proserpine montre le dieu des Enfers emportant la jeune femme. Ses doigts s'enfoncent dans la cuisse de Proserpine comme dans de la chair véritable. On a du mal à croire que c'est du marbre. Le David, lui, se tord pour lancer sa pierre, les lèvres serrées par l'effort."
+        "texte": "Le cardinal repère très tôt le talent du jeune Gian Lorenzo Bernini, le Bernin, et lui commande plusieurs groupes de marbre, réalisés alors qu'il a une vingtaine d'années. L'Enlèvement de Proserpine montre le dieu des Enfers emportant la jeune femme. Ses doigts s'enfoncent dans la cuisse de Proserpine comme dans de la chair véritable. On a du mal à croire que c'est du marbre. Le David, lui, se tord pour lancer sa pierre, les lèvres serrées par l'effort. Selon la tradition, il porte les traits du Bernin lui-même. Le biographe Baldinucci raconte que le cardinal Maffeo Barberini, futur pape Urbain VIII, tenait le miroir pendant que le sculpteur travaillait : d'où cette expression crispée."
       },
       {
         "titre": "Apollon et Daphné",
@@ -692,8 +708,12 @@
         "texte": "Le peintre Caravage aimait se représenter dans ses tableaux. Dans l'un d'eux, le jeune David tient la tête coupée du géant Goliath. Et devine quoi ? Le visage de Goliath, c'est celui du Caravage lui-même ! Il l'a peint à la fin de sa vie, quand il avait des ennuis et demandait pardon au pape. Cherche aussi le garçon avec un panier de fruits, si bien peints qu'on voudrait les croquer."
       },
       {
+        "titre": "Deux autoportraits",
+        "texte": "Le Caravage n'est pas le seul à s'être caché dans une œuvre. Regarde le David du Bernin, qui se tord pour lancer sa pierre, les lèvres serrées. Selon la tradition, c'est le visage du Bernin lui-même ! On raconte qu'un cardinal, le futur pape Urbain VIII, tenait un miroir pour que le sculpteur puisse se regarder pendant qu'il travaillait. Voilà pourquoi David a cette expression si concentrée."
+      },
+      {
         "titre": "Le défi Borghèse",
-        "texte": "Tourne lentement autour d'Apollon et Daphné et trouve les feuilles, l'écorce et les racines. Dans l'Enlèvement de Proserpine, cherche les larmes sur le visage de la jeune femme et le chien à trois têtes. Trouve la pomme dans la main de Pauline. Dans les tableaux du Caravage, cherche le panier de fruits et compte les fruits que tu reconnais."
+        "texte": "Tourne lentement autour d'Apollon et Daphné et trouve les feuilles, l'écorce et les racines. Dans l'Enlèvement de Proserpine, cherche les larmes sur le visage de la jeune femme et le chien à trois têtes. Trouve la pomme dans la main de Pauline. Dans les tableaux du Caravage, cherche le panier de fruits et compte les fruits que tu reconnais. Enfin, trouve les deux autoportraits de la galerie : le visage du David du Bernin et celui du Goliath du Caravage."
       },
       {
         "titre": "Le quiz",
@@ -776,6 +796,10 @@
       {
         "titre": "Judith et Holopherne",
         "texte": "Le tableau le plus saisissant est sans doute Judith et Holopherne, du Caravage. La jeune héroïne biblique tranche la tête du général ennemi, qui assiégeait sa ville, avec une expression de dégoût et de détermination. À côté d'elle, une vieille servante attend, un sac à la main. Le sang jaillit, le cri d'Holopherne est figé. C'est une scène violente, à réserver aux plus grands. La galerie présente aussi le célèbre portrait d'Henri VIII par Holbein. Dans une salle voisine, le Narcisse, attribué au Caravage, montre un jeune homme penché sur son reflet."
+      },
+      {
+        "titre": "Le portrait de Béatrice Cenci",
+        "texte": "Un autre portrait a fasciné des générations de visiteurs : celui d'une jeune femme en blanc, la tête voilée, tournée vers le spectateur. Selon la tradition, il représente Béatrice Cenci, décapitée à Rome en 1599 pour le meurtre de son père violent. Shelley, Stendhal, Dickens, Hawthorne ou Melville venaient le voir à Rome. Il a longtemps été attribué à Guido Reni. Aujourd'hui, on l'attribue avec prudence à Ginevra Cantofoli, et l'identité du modèle reste discutée."
       },
       {
         "titre": "La place Barberini",
@@ -878,6 +902,10 @@
         "texte": "La plus impressionnante est la salle des machines, dominée par deux énormes moteurs diesel de plusieurs mètres de haut. Devant eux s'alignent des statues de dieux, de muses et de personnages célèbres. On y voit une Vénus, une Athéna, des portraits d'empereurs et des sculptures qui décoraient les jardins des riches Romains. Le fronton sculpté d'un temple d'Apollon, montrant un combat de Grecs contre les Amazones, a été reconstitué à côté."
       },
       {
+        "titre": "Le train du pape Pie IX",
+        "texte": "L'ancienne salle des chaudières numéro 2 abrite, depuis novembre 2016, trois voitures de chemin de fer construites en France en 1858 pour Pie IX. On y voit un balcon pour les bénédictions, une voiture avec un trône et des appartements, et une chapelle. Le premier voyage a eu lieu en 1859, de Porta Maggiore à Albano."
+      },
+      {
         "titre": "Mosaïques et vie romaine",
         "texte": "Dans la salle des chaudières, une grande mosaïque montre une scène de chasse dans un décor de campagne. D'autres salles présentent des portraits de la fin de la République, des sarcophages et des objets de la vie quotidienne. On découvre aussi des statues et des objets retrouvés dans les grands jardins de l'élite, les horti, qui entouraient Rome. Les panneaux expliquent aussi le fonctionnement de la centrale, ce qui plaît aux esprits curieux. On y voit une grande statue assise de déesse et des têtes de portraits d'une étonnante précision."
       },
@@ -904,12 +932,20 @@
         "texte": "Dans la grande salle, deux moteurs sont presque aussi hauts qu'une maison. Ils ont d'énormes roues, qu'on appelle des volants, et des dizaines de cadrans. Devant eux, des statues de déesses, d'athlètes et d'empereurs sont alignées comme pour une photo de classe. Compare la taille d'une statue à celle d'un moteur : qui gagne ? Les ouvriers devaient grimper sur des passerelles pour les entretenir."
       },
       {
+        "titre": "Le train du pape",
+        "texte": "Dans une ancienne salle des chaudières, il y a un vrai train de pape ! Ses trois voitures ont été construites en France en 1858 pour le pape Pie IX. Il y a un balcon pour donner des bénédictions, une voiture avec un trône et des appartements, et même une chapelle."
+      },
+      {
         "titre": "Les femmes guerrières",
         "texte": "Dans une salle, des statues racontent une grande bataille entre des Grecs et les Amazones. Les Amazones étaient des guerrières légendaires, très courageuses, qui combattaient à cheval avec des arcs et des haches. Ces sculptures décoraient autrefois le haut d'un temple dédié au dieu Apollon, à Rome. Cherche une Amazone à cheval et un guerrier avec un bouclier."
       },
       {
+        "titre": "La poupée de Crepereia",
+        "texte": "Dans la salle des colonnes, cherche une poupée d'ivoire dont les bras et les jambes bougent ! Elle faisait partie des affaires d'une jeune Romaine, Crepereia Tryphaena, qui a vécu au milieu du deuxième siècle. On les a découvertes en 1889 dans un sarcophage intact, avec des bijoux en or et un fuseau en ambre."
+      },
+      {
         "titre": "Le défi de la centrale",
-        "texte": "Cherche une statue cachée derrière une machine. Trouve la grande roue d'un moteur et compte ses rayons. Cherche une déesse avec un casque sur la tête : c'est Athéna, la déesse de la sagesse. Dans la salle des chaudières, trouve des animaux dans la grande mosaïque de chasse. Enfin, cherche un cadran avec une aiguille."
+        "texte": "Cherche une statue cachée derrière une machine. Trouve le train du pape et compte ses voitures. Trouve la grande roue d'un moteur et compte ses rayons. Cherche une déesse avec un casque sur la tête : c'est Athéna, la déesse de la sagesse. Dans la salle des chaudières, trouve des animaux dans la grande mosaïque de chasse. Enfin, cherche un cadran avec une aiguille."
       },
       {
         "titre": "Le quiz",
@@ -1206,6 +1242,10 @@
         "texte": "Quelques trésors ont survécu à l'incendie. La grande mosaïque de l'abside, du treizième siècle, montre le Christ entouré d'apôtres, sur un fond d'or. Au-dessus de l'autel, le baldaquin gothique d'Arnolfo di Cambio date de la fin du treizième siècle. Le grand candélabre pascal, haut de près de six mètres, est sculpté de scènes de la Passion et d'animaux fantastiques. Sous l'autel, on peut apercevoir le sarcophage attribué à l'apôtre Paul. La porte sainte, ouverte pendant les années jubilaires, est décorée de reliefs de bronze."
       },
       {
+        "titre": "L'arc triomphal",
+        "texte": "Au-dessus de la nef, la grande mosaïque de l'arc triomphal est plus ancienne encore que celle de l'abside. Elle date du cinquième siècle, de l'époque du pape Léon Ier, et elle a été financée par Galla Placidia. Elle a été remaniée depuis. Le Christ occupe le centre, avec les symboles des évangélistes. Autour de lui, on voit les vingt-quatre vieillards de l'Apocalypse, et Pierre et Paul se tiennent en dessous."
+      },
+      {
         "titre": "Le cloître",
         "texte": "Le cloître, épargné par les flammes, est l'un des plus beaux de Rome. Construit au début du treizième siècle, en partie par la famille de marbriers Vassalletto, il est entouré de petites colonnes de formes variées, droites, torsadées ou en spirale. Elles sont incrustées de mosaïques de marbre coloré et doré. Au centre, un jardin de roses et de palmiers invite au calme. Le cloître abrite aussi des fragments de sarcophages et d'inscriptions anciennes."
       },
@@ -1264,6 +1304,10 @@
         "texte": "Près de Sainte-Marie-Majeure, la petite église Santa Prassede cache l'un des trésors les plus éblouissants de Rome. Construite au neuvième siècle par le pape Pascal Ier, elle est ornée de mosaïques à fond d'or de la même époque. La chapelle Saint-Zénon, que les Romains appelaient le jardin du paradis, est entièrement couverte d'or, de saints et d'anges. On y conserve aussi une colonne qui serait celle de la flagellation du Christ, rapportée de Jérusalem."
       },
       {
+        "titre": "Santa Pudenziana, une abside très ancienne",
+        "texte": "Sur la via Urbana, l'église Santa Pudenziana, fondée vers 390 sur d'anciens thermes, se trouve tout près de Santa Prassede. Elle conserve dans son abside une mosaïque d'environ 390. Le Christ y trône, entouré des apôtres vêtus en sénateurs romains, avec les quatre Vivants de l'Apocalypse. C'est la plus ancienne mosaïque d'abside chrétienne de Rome conservée en dehors de Santa Costanza, même si les restaurations ont modifié l'œuvre au fil des siècles."
+      },
+      {
         "titre": "Une promenade sans itinéraire",
         "texte": "Monti se découvre sans plan précis, en se laissant porter par les ruelles en pente, les escaliers et les petites places. Le quartier est idéal pour déjeuner ou dîner après la visite du Colisée ou du Forum, tout proches. Le week-end, un marché de créateurs se tient souvent dans un hôtel de la via Cavour. La station de métro Cavour se trouve au cœur du quartier. Le soir, l'ambiance est animée mais reste familiale."
       }
@@ -1284,6 +1328,10 @@
       {
         "titre": "Le jardin du paradis",
         "texte": "Dans une petite église du quartier, Santa Prassede, se cache une chapelle toute couverte d'or. Les murs et le plafond sont décorés de milliers de petits morceaux de verre doré, avec des anges et des saints. Les Romains l'appelaient le jardin du paradis. Il faut glisser une pièce pour allumer la lumière, et alors tout se met à briller. Elle a plus de mille ans."
+      },
+      {
+        "titre": "Une pause au parc du Colle Oppio",
+        "texte": "Si tu as besoin de souffler, un grand parc de onze hectares t'attend à dix minutes de la via Cavour : le Colle Oppio. Tu y trouveras des aires de jeux, des ruines des thermes de Trajan et de Titus, et des terrasses avec vue sur le Colisée. Sous la pelouse se cache même la Domus Aurea, l'ancien palais de Néron. C'est une bonne pause entre deux visites, mais vas-y en journée, avec ta famille."
       },
       {
         "titre": "Le défi de Monti",
@@ -1314,6 +1362,10 @@
         "texte": "Le marché de Testaccio, installé depuis 2012 dans un bâtiment moderne et lumineux, est l'un des plus appréciés de Rome. Les habitants y font leurs courses auprès des maraîchers, des bouchers, des fromagers et des poissonniers. Plusieurs stands proposent aussi à manger sur place : sandwiches garnis de spécialités romaines, supplì, pizza, pâtes fraîches. Pendant les travaux, on a découvert des vestiges antiques et des amphores, visibles sous des dalles de verre."
       },
       {
+        "titre": "La fontaine des Amphores",
+        "texte": "Au centre de la place Testaccio, la fontaine des Amphores rend hommage à la colline voisine. Œuvre de Pietro Lombardi, inaugurée en 1927, elle est en travertin : un bouquet d'amphores se dresse au milieu de quatre bassins disposés en croix. Elle a été remise à sa place d'origine après le déménagement du marché."
+      },
+      {
         "titre": "Le berceau de la cuisine romaine",
         "texte": "À Testaccio se trouvaient autrefois les grands abattoirs de Rome, le Mattatoio, aujourd'hui transformés en centre culturel. Les ouvriers étaient en partie payés avec les abats, qu'on appelait le cinquième quartier. Les cuisinières du quartier en ont tiré des recettes devenues des classiques : la queue de bœuf à la vaccinara, les tripes à la romaine, les rigatoni à la pajata. Les trattorias du quartier perpétuent cette cuisine généreuse, qu'on peut goûter sans craindre le piège à touristes."
       },
@@ -1336,12 +1388,16 @@
         "texte": "Dans le quartier, un grand marché couvert rassemble des dizaines de stands. Les Romains y achètent leurs fruits, leurs légumes, leur viande, leur poisson et leurs fromages. Certains stands vendent aussi des sandwiches délicieux, des supplì, ces boulettes de riz frites au cœur de fromage fondu, et des pizzas. Tu peux goûter plein de choses nouvelles. Et regarde bien par terre : sous des vitres, on voit des amphores anciennes !"
       },
       {
+        "titre": "La fontaine aux amphores",
+        "texte": "Sur la place du quartier, cherche une fontaine de pierre avec un bouquet d'amphores dressé au milieu de quatre bassins en croix. Elle a été inaugurée en 1927, en hommage à la colline des pots cassés. Elle est gratuite et facile à trouver."
+      },
+      {
         "titre": "Le quartier du foot",
         "texte": "Testaccio est le quartier de l'AS Roma, l'une des deux grandes équipes de football de la ville. Son premier stade y a été construit il y a presque cent ans. Ses couleurs sont le rouge et le jaune, et son symbole est la louve avec les jumeaux. Tu verras peut-être des drapeaux ou des écharpes aux fenêtres. L'autre équipe de Rome, la Lazio, est en bleu ciel. Les deux sont de grandes rivales."
       },
       {
         "titre": "Le défi de Testaccio",
-        "texte": "Au marché, trouve les amphores sous les vitres du sol. Cherche un stand de fromages et demande le nom d'un fromage romain : le pecorino. Goûte un supplì et vérifie si le fromage fait un long fil quand tu mords. Autour de la colline, cherche des morceaux de terre cuite dans les murs. Enfin, repère un drapeau rouge et jaune."
+        "texte": "Au marché, trouve les amphores sous les vitres du sol. Cherche un stand de fromages et demande le nom d'un fromage romain : le pecorino. Goûte un supplì et vérifie si le fromage fait un long fil quand tu mords. Sur la place, trouve la fontaine des Amphores et compte ses bassins. Autour de la colline, cherche des morceaux de terre cuite dans les murs. Enfin, repère un drapeau rouge et jaune."
       },
       {
         "titre": "Le quiz",
@@ -1411,7 +1467,7 @@
       },
       {
         "titre": "Le Triomphe de Galatée",
-        "texte": "Dans une salle du rez-de-chaussée, Raphaël a peint vers 1512 le Triomphe de Galatée. La nymphe marine, vêtue de rouge, file sur les vagues dans un char en forme de coquillage tiré par deux dauphins. Autour d'elle, des tritons et des néréides s'amusent, tandis que des amours décochent leurs flèches depuis le ciel. Le mouvement, la grâce et la lumière de cette fresque en font l'une des œuvres les plus célèbres de la Renaissance. Le plafond montre les constellations."
+        "texte": "Dans une salle du rez-de-chaussée, Raphaël a peint vers 1512 le Triomphe de Galatée. La nymphe marine, vêtue de rouge, file sur les vagues dans un char en forme de coquillage tiré par deux dauphins. Autour d'elle, des tritons et des néréides s'amusent, tandis que des amours décochent leurs flèches depuis le ciel. Le mouvement, la grâce et la lumière de cette fresque en font l'une des œuvres les plus célèbres de la Renaissance. Le plafond montre les constellations. Dans la même salle, Sebastiano del Piombo a peint vers 1512 le cyclope Polyphème, l'amoureux éconduit de la nymphe. Cette figure imposante et mélancolique est assise sur un rocher. Elle a été rhabillée d'un petit vêtement bleu après coup."
       },
       {
         "titre": "La loggia de Psyché",
@@ -1441,7 +1497,7 @@
       },
       {
         "titre": "La nymphe et les dauphins",
-        "texte": "Dans une salle, cherche une jeune femme en robe rouge qui glisse sur la mer, debout sur un coquillage tiré par deux dauphins. C'est Galatée, une nymphe de la mer, peinte par Raphaël. Autour d'elle, des créatures mi-hommes mi-poissons soufflent dans des coquillages, et des petits amours volent dans le ciel avec leurs arcs. On dirait qu'on entend les vagues."
+        "texte": "Dans une salle, cherche une jeune femme en robe rouge qui glisse sur la mer, debout sur un coquillage tiré par deux dauphins. C'est Galatée, une nymphe de la mer, peinte par Raphaël. Autour d'elle, des créatures mi-hommes mi-poissons soufflent dans des coquillages, et des petits amours volent dans le ciel avec leurs arcs. On dirait qu'on entend les vagues. Dans la même salle, un autre peintre, Sebastiano del Piombo, a peint un géant à un seul œil, le cyclope Polyphème. Il est assis sur un rocher, il a l'air triste, car il est amoureux de Galatée et elle ne veut pas de lui. Cherche le géant qui regarde la nymphe filer sur les vagues. Il porte un petit vêtement bleu, ajouté après coup."
       },
       {
         "titre": "Les graffitis des soldats",
@@ -1449,7 +1505,7 @@
       },
       {
         "titre": "Le défi de la Farnesina",
-        "texte": "Trouve Galatée et ses dauphins. Au plafond de la même salle, cherche des signes du zodiaque. Dans la grande loggia, cherche dans les guirlandes des fruits et des légumes que tu connais : un épi de maïs, une citrouille, du raisin. À l'étage, place-toi au milieu de la salle des perspectives et regarde les fausses colonnes. Trouve un graffiti de soldat."
+        "texte": "Trouve Galatée et ses dauphins, puis le cyclope Polyphème sur son rocher. Au plafond de la même salle, cherche des signes du zodiaque. Dans la grande loggia, cherche dans les guirlandes des fruits et des légumes que tu connais : un épi de maïs, une citrouille, du raisin. À l'étage, place-toi au milieu de la salle des perspectives et regarde les fausses colonnes. Trouve un graffiti de soldat."
       },
       {
         "titre": "Le quiz",
@@ -1562,6 +1618,222 @@
       {
         "titre": "Le quiz",
         "texte": "Qu'est-ce que les Romains ont appris des Étrusques ? Réponse : beaucoup de choses ! Selon la tradition, les derniers rois de Rome étaient étrusques. Les Romains leur ont emprunté l'art de deviner l'avenir en observant le vol des oiseaux, certains jeux, et même des vêtements et des symboles du pouvoir. Sans les Étrusques, Rome n'aurait pas été tout à fait la même."
+      }
+    ]
+  },
+  "palais-spada": {
+    "adultes": [
+      {
+        "titre": "Un palais de cardinaux",
+        "texte": "Le palais Spada est construit vers 1540 pour le cardinal Girolamo Capodiferro, dans le quartier de Regola, tout près de la place Farnese. Le cardinal veut une demeure qui impressionne. En 1632, un autre cardinal, Bernardino Spada, l'achète. Il aime les arts comme les sciences, et il y rassemble sa collection de tableaux. Le palais garde son nom jusqu'à aujourd'hui. L'État italien le rachète en 1926. Il abrite désormais le Conseil d'État, qui juge les litiges de l'administration, et la Galleria Spada, ouverte au public en 1927."
+      },
+      {
+        "titre": "Une façade couverte de stucs",
+        "texte": "La façade est un exemple du style maniériste, une mode du seizième siècle qui adore l'ornement. Le stuc est un plâtre fin et dur, modelé à la main. Ici, il couvre presque tout : guirlandes de fleurs et de fruits, masques, figures dans des niches. Huit grands personnages de l'histoire romaine se tiennent entre les fenêtres, dont Romulus, César, Auguste et Trajan. Sous chacun, un relief raconte ses exploits. Ce décor est l'œuvre de l'équipe de Giulio Mazzoni. La cour intérieure est ornée dans le même esprit."
+      },
+      {
+        "titre": "La galerie de Borromini",
+        "texte": "Au fond du jardin secret se cache la merveille du palais. Le cardinal Spada demande à Francesco Borromini, le grand architecte du baroque, une galerie à colonnes. Elle est construite en 1652 et 1653, avec l'aide d'un moine mathématicien, le père Giovanni Maria da Bitonto. Depuis l'entrée, elle semble longue de plus de trente mètres. En réalité, elle en mesure environ huit. Au bout, une statue d'homme en armes paraît grandeur nature. Elle ne mesure qu'environ soixante centimètres."
+      },
+      {
+        "titre": "Le secret de l'illusion",
+        "texte": "Borromini triche à chaque pas. Les colonnes rapetissent de la première à la dernière : de presque six mètres de haut, elles passent à un peu plus de deux mètres. Le sol monte doucement. Le plafond descend. Les murs se resserrent. Tout converge vers un seul point, et l'œil croit à une grande profondeur. On dit que le cardinal voulait aussi montrer que nos sens peuvent nous tromper. C'est pour cela qu'il faut regarder depuis l'entrée."
+      },
+      {
+        "titre": "La Galleria Spada",
+        "texte": "Le palais abrite la collection du cardinal Bernardino Spada, présentée dans quatre salles, avec des tableaux accrochés serrés, comme au dix-septième siècle. On y voit son portrait par Guido Reni et un autre par le Guerchin, ainsi que la Mort de Didon du Guerchin, vers 1631. Le Portrait d'un violoniste, attribué à Titien, date d'environ 1515. Les Gentileschi sont à l'honneur : la Vierge à l'Enfant d'Artemisia, le David d'Orazio, son père. La salle des caravagesques montre l'influence du Caravage."
+      },
+      {
+        "titre": "Petites histoires du palais",
+        "texte": "Une statue colossale de Pompée a été trouvée en 1552, près de la Chancellerie. Pendant longtemps, on a cru que c'était celle au pied de laquelle César est tombé, assassiné en 44 avant notre ère. C'est une légende. Autre surprise : à l'origine, la galerie de Borromini se terminait par un mur peint qui figurait une forêt épaisse. La petite statue n'a été ajoutée qu'au milieu du dix-neuvième siècle, par le prince Clemente Spada."
+      }
+    ],
+    "enfants": [
+      {
+        "titre": "Huit mètres qui en font trente",
+        "texte": "Huit mètres de long. C'est tout ! Pourtant, quand tu regardes ce couloir à colonnes depuis l'entrée, tu jurerais qu'il en fait plus de trente. Au fond, un guerrier de pierre semble grandeur nature. Bienvenue dans le plus beau piège à yeux de Rome. Il a été inventé vers 1652 par un architecte génial, Francesco Borromini, pour un cardinal qui adorait les mathématiques et les tours de magie."
+      },
+      {
+        "titre": "Les astuces du maître",
+        "texte": "Le savais-tu ? Borromini a triché de quatre façons. Les colonnes rapetissent : la première est haute comme deux étages, la dernière comme le plafond d'une chambre. Le sol monte, le plafond descend et les murs se rapprochent. Ton cerveau croit que tout est très loin. Il a même fallu l'aide d'un moine mathématicien pour faire les calculs !"
+      },
+      {
+        "titre": "Un géant de soixante centimètres",
+        "texte": "Le guerrier du fond paraît aussi grand qu'un adulte. Mais c'est un petit bonhomme d'environ soixante centimètres, à peu près la taille d'un bébé de six mois ! À l'époque de Borromini, il n'y avait pas de statue : la galerie se terminait par un mur peint en forêt. La statue a été ajoutée bien plus tard, au milieu du dix-neuvième siècle."
+      },
+      {
+        "titre": "Un palais tout en stuc",
+        "texte": "Avant d'entrer, regarde la façade. Elle est couverte de fleurs, de fruits, de masques et de statues dans des niches. Tout est fait en stuc, une sorte de plâtre très fin qu'on modèle avec les mains. Les huit statues sont de grands Romains, comme Romulus, le fondateur de la ville, ou Jules César. Ce palais a plus de quatre cent quatre-vingts ans."
+      },
+      {
+        "titre": "Défi sur place",
+        "texte": "Dans le jardin secret, place-toi à l'entrée de la galerie et regarde la statue. Devine sa taille avec ton pouce, puis compare avec un adulte. Compte les colonnes d'un côté, puis dis si le couloir te paraît vraiment si court. Regarde bien le sol, et dis s'il te semble monter. Dehors, sur la façade, compte les statues dans les niches."
+      },
+      {
+        "titre": "Le quiz",
+        "texte": "Comment Borromini fait-il paraître sa galerie plus longue ? Réponse : il fait rétrécir les colonnes, monter le sol, descendre le plafond et se rapprocher les murs vers le fond. Ton œil croit que tout est très loin, alors que la galerie ne mesure que huit mètres. Et il y a huit statues de Romains sur la façade, pour ceux qui ont bien compté !"
+      }
+    ]
+  },
+  "quartier-coppede": {
+    "adultes": [
+      {
+        "titre": "Un quartier sorti d'un conte",
+        "texte": "Le quartier Coppedè est un petit ensemble d'immeubles et de villas dans le quartier Trieste, au nord du centre de Rome. Il est construit entre 1915 et 1927 et porte le nom de son architecte, Gino Coppedè, né à Florence en 1866. Il mélange sans complexe le style Liberté, l'Art déco, le gothique, le médiéval et des souvenirs de l'Antiquité grecque et romaine. On compte environ quarante bâtiments, autour de la place Mincio. Gino Coppedè meurt en 1927 avant la fin du chantier, et son gendre, Paolo Emilio André, termine l'ensemble."
+      },
+      {
+        "titre": "L'arc et le grand lustre",
+        "texte": "On entre dans le quartier en passant sous un grand arc qui relie deux bâtiments appelés palais des Ambassadeurs. L'arc est couvert de décors : des masques de pierre, des jeunes hommes sculptés et des fresques de chevaliers médiévaux. Au centre est suspendu un grand lustre en fer forgé, qui reste accroché en pleine rue. Sur l'arc, on distingue aussi une coupe, que l'on rapproche du Graal. Les palais des Ambassadeurs sont achevés vers 1921. Ils donnent le ton : ici, chaque détail cherche à surprendre."
+      },
+      {
+        "titre": "La fontaine des Grenouilles",
+        "texte": "Au centre de la place Mincio, la fontaine des Grenouilles est inaugurée en 1924. Elle est ornée de douze grenouilles, réparties sur ses bassins, qui font jaillir de l'eau. On dit qu'elle s'inspire de la fontaine des Tortues, à Rome, œuvre de l'époque baroque. En 2020, elle a été nettoyée à fond. Le calcaire déposé par l'eau formait par endroits une couche épaisse de dix-sept centimètres."
+      },
+      {
+        "titre": "Les Beatles dans la fontaine",
+        "texte": "La fontaine est célèbre pour une histoire de juin 1965. Les Beatles ont bien joué à Rome à cette date, au théâtre Adriano. Selon la légende, après un concert, par une nuit très chaude, ils auraient sauté tout habillés dans la fontaine. Les récits varient sur les détails, notamment sur le club où ils seraient passés avant. On ne connaît aucune photo de cet épisode. Un journaliste italien, Gianni Minà, aurait accompagné le groupe cette nuit-là. Il vaut mieux présenter l'anecdote comme une belle légende que comme un fait prouvé."
+      },
+      {
+        "titre": "Le villino des Fées",
+        "texte": "Le villino des Fées est l'ensemble le plus célèbre du quartier. Il forme trois maisons asymétriques, aux formes très différentes. Elles rendent hommage à trois villes. Côté via Aterno, Florence apparaît avec les poètes Dante et Pétrarque et l'inscription Fiorenza Bella, devant la cathédrale. Côté via Brenta, Venise est représentée par le lion de Saint-Marc. Sur la troisième maison, Rome est symbolisée par la louve qui allaite Romulus et Remus. Marbre, travertin, brique, verre et céramique colorée se mélangent sur les façades."
+      },
+      {
+        "titre": "L'araignée et le cinéma",
+        "texte": "Le palais de l'Araignée s'inspire de l'art assyrien et babylonien. Sa façade porte des dragons, des monstres, un chevalier, le mot Labor et une grande araignée au-dessus de l'entrée. Cette ambiance étrange a séduit le cinéma. Le réalisateur Dario Argento a tourné ici deux films d'horreur, Inferno et L'oiseau au plumage de cristal. Le quartier apparaît aussi dans House of Gucci, sorti en 2021. La place Mincio se traverse en quelques minutes, mais on y passe facilement une heure."
+      }
+    ],
+    "enfants": [
+      {
+        "titre": "Un lustre dans la rue",
+        "texte": "Passe sous la grande arche et lève la tête : un énorme lustre en fer est suspendu au-dessus de toi, comme dans un château, mais en pleine rue ! Autour, des visages de pierre, des chevaliers peints et des balcons de conte. Tu es dans le quartier Coppedè, construit il y a environ cent ans par l'architecte Gino Coppedè. Il a mélangé château fort, palais oriental et maison de fées, juste pour le plaisir."
+      },
+      {
+        "titre": "Douze grenouilles crachent de l'eau",
+        "texte": "Sur la place Mincio, la fontaine est pleine de grenouilles. Il y en a douze en tout, et elles font jaillir de l'eau. Le savais-tu ? En 2020, on a nettoyé la fontaine. Le calcaire déposé par l'eau formait par endroits une croûte épaisse de dix-sept centimètres, presque aussi longue que ta main. Après ce nettoyage, les grenouilles brillent de nouveau."
+      },
+      {
+        "titre": "Les Beatles ont-ils plongé ?",
+        "texte": "Voici une histoire que les Romains adorent. En juin 1965, les Beatles jouent à Rome, et une nuit très chaude, ils auraient sauté dans la fontaine avec leurs vêtements. Mais personne n'a de photo, et les récits ne racontent pas tous la même chose. C'est donc une légende, pas une preuve. À toi de décider si tu y crois."
+      },
+      {
+        "titre": "Le villino des Fées",
+        "texte": "Ce groupe de trois maisons ressemble à une illustration de livre. Aucune façade n'est symétrique, et chacune rend hommage à une ville. Florence a ses poètes et sa cathédrale, Venise a son lion de Saint-Marc, et Rome a la louve qui a nourri Romulus et Remus. Plus loin, le palais de l'Araignée porte une grande araignée au-dessus de la porte, comme dans un film d'aventure."
+      },
+      {
+        "titre": "Défi sur place",
+        "texte": "Compte les douze grenouilles de la fontaine, sans en oublier une. Trouve ensuite le lustre sous l'arche, puis repère le lion de Venise et la louve de Rome sur les maisons des Fées. Enfin, cherche l'araignée au-dessus d'une porte, et le mot Labor écrit sur la même façade. Bravo si tu les trouves toutes !"
+      },
+      {
+        "titre": "Le quiz",
+        "texte": "Qui a construit ce quartier de conte ? Réponse : un architecte de Florence, Gino Coppedè, entre 1915 et 1927. Il est mort avant la fin, et son gendre a terminé le travail. Il a mélangé plusieurs styles, gothique, médiéval, Art déco, comme un jeu de construction géant."
+      }
+    ]
+  },
+  "santa-maria-della-vittoria": {
+    "adultes": [
+      {
+        "titre": "Une église de carmes",
+        "texte": "Les carmes déchaux, des religieux qui suivent la réforme de sainte Thérèse d'Avila, achètent ce terrain en 1607. Ils y construisent d'abord une petite chapelle dédiée à saint Paul. Le chantier, dirigé par Carlo Maderno, dure de 1608 à 1620. La façade en travertin est achevée en 1626 sous la direction de Giovanni Battista Soria. Elle est payée par le cardinal Scipione Borghese, neveu du pape. En échange, il reçoit une célèbre statue antique, l'Hermaphrodite endormi, découverte en 1608 pendant les fouilles."
+      },
+      {
+        "titre": "L'origine du nom",
+        "texte": "Le nom de l'église vient d'une bataille. Le 8 novembre 1620, près de Prague, l'armée catholique bat les troupes protestantes de Bohême à la Montagne Blanche. Le père carme Domenico di Gesù Maria accompagne l'armée avec une image de la Vierge adorant l'Enfant. Selon la tradition, cette image aurait décidé de la victoire. L'église est alors rebaptisée Sainte-Marie de la Victoire. Le pape Grégoire quinze canonise aussi Thérèse d'Avila en 1622. Plus tard, des étendards turcs pris à Vienne en 1683 y ont été exposés."
+      },
+      {
+        "titre": "Un intérieur baroque",
+        "texte": "L'intérieur est une seule grande nef, avec trois chapelles de chaque côté. Les pilastres de marbre ont des chapiteaux dorés. Partout, des stucs blancs et or, des anges et des angelots donnent une impression de fête. Les fresques de la voûte, peintes par Giovanni Domenico Cerrini vers 1675, montrent la Vierge qui triomphe de l'hérésie. Deux tableaux du Guerchin et du Dominiquin se cachent dans les chapelles. Mais tout le monde vient ici pour une seule chapelle."
+      },
+      {
+        "titre": "La chapelle Cornaro",
+        "texte": "Le cardinal vénitien Federico Cornaro, qui vit de 1579 à 1653, veut y préparer sa tombe et honorer sa famille. Celle-ci compte alors sept cardinaux et un doge, le chef de Venise. Il confie le projet à Gian Lorenzo Bernini, le Bernin, entre 1647 et 1652. Le sculpteur transforme la chapelle en petit théâtre. Sur les côtés, huit membres de la famille, sculptés dans des loges, regardent la scène et discutent entre eux. Un seul était encore vivant à l'époque."
+      },
+      {
+        "titre": "L'Extase de sainte Thérèse",
+        "texte": "Au centre, Thérèse d'Avila est allongée sur un nuage de marbre. Un ange sourit et tient une flèche d'or. Bernini illustre le récit de la sainte, qui raconte une vision. Elle décrit une douleur si douce qu'elle ne voudrait pas en être délivrée, tant elle est remplie de l'amour de Dieu. Au dix-huitième siècle, le président de Brosses a trouvé cette scène bien terrestre, mais Bernini montre avant tout une expérience de prière. Le groupe mesure environ trois mètres cinquante, en marbre blanc, avec des rayons en bronze doré."
+      },
+      {
+        "titre": "Lumière cachée et squelettes",
+        "texte": "Le secret de la chapelle est la lumière. Une fenêtre cachée, au-dessus de la scène, laisse entrer le jour. Il tombe sur les rayons dorés et donne l'impression d'une clarté venue du ciel. Le peintre Guidobaldo Abbatini a peint sur la voûte des nuages et des anges qui prolongent la scène. Au sol, des squelettes en marbre rappellent que la vie est courte. Les colonnes semblent écartées, comme poussées par la force de la vision."
+      }
+    ],
+    "enfants": [
+      {
+        "titre": "Un théâtre de marbre",
+        "texte": "Approche-toi de la petite chapelle de gauche : la scène te saute aux yeux, comme si le rideau venait de s'ouvrir. Un nuage de marbre, un ange, une sainte, et des rayons dorés qui brillent au-dessus. Le sculpteur Bernini, appelé le Bernin en français, a construit un vrai spectacle de lumière et de pierre. Il a fini son travail en 1652, il y a plus de trois cent soixante-dix ans."
+      },
+      {
+        "titre": "Qui est la dame du nuage ?",
+        "texte": "Elle s'appelle Thérèse d'Avila. C'était une religieuse espagnole qui a écrit ses souvenirs. Elle raconte qu'un jour, un ange lui est apparu avec une flèche d'or. Ce n'était pas pour lui faire du mal : elle s'est sentie remplie d'un bonheur immense. Le Bernin a sculpté ce moment de prière profonde, où Thérèse est comme emportée loin du monde. Son visage est paisible, et ses vêtements de marbre semblent agités par le vent."
+      },
+      {
+        "titre": "La lumière cachée",
+        "texte": "Le savais-tu ? Les rayons dorés sont en bronze, et la lumière du jour tombe dessus. Elle vient d'une fenêtre que le Bernin a cachée au-dessus de la scène. On ne la voit pas d'en bas, alors on croit que la lumière vient du ciel. C'est un peu comme un projecteur de théâtre, mais sans électricité ! Ce truc de magicien est le secret de la chapelle."
+      },
+      {
+        "titre": "Les spectateurs de marbre",
+        "texte": "Regarde sur les côtés : des hommes sont assis dans des loges, comme au théâtre. Ce sont huit membres de la famille Cornaro, qui a payé la chapelle. Certains se penchent, d'autres discutent en se montrant la scène. On dirait des spectateurs qui commentent le spectacle. Pourtant, ils sont en marbre, et presque tous étaient déjà morts quand le Bernin les a sculptés."
+      },
+      {
+        "titre": "Défi sur place",
+        "texte": "Compte les spectateurs de marbre dans les loges : il y en a huit. Trouve celui qui se penche vers son voisin pour lui parler. Puis lève les yeux et cherche d'où vient la lumière. Regarde le sol de la chapelle, et cherche les squelettes en marbre. Enfin, regarde les colonnes autour de la statue : on dirait que la vision les écarte."
+      },
+      {
+        "titre": "Le quiz",
+        "texte": "Pourquoi cette église s'appelle-t-elle Sainte-Marie de la Victoire ? Réponse : en 1620, près de Prague, une armée catholique a gagné une grande bataille. Un moine avait apporté une image de la Vierge Marie, et on a cru qu'elle avait aidé à gagner. L'église a alors reçu ce nom, qui veut dire la victoire de Marie."
+      }
+    ]
+  },
+  "thermes-diocletien": {
+    "adultes": [
+      {
+        "titre": "Les plus grands thermes de Rome",
+        "texte": "Les thermes de Dioclétien sont les plus vastes bains publics jamais construits à Rome. Ils sont édifiés entre 298 et 306, sous les empereurs Maximien et Dioclétien. L'ensemble couvre environ treize hectares, une surface énorme en pleine ville. Le bâtiment central mesure environ deux cent cinquante mètres sur cent quatre-vingts. Il peut accueillir jusqu'à trois mille personnes en même temps. On y trouve des salles d'eau chaude, tiède et froide, une grande piscine en plein air, des salles de sport et des jardins. L'eau arrive par l'aqueduc de l'Aqua Marcia et remplit un immense réservoir. En 537, les Goths coupent les aqueducs. Les thermes cessent alors de fonctionner et tombent peu à peu en ruine."
+      },
+      {
+        "titre": "Michel-Ange transforme les ruines",
+        "texte": "Au seizième siècle, un prêtre sicilien, Antonio del Duca, rêve de faire de ces ruines une église. Il raconte avoir eu une vision d'anges au milieu des pierres. Le pape Pie quatre accepte en 1561 et confie le projet à Michel-Ange, qui a alors quatre-vingt-six ans. L'artiste choisit la grande salle centrale des thermes, l'ancienne salle froide, et la garde presque telle quelle, avec ses murs et ses voûtes romaines. Du côté de la place, la façade courbe est une ancienne salle d'eau chaude. Michel-Ange meurt en 1564. L'architecte Luigi Vanvitelli reprend l'intérieur en 1749 et lui donne son aspect actuel. L'église est dédiée aux anges et aux martyrs. Selon la tradition, des chrétiens auraient été forcés de construire les thermes, mais les historiens restent prudents sur ce point."
+      },
+      {
+        "titre": "Une église à l'échelle romaine",
+        "texte": "L'intérieur donne le vertige. Le grand transept, la nef qui traverse l'église, dépasse quatre-vingt-dix mètres de long. Il est couvert de voûtes qui montent à vingt-neuf mètres. Huit colonnes de granit rouge, hautes de dix-sept mètres, ponctuent l'espace. Chacune est taillée dans un seul bloc. Les voûtes et une partie des murs viennent de l'Antiquité. On peut voir la grande statue de saint Bruno, sculptée par Houdon en 1766, et les portes de bronze du sculpteur polonais Igor Mitoraj, posées en 2006."
+      },
+      {
+        "titre": "La méridienne de 1702",
+        "texte": "Sur le sol de la basilique court une longue ligne de bronze, incrustée dans une bande de marbre. C'est la méridienne, un cadran solaire géant d'environ quarante-cinq mètres. Le pape Clément onze la fait installer en 1702 par l'astronome Francesco Bianchini. À midi, un rayon de soleil entre par un petit trou percé très haut dans le mur et vient toucher la ligne. Au fil de l'année, le point lumineux se déplace, et les signes du zodiaque marquent le changement des saisons. À l'époque, l'instrument sert à vérifier le calendrier et à calculer la date de Pâques. Il fonctionne encore aujourd'hui."
+      },
+      {
+        "titre": "Le musée et le grand cloître",
+        "texte": "À côté, le musée national romain occupe une autre partie des thermes. Le grand cloître de Michel-Ange faisait partie du couvent des chartreux, les moines installés ici de 1581 à 1873. Ses côtés mesurent environ cent mètres, avec une galerie portée par une centaine de colonnes. Autour d'une fontaine et de grands cyprès, des centaines de sculptures en marbre de l'époque romaine sont exposées en plein air, dont des animaux. Le musée présente aussi des milliers d'inscriptions latines, qui racontent la vie quotidienne des Romains. Les grandes salles des thermes, restées debout, donnent une idée de la taille du bâtiment d'origine."
+      },
+      {
+        "titre": "Gare Termini et mariage royal",
+        "texte": "Le nom de la gare Termini vient des thermes. Elle a été construite juste à côté, et le grand réservoir des bains a été détruit en 1876 pour lui faire de la place. Après l'unité italienne, la basilique devient une église officielle de l'État pour les grandes cérémonies. Le roi Victor-Emmanuel trois s'y marie en 1896 avec Hélène de Monténégro."
+      }
+    ],
+    "enfants": [
+      {
+        "titre": "Trois mille baigneurs",
+        "texte": "Il y a environ mille sept cents ans, jusqu'à trois mille Romains pouvaient se baigner ici en même temps. Il y avait des bains chauds, des bains froids, une immense piscine et même des salles de sport. C'étaient les plus grands thermes de Rome. Le savais-tu ? La gare Termini, toute proche, doit son nom à ces bains. Aujourd'hui, une grande partie a disparu, mais les murs qui restent suffisent pour deviner leur taille énorme."
+      },
+      {
+        "titre": "Une église dans un bain",
+        "texte": "Au seizième siècle, le pape a eu une drôle d'idée : transformer la grande salle froide des thermes en église. Il a demandé l'aide de Michel-Ange, qui avait déjà quatre-vingt-six ans. Il a gardé les murs et les voûtes romains, si solides qu'ils tenaient encore debout. Regarde la façade sur la place. Elle est toute ronde. C'était le mur d'une salle d'eau chaude. Tu entres donc dans une église qui était un bain géant, avec des colonnes de granit rouge hautes comme un immeuble de cinq étages."
+      },
+      {
+        "titre": "Le cadran solaire du sol",
+        "texte": "Baisse les yeux : une longue ligne de bronze traverse le sol de l'église. C'est un cadran solaire géant, long d'environ quarante-cinq mètres. Il a été installé en 1702. Tout en haut du mur, un petit trou laisse passer un rayon de soleil. À midi, la tache de lumière tombe pile sur la ligne. Le long de la ligne, des signes du zodiaque montrent les saisons. Au dix-huitième siècle, les savants s'en servaient pour vérifier le calendrier."
+      },
+      {
+        "titre": "Le cloître aux animaux de marbre",
+        "texte": "Sors de l'église et va au musée. Il cache un cloître gigantesque dessiné par Michel-Ange, entouré d'une galerie de colonnes. Au milieu, il y a une fontaine et de grands arbres. Tout autour, des statues romaines en marbre attendent les visiteurs, y compris des animaux. Les moines chartreux y vivaient autrefois en silence. Ici, personne ne t'en voudra si tu regardes chaque statue de près. Dans le musée, cherche aussi les milliers de messages gravés dans la pierre par les Romains."
+      },
+      {
+        "titre": "Défi sur place",
+        "texte": "Dans l'église, trouve la ligne de bronze au sol et compte les signes du zodiaque que tu peux voir. Repère ensuite les huit colonnes de granit rouge et devine combien d'enfants de ta taille il faudrait empiler pour atteindre le haut d'une seule. Dans le cloître du musée, cherche un animal sculpté dans le marbre et dis à voix haute lequel c'est."
+      },
+      {
+        "titre": "Le quiz",
+        "texte": "Comment sait-on qu'il est midi dans cette église ? Réponse : grâce à un petit trou tout en haut du mur. Un rayon de soleil le traverse et vient toucher la ligne de bronze au sol. Quand la tache de lumière est sur la ligne, il est midi au soleil. Les savants de 1702 l'utilisaient pour régler le calendrier, sans aucune machine moderne."
       }
     ]
   }

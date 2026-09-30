@@ -1,17 +1,17 @@
 {
   "colisee-enfants.mp3": {
-    "hash": "07fda49fb52be18a",
+    "hash": "822202253c5ea9f1",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 195,
-    "taille": 1170144
+    "duree": 227,
+    "taille": 1361088
   },
   "colisee-adultes.mp3": {
-    "hash": "b91da220ef998785",
+    "hash": "15d8bdad31761761",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 244,
-    "taille": 1465632
+    "duree": 268,
+    "taille": 1606896
   },
   "arc-constantin-adultes.mp3": {
     "hash": "6d3810263740759d",
@@ -20,11 +20,11 @@
     "taille": 1229472
   },
   "forum-romain-enfants.mp3": {
-    "hash": "3acc7a9a4f9a1b45",
+    "hash": "a5ab0c3db793c0ef",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 191,
-    "taille": 1144656
+    "duree": 244,
+    "taille": 1465344
   },
   "arc-constantin-enfants.mp3": {
     "hash": "8b3c4ecb6db26ae4",
@@ -34,10 +34,11 @@
     "taille": 1117728
   },
   "forum-romain-adultes.mp3": {
-    "hash": "4ca64eaadb7a2767",
+    "hash": "3877967a22177a29",
     "voix": "fr-FR-HenriNeural",
-    "duree": 214,
-    "taille": 1283184
+    "moteur": "edge",
+    "duree": 271,
+    "taille": 1626480
   },
   "palatin-adultes.mp3": {
     "hash": "bd3f885af38460f5",
@@ -46,11 +47,11 @@
     "taille": 1315440
   },
   "colonne-trajane-enfants.mp3": {
-    "hash": "c7ed1691770dcd4b",
+    "hash": "65a2b2428cf09239",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 184,
-    "taille": 1103616
+    "duree": 211,
+    "taille": 1268352
   },
   "palatin-enfants.mp3": {
     "hash": "4942f9c65d69dfee",
@@ -60,17 +61,18 @@
     "taille": 1109088
   },
   "circus-maximus-enfants.mp3": {
-    "hash": "d4eadd477c61d1bf",
+    "hash": "fb1bcce4290d1f79",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 182,
-    "taille": 1091376
+    "duree": 211,
+    "taille": 1266192
   },
   "colonne-trajane-adultes.mp3": {
-    "hash": "22125afcb9e2f304",
+    "hash": "6b9a95fc46fe4406",
     "voix": "fr-FR-HenriNeural",
-    "duree": 216,
-    "taille": 1293408
+    "moteur": "edge",
+    "duree": 239,
+    "taille": 1431504
   },
   "thermes-caracalla-enfants.mp3": {
     "hash": "f095fce50a2c228d",
@@ -80,16 +82,18 @@
     "taille": 1127088
   },
   "circus-maximus-adultes.mp3": {
-    "hash": "b23f03b79059ae49",
+    "hash": "e5fdf731ad3cb83a",
     "voix": "fr-FR-HenriNeural",
-    "duree": 219,
-    "taille": 1315296
+    "moteur": "edge",
+    "duree": 249,
+    "taille": 1492560
   },
   "via-appia-adultes.mp3": {
-    "hash": "987fd731e32cddb8",
+    "hash": "cfd2bbfc0ede7bfd",
     "voix": "fr-FR-HenriNeural",
-    "duree": 205,
-    "taille": 1229328
+    "moteur": "edge",
+    "duree": 224,
+    "taille": 1342224
   },
   "thermes-caracalla-adultes.mp3": {
     "hash": "63d1b2428b8d0cb4",
@@ -98,63 +102,67 @@
     "taille": 1350576
   },
   "via-appia-enfants.mp3": {
-    "hash": "09a5a036ccd6185d",
+    "hash": "45ad48e200962799",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 182,
-    "taille": 1089504
+    "duree": 208,
+    "taille": 1246176
   },
   "pyramide-cestius-enfants.mp3": {
-    "hash": "02e499eb21e22721",
+    "hash": "876c3fe784c50b69",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 169,
-    "taille": 1013328
+    "duree": 192,
+    "taille": 1149120
   },
   "catacombes-enfants.mp3": {
-    "hash": "a485af3af82690da",
+    "hash": "4871a6cfe7f4bdfb",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 182,
-    "taille": 1094688
+    "duree": 208,
+    "taille": 1250496
   },
   "catacombes-adultes.mp3": {
-    "hash": "482f2d4a501acf4e",
+    "hash": "cc59aa8a69dea123",
     "voix": "fr-FR-HenriNeural",
-    "duree": 208,
-    "taille": 1249920
+    "moteur": "edge",
+    "duree": 235,
+    "taille": 1410912
   },
   "pyramide-cestius-adultes.mp3": {
-    "hash": "e90f201fea1b13c2",
+    "hash": "fd6c8eab589eef63",
     "voix": "fr-FR-HenriNeural",
-    "duree": 222,
-    "taille": 1333728
+    "moteur": "edge",
+    "duree": 253,
+    "taille": 1516608
   },
   "pantheon-enfants.mp3": {
-    "hash": "44e01cedbf406bd9",
+    "hash": "20bc3c789e7554bb",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 174,
-    "taille": 1044288
+    "duree": 191,
+    "taille": 1143504
   },
   "fontaine-trevi-enfants.mp3": {
-    "hash": "fa60fd8d425b6240",
+    "hash": "00ce2e3cb1a7a698",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 162,
-    "taille": 971856
+    "duree": 187,
+    "taille": 1124064
   },
   "fontaine-trevi-adultes.mp3": {
-    "hash": "725f4a7893af87ce",
+    "hash": "6d00998e7c36f645",
     "voix": "fr-FR-HenriNeural",
-    "duree": 218,
-    "taille": 1308096
+    "moteur": "edge",
+    "duree": 242,
+    "taille": 1451520
   },
   "pantheon-adultes.mp3": {
-    "hash": "151a6527ff4fdece",
+    "hash": "b293a1825d581c41",
     "voix": "fr-FR-HenriNeural",
-    "duree": 219,
-    "taille": 1314864
+    "moteur": "edge",
+    "duree": 239,
+    "taille": 1433232
   },
   "place-espagne-enfants.mp3": {
     "hash": "2ccaa59cba8631e1",
@@ -170,17 +178,18 @@
     "taille": 1347840
   },
   "piazza-navona-enfants.mp3": {
-    "hash": "c38837292e2d402d",
+    "hash": "b9182f3030060aa6",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 173,
-    "taille": 1040976
+    "duree": 206,
+    "taille": 1237248
   },
   "piazza-navona-adultes.mp3": {
-    "hash": "43dc53087d4cba25",
+    "hash": "5ad9d644887a8e0a",
     "voix": "fr-FR-HenriNeural",
-    "duree": 225,
-    "taille": 1350864
+    "moteur": "edge",
+    "duree": 251,
+    "taille": 1504800
   },
   "campo-de-fiori-adultes.mp3": {
     "hash": "93b4381139fa9b53",
@@ -215,11 +224,11 @@
     "taille": 1254240
   },
   "piazza-del-popolo-enfants.mp3": {
-    "hash": "8f622530005450cc",
+    "hash": "82be62a34b527c30",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 200,
-    "taille": 1200384
+    "duree": 238,
+    "taille": 1429344
   },
   "via-del-corso-enfants.mp3": {
     "hash": "2430c8c08f912caf",
@@ -229,11 +238,11 @@
     "taille": 1038240
   },
   "piazza-del-popolo-adultes.mp3": {
-    "hash": "0cfd1a13ff4bd248",
+    "hash": "6af4699492876537",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 231,
-    "taille": 1388880
+    "duree": 269,
+    "taille": 1611792
   },
   "piazza-venezia-enfants.mp3": {
     "hash": "9a25dd338d1d9cf6",
@@ -243,11 +252,11 @@
     "taille": 1055952
   },
   "capitole-enfants.mp3": {
-    "hash": "1f7c1caa9326df49",
+    "hash": "917442e10381349f",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 183,
-    "taille": 1099872
+    "duree": 217,
+    "taille": 1300608
   },
   "piazza-venezia-adultes.mp3": {
     "hash": "ceb510fced660219",
@@ -256,10 +265,11 @@
     "taille": 1269936
   },
   "capitole-adultes.mp3": {
-    "hash": "f95c576bbf751cd8",
+    "hash": "e6a684875355ae80",
     "voix": "fr-FR-HenriNeural",
-    "duree": 236,
-    "taille": 1417824
+    "moteur": "edge",
+    "duree": 271,
+    "taille": 1624320
   },
   "bocca-verita-adultes.mp3": {
     "hash": "ff5d807233bffcc5",
@@ -275,18 +285,18 @@
     "taille": 984960
   },
   "aventin-enfants.mp3": {
-    "hash": "8d35bca5d5a89d0e",
+    "hash": "2bf1c243a43c1d5e",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 193,
-    "taille": 1158336
+    "duree": 216,
+    "taille": 1294704
   },
   "saint-jean-latran-enfants.mp3": {
-    "hash": "79e018b4f83f014c",
+    "hash": "ce2f81b5162ba4d4",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 180,
-    "taille": 1082304
+    "duree": 218,
+    "taille": 1307664
   },
   "saint-clement-adultes.mp3": {
     "hash": "ea71863d29cee947",
@@ -295,16 +305,18 @@
     "taille": 1241136
   },
   "aventin-adultes.mp3": {
-    "hash": "fc9804a86b6434e3",
+    "hash": "71563ccccbb56586",
     "voix": "fr-FR-HenriNeural",
-    "duree": 210,
-    "taille": 1259856
+    "moteur": "edge",
+    "duree": 230,
+    "taille": 1382688
   },
   "saint-jean-latran-adultes.mp3": {
-    "hash": "f62b3fde1234be84",
+    "hash": "35b4f62cd08c82dc",
     "voix": "fr-FR-HenriNeural",
-    "duree": 239,
-    "taille": 1431936
+    "moteur": "edge",
+    "duree": 266,
+    "taille": 1594512
   },
   "sainte-marie-majeure-enfants.mp3": {
     "hash": "f8313e20b8866cc7",
@@ -314,11 +326,11 @@
     "taille": 1084608
   },
   "ghetto-enfants.mp3": {
-    "hash": "7e050492c12d255a",
+    "hash": "c05b0128aae82b1e",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 174,
-    "taille": 1046448
+    "duree": 202,
+    "taille": 1211472
   },
   "saint-clement-enfants.mp3": {
     "hash": "940370a410a13fb4",
@@ -334,17 +346,18 @@
     "taille": 1311120
   },
   "ghetto-adultes.mp3": {
-    "hash": "687d3ce0106324d2",
+    "hash": "bcce03966cd0d917",
     "voix": "fr-FR-HenriNeural",
-    "duree": 242,
-    "taille": 1451520
+    "moteur": "edge",
+    "duree": 280,
+    "taille": 1681632
   },
   "ile-tiberine-enfants.mp3": {
-    "hash": "a37c7cd94f5afe8b",
+    "hash": "bcd7fb835d70bd1a",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 159,
-    "taille": 956736
+    "duree": 199,
+    "taille": 1192608
   },
   "trastevere-enfants.mp3": {
     "hash": "1fa50354c78aef52",
@@ -354,16 +367,18 @@
     "taille": 1171872
   },
   "trastevere-adultes.mp3": {
-    "hash": "cb5a250034a2cd6f",
+    "hash": "46670138bc4da4a8",
     "voix": "fr-FR-HenriNeural",
-    "duree": 204,
-    "taille": 1224720
+    "moteur": "edge",
+    "duree": 265,
+    "taille": 1591920
   },
   "ile-tiberine-adultes.mp3": {
-    "hash": "cac6ce0196933ffb",
+    "hash": "b7174f4970707b97",
     "voix": "fr-FR-HenriNeural",
-    "duree": 226,
-    "taille": 1354752
+    "moteur": "edge",
+    "duree": 251,
+    "taille": 1506240
   },
   "janicule-adultes.mp3": {
     "hash": "bd0c71eeac8c5648",
@@ -385,18 +400,18 @@
     "taille": 1102896
   },
   "chateau-saint-ange-enfants.mp3": {
-    "hash": "ad85287d118f2946",
+    "hash": "8bb2fa7749756021",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 192,
-    "taille": 1149840
+    "duree": 212,
+    "taille": 1270512
   },
   "villa-borghese-enfants.mp3": {
-    "hash": "5780379bb66d0e98",
+    "hash": "0a64d98d22e06535",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 180,
-    "taille": 1082160
+    "duree": 208,
+    "taille": 1247040
   },
   "place-saint-pierre-enfants.mp3": {
     "hash": "f5aede3c5660b536",
@@ -406,10 +421,11 @@
     "taille": 949680
   },
   "chateau-saint-ange-adultes.mp3": {
-    "hash": "b08a4a2615bc7eca",
+    "hash": "b48aa245480497f0",
     "voix": "fr-FR-HenriNeural",
-    "duree": 208,
-    "taille": 1250496
+    "moteur": "edge",
+    "duree": 220,
+    "taille": 1317888
   },
   "place-saint-pierre-adultes.mp3": {
     "hash": "bd2f869a4ce6bc66",
@@ -418,30 +434,32 @@
     "taille": 1243008
   },
   "basilique-saint-pierre-adultes.mp3": {
-    "hash": "55404009d8f5ab25",
+    "hash": "5d2f647bd253f4a7",
     "voix": "fr-FR-HenriNeural",
-    "duree": 227,
-    "taille": 1359216
+    "moteur": "edge",
+    "duree": 277,
+    "taille": 1661040
   },
   "basilique-saint-pierre-enfants.mp3": {
-    "hash": "323d3a283402ddb6",
+    "hash": "39de8d5f06d3f860",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 189,
-    "taille": 1133856
+    "duree": 242,
+    "taille": 1451232
   },
   "musees-vatican-enfants.mp3": {
-    "hash": "3493d0083a92928d",
+    "hash": "022a6f6bc67f76ab",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 163,
-    "taille": 979776
+    "duree": 223,
+    "taille": 1335168
   },
   "musees-vatican-adultes.mp3": {
-    "hash": "15f5570b4807d5ce",
+    "hash": "bd3d031725cc15e4",
     "voix": "fr-FR-HenriNeural",
-    "duree": 227,
-    "taille": 1363968
+    "moteur": "edge",
+    "duree": 257,
+    "taille": 1544400
   },
   "musees-capitolins-enfants.mp3": {
     "hash": "ad6c87eb6571a637",
@@ -514,18 +532,18 @@
     "taille": 888048
   },
   "saint-louis-des-francais-enfants.mp3": {
-    "hash": "ad4d31fee21e4049",
+    "hash": "07aed2c9355eee2d",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 145,
-    "taille": 869328
+    "duree": 155,
+    "taille": 931392
   },
   "saint-louis-des-francais-adultes.mp3": {
-    "hash": "49969729edace17e",
+    "hash": "8ecbdf0bfaa35084",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 177,
-    "taille": 1063008
+    "duree": 199,
+    "taille": 1191600
   },
   "saint-ignace-adultes.mp3": {
     "hash": "e9b205f7172f639c",
@@ -549,11 +567,11 @@
     "taille": 848304
   },
   "ara-pacis-adultes.mp3": {
-    "hash": "76a64ecf586239d5",
+    "hash": "3b49ba8245adf4d5",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 175,
-    "taille": 1051056
+    "duree": 203,
+    "taille": 1218384
   },
   "quirinal-enfants.mp3": {
     "hash": "159380b87efd78ed",
@@ -563,11 +581,11 @@
     "taille": 880272
   },
   "mausolee-auguste-enfants.mp3": {
-    "hash": "c694b462f346bd05",
+    "hash": "5b734eed4448547c",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 136,
-    "taille": 817776
+    "duree": 138,
+    "taille": 825840
   },
   "saint-pierre-aux-liens-adultes.mp3": {
     "hash": "f77df92b35a7b705",
@@ -584,11 +602,11 @@
     "taille": 906912
   },
   "mausolee-auguste-adultes.mp3": {
-    "hash": "517110439025fb4e",
+    "hash": "79cbae1d239bf591",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 178,
-    "taille": 1070784
+    "duree": 179,
+    "taille": 1074384
   },
   "saint-pierre-aux-liens-enfants.mp3": {
     "hash": "20be940466319516",
@@ -598,32 +616,32 @@
     "taille": 885600
   },
   "ostie-antique-adultes.mp3": {
-    "hash": "512319e319796b18",
+    "hash": "c44ed92ed0309e4a",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 172,
-    "taille": 1030032
+    "duree": 194,
+    "taille": 1166544
   },
   "galerie-borghese-adultes.mp3": {
-    "hash": "e5fde8cde1d761f7",
+    "hash": "92bd47d6cbd284fe",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 173,
-    "taille": 1035648
+    "duree": 186,
+    "taille": 1117872
   },
   "ostie-antique-enfants.mp3": {
-    "hash": "b4b9de57fd0c497f",
+    "hash": "f6596478a45add80",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 153,
-    "taille": 915552
+    "duree": 176,
+    "taille": 1054800
   },
   "galerie-borghese-enfants.mp3": {
-    "hash": "e762effddd9c171b",
+    "hash": "cdb99a00cb20b2da",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 152,
-    "taille": 912384
+    "duree": 187,
+    "taille": 1119744
   },
   "palais-massimo-enfants.mp3": {
     "hash": "a3e52a6e341af213",
@@ -654,11 +672,11 @@
     "taille": 922752
   },
   "centrale-montemartini-adultes.mp3": {
-    "hash": "0a92fa429f971e14",
+    "hash": "04e15d7a491c3803",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 172,
-    "taille": 1029456
+    "duree": 194,
+    "taille": 1165680
   },
   "galerie-doria-pamphilj-enfants.mp3": {
     "hash": "1e798ae401083fe1",
@@ -668,11 +686,11 @@
     "taille": 903456
   },
   "palais-barberini-adultes.mp3": {
-    "hash": "00a345c1612b5b21",
+    "hash": "d858e0db9fcd3918",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 185,
-    "taille": 1107648
+    "duree": 217,
+    "taille": 1301904
   },
   "capucins-enfants.mp3": {
     "hash": "ecb4117a66962ae3",
@@ -689,11 +707,11 @@
     "taille": 1018080
   },
   "centrale-montemartini-enfants.mp3": {
-    "hash": "bfdd8da27f8e4db8",
+    "hash": "f8798f4d089e9cf7",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 145,
-    "taille": 868032
+    "duree": 187,
+    "taille": 1120464
   },
   "explora-adultes.mp3": {
     "hash": "8b82fb2c519a4c03",
@@ -738,11 +756,11 @@
     "taille": 1035792
   },
   "saint-paul-hors-les-murs-adultes.mp3": {
-    "hash": "903ab5cd2f7cb620",
+    "hash": "a036f5485e26fad8",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 185,
-    "taille": 1108224
+    "duree": 211,
+    "taille": 1264752
   },
   "parc-aqueducs-enfants.mp3": {
     "hash": "5561aedc8e9ae27a",
@@ -766,32 +784,32 @@
     "taille": 851904
   },
   "monti-adultes.mp3": {
-    "hash": "9ddf109d2640f234",
+    "hash": "3e72fde4acf69161",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 170,
-    "taille": 1019232
+    "duree": 201,
+    "taille": 1204416
   },
   "monti-enfants.mp3": {
-    "hash": "a83d1e76809d4ee8",
+    "hash": "40f9dec8f84829c5",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 153,
-    "taille": 916272
+    "duree": 179,
+    "taille": 1074816
   },
   "marche-testaccio-adultes.mp3": {
-    "hash": "45380c5d4b863a58",
+    "hash": "7cac806509e1effa",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 175,
-    "taille": 1047888
+    "duree": 195,
+    "taille": 1169568
   },
   "marche-testaccio-enfants.mp3": {
-    "hash": "34ba07a2cc4a6292",
+    "hash": "65ecc7bfdd459a23",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 151,
-    "taille": 906624
+    "duree": 173,
+    "taille": 1035072
   },
   "villa-doria-pamphilj-adultes.mp3": {
     "hash": "e40f409633eb9385",
@@ -801,11 +819,11 @@
     "taille": 1023696
   },
   "villa-farnesina-adultes.mp3": {
-    "hash": "bc0d90f5fa6c3b36",
+    "hash": "091443d1d87f3bad",
     "voix": "fr-FR-HenriNeural",
     "moteur": "edge",
-    "duree": 168,
-    "taille": 1010880
+    "duree": 183,
+    "taille": 1096704
   },
   "villa-doria-pamphilj-enfants.mp3": {
     "hash": "46582d6bfda0fe8c",
@@ -815,11 +833,11 @@
     "taille": 890928
   },
   "villa-farnesina-enfants.mp3": {
-    "hash": "54539d2c943bdfbe",
+    "hash": "492788969f47f18e",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 147,
-    "taille": 882144
+    "duree": 171,
+    "taille": 1024128
   },
   "villa-torlonia-adultes.mp3": {
     "hash": "6e02ecb3f0e61319",
@@ -848,5 +866,61 @@
     "moteur": "edge",
     "duree": 144,
     "taille": 866016
+  },
+  "quartier-coppede-adultes.mp3": {
+    "hash": "771cc27600232c3b",
+    "voix": "fr-FR-HenriNeural",
+    "moteur": "edge",
+    "duree": 194,
+    "taille": 1163376
+  },
+  "palais-spada-adultes.mp3": {
+    "hash": "db0d2c5752f81581",
+    "voix": "fr-FR-HenriNeural",
+    "moteur": "edge",
+    "duree": 198,
+    "taille": 1186704
+  },
+  "palais-spada-enfants.mp3": {
+    "hash": "6bf604b4a8296311",
+    "voix": "fr-FR-DeniseNeural",
+    "moteur": "edge",
+    "duree": 148,
+    "taille": 885456
+  },
+  "quartier-coppede-enfants.mp3": {
+    "hash": "479b46a1ce45438a",
+    "voix": "fr-FR-DeniseNeural",
+    "moteur": "edge",
+    "duree": 145,
+    "taille": 869616
+  },
+  "santa-maria-della-vittoria-enfants.mp3": {
+    "hash": "a189a5a187f679bd",
+    "voix": "fr-FR-DeniseNeural",
+    "moteur": "edge",
+    "duree": 152,
+    "taille": 912096
+  },
+  "thermes-diocletien-adultes.mp3": {
+    "hash": "ca0b6cb6e109d530",
+    "voix": "fr-FR-HenriNeural",
+    "moteur": "edge",
+    "duree": 228,
+    "taille": 1370592
+  },
+  "santa-maria-della-vittoria-adultes.mp3": {
+    "hash": "985a3313ecdeec78",
+    "voix": "fr-FR-HenriNeural",
+    "moteur": "edge",
+    "duree": 196,
+    "taille": 1175616
+  },
+  "thermes-diocletien-enfants.mp3": {
+    "hash": "36982ae334837e3c",
+    "voix": "fr-FR-DeniseNeural",
+    "moteur": "edge",
+    "duree": 171,
+    "taille": 1023552
   }
 }

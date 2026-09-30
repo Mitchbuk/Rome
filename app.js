@@ -66,6 +66,7 @@
     'chateau-saint-ange': 'vatican', 'place-saint-pierre': 'vatican', 'basilique-saint-pierre': 'vatican', 'musees-vatican': 'vatican',
     'pyramide-cestius': 'testaccio', 'via-appia': 'appia', catacombes: 'appia',
     // Lieux ajoutés (Rome très grande ville)
+    'palais-spada': 'centre', 'santa-maria-della-vittoria': 'esquilin', 'thermes-diocletien': 'esquilin', 'quartier-coppede': 'nord',
     'musees-capitolins': 'venezia', 'domus-palazzo-valentini': 'venezia',
     'domus-aurea': 'antique', 'celio-case-romane': 'antique',
     'saint-louis-des-francais': 'centre', 'minerve-elephant': 'centre', 'saint-ignace': 'centre', quirinal: 'centre',

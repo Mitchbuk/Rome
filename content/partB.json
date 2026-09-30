@@ -20,6 +20,10 @@
       {
         "titre": "Autour de la pyramide",
         "texte": "Le cimetière non catholique s'étend contre la muraille. Il a été ouvert au dix-huitième siècle pour les étrangers protestants et orthodoxes, qui n'avaient pas le droit d'être enterrés dans les cimetières de la Ville éternelle. Les poètes anglais John Keats, mort à Rome en 1821 à vingt-cinq ans, et Percy Shelley, noyé au large de la Toscane en 1822, reposent sous les cyprès. On y trouve aussi la tombe du penseur italien Antonio Gramsci. À quelques centaines de mètres, le Monte Testaccio est une colline artificielle de 35 mètres, faite de millions de morceaux d'amphores à huile cassées. Le quartier était le port fluvial et l'entrepôt de la Rome antique."
+      },
+      {
+        "titre": "Dans le cimetière non catholique",
+        "texte": "Le cimetière est l'un des lieux les plus paisibles de Rome. La tombe de Keats ne porte ni nom ni date, seulement une lyre. Elle affiche l'épitaphe voulue par le poète : « Ici repose celui dont le nom fut écrit dans l'eau. » À côté repose son ami, le peintre Joseph Severn, dont la stèle porte une palette. L'Ange de la Douleur, sculpté par William Wetmore Story pour la tombe de sa femme, est l'œuvre la plus photographiée du cimetière. Une colonie de chats y vit aussi."
       }
     ],
     "enfants": [
@@ -34,6 +38,10 @@
       {
         "titre": "Le savais-tu",
         "texte": "Quand des ouvriers ont creusé un tunnel pour entrer dans la pyramide, il y a environ trois cent soixante ans, ils espéraient un trésor. Ils n'ont trouvé qu'une pièce vide : des voleurs étaient passés bien avant eux, sans doute en perçant le marbre. Autre curiosité : Cestius voulait qu'on enferme dans son tombeau de précieuses tapisseries brodées d'or, mais une loi venait d'interdire d'enterrer des objets de luxe. Ses héritiers les ont donc vendues et ont utilisé l'argent pour lui offrir deux statues de bronze devant la pyramide. Il ne reste que leurs socles : les statues ont disparu."
+      },
+      {
+        "titre": "Poètes et chats du cimetière",
+        "texte": "Juste contre la pyramide, un cimetière très calme abrite les tombes de deux poètes anglais, Keats et Shelley. Cherche l'Ange de la Douleur, une statue sculptée par l'artiste William Wetmore Story pour la tombe de sa femme. C'est l'œuvre la plus photographiée du cimetière. Et n'oublie pas de chercher les chats : ils y vivent en colonie."
       },
       {
         "titre": "Défi sur place",
@@ -57,7 +65,7 @@
       },
       {
         "titre": "D'un temple à une église",
-        "texte": "En 609, l'empereur byzantin Phocas offre le bâtiment au pape Boniface IV, qui le consacre à sainte Marie et à tous les martyrs. Cette transformation précoce en église explique qu'il soit si bien conservé : ses portes de bronze antiques sont encore en place. Le monument n'a pourtant pas échappé aux pillages. En 663, l'empereur Constant II emporte à Constantinople les tuiles de bronze doré de la coupole. En 1625, le pape Urbain VIII Barberini fait fondre le bronze des poutres du porche pour couler des canons destinés au château Saint-Ange, et aussi, dit-on, le baldaquin de Saint-Pierre. Les Romains en ont tiré un jeu de mots resté célèbre : ce que les Barbares n'ont pas fait, les Barberini l'ont fait."
+        "texte": "En 609, l'empereur byzantin Phocas offre le bâtiment au pape Boniface IV, qui le consacre à sainte Marie et à tous les martyrs. Cette transformation précoce en église explique qu'il soit si bien conservé : ses portes de bronze antiques sont encore en place. Le monument n'a pourtant pas échappé aux pillages. En 663, l'empereur Constant II emporte à Constantinople les tuiles de bronze doré de la coupole. En 1625, le pape Urbain VIII Barberini fait fondre le bronze des poutres du porche pour couler des canons destinés au château Saint-Ange, et aussi, dit-on, le baldaquin de Saint-Pierre. Les Romains en ont tiré un jeu de mots resté célèbre : ce que les Barbares n'ont pas fait, les Barberini l'ont fait. Sous le même pontificat, on avait aussi commandé deux petits clochers baroques, attribués en partie au Bernin, qui ont surmonté le portique jusqu'en 1883. Les Romains les jugeaient laids et les appelaient les orecchie d'asino, les oreilles d'âne. Ils ont été démolis en 1883 pour rendre au monument son aspect antique."
       },
       {
         "titre": "Les tombeaux illustres",
@@ -75,7 +83,7 @@
       },
       {
         "titre": "Le mystère des poutres volées",
-        "texte": "Regarde le plafond du porche, juste au-dessus des colonnes : il est en bois, mais ce n'est pas normal. À l'origine, il était fait d'énormes poutres de bronze. Il y a quatre cents ans, un pape de la famille Barberini a décidé de les récupérer pour fabriquer des canons. Les Romains, furieux, ont inventé une phrase moqueuse qui dit que les Barberini ont fait pire que les barbares. Tu as remarqué ? Le nom de sa famille ressemble au mot barbare. Encore avant, un empereur avait déjà emporté les tuiles dorées de la coupole. Si tu vois des trous dans les murs du porche, ce sont les endroits où les poutres de bronze étaient accrochées."
+        "texte": "Regarde le plafond du porche, juste au-dessus des colonnes : il est en bois, mais ce n'est pas normal. À l'origine, il était fait d'énormes poutres de bronze. Il y a quatre cents ans, un pape de la famille Barberini a décidé de les récupérer pour fabriquer des canons. Les Romains, furieux, ont inventé une phrase moqueuse qui dit que les Barberini ont fait pire que les barbares. Tu as remarqué ? Le nom de sa famille ressemble au mot barbare. Encore avant, un empereur avait déjà emporté les tuiles dorées de la coupole. Si tu vois des trous dans les murs du porche, ce sont les endroits où les poutres de bronze étaient accrochées. Autre détail rigolo : jusqu'en 1883, deux petits clochers baroques surmontaient le porche, attribués en partie au célèbre Bernin. Les Romains les trouvaient si laids qu'ils les appelaient les oreilles d'âne ! On les a démolis pour rendre au monument son aspect de l'Antiquité."
       },
       {
         "titre": "Le savais-tu",
@@ -112,6 +120,10 @@
       {
         "titre": "Une star de cinéma",
         "texte": "La fontaine doit sa renommée mondiale au cinéma. En 1954, le film américain La Fontaine des amours popularise le lancer de pièces. Six ans plus tard, Federico Fellini y plonge Anita Ekberg et Marcello Mastroianni dans La Dolce Vita. La scène a été tournée de nuit, en plein hiver, et l'actrice est restée des heures dans l'eau glacée. Quand Mastroianni meurt en 1996, la ville voile la fontaine de noir et arrête l'eau en signe de deuil. Les pièces sont ramassées plusieurs fois par semaine et remises à l'association Caritas, qui aide les personnes en difficulté. La dernière grande restauration, financée en 2014 et 2015 par la maison Fendi, a nettoyé le travertin et refait les circuits d'eau."
+      },
+      {
+        "titre": "Le lancer de pièces",
+        "texte": "Le geste est toujours le même : on tourne le dos à la fontaine et on lance une pièce de la main droite par-dessus l'épaule gauche. Selon la version la plus répandue, une pièce garantit de revenir à Rome, une deuxième de tomber amoureux, une troisième de se marier. D'autres versions ne parlent que d'un seul vœu. Cette coutume est récente : c'est le cinéma qui l'a popularisée."
       }
     ],
     "enfants": [
@@ -126,6 +138,10 @@
       {
         "titre": "Le savais-tu",
         "texte": "Le géant du milieu n'est pas Neptune, contrairement à ce que beaucoup de gens pensent, mais Océan, le dieu de toutes les eaux du monde. Les sculpteurs ont caché sur les rochers une trentaine de plantes différentes, taillées dans la pierre : des figuiers, du lierre, des roseaux, même un artichaut. Et sur le côté droit, une petite fontaine à deux becs avait un rôle spécial. Quand un jeune Romain partait pour un long voyage, il y buvait avec sa fiancée, puis il cassait le verre pour qu'elle ne l'oublie pas. Aujourd'hui, l'eau de la grande vasque tourne en boucle grâce à des pompes."
+      },
+      {
+        "titre": "Comment lancer ta pièce",
+        "texte": "Tourne le dos à la fontaine. Prends une pièce dans ta main droite et lance-la par-dessus ton épaule gauche. Selon la version la plus répandue, une pièce te garantit de revenir à Rome, une deuxième de tomber amoureux, une troisième de te marier. Certains ne font qu'un seul vœu : à toi de choisir. Cette coutume n'est pas très ancienne : c'est un film qui l'a rendue célèbre."
       },
       {
         "titre": "Défi sur place",
@@ -199,7 +215,7 @@
       },
       {
         "titre": "Sainte Agnès et Borromini",
-        "texte": "Face à la fontaine, l'église Sainte-Agnès-en-Agone occupe l'endroit où, selon la tradition, la jeune Agnès a été exposée nue dans les arcades du stade, vers l'an 304. C'était juste avant son martyre, et ses cheveux auraient miraculeusement poussé pour la couvrir. Commencée en 1652 par les Rainaldi, la façade est reprise en 1653 par Borromini, qui lui donne sa courbe creusée vers l'intérieur, ses deux clochers et sa haute coupole. Innocent X y est enterré. Les deux autres fontaines de la place, celle du Maure au sud et celle de Neptune au nord, ont été dessinées par Giacomo della Porta vers 1575. Bernini a ajouté la figure du Maure en 1653, et les statues de Neptune ne datent que de 1878."
+        "texte": "Face à la fontaine, l'église Sainte-Agnès-en-Agone occupe l'endroit où, selon la tradition, la jeune Agnès a été exposée nue dans les arcades du stade, vers l'an 304. C'était juste avant son martyre, et ses cheveux auraient miraculeusement poussé pour la couvrir. Commencée en 1652 par les Rainaldi, la façade est reprise en 1653 par Borromini, qui lui donne sa courbe creusée vers l'intérieur, ses deux clochers et sa haute coupole. Innocent X y est enterré. Une légende populaire, que racontent volontiers les guides, imagine une rivalité entre les deux artistes. Le Rio de la Plata lèverait le bras pour se protéger d'un effondrement de cette façade, et le Nil se voilerait le visage pour ne pas la voir. C'est une légende urbaine : la fontaine est achevée en 1651, avant que Borromini ne reprenne la façade. Pour le Nil, les sources sérieuses retiennent l'explication des sources inconnues. Les deux autres fontaines de la place, celle du Maure au sud et celle de Neptune au nord, ont été dessinées par Giacomo della Porta vers 1575. Bernini a ajouté la figure du Maure en 1653, et les statues de Neptune ne datent que de 1878."
       },
       {
         "titre": "Une place en fête",
@@ -222,6 +238,10 @@
       {
         "titre": "Défi sur place",
         "texte": "Fais le tour de la grande fontaine et trouve tous les animaux cachés dans les rochers. Il y a un lion qui boit, un cheval qui surgit d'une grotte, un serpent, un tatou avec sa carapace et un dragon marin. Tout en haut, une colombe tient un rameau dans son bec. Ensuite, cherche le géant qui se cache le visage sous un tissu, puis celui qui est assis sur des pièces de monnaie. Enfin, regarde la fontaine du sud : un homme musclé y attrape un dauphin qui se débat."
+      },
+      {
+        "titre": "La légende des deux rivaux",
+        "texte": "Les guides romains adorent une histoire drôle. Bernini et Borromini, l'architecte de l'église d'en face, étaient rivaux. Selon la légende, le géant qui lève la main, le Rio de la Plata, se protégerait pour ne pas être écrasé si la façade s'effondrait. Et le Nil se cacherait les yeux pour ne pas voir cette façade, qu'il trouve laide. Mais ce n'est qu'une légende : la fontaine était terminée avant que Borromini commence la façade. Le vrai secret du Nil voilé, c'est celui du quiz."
       },
       {
         "titre": "Le quiz",

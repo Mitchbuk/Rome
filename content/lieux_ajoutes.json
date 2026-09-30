@@ -86,8 +86,8 @@
     "categorie": "antique",
     "lat": 41.906,
     "lon": 12.4766,
-    "duree": 45,
-    "conseil": "Rouvert en 2021 après de longues restaurations, le mausolée se visite sur réservation, par créneaux horaires. Comptez trois quarts d'heure. Il se combine idéalement avec l'Ara Pacis, juste en face."
+    "duree": 15,
+    "conseil": "Fermé pour la dernière phase de ses travaux, avec une réouverture annoncée pour la fin 2026 : vérifiez sur le site des musées de Rome avant d'y aller. On le découvre très bien depuis la piazza Augusto Imperatore qui l'entoure. Comptez un quart d'heure, et combinez avec l'Ara Pacis, juste en face."
   },
   {
     "id": "saint-pierre-aux-liens",
@@ -213,7 +213,7 @@
     "lat": 41.8949,
     "lon": 12.4909,
     "duree": 90,
-    "conseil": "Métro ligne B, arrêt Cavour. Le quartier se découvre à pied, sans itinéraire précis. Le week-end, un marché d'artisans et de créateurs se tient souvent dans un hôtel de la via Cavour. Santa Prassede ferme à l'heure du déjeuner, et une pièce allume la chapelle Saint-Zénon."
+    "conseil": "Métro ligne B, arrêt Cavour. Le quartier se découvre à pied, sans itinéraire précis. Le week-end, un marché d'artisans et de créateurs se tient souvent dans un hôtel de la via Cavour. Santa Prassede ferme à l'heure du déjeuner, et une pièce allume la chapelle Saint-Zénon. Santa Pudenziana, sur la via Urbana, a des horaires d'ouverture réduits : mieux vaut les vérifier avant de venir."
   },
   {
     "id": "marche-testaccio",
@@ -259,5 +259,41 @@
     "lon": 12.4776,
     "duree": 90,
     "conseil": "Comptez une heure et demie. Le musée est fermé le lundi. Il est rarement bondé. Tramway ou quinze minutes à pied depuis la place du Peuple, en longeant le parc de la villa Borghèse. Le jardin et le temple reconstitué méritent un tour."
+  },
+  {
+    "id": "palais-spada",
+    "nom": "Palais Spada",
+    "categorie": "musee",
+    "lat": 41.8941,
+    "lon": 12.4717,
+    "duree": 60,
+    "conseil": "Le billet de la Galleria Spada donne aussi accès au jardin secret, où se trouve la galerie de Borromini. On ne peut pas entrer dans la colonnade : on la regarde depuis l'entrée, et c'est de là que l'illusion marche le mieux. Le dernier accès au jardin est une demi-heure avant la fermeture, et le musée ferme un jour par semaine, à vérifier avant de venir. Entrée gratuite pour les moins de dix-huit ans."
+  },
+  {
+    "id": "quartier-coppede",
+    "nom": "Quartier Coppedè",
+    "categorie": "quartier",
+    "lat": 41.9187,
+    "lon": 12.5023,
+    "duree": 45,
+    "conseil": "Le quartier se découvre en plein air, en accès libre. Les bâtiments sont des habitations et ne se visitent pas : restez discrets. Entrez par l'arc au grand lustre de la via Tagliamento, puis avancez jusqu'à la piazza Mincio et sa fontaine. Levez souvent les yeux : les plus belles décorations sont sur les façades, les balcons et les toits."
+  },
+  {
+    "id": "santa-maria-della-vittoria",
+    "nom": "Santa Maria della Vittoria",
+    "categorie": "eglise",
+    "lat": 41.9047,
+    "lon": 12.4942,
+    "duree": 30,
+    "conseil": "L'entrée est gratuite. La chapelle Cornaro, avec l'Extase de sainte Thérèse, est dans le bras gauche de l'église : restez un moment devant pour laisser la lumière faire son effet. L'église ferme en milieu de journée et rouvre en fin d'après-midi, à vérifier avant de venir. Épaules et genoux couverts."
+  },
+  {
+    "id": "thermes-diocletien",
+    "nom": "Thermes de Dioclétien",
+    "categorie": "antique",
+    "lat": 41.9032,
+    "lon": 12.4968,
+    "duree": 90,
+    "conseil": "La basilique est gratuite, avec une entrée sur la place de la République. Le musée national romain a une billetterie à part, à quelques minutes à pied, et ce billet donne accès au grand cloître de Michel-Ange. Pour voir la méridienne au sol, venez à l'approche de midi, quand un rayon de soleil touche la ligne de bronze. Épaules et genoux couverts dans l'église."
   }
 ]

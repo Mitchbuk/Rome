@@ -11,7 +11,7 @@
       },
       {
         "titre": "Une journée au Colisée",
-        "texte": "Les spectacles étaient gratuits, offerts par l'empereur ou un riche magistrat. Le programme suivait toujours le même ordre. Le matin, on donnait les chasses : des combattants spécialisés, les bestiaires, affrontaient lions, ours, panthères ou éléphants dans des décors reconstitués. À midi venaient les exécutions de condamnés. L'après-midi, enfin, le clou du spectacle, les combats de gladiateurs. Chacun s'asseyait selon son rang. Le podium, au plus près de l'arène, était réservé aux sénateurs, aux magistrats et aux Vestales, avec la loge impériale au centre. Au-dessus s'installaient les chevaliers, puis les citoyens ordinaires. Tout en haut, sur des gradins de bois, se tenaient les femmes, les esclaves et les plus pauvres. Les gladiateurs s'entraînaient juste à côté, au Ludus Magnus, une caserne reliée à l'arène par un tunnel. Ses ruines sont encore visibles de l'autre côté de la rue."
+        "texte": "Les spectacles étaient gratuits, offerts par l'empereur ou un riche magistrat. Le programme suivait toujours le même ordre. Le matin, on donnait les chasses : des combattants spécialisés, les bestiaires, affrontaient lions, ours, panthères ou éléphants dans des décors reconstitués. À midi venaient les exécutions de condamnés. L'après-midi, enfin, le clou du spectacle, les combats de gladiateurs. Le public entrait par 80 entrées numérotées, ouvertes dans l'anneau extérieur : 76 pour le public ordinaire et 4 pour l'élite. Des couloirs et des escaliers appelés vomitoires, du latin vomere, qui veut dire déverser, menaient directement à chaque secteur de gradins. Grâce à eux, la foule pouvait sortir en quelques minutes. Les guides annoncent une quinzaine de minutes, chiffre non prouvé. Chacun s'asseyait selon son rang. Le podium, au plus près de l'arène, était réservé aux sénateurs, aux magistrats et aux Vestales, avec la loge impériale au centre. Au-dessus s'installaient les chevaliers, puis les citoyens ordinaires. Tout en haut, sur des gradins de bois, se tenaient les femmes, les esclaves et les plus pauvres. Les gladiateurs s'entraînaient juste à côté, au Ludus Magnus, une caserne reliée à l'arène par un tunnel. Ses ruines sont encore visibles de l'autre côté de la rue."
       },
       {
         "titre": "Abandon, pillage et survie",
@@ -26,6 +26,10 @@
       {
         "titre": "Cent jours de fêtes",
         "texte": "Nous sommes en l'an 80. L'empereur Titus vient d'inaugurer le plus grand amphithéâtre du monde et il a promis cent jours de fêtes. Tu serres dans ta main ton jeton en terre cuite, tu cherches ton numéro au-dessus des arcades, tu grimpes des escaliers sombres. Et soudain, tu débouches en pleine lumière. Des dizaines de milliers de personnes crient, ça sent le sable et le parfum, et un immense voile de toile claque au-dessus de ta tête. Dans la loge d'honneur, l'empereur lève la main. Le spectacle commence."
+      },
+      {
+        "titre": "Quatre-vingts portes pour entrer",
+        "texte": "Le savais-tu ? Le Colisée avait 80 entrées numérotées, dont 76 pour tout le monde et 4 pour les invités importants. Chaque entrée menait par un couloir jusqu'à un secteur de gradins. Ces couloirs s'appellent des vomitoires, un mot latin qui vient de vomere, déverser. Ils déversaient la foule dans les gradins, puis dehors. On pouvait ainsi vider le Colisée en quelques minutes. Les guides disent même une quinzaine de minutes, mais personne ne l'a prouvé."
       },
       {
         "titre": "Vaincu, mais vivant ?",
@@ -110,6 +114,10 @@
         "texte": "En entrant par la Via Sacra, on passe sous l'arc de Titus, élevé en 81 pour célébrer la prise de Jérusalem. Sur la droite, les trois voûtes colossales de la basilique de Maxence, hautes de 25 mètres, ne sont qu'un tiers de l'édifice d'origine. Plus loin, le temple d'Antonin et Faustine doit sa survie à l'église bâtie à l'intérieur. Au centre se trouvent le petit temple rond de Vesta et la maison des Vestales, avec ses bassins et ses statues. Trois colonnes élancées signalent le temple de Castor et Pollux, et huit colonnes de granit marquent celui de Saturne. La Curie, reconstruite par Dioclétien, est presque intacte, et l'arc de Septime Sévère, élevé en 203, ferme la place du côté du Capitole."
       },
       {
+        "titre": "Les Vestales, gardiennes du feu",
+        "texte": "Les Vestales étaient les prêtresses qui entretenaient le feu sacré de la ville. Recrutées enfants, vers six à dix ans, dans les grandes familles, elles servaient au moins trente ans et devaient rester chastes. Elles avaient aussi des privilèges : elles pouvaient gracier un condamné qu'elles croisaient. Celle qui rompait son vœu risquait d'être emmurée vivante, avec une lampe et un peu de nourriture, dans une petite chambre souterraine. Elle se trouvait au Campus Sceleratus, près de la porte Colline. Ce châtiment est resté très rare : on en connaît une dizaine de cas au plus, selon certains auteurs."
+      },
+      {
         "titre": "La vie quotidienne au Forum",
         "texte": "Dès l'aube, le Forum bourdonnait. Les avocats plaidaient dans les basiliques, de vastes halles couvertes où l'on rendait la justice à l'abri du soleil. Les banquiers tenaient boutique sous les portiques, et les crieurs annonçaient les nouvelles et les enchères. Les jours de fête, les processions et les triomphes remontaient la Via Sacra. Le calendrier officiel, les lois gravées sur bronze et les traités étaient affichés ici. Cicéron y a prononcé ses grands discours. Après son assassinat en 43 avant Jésus-Christ, Marc Antoine a fait clouer sa tête et ses mains sur la tribune même d'où il avait parlé. Un an plus tôt, c'est au Forum que le corps de César avait été brûlé par une foule en colère, à l'endroit où s'élève aujourd'hui un petit autel."
       },
@@ -120,6 +128,10 @@
       {
         "titre": "Oubli et redécouverte",
         "texte": "Au Moyen Âge, le Forum devient le Campo Vaccino, le champ aux vaches, un pré où l'on mène paître le bétail entre des colonnes à demi enterrées. Les artistes du dix-huitième siècle, Piranèse en tête, en dessinent les ruines romantiques. Les premières fouilles sérieuses commencent en 1803 avec Carlo Fea, qui dégage l'arc de Septime Sévère, puis s'intensifient après l'unification de l'Italie. Entre 1898 et 1925, l'archéologue Giacomo Boni fouille jusqu'aux niveaux les plus anciens et découvre le Lapis Niger, une dalle de pierre noire. Elle recouvre l'une des plus anciennes inscriptions latines connues, datée du sixième siècle avant Jésus-Christ. Le dernier monument élevé au Forum, la colonne de Phocas, date de 608 : elle marque la fin d'une histoire de plus de mille ans."
+      },
+      {
+        "titre": "La prison Mamertine",
+        "texte": "Au pied du Capitole, juste à côté du Forum, la prison Mamertine, ou Carcer Tullianum, se compose de deux cachots souterrains. Selon la tradition, on y aurait enfermé Jugurtha et Vercingétorix. Saint Pierre y aurait aussi été prisonnier, et l'on y montre une source d'eau où il aurait baptisé ses geôliers."
       }
     ],
     "enfants": [
@@ -133,15 +145,19 @@
       },
       {
         "titre": "Rallumer le feu sacré",
-        "texte": "Le feu de Vesta ne devait jamais s'éteindre, et pourtant cela arrivait. On ne le rallumait pas avec n'importe quelle flamme. Selon l'écrivain Plutarque, les Vestales concentraient les rayons du soleil dans un récipient de bronze poli pour enflammer une mèche. Ou bien elles frottaient deux morceaux de bois d'un arbre porte-bonheur. Dans ce temple rond, on cachait aussi des objets sacrés que personne, à part elles, n'avait le droit de voir. Parmi eux, une statue mystérieuse venue, disait-on, de Troie : tant qu'elle restait à Rome, la ville était protégée."
+        "texte": "Le feu de Vesta ne devait jamais s'éteindre, et pourtant cela arrivait. On ne le rallumait pas avec n'importe quelle flamme. Selon l'écrivain Plutarque, les Vestales concentraient les rayons du soleil dans un récipient de bronze poli pour enflammer une mèche. Ou bien elles frottaient deux morceaux de bois d'un arbre porte-bonheur. Dans ce temple rond, on cachait aussi des objets sacrés que personne, à part elles, n'avait le droit de voir. Parmi eux, une statue mystérieuse venue, disait-on, de Troie : tant qu'elle restait à Rome, la ville était protégée. Ces prêtresses, choisies vers six à dix ans dans les grandes familles, servaient au moins trente ans et suivaient des règles très strictes. Elles pouvaient gracier un condamné croisé sur leur chemin."
       },
       {
         "titre": "Le nombril de Rome",
         "texte": "Près de l'arc de Septime Sévère, un petit monument rond en brique marquait l'Umbilicus Urbis, le nombril de la ville, considéré comme le centre exact de Rome. Juste à côté, Auguste avait fait dresser le Milliaire d'or, une colonne recouverte de bronze doré. On y avait gravé les distances entre Rome et les grandes villes de l'Empire. C'est de là que vient l'expression « tous les chemins mènent à Rome » : toutes les routes étaient mesurées à partir de ce point."
       },
       {
+        "titre": "La prison sous le Capitole",
+        "texte": "Au pied du Capitole, tout près du Forum, une vieille prison se cache sous la terre : la prison Mamertine. On y descend dans deux cachots, l'un sous l'autre. Selon la tradition, des prisonniers célèbres y ont été enfermés, comme Jugurtha et Vercingétorix, le chef des Gaulois. Saint Pierre y aurait aussi été prisonnier et aurait baptisé ses geôliers avec l'eau d'une source."
+      },
+      {
         "titre": "Défi sur place",
-        "texte": "Sous l'arc de Titus, lève la tête vers les sculptures de l'intérieur : cherche le grand chandelier à sept branches que les soldats romains rapportent de Jérusalem. Ensuite, compte les colonnes du temple de Saturne et trouve les trois colonnes solitaires de Castor et Pollux. Enfin, dans la maison des Vestales, repère les longs bassins et les statues de prêtresses alignées, dont plusieurs ont perdu leur tête."
+        "texte": "Sous l'arc de Titus, lève la tête vers les sculptures de l'intérieur : cherche le grand chandelier à sept branches que les soldats romains rapportent de Jérusalem. Ensuite, compte les colonnes du temple de Saturne et trouve les trois colonnes solitaires de Castor et Pollux. Puis, sur les marches et les dalles de la basilique Julia, côté Via Sacra et côté Curie, cherche des damiers et des cercles gravés. Des Romains qui s'ennuyaient y jouaient avec des cailloux, un peu comme aux dames. L'un des damiers est une grille de huit cases sur huit. Enfin, dans la maison des Vestales, repère les longs bassins et les statues de prêtresses alignées, dont plusieurs ont perdu leur tête."
       },
       {
         "titre": "Quiz éclair",
@@ -207,7 +223,7 @@
       },
       {
         "titre": "La colonne, chiffres et techniques",
-        "texte": "Le fût mesure un peu moins de 30 mètres et repose sur un piédestal de plus de 5 mètres, pour près de 40 mètres au total avec la statue. Il est composé de dix-sept blocs cylindriques de marbre de Carrare, appelés tambours, pesant chacun plusieurs dizaines de tonnes et empilés avec une précision extraordinaire. Un escalier en colimaçon éclairé par 43 petites fenêtres monte jusqu'au sommet. La frise, sculptée après la pose des blocs, s'enroule sur 23 tours et près de 200 mètres. Sa hauteur augmente légèrement vers le haut, pour compenser l'éloignement du regard. À l'origine, elle était peinte de couleurs vives et garnie d'armes miniatures en métal, aujourd'hui disparues. La statue de bronze doré de Trajan, tombée au Moyen Âge, a été remplacée en 1587 par un saint Pierre sur ordre de Sixte Quint."
+        "texte": "Le fût mesure un peu moins de 30 mètres et repose sur un piédestal de plus de 5 mètres, pour près de 40 mètres au total avec la statue. Il est composé de dix-sept blocs cylindriques de marbre de Carrare, appelés tambours, pesant chacun plusieurs dizaines de tonnes et empilés avec une précision extraordinaire. Un escalier en colimaçon éclairé par 43 petites fenêtres monte jusqu'au sommet. La frise, sculptée après la pose des blocs, s'enroule sur 23 tours et près de 200 mètres. Sa hauteur augmente légèrement vers le haut, pour compenser l'éloignement du regard. À l'origine, elle était peinte de couleurs vives et garnie d'armes miniatures en métal, aujourd'hui disparues. Le socle abrite une petite chambre. Après la mort de Trajan en 117, le Sénat a décidé que ses cendres, puis celles de sa femme Plotine, y reposeraient dans des urnes d'or, aujourd'hui disparues. C'était un honneur exceptionnel, car on n'enterrait pas à l'intérieur de la ville. La colonne est donc aussi un tombeau, même si certains historiens doutent que la chambre ait réellement servi de sépulture. La statue de bronze doré de Trajan, tombée au Moyen Âge, a été remplacée en 1587 par un saint Pierre sur ordre de Sixte Quint."
       },
       {
         "titre": "Lire la frise",
@@ -233,7 +249,7 @@
       },
       {
         "titre": "La montagne déplacée",
-        "texte": "Lis l'inscription sur le socle. Elle explique que la colonne a été dressée pour montrer à quelle hauteur s'élevait la colline que les ouvriers ont enlevée pour bâtir le forum. Autrement dit, là où tu te trouves, il y avait autrefois une montagne de terre et de roche presque aussi haute que la colonne. Des milliers d'ouvriers l'ont creusée et transportée à la pelle et à la brouette, sans aucune machine. Les Romains voulaient que tout le monde connaisse cet exploit."
+        "texte": "Lis l'inscription sur le socle. Elle explique que la colonne a été dressée pour montrer à quelle hauteur s'élevait la colline que les ouvriers ont enlevée pour bâtir le forum. Autrement dit, là où tu te trouves, il y avait autrefois une montagne de terre et de roche presque aussi haute que la colonne. Des milliers d'ouvriers l'ont creusée et transportée à la pelle et à la brouette, sans aucune machine. Les Romains voulaient que tout le monde connaisse cet exploit. Le savais-tu ? Ce socle cache aussi une petite chambre. Après la mort de Trajan en 117, le Sénat a décidé d'y placer ses cendres, puis celles de sa femme Plotine. Elles reposaient dans des urnes d'or qui ont disparu depuis. C'était un honneur rare, car on n'enterrait pas les gens à l'intérieur de la ville. Cette colonne est donc aussi un tombeau. Certains historiens se demandent pourtant si la chambre a vraiment servi."
       },
       {
         "titre": "Le trésor du roi Décébale",
@@ -257,7 +273,7 @@
       },
       {
         "titre": "Un stade de 150 000 places",
-        "texte": "Long de 600 mètres et large de 140, le Circus Maximus est le plus grand édifice de spectacle de l'Antiquité. Les gradins, sur trois niveaux, abritaient environ 150 000 spectateurs, davantage selon certains auteurs anciens. À l'extrémité plate, douze stalles de départ, les carceres, s'ouvraient toutes en même temps grâce à un mécanisme à ressort. Au centre courait la spina, un long mur de 340 mètres orné de statues, d'autels, de bassins et des deux obélisques. À chaque bout se dressaient trois bornes coniques dorées, les metae. Sous les gradins, des tavernes, des boutiques et des échoppes de devins attiraient une foule très mélangée. Hommes et femmes s'y asseyaient ensemble, ce qui n'était pas le cas au Colisée."
+        "texte": "Long de 600 mètres et large de 140, le Circus Maximus est le plus grand édifice de spectacle de l'Antiquité. Les gradins, sur trois niveaux, abritaient environ 150 000 spectateurs, davantage selon certains auteurs anciens. À l'extrémité plate, douze stalles de départ, les carceres, s'ouvraient toutes en même temps grâce à un mécanisme à ressort. Au centre courait la spina, un long mur de 340 mètres orné de statues, d'autels, de bassins et des deux obélisques. Sur la spina, un dispositif comptait les tours. Il se composait de sept œufs de bois, installés en 174 avant Jésus-Christ, et de sept dauphins, probablement de bronze, ajoutés par Agrippa en 33 avant Jésus-Christ. À chaque tour accompli, on abaissait ou on retirait un œuf et un dauphin, pour que le public et les cochers suivent la course. Les œufs renvoyaient à Castor et Pollux, les dauphins à Neptune, protecteur des chevaux. Rien n'en subsiste aujourd'hui. À chaque bout se dressaient trois bornes coniques dorées, les metae. Sous les gradins, des tavernes, des boutiques et des échoppes de devins attiraient une foule très mélangée. Hommes et femmes s'y asseyaient ensemble, ce qui n'était pas le cas au Colisée."
       },
       {
         "titre": "Une journée de courses",
@@ -282,6 +298,10 @@
         "texte": "Il y avait quatre écuries, et chaque Romain en avait une dans le cœur : les Bleus, les Verts, les Rouges et les Blancs. On portait leurs couleurs, on se disputait dans les tavernes pour elles, et même les empereurs avaient leur camp. Caligula adorait les Verts au point de dîner dans leurs écuries. L'écrivain Suétone raconte même qu'il avait offert à son propre cheval, Incitatus, une écurie de marbre, une mangeoire en ivoire et des serviteurs. Il voulait aussi le nommer consul, l'un des postes les plus importants de Rome."
       },
       {
+        "titre": "Le compteur de tours",
+        "texte": "Sur la spina, le long mur du milieu de la piste, il y avait un compteur de tours. Il y avait sept œufs de bois et sept dauphins, probablement en bronze. À chaque tour, on en abaissait ou on en retirait un de chaque. Les œufs rappelaient les jumeaux Castor et Pollux, et les dauphins Neptune, le dieu qui protège les chevaux. Il n'en reste rien : imagine-les !"
+      },
+      {
         "titre": "Scorpus, la star morte trop tôt",
         "texte": "Bien avant les footballeurs, les cochers étaient les vraies vedettes de Rome. Scorpus, qui courait pour les Verts, a remporté 2 048 victoires alors qu'il n'avait même pas trente ans. Son portrait était partout, on chantait son nom, et il gagnait en une heure ce qu'un ouvrier gagnait en une année. Il est mort dans un accident vers l'âge de 27 ans, et le poète Martial, qui l'admirait, a écrit un poème pour le pleurer."
       },
@@ -291,7 +311,7 @@
       },
       {
         "titre": "Défi sur place",
-        "texte": "Repère d'abord les deux bouts de la piste. Le côté arrondi, près de la tour médiévale, est celui où les chars faisaient demi-tour. Le côté plat, vers le Tibre, est celui où se trouvaient les boîtes de départ. Puis mesure la piste à ta façon : compte tes pas sur une longueur, et calcule combien de pas feraient sept tours. Enfin, regarde vers le Palatin : les grandes arcades de brique que tu vois sont les terrasses du palais d'où l'empereur regardait les courses sans sortir de chez lui."
+        "texte": "Repère d'abord les deux bouts de la piste. Le côté arrondi, près de la tour médiévale, est celui où les chars faisaient demi-tour. Le côté plat, vers le Tibre, est celui où se trouvaient les boîtes de départ. Puis mesure la piste à ta façon : compte tes pas sur une longueur, et calcule combien de pas feraient sept tours. Enfin, regarde vers le Palatin : les grandes arcades de brique que tu vois sont les terrasses du palais d'où l'empereur regardait les courses sans sortir de chez lui. Repère aussi la ligne de la spina, où se trouvaient les dauphins."
       },
       {
         "titre": "Quiz éclair",
@@ -365,7 +385,7 @@
       },
       {
         "titre": "Parcours conseillé",
-        "texte": "La promenade commence à la Porta San Sebastiano, la plus belle porte des murailles d'Aurélien, qui abrite un musée des murs. On passe ensuite devant la petite église Domine Quo Vadis, puis devant les grandes catacombes de Saint-Calixte et de Saint-Sébastien. Après le cirque de Maxence et le tombeau de Cecilia Metella, la route devient une allée bordée de pins parasols et de cyprès. C'est à partir de là que les dalles antiques réapparaissent, avec les ruines des tombeaux, les statues sans tête et, au loin, les arches des aqueducs. Le tronçon le plus spectaculaire s'étend jusqu'au Casal Rotondo, un immense tombeau rond sur lequel une ferme a été construite au Moyen Âge."
+        "texte": "La promenade commence à la Porta San Sebastiano, la plus belle porte des murailles d'Aurélien, qui abrite un musée des murs. On passe ensuite devant la petite église Domine Quo Vadis. Elle conserve au centre de la nef une dalle de marbre portant deux empreintes de pieds, que la tradition attribue au Christ apparaissant à Pierre. C'est une copie : l'original est exposé dans la basilique San Sebastiano, plus loin sur la route. Le site officiel du parc y voit plutôt un ex-voto laissé par des voyageurs. Puis on passe devant les grandes catacombes de Saint-Calixte et de Saint-Sébastien. Après le cirque de Maxence et le tombeau de Cecilia Metella, la route devient une allée bordée de pins parasols et de cyprès. C'est à partir de là que les dalles antiques réapparaissent, avec les ruines des tombeaux, les statues sans tête et, au loin, les arches des aqueducs. Le tronçon le plus spectaculaire s'étend jusqu'au Casal Rotondo, un immense tombeau rond sur lequel une ferme a été construite au Moyen Âge."
       },
       {
         "titre": "Petites histoires",
@@ -388,6 +408,10 @@
       {
         "titre": "Le poète et les moustiques",
         "texte": "Il y a plus de deux mille ans, le poète Horace a fait tout le voyage de Rome à Brindisi sur cette route et a tout raconté. La première nuit, il a pris un bateau tiré par une mule sur un canal à travers les marais. Impossible de dormir : les grenouilles coassaient, les moustiques piquaient, le batelier chantait à tue-tête, puis il s'est endormi et la mule s'est arrêtée. Plus loin, l'eau était si mauvaise qu'il a préféré ne pas boire, et le pain si dur qu'il en a emporté pour la suite."
+      },
+      {
+        "titre": "Deux empreintes de pieds",
+        "texte": "Le savais-tu ? Dans la petite église Domine Quo Vadis, au bord de la route, une dalle de marbre montre deux empreintes de pieds. Selon la tradition, ce sont celles du Christ, qui serait apparu à saint Pierre à cet endroit. Mais c'est une copie : la vraie est plus loin, dans la basilique San Sebastiano. Certains spécialistes pensent plutôt que des voyageurs l'ont laissée en offrande."
       },
       {
         "titre": "Défi sur place",
@@ -414,6 +438,10 @@
         "texte": "Le cœur du site est une chambre découverte en 1854, que l'archéologue Giovanni Battista de Rossi a baptisée « le petit Vatican ». Neuf papes du troisième siècle y ont été enterrés, dont Pontien, Fabien et Sixte II. Ce dernier a été arrêté dans ces mêmes catacombes et exécuté en 258, pendant la persécution de Valérien. Les plaques de marbre grecques portant leurs noms sont encore en place. Au fond, un long poème gravé en lettres élégantes par le calligraphe Filocalus rend hommage aux martyrs. Il a été composé vers 370 par le pape Damase, qui a aménagé le lieu pour les pèlerins. Damase y précise qu'il aurait voulu être enterré ici, mais qu'il n'osait pas déranger les cendres des saints."
       },
       {
+        "titre": "Les cubicules des Sacrements",
+        "texte": "Dans la galerie A, cinq petites chambres funéraires, les cubicules des Sacrements, conservent parmi les plus anciennes fresques des catacombes, datées du début du troisième siècle. On y voit le baptême d'un catéchumène, c'est-à-dire d'une personne qui se prépare à devenir chrétienne. On y voit aussi la multiplication des pains et des poissons, avec sept convives à table, et le prophète Jonas, symbole de résurrection."
+      },
+      {
         "titre": "Sainte Cécile",
         "texte": "La crypte voisine a abrité la tombe de Cécile, une jeune femme de la noblesse romaine, martyrisée au troisième siècle et devenue la patronne des musiciens. En 821, le pape Pascal Ier a fait transférer son corps dans l'église qui lui est dédiée, dans le quartier du Trastevere. En 1599, lors de travaux dans cette église, le sarcophage a été ouvert. Selon les témoins, le corps était dans un état de conservation remarquable. Le sculpteur Stefano Maderno l'a représenté tel quel, allongé sur le côté, dans une statue dont une copie orne aujourd'hui la crypte. Les murs conservent des fresques du septième au neuvième siècle, parmi lesquelles une image du Christ et une sainte Cécile en prière."
       },
@@ -430,6 +458,10 @@
       {
         "titre": "Le langage secret des chrétiens",
         "texte": "Sur les plaques, tu verras des dessins simples qui étaient en réalité des messages codés. Le poisson d'abord : en grec, poisson se dit Ichthus, et chaque lettre est le début d'un mot de la phrase « Jésus Christ, Fils de Dieu, Sauveur ». L'ancre voulait dire l'espérance, la colombe avec un rameau voulait dire la paix, et le berger portant un agneau représentait le Christ. On raconte que, pour se reconnaître sans se trahir, un chrétien dessinait dans le sable une moitié de poisson : si l'inconnu complétait le dessin, on pouvait lui faire confiance."
+      },
+      {
+        "titre": "Les chambres peintes",
+        "texte": "Le savais-tu ? Dans une galerie, cinq petites chambres gardent de très anciennes peintures, faites au début du troisième siècle. Elles montrent un baptême, un repas avec sept personnes à table où l'on partage du pain et des poissons, et le prophète Jonas. Jonas est un symbole de résurrection, c'est-à-dire de retour à la vie. Si ta visite passe par ces chambres, ouvre bien les yeux."
       },
       {
         "titre": "Perdu dans le noir",
