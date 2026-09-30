@@ -101,6 +101,9 @@
   const SAUT_SECONDES = 15;   // boutons ⏪ / ⏩ du lecteur
 
   const LS_VISITED = 'rome.visited';
+  // Coche verte des lieux déjà visités (carte, groupes, liste, mini-fiche, bouton de la fiche)
+  const ICO_COCHE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const COCHE_VU = `<span class="coche-vu" aria-hidden="true">${ICO_COCHE}</span>`;
   const LS_TAB = 'rome.tab';
   const LS_PUBLIC = 'rome.public';
 
@@ -267,9 +270,13 @@
     else state.visited.add(id);
     lsSet(LS_VISITED, JSON.stringify([...state.visited]));
     const m = lieuParId(id);
-    if (m && state.markers[id]) state.markers[id].setIcon(makeIcon(m, state.miniLieu === m));
+    if (m && state.markers[id]) {
+      state.markers[id].setIcon(makeIcon(m, state.miniLieu === m));
+      if (state.groupe) state.groupe.refreshClusters(state.markers[id]); // la coche du groupe suit
+    }
     renderListe(true);
     updateVisitedBtn();
+    updateMiniVu();
   }
 
   /* ===================================================================
@@ -288,6 +295,7 @@
     let restos = MONUMENTS.filter(estResto);
     if (state.filter === 'manger') principal = [];
     else if (state.filter === 'incontournables') { principal = principal.filter((m) => m.incontournable); restos = []; }
+    else if (state.filter === 'avoir') { principal = principal.filter((m) => !state.visited.has(m.id)); restos = []; }
     else if (state.filter !== 'tous') { principal = principal.filter((m) => m.categorie === state.filter); restos = []; }
     const surPlace = dansLaVille();
     const trier = (arr) => {
@@ -319,10 +327,10 @@
           ${badgeResto(m)}
         </span>
         <span class="lieu-texte">
-          <span class="lieu-nom">${escapeHtml(m.nom)}</span>
+          <span class="lieu-nom">${escapeHtml(m.nom)}${vu ? `<span class="vu-mini" role="img" aria-label="Déjà visité">${ICO_COCHE}</span>` : ''}</span>
           <span class="lieu-meta">${estResto(m)
             ? `${typeResto(m)} · ${escapeHtml(m.quartier)} · ${m.budget}`
-            : `${cat.label} · ${formatDuree(m.duree)}`}${vu ? ' · ✓ vu' : ''}</span>
+            : `${cat.label} · ${formatDuree(m.duree)}`}</span>
         </span>
         <span class="lieu-dist">
           <span class="lieu-dist-val">${d != null ? formatDistance(d) : ''}</span>
@@ -346,6 +354,10 @@
     // Changement de mode (sur place / préparer) : les distances apparaissent ou disparaissent partout
     if (state.listeSurPlace !== surPlace) { force = true; state.listeSurPlace = surPlace; }
     updateBandeauVille(surPlace);
+    const lieux = MONUMENTS.filter((m) => !estResto(m));
+    const nbVus = lieux.filter((m) => state.visited.has(m.id)).length;
+    el.compteVus.hidden = !nbVus;
+    el.compteVus.innerHTML = nbVus ? `${ICO_COCHE}<span>${nbVus} lieu${nbVus > 1 ? 'x' : ''} visité${nbVus > 1 ? 's' : ''} sur ${lieux.length}</span>` : '';
 
     const ordre = [];
     if (surPlace) {
@@ -398,7 +410,7 @@
   }
 
   function renderChips() {
-    const chips = [{ id: 'tous', label: 'Tous' }, { id: 'incontournables', label: '⭐ Incontournables' }].concat(
+    const chips = [{ id: 'tous', label: 'Tous' }, { id: 'incontournables', label: '⭐ Incontournables' }, { id: 'avoir', label: 'Pas encore vus' }].concat(
       Object.entries(CATEGORIES).map(([id, c]) => ({ id, label: `${c.emoji} ${c.label}` }))
     );
     el.chips.innerHTML = chips.map((c) =>
@@ -418,10 +430,11 @@
     if (estLogo(m)) classes.push('is-logo');
     if (state.visited.has(m.id)) classes.push('is-visited');
     if (selected) classes.push('is-selected');
+    const coche = state.visited.has(m.id) ? COCHE_VU : '';
     if (!estResto(m)) {
       return L.divIcon({
-        className: classes.join(' '),
-        html: `<img src="${thumbUrl(m)}" alt="" draggable="false">`,
+        className: 'marker-lieu-wrap',
+        html: `<span class="${classes.join(' ')}"><img src="${thumbUrl(m)}" alt="" draggable="false"></span>${coche}`,
         iconSize: [46, 46],
         iconAnchor: [23, 23]
       });
@@ -429,7 +442,7 @@
     // Adresse "Où manger" : un conteneur sans rognage, pour que le badge déborde du cercle
     return L.divIcon({
       className: 'marker-manger-wrap',
-      html: `<span class="${classes.join(' ')}"><img src="${thumbUrl(m)}" alt="" draggable="false"></span>${badgeResto(m)}`,
+      html: `<span class="${classes.join(' ')}"><img src="${thumbUrl(m)}" alt="" draggable="false"></span>${badgeResto(m)}${coche}`,
       iconSize: [46, 46],
       iconAnchor: [23, 23]
     });
@@ -447,7 +460,8 @@
     return L.divIcon({
       className: 'marker-groupe',
       html: `<span class="marker-photo${estLogo(vedette) ? ' is-logo' : ''}"><img src="${thumbUrl(vedette)}" alt="" draggable="false"></span>`
-        + `<span class="groupe-nombre">${n}</span>`,
+        + `<span class="groupe-nombre">${n}</span>`
+        + (lieux.some((m) => state.visited.has(m.id)) ? COCHE_VU : ''),
       iconSize: [52, 52],
       iconAnchor: [26, 26]
     });
@@ -544,6 +558,7 @@
     el.miniBadge.innerHTML = badgeResto(m);
     el.miniNom.textContent = m.nom;
     updateMiniMeta();
+    updateMiniVu();
     el.mapMini.classList.add('is-visible');
     el.viewCarte.classList.add('has-mini');
     state.map.panTo([m.lat, m.lon], { animate: true });
@@ -557,6 +572,13 @@
       : formatDuree(state.miniLieu.duree)];
     if (d != null) parts.push(`${formatDistance(d)} · ${formatMarche(d)}`);
     el.miniMeta.textContent = parts.join(' · ');
+  }
+
+  function updateMiniVu() {
+    const on = !!(state.miniLieu && state.visited.has(state.miniLieu.id));
+    el.miniVu.classList.toggle('is-on', on);
+    el.miniVu.setAttribute('aria-pressed', String(on));
+    el.miniVu.setAttribute('aria-label', on ? 'Visité' : 'Marquer comme visité');
   }
 
   function hideMini() {
@@ -730,7 +752,8 @@
     const on = !!(state.current && state.visited.has(state.current.id));
     el.btnVisited.classList.toggle('is-on', on);
     el.btnVisited.setAttribute('aria-pressed', String(on));
-    el.btnVisited.innerHTML = on ? '<span aria-hidden="true">✓</span> Vu !' : '<span aria-hidden="true">✓</span> Vu';
+    el.btnVisited.innerHTML = `${ICO_COCHE} ${on ? 'Visité' : 'Vu'}`;
+    el.btnVisited.setAttribute('aria-label', on ? 'Visité' : 'Marquer comme visité');
   }
 
   /** Met à jour la distance affichée dans la fiche ouverte (appelé à chaque position GPS). */
@@ -1287,6 +1310,7 @@
     el.btnPreload2.addEventListener('click', prechargerTuiles);
     el.miniOpen.addEventListener('click', () => { if (state.miniLieu) openSheet(state.miniLieu.id); });
     el.miniClose.addEventListener('click', hideMini);
+    el.miniVu.addEventListener('click', () => { if (state.miniLieu) basculerVisite(state.miniLieu.id); });
 
     // Liste
     el.liste.addEventListener('click', (ev) => {
@@ -1362,6 +1386,8 @@
       mapMini: $('#map-mini'),
       miniOpen: $('#mini-open'),
       miniClose: $('#mini-close'),
+      miniVu: $('#mini-vu'),
+      compteVus: $('#compte-vus'),
       miniImg: $('#mini-img'),
       miniBadge: $('#mini-badge'),
       sheetActions: $('.sheet-actions'),

@@ -256,8 +256,22 @@ button {
   text-align: left;
   min-width: 0;
 }
+.map-mini-vu {
+  flex: 0 0 46px;
+  align-self: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--sep);
+  color: var(--text-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.map-mini-vu svg { width: 22px; height: 22px; }
+.map-mini-vu.is-on { background: var(--green); border-color: var(--green); color: #fff; }
 .map-mini-close {
-  flex: 0 0 56px;
+  flex: 0 0 52px;
   font-size: 18px;
   color: var(--text-2);
 }
@@ -524,6 +538,7 @@ button {
 .btn-small { min-height: 46px; font-size: 15px; }
 .btn-square { flex: 0 0 60px; width: 60px; font-size: 20px; }
 .btn.is-on { background: var(--green); color: #fff; }
+#btn-visited svg { width: 18px; height: 18px; flex: 0 0 18px; }
 
 /* ---------- Fiche détail (bottom sheet) ---------- */
 .sheet {
@@ -770,7 +785,29 @@ button {
   object-fit: cover;
   background: var(--card-2);
 }
-.lieu.is-visited .lieu-photo { outline: 2.5px solid var(--green); outline-offset: -2.5px; }
+/* Lieu déjà visité : petite coche verte après le nom */
+.vu-mini {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  vertical-align: -2px;
+}
+.vu-mini svg { width: 12px; height: 12px; }
+.compte-vus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 4px 10px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.compte-vus svg { flex: 0 0 20px; width: 20px; height: 20px; color: var(--green); }
 
 /* ---------- Marqueurs photo sur la carte ---------- */
 .marker-photo {
@@ -788,7 +825,28 @@ button {
   object-fit: cover;
   display: block;
 }
-.marker-photo.is-visited { box-shadow: 0 0 0 2px var(--green), 0 3px 10px rgba(0, 0, 0, 0.35); }
+/* Marqueur d'un lieu : conteneur non rogné (comme "Où manger") pour que la coche déborde du cercle */
+.marker-lieu-wrap { width: 46px; height: 46px; }
+.marker-lieu-wrap .marker-photo { display: block; width: 46px; height: 46px; }
+/* Coche verte d'un lieu visité, en bas à droite du cercle (à gauche pour une adresse, dont le badge est à droite) */
+.coche-vu {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid #fff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+.coche-vu svg { width: 14px; height: 14px; }
+.marker-manger-wrap .coche-vu { right: auto; left: -7px; bottom: -7px; }
+.marker-groupe .coche-vu { right: -4px; bottom: -4px; }
 .marker-photo.is-selected {
   box-shadow: 0 0 0 3px var(--blue), 0 4px 14px rgba(0, 0, 0, 0.4);
   transform: scale(1.15);
@@ -921,7 +979,7 @@ button {
    remettait les marqueurs dans le flux, empilés les uns sous les autres, donc décalés vers le bas. */
 .marker-manger-wrap { width: 46px; height: 46px; }
 .marker-manger-wrap .marker-photo { display: block; width: 46px; height: 46px; }
-.marker-photo.is-manger:not(.is-visited):not(.is-selected) {
+.marker-photo.is-manger:not(.is-selected) {
   box-shadow: 0 0 0 3.5px var(--food), 0 3px 10px rgba(0, 0, 0, 0.35);
 }
 .marker-manger-wrap .badge-resto {
