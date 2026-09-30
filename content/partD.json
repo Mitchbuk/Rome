@@ -24,8 +24,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un quartier fermé à clé",
-        "texte": "Imagine que tu habites une rue où, chaque soir au coucher du soleil, des gardes ferment de grandes portes à clé. Personne ne peut sortir avant le lever du jour. C'est ce qu'ont vécu les Juifs de Rome pendant plus de trois cents ans, de 1555 à 1870, dans un quartier minuscule coincé contre le Tibre. À chaque crue, le fleuve entrait dans les maisons. Comme la place manquait, on construisait les maisons toujours plus haut. Les ruelles étaient si étroites que les voisins pouvaient presque se serrer la main d'une fenêtre à l'autre. Aujourd'hui, les murs ont disparu, mais le quartier a gardé ses ruelles, ses odeurs de friture et sa grande synagogue."
+        "titre": "Un quartier fermé chaque soir",
+        "texte": "Pendant plus de trois cents ans, de 1555 à 1870, les Juifs de Rome ont été enfermés chaque soir. Au coucher du soleil, des gardes fermaient de grandes portes à clé. Personne ne pouvait sortir avant le lever du jour. Ils habitaient un quartier minuscule coincé contre le Tibre. À chaque crue, le fleuve entrait dans les maisons. Comme la place manquait, on construisait les maisons toujours plus haut. Les ruelles étaient si étroites que les voisins pouvaient presque se serrer la main d'une fenêtre à l'autre. Aujourd'hui, les murs ont disparu, mais le quartier a gardé ses ruelles, ses odeurs de friture et sa grande synagogue."
       },
       {
         "titre": "Le chandelier disparu",
@@ -70,8 +70,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un bateau de pierre",
-        "texte": "Imagine une île tellement bien placée dans le fleuve que les Romains ont décidé de la transformer en navire géant. Ils ont recouvert ses bords de blocs de pierre blanche taillés en forme de coque. Ils ont planté un obélisque au milieu pour faire le mât, et construit un temple à bord, comme une cabine. Vue du pont, l'île avait l'air de descendre le Tibre vers la mer. Deux mille ans plus tard, un bout de la proue existe encore, à la pointe sud : penche-toi sur le parapet pour l'apercevoir."
+        "titre": "Une île en forme de navire",
+        "texte": "Une île peut-elle devenir un bateau ? À Rome, oui. Celle-ci était tellement bien placée dans le fleuve que les Romains ont décidé de la transformer en navire géant. Ils ont recouvert ses bords de blocs de pierre blanche taillés en forme de coque. Ils ont planté un obélisque au milieu pour faire le mât, et construit un temple à bord, comme une cabine. Vue du pont, l'île avait l'air de descendre le Tibre vers la mer. Deux mille ans plus tard, un bout de la proue existe encore, à la pointe sud : penche-toi sur le parapet pour l'apercevoir."
       },
       {
         "titre": "L'île du roi chassé",
@@ -112,8 +112,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un village dans la ville",
-        "texte": "Imagine que tu traverses un pont et que, d'un coup, la grande ville disparaît. Plus de larges avenues : des ruelles tordues, des façades orange et roses, du lierre qui grimpe partout, des chats sur les marches et du linge qui sèche entre les fenêtres. Bienvenue au Trastevere, le quartier « de l'autre côté du fleuve ». Pendant des siècles, ses habitants ont eu l'impression de ne pas être tout à fait des Romains comme les autres. Ils se surnomment « Noantri », nous autres, et organisent encore chaque été leur propre fête, avec des feux d'artifice sur le Tibre."
+        "titre": "De l'autre côté du fleuve",
+        "texte": "Un pont à traverser, et d'un coup, la grande ville disparaît. Plus de larges avenues, mais des ruelles tordues et des façades orange et roses. Du lierre qui grimpe partout, des chats sur les marches et du linge qui sèche entre les fenêtres. Bienvenue au Trastevere, le quartier « de l'autre côté du fleuve ». Pendant des siècles, ses habitants ont eu l'impression de ne pas être tout à fait des Romains comme les autres. Ils se surnomment « Noantri », nous autres, et organisent encore chaque été leur propre fête, avec des feux d'artifice sur le Tibre."
       },
       {
         "titre": "Les pompiers de l'empereur",
@@ -162,8 +162,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le balcon de Rome",
-        "texte": "Imagine que tu montes sur un immense balcon d'où l'on voit toute la ville d'un coup : les coupoles, les clochers, les toits roses, les pins parasols et, au loin, les montagnes. Le Janicule est ce balcon. Les Romains de l'Antiquité y postaient des guetteurs. Quand un drapeau flottait au sommet, cela voulait dire que tout allait bien et que l'assemblée du peuple pouvait se réunir en bas. Si le drapeau descendait, l'ennemi approchait et tout le monde courait aux armes."
+        "titre": "Le drapeau des guetteurs",
+        "texte": "Toute la ville s'étale d'un coup sous tes yeux : les coupoles, les clochers, les toits roses, les pins parasols et, au loin, les montagnes. Tu es sur le Janicule, un immense balcon. Les Romains de l'Antiquité y postaient des guetteurs. Quand un drapeau flottait au sommet, cela voulait dire que tout allait bien et que l'assemblée du peuple pouvait se réunir en bas. Si le drapeau descendait, l'ennemi approchait et tout le monde courait aux armes."
       },
       {
         "titre": "Le garçon de l'hymne",
@@ -208,8 +208,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le jardin d'un cardinal",
-        "texte": "Imagine un jardin si grand qu'on y circule à cheval, avec des bois, des fontaines, des paons qui se pavanent, des cerfs et des oiseaux exotiques dans une immense volière. C'est ce que le cardinal Scipione Borghese a fait construire il y a quatre cents ans. Il voulait recevoir ses amis et leur montrer les statues et les tableaux qu'il collectionnait. Il n'y dormait même pas : c'était un palais uniquement fait pour épater. Aujourd'hui, ce jardin est devenu le parc préféré des enfants de Rome, avec ses barques, ses vélos, son zoo et ses pelouses."
+        "titre": "Un jardin pour épater",
+        "texte": "Le cardinal Scipione Borghese voulait recevoir ses amis et leur montrer les statues et les tableaux qu'il collectionnait. Il y a quatre cents ans, il a fait construire pour eux un jardin si grand qu'on y circule à cheval. Il y a des bois, des fontaines, des paons qui se pavanent, des cerfs et des oiseaux exotiques dans une immense volière. Il n'y dormait même pas : c'était un palais uniquement fait pour épater. Aujourd'hui, ce jardin est devenu le parc préféré des enfants de Rome, avec ses barques, ses vélos, son zoo et ses pelouses."
       },
       {
         "titre": "Le cardinal voleur d'art",
@@ -258,8 +258,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une tombe devenue château",
-        "texte": "Imagine un tombeau si énorme qu'il ressemble à une montagne de marbre blanc, avec un jardin de cyprès sur le toit. Tout en haut, une statue de l'empereur trône sur un char à quatre chevaux. C'est ainsi que l'empereur Hadrien voulait dormir pour l'éternité. Mais Rome a eu besoin d'une forteresse, alors on a arraché le marbre, bouché les ouvertures et ajouté des murailles, des tours et des canons. Le tombeau est devenu un château, puis un palais pour les papes, puis une prison, et aujourd'hui un musée où tu peux grimper jusqu'au sommet."
+        "titre": "Du tombeau au château",
+        "texte": "Un tombeau peut-il devenir un château ? C'est arrivé ici. À l'origine, c'était un tombeau si énorme qu'il ressemblait à une montagne de marbre blanc, avec un jardin de cyprès sur le toit. Tout en haut, une statue de l'empereur trônait sur un char à quatre chevaux. C'est ainsi que l'empereur Hadrien voulait dormir pour l'éternité. Mais Rome a eu besoin d'une forteresse, alors on a arraché le marbre, bouché les ouvertures et ajouté des murailles, des tours et des canons. Le tombeau est devenu un château, puis un palais pour les papes, puis une prison, et aujourd'hui un musée où tu peux grimper jusqu'au sommet."
       },
       {
         "titre": "Des statues comme boulets",
@@ -308,8 +308,8 @@
     ],
     "enfants": [
       {
-        "titre": "Un stade sous la place",
-        "texte": "Imagine qu'il y a deux mille ans, à l'endroit de cette immense place et de la basilique, se trouvait un stade où des chars tirés par quatre chevaux tournaient à toute vitesse. L'empereur Néron adorait s'y montrer, et il lui arrivait même de conduire un char en personne. Au milieu de la piste se dressait un obélisque venu d'Égypte. C'est toujours le même que tu vois au centre de la place aujourd'hui, à quelques centaines de mètres de son ancien emplacement. Il a vu passer les chars, les martyrs et vingt siècles d'histoire sans jamais tomber."
+        "titre": "Un stade pour les chars",
+        "texte": "Au centre de la place, un obélisque se dresse. Regarde-le : il vient d'Égypte, et il a vu passer les chars, les martyrs et vingt siècles d'histoire sans jamais tomber. Il y a deux mille ans, à l'endroit de cette immense place et de la basilique, se trouvait un stade. Des chars tirés par quatre chevaux y tournaient à toute vitesse. L'empereur Néron adorait s'y montrer, et il lui arrivait même de conduire un char en personne. L'obélisque se dressait déjà au milieu de la piste. C'est toujours le même, à quelques centaines de mètres de son ancien emplacement."
       },
       {
         "titre": "Les palmes du marin",
@@ -354,8 +354,8 @@
     ],
     "enfants": [
       {
-        "titre": "La plus grande église du monde",
-        "texte": "Imagine un bâtiment si grand que la statue de la Liberté, avec son socle, tiendrait debout sous la coupole. Presque deux terrains de football mis bout à bout tiendraient dans la nef. Les lettres dorées qui courent tout en haut des murs sont aussi grandes que toi. Les bébés anges qui tiennent les bénitiers à l'entrée, ces grandes coupes d'eau bénite, sont plus grands qu'un adulte. Pourtant, quand tu entres, tout paraît normal : les architectes ont tout agrandi dans les mêmes proportions pour tromper ton œil. Pour comprendre la vraie taille, regarde les gens tout au fond : de vraies fourmis."
+        "titre": "Une taille qui trompe l'œil",
+        "texte": "La statue de la Liberté, avec son socle, tiendrait debout sous la coupole de cette basilique. Presque deux terrains de football mis bout à bout tiendraient dans la nef. Les lettres dorées qui courent tout en haut des murs sont aussi grandes que toi. Les bébés anges qui tiennent les bénitiers à l'entrée, ces grandes coupes d'eau bénite, sont plus grands qu'un adulte. Pourtant, quand tu entres, tout paraît normal : les architectes ont tout agrandi dans les mêmes proportions pour tromper ton œil. Pour comprendre la vraie taille, regarde les gens tout au fond : de vraies fourmis."
       },
       {
         "titre": "Le squelette au sablier",
@@ -400,8 +400,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine sept kilomètres de trésors",
-        "texte": "Imagine un musée si grand que, si tu t'arrêtais une minute devant chaque œuvre, il te faudrait plusieurs semaines pour tout voir. Sept kilomètres de couloirs, de galeries et de salles remplis de momies, de statues géantes, de cartes peintes et de plafonds dorés. Chaque matin, avant l'ouverture, un homme parcourt tout ce chemin avec un trousseau de près de trois mille clés. Il ouvre environ trois cents portes, en commençant par les plus anciennes. Sa dernière clé, la plus précieuse, ouvre la chapelle Sixtine."
+        "titre": "L'homme aux trois mille clés",
+        "texte": "Chaque matin, avant l'ouverture, un homme parcourt sept kilomètres de couloirs, de galeries et de salles remplis de momies, de statues géantes, de cartes peintes et de plafonds dorés. Il porte un trousseau de près de trois mille clés. Il ouvre environ trois cents portes, en commençant par les plus anciennes. Sa dernière clé, la plus précieuse, ouvre la chapelle Sixtine. Ce musée est si grand que, si tu t'arrêtais une minute devant chaque œuvre, il te faudrait plusieurs semaines pour tout voir."
       },
       {
         "titre": "Le bras perdu du Laocoon",

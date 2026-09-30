@@ -83,7 +83,7 @@ Un tableau. Pour chaque lieu :
 Règles de rédaction (celles qui ont été validées sur Rome après relecture) :
 
 - `adultes` : 450 à 600 mots, 4 à 6 sections titrées (histoire, architecture et chiffres, vie à l'époque, à voir sur place, petites histoires et légendes).
-- `enfants` : 350 à 500 mots, 4 à 6 sections, tutoiement, ton complice sans être bébé : une accroche « Imagine… », deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
+- `enfants` : 350 à 500 mots, 4 à 6 sections, tutoiement, ton complice sans être bébé : une ouverture qui donne envie d'écouter, de forme variée (scène au présent, question, chiffre étonnant, personnage, invitation à regarder, comparaison, légende ; « Imagine » dans un texte sur cinq au plus, jamais en titre), deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
 - Les textes sont LUS À VOIX HAUTE par une synthèse vocale : phrases de moins de 30 mots, passé composé plutôt que passé simple, aucune tournure livresque (« menace ruine », « d'aucuns », inversions du sujet), jargon expliqué en trois mots, siècles et unités en toutes lettres (« seizième siècle », « mètres », « avant Jésus-Christ »), aucune abréviation, parenthèse, liste ou markdown.
 - Exactitude : rien d'inventé ; chiffres incertains laissés approximatifs ; légendes signalées comme telles. Pas de prix ni d'horaires dans les textes (ils vont dans `conseil`, et changent).
 - Titres de sections : 2 à 6 mots, sans deux-points.

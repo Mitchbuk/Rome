@@ -24,8 +24,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un pharaon romain",
-        "texte": "Imagine que tu vis à Rome il y a un peu plus de deux mille ans. L'Égypte vient d'être conquise, et tout le monde ne parle que de ça : les bateaux rapportent des obélisques, des statues de dieux à tête d'animal, des tissus brodés. Un riche Romain nommé Caius Cestius se dit alors : pourquoi ne pas me faire un tombeau comme un pharaon ? Et le voilà, ce tombeau, tout blanc, tout pointu, planté entre les voitures et le métro. Ce n'est pas un décor de cinéma, c'est une vraie pyramide antique, la seule qui reste à Rome."
+        "titre": "Un Romain qui rêvait d'Égypte",
+        "texte": "Il s'appelait Caius Cestius, et c'était un riche Romain. Il y a un peu plus de deux mille ans, l'Égypte venait d'être conquise. Tout le monde ne parlait que de ça : les bateaux rapportaient des obélisques, des statues de dieux à tête d'animal, des tissus brodés. Cestius s'est dit : pourquoi ne pas me faire un tombeau comme un pharaon ? Et le voilà, ce tombeau, tout blanc, tout pointu, planté entre les voitures et le métro. Ce n'est pas un décor de cinéma, c'est une vraie pyramide antique, la seule qui reste à Rome."
       },
       {
         "titre": "Le tombeau de Rémus",
@@ -70,8 +70,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un empereur bricoleur",
-        "texte": "Imagine un empereur qui adore dessiner des bâtiments. C'est Hadrien, et le Panthéon est son chef-d'œuvre. Il y a mille neuf cents ans, il a fait couler ici la plus grande coupole du monde, sans grue et sans ordinateur. Juste avec du béton, des échafaudages en bois et des ouvriers très doués. Quand tu franchis les portes de bronze, qui sont les mêmes qu'à l'époque, tu entres dans une pièce que les Romains ont vue exactement comme toi. Lève la tête : le trou rond au sommet est ouvert sur le ciel, et les nuages passent au-dessus de toi."
+        "titre": "Une coupole sans grue",
+        "texte": "Comment construire la plus grande coupole du monde sans grue et sans ordinateur ? Il y a mille neuf cents ans, l'empereur Hadrien, qui adorait dessiner des bâtiments, l'a fait couler ici : le Panthéon est son chef-d'œuvre. La solution ? Du béton, des échafaudages en bois et des ouvriers très doués. Quand tu franchis les portes de bronze, qui sont les mêmes qu'à l'époque, tu entres dans une pièce que les Romains ont vue exactement comme toi. Lève la tête : le trou rond au sommet est ouvert sur le ciel, et les nuages passent au-dessus de toi."
       },
       {
         "titre": "Le mystère des poutres volées",
@@ -116,8 +116,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une rivière verticale",
-        "texte": "Imagine que tu marches dans une ruelle étroite, pleine de monde, et que tu entends un grondement d'eau de plus en plus fort. Tu tournes au coin, et là, tout un palais se transforme en cascade : des rochers, des chevaux, un géant qui sort de la façade. C'est la fontaine de Trevi. L'eau qui coule devant toi vient de sources situées loin à l'est de Rome. Elle arrive par un tunnel construit il y a deux mille ans par les ingénieurs de l'empereur Auguste. Elle n'a jamais cessé de couler depuis, même pendant les guerres et les invasions."
+        "titre": "Un palais devenu cascade",
+        "texte": "Dans une ruelle étroite, pleine de monde, un grondement d'eau devient de plus en plus fort. Tu tournes au coin, et là, tout un palais se transforme en cascade : des rochers, des chevaux, un géant qui sort de la façade. C'est la fontaine de Trevi. L'eau qui coule devant toi vient de sources situées loin à l'est de Rome. Elle arrive par un tunnel construit il y a deux mille ans par les ingénieurs de l'empereur Auguste. Elle n'a jamais cessé de couler depuis, même pendant les guerres et les invasions."
       },
       {
         "titre": "Le barbier ronchon",
@@ -162,8 +162,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une colline boueuse",
-        "texte": "Imagine cette place il y a trois cents ans. Le grand escalier n'existe pas encore : il n'y a qu'une pente de terre pleine d'arbres et de boue, où les carrosses s'embourbent. En haut, une église qui appartient au roi de France. En bas, l'ambassade du roi d'Espagne, dont les soldats considèrent la place comme chez eux. Pendant soixante ans, ils se disputent pour savoir qui construira l'escalier et quelle statue trônera en haut. Résultat : un escalier payé par un Français, sur une place espagnole, dans la ville du pape, sans aucune statue de roi."
+        "titre": "Un escalier très disputé",
+        "texte": "Soixante ans de dispute pour un simple escalier, voilà l'histoire de cette place. Il y a trois cents ans, le grand escalier n'existe pas encore : il n'y a qu'une pente de terre pleine d'arbres et de boue, où les carrosses s'embourbent. En haut, une église qui appartient au roi de France. En bas, l'ambassade du roi d'Espagne, dont les soldats considèrent la place comme chez eux. Pendant tout ce temps, ils se disputent pour savoir qui construira l'escalier et quelle statue trônera en haut. Résultat : un escalier payé par un Français, sur une place espagnole, dans la ville du pape, sans aucune statue de roi."
       },
       {
         "titre": "La barque qui déborde",
@@ -208,8 +208,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine la course de fond",
-        "texte": "Imagine : tu es assis sur des gradins de pierre, il y a mille neuf cents ans. Devant toi, des athlètes grecs et romains courent pieds nus sur une piste de sable de deux cent quarante mètres. Ils n'ont ni casque ni épée, car ici, pas de gladiateurs. Ce sont des jeux sportifs, comme aux Jeux olympiques, avec de la lutte, du lancer de disque et des courses. Regarde la forme de la place : elle est longue, avec un bout arrondi. C'est exactement la piste, et les maisons tout autour sont construites sur les anciens gradins. Tu marches sur le stade de l'empereur Domitien."
+        "titre": "Une place en forme de piste",
+        "texte": "Observe la forme de cette place : elle est longue, avec un bout arrondi. C'est exactement la piste d'un ancien stade, et les maisons tout autour sont construites sur les anciens gradins. Il y a mille neuf cents ans, des spectateurs sont assis sur des gradins de pierre. Devant eux, des athlètes grecs et romains courent pieds nus sur une piste de sable de deux cent quarante mètres. Ils n'ont ni casque ni épée, car ici, pas de gladiateurs. Ce sont des jeux sportifs, comme aux Jeux olympiques, avec de la lutte, du lancer de disque et des courses. Tu marches sur le stade de l'empereur Domitien."
       },
       {
         "titre": "La ruse de la maquette d'argent",
@@ -254,8 +254,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le marché d'autrefois",
-        "texte": "Imagine cette place il y a cinq cents ans. Des chevaux à vendre hennissent, des auberges sont pleines de voyageurs et de pèlerins, des cardinaux passent en carrosse vers leurs palais. Dans les ruelles autour, des artisans martèlent des clés ou cousent des chapeaux. On y annonce aussi les nouvelles, et parfois, hélas, on y exécute des condamnés devant la foule. Aujourd'hui, le matin, ce sont les marchands de légumes et de fleurs qui crient pour attirer les clients, et le soir, les guitares et les terrasses. Mais au milieu de tout ce bruit, une statue sombre ne bouge jamais."
+        "titre": "Un vacarme de marché",
+        "texte": "Sur cette place, il y a cinq cents ans, des chevaux à vendre hennissent. Des auberges sont pleines de voyageurs et de pèlerins, des cardinaux passent en carrosse vers leurs palais. Dans les ruelles autour, des artisans martèlent des clés ou cousent des chapeaux. On y annonce aussi les nouvelles, et parfois, hélas, on y exécute des condamnés devant la foule. Aujourd'hui, le matin, ce sont les marchands de légumes et de fleurs qui crient pour attirer les clients, et le soir, les guitares et les terrasses. Mais au milieu de tout ce bruit, une statue sombre ne bouge jamais."
       },
       {
         "titre": "L'homme qui voyait d'autres mondes",
@@ -300,8 +300,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un matin de mars",
-        "texte": "Imagine : nous sommes le 15 mars de l'an 44 avant Jésus-Christ. Jules César, le maître de Rome, hésite à sortir de chez lui. Sa femme a fait un cauchemar. Et un devin, un homme qui prédit l'avenir, lui a dit de se méfier de ce jour, que les Romains appellent les ides de mars. Mais ses amis insistent, et il se rend à la réunion du Sénat, ici même, dans une grande salle à côté d'un théâtre. Il ne sait pas que des dizaines de sénateurs cachent des poignards sous leur toge. Ce matin-là, l'histoire de Rome bascule, et tu te tiens juste à côté de l'endroit où c'est arrivé."
+        "titre": "Le matin où César a hésité",
+        "texte": "Jules César, le maître de Rome, hésite à sortir de chez lui, en ce 15 mars de l'an 44 avant Jésus-Christ. Sa femme a fait un cauchemar. Et un devin, un homme qui prédit l'avenir, lui a dit de se méfier de ce jour, que les Romains appellent les ides de mars. Mais ses amis insistent, et il se rend à la réunion du Sénat, ici même, dans une grande salle à côté d'un théâtre. Il ne sait pas que des dizaines de sénateurs cachent des poignards sous leur toge. Ce matin-là, l'histoire de Rome bascule, et tu te tiens juste à côté de l'endroit où c'est arrivé."
       },
       {
         "titre": "Le devin avait raison",
@@ -346,8 +346,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le dernier soir du carnaval",
-        "texte": "Imagine cette rue le dernier soir du carnaval, il y a deux cents ans. La nuit tombe, et des milliers de personnes tiennent chacune une petite bougie allumée, le moccoletto. Le jeu consiste à souffler la bougie du voisin tout en protégeant la sienne. Chaque fois qu'une flamme s'éteint, on crie en riant que le malheureux est mort. Les balcons débordent de gens qui lancent des fleurs et des dragées, les masques dansent, et la rue entière scintille comme un fleuve de lumière. Pendant des siècles, le Corso a été le plus grand terrain de jeu de Rome."
+        "titre": "Le jeu des bougies",
+        "texte": "Chez toi, on souffle les bougies d'un gâteau. Sur le Corso, le dernier soir du carnaval, il y a deux cents ans, on soufflait celles des autres ! La nuit tombe, et des milliers de personnes tiennent chacune une petite bougie allumée, le moccoletto. Le jeu consiste à souffler la bougie du voisin tout en protégeant la sienne. Chaque fois qu'une flamme s'éteint, on crie en riant que le malheureux est mort. Les balcons débordent de gens qui lancent des fleurs et des dragées, les masques dansent, et la rue entière scintille comme un fleuve de lumière. Pendant des siècles, le Corso a été le plus grand terrain de jeu de Rome."
       },
       {
         "titre": "La ligne d'arrivée",

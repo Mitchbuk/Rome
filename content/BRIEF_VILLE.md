@@ -63,11 +63,26 @@ Un tableau. Pour chaque lieu :
 Règles de rédaction (celles qui ont été validées sur Rome après relecture) :
 
 - `adultes` : 450 à 600 mots, 4 à 6 sections titrées (histoire, architecture et chiffres, vie à l'époque, à voir sur place, petites histoires et légendes).
-- `enfants` : 350 à 500 mots, 4 à 6 sections, tutoiement, ton complice sans être bébé : une accroche « Imagine… », deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
+- `enfants` : 350 à 500 mots, 4 à 6 sections, tutoiement, ton complice sans être bébé : une ouverture qui donne envie d'écouter (formes variées, voir « Ouverture des textes enfants »), deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
 - Les textes sont LUS À VOIX HAUTE par une synthèse vocale : phrases de moins de 30 mots, passé composé plutôt que passé simple, aucune tournure livresque (« menace ruine », « d'aucuns », inversions du sujet), jargon expliqué en trois mots, siècles et unités en toutes lettres (« seizième siècle », « mètres », « avant Jésus-Christ »), aucune abréviation, parenthèse, liste ou markdown.
 - Exactitude : rien d'inventé ; chiffres incertains laissés approximatifs ; légendes signalées comme telles. Pas de prix ni d'horaires dans les textes (ils vont dans `conseil`, et changent).
 - Titres de sections : 2 à 6 mots, sans deux-points.
 - Après rédaction, relis TOUT une seconde fois avec la seule question : « un guide dirait-il cette phrase à voix haute ? » Sur Rome, cette relecture a réécrit 40 % des phrases.
+
+### Ouverture des textes enfants
+
+La première section d'un texte enfants donne envie d'écouter la suite. Elle ne commence plus systématiquement par « Imagine » : répété sur 60 lieux, ce mot devient un tic que les enfants entendent à chaque fois. Varier entre ces formes :
+
+- une scène racontée au présent, sans le mot « Imagine » : « Nous sommes en l'an 80. Le soleil tape sur les gradins... » ;
+- une question qui intrigue : « Sais-tu pourquoi cette fontaine ne s'arrête jamais de couler ? » ;
+- un chiffre ou un fait étonnant : « Dix-huit mille pièces de fer, assemblées comme un jeu de construction. » ;
+- un personnage : « Il s'appelait Gian Lorenzo, et à huit ans il sculptait déjà. » ;
+- une invitation à regarder, écouter ou toucher sur place : « Lève la tête. Tout là-haut, un trou rond laisse entrer la pluie. » ;
+- une comparaison avec la vie de l'enfant : « Ta salle de classe tiendrait vingt fois sous ce dôme. » ;
+- une légende annoncée comme telle : « On raconte qu'un berger a trouvé ici... » ;
+- « Imagine », mais seulement quand c'est vraiment la meilleure entrée, dans un texte sur cinq au plus.
+
+Dans une même ville, aucune forme ne dépasse un quart des lieux, deux lieux qui se suivent n'ouvrent pas de la même façon, et le titre de la première section ne commence jamais par « Imagine » (2 à 6 mots, comme « Un lac caché sous la scène » ou « La promesse d'un empereur »).
 
 ## Livrable 3 : `restos.json` (Où manger)
 

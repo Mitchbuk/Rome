@@ -24,8 +24,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le jour de l'ouverture",
-        "texte": "Imagine : nous sommes en l'an 80. L'empereur Titus vient d'inaugurer le plus grand amphithéâtre du monde et il a promis cent jours de fêtes. Tu serres dans ta main ton jeton en terre cuite, tu cherches ton numéro au-dessus des arcades, tu grimpes des escaliers sombres. Et soudain, tu débouches en pleine lumière. Des dizaines de milliers de personnes crient, ça sent le sable et le parfum, et un immense voile de toile claque au-dessus de ta tête. Dans la loge d'honneur, l'empereur lève la main. Le spectacle commence."
+        "titre": "Cent jours de fêtes",
+        "texte": "Nous sommes en l'an 80. L'empereur Titus vient d'inaugurer le plus grand amphithéâtre du monde et il a promis cent jours de fêtes. Tu serres dans ta main ton jeton en terre cuite, tu cherches ton numéro au-dessus des arcades, tu grimpes des escaliers sombres. Et soudain, tu débouches en pleine lumière. Des dizaines de milliers de personnes crient, ça sent le sable et le parfum, et un immense voile de toile claque au-dessus de ta tête. Dans la loge d'honneur, l'empereur lève la main. Le spectacle commence."
       },
       {
         "titre": "Vaincu, mais vivant ?",
@@ -74,8 +74,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le grand défilé",
-        "texte": "Imagine des trompettes, des tambours, et la foule qui se presse le long de la rue. Un général victorieux passe sous une arche immense, debout sur un char tiré par quatre chevaux blancs. Derrière lui, des chariots débordent d'or, de vases et d'armes pris à l'ennemi, des prisonniers marchent enchaînés, et des soldats brandissent des pancartes racontant leurs batailles. Voilà à quoi servait un arc de triomphe : une porte de gloire, construite pour un seul homme, et que tout le monde devait admirer pendant des siècles."
+        "titre": "Une porte pour un seul homme",
+        "texte": "À quoi servait un arc de triomphe ? À faire passer un général victorieux sous une arche immense, au son des trompettes et des tambours, devant la foule qui se presse le long de la rue. Il est debout sur un char tiré par quatre chevaux blancs. Derrière lui, des chariots débordent d'or, de vases et d'armes pris à l'ennemi, des prisonniers marchent enchaînés, et des soldats brandissent des pancartes racontant leurs batailles. C'est une porte de gloire, construite pour un seul homme, et que tout le monde devait admirer pendant des siècles."
       },
       {
         "titre": "Un puzzle de pierres",
@@ -124,8 +124,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine la foule du matin",
-        "texte": "Imagine : le soleil se lève sur la Via Sacra. Des sénateurs en toge blanche bordée de pourpre discutent en marchant, suivis de leurs secrétaires. Un avocat répète son discours à voix haute. Des enfants de ton âge courent vers l'école avec leurs tablettes de cire sous le bras. Devant les boutiques des changeurs, on pèse des pièces d'argent. Ça sent le pain chaud, l'encens des temples et la sueur des mules. Tu es au centre du monde connu."
+        "titre": "Le matin au centre du monde",
+        "texte": "Le soleil se lève sur la Via Sacra, et déjà la foule du matin se presse. Des sénateurs en toge blanche bordée de pourpre discutent en marchant, suivis de leurs secrétaires. Un avocat répète son discours à voix haute. Des enfants de ton âge courent vers l'école avec leurs tablettes de cire sous le bras. Devant les boutiques des changeurs, on pèse des pièces d'argent. Ça sent le pain chaud, l'encens des temples et la sueur des mules. Tu es au centre du monde connu."
       },
       {
         "titre": "Le trésor sous le temple",
@@ -174,8 +174,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le premier village",
-        "texte": "Imagine cette colline il y a près de trois mille ans. Pas de marbre, pas de palais : quelques cabanes de bois et de paille, aux toits pointus, entourées d'une palissade. Des bergers gardent leurs moutons sur les pentes, des enfants vont chercher l'eau au Tibre, et le soir, la fumée des foyers monte dans le ciel. C'est de ce village minuscule qu'est née la ville qui allait dominer tout le monde connu."
+        "titre": "Des cabanes sur la colline",
+        "texte": "Voilà près de trois mille ans, cette colline ne comptait que quelques cabanes de bois et de paille, aux toits pointus, entourées d'une palissade. Pas de marbre, pas de palais. Des bergers gardent leurs moutons sur les pentes, des enfants vont chercher l'eau au Tibre, et le soir, la fumée des foyers monte dans le ciel. C'est de ce village minuscule qu'est née la ville qui allait dominer tout le monde connu."
       },
       {
         "titre": "Le mystère de la grotte",
@@ -224,8 +224,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une bande dessinée déroulée",
-        "texte": "Imagine que tu puisses dérouler la sculpture qui s'enroule autour de cette colonne. Tu obtiendrais une bande de pierre de 200 mètres, soit deux terrains de football mis bout à bout. Dessus, plus de 2 500 personnages : des soldats, des chevaux, des rivières, des villes en flammes, des bateaux. C'est une bande dessinée en pierre, racontée dans l'ordre, du bas vers le haut. À l'époque, elle était peinte de couleurs vives, et les Romains pouvaient lire les scènes du haut depuis les terrasses des deux bibliothèques qui l'entouraient."
+        "titre": "Un livre d'images géant",
+        "texte": "Cette colonne est une bande dessinée géante. Si on déroulait la sculpture qui s'enroule autour, on obtiendrait une bande de pierre de 200 mètres, soit deux terrains de football mis bout à bout. Dessus, plus de 2 500 personnages : des soldats, des chevaux, des rivières, des villes en flammes, des bateaux. L'histoire est racontée dans l'ordre, du bas vers le haut. À l'époque, elle était peinte de couleurs vives, et les Romains pouvaient lire les scènes du haut depuis les terrasses des deux bibliothèques qui l'entouraient."
       },
       {
         "titre": "Le meilleur des empereurs",
@@ -274,8 +274,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le départ",
-        "texte": "Imagine : douze chars sont alignés dans leurs boîtes de départ, les chevaux piaffent, la poussière monte. Là-haut, un magistrat en toge brodée lève un mouchoir blanc. Cent cinquante mille personnes retiennent leur souffle. Le mouchoir tombe, les douze portes s'ouvrent d'un coup, et les chars s'élancent dans un vacarme de roues et de sabots. Sept tours à faire, des virages à prendre au ras des bornes, et une seule règle : arriver le premier."
+        "titre": "Le mouchoir blanc",
+        "texte": "Douze chars sont alignés dans leurs boîtes de départ, les chevaux piaffent, la poussière monte. Là-haut, un magistrat en toge brodée lève un mouchoir blanc. Cent cinquante mille personnes retiennent leur souffle. Le mouchoir tombe, les douze portes s'ouvrent d'un coup, et les chars s'élancent dans un vacarme de roues et de sabots. Sept tours à faire, des virages à prendre au ras des bornes, et une seule règle : arriver le premier."
       },
       {
         "titre": "Choisis ton équipe",
@@ -324,8 +324,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine ton après-midi aux bains",
-        "texte": "Imagine : l'école est finie, il est tôt dans l'après-midi et toute la ville se dirige vers les thermes. Tu paies une toute petite pièce à l'entrée et tu déposes tes vêtements dans un casier surveillé par un esclave. Te voilà dans une cour immense où des adultes soulèvent des poids, luttent dans le sable ou jouent à la balle. Ensuite, direction les salles chaudes, où la vapeur te fait transpirer, puis un plongeon glacé dans la grande piscine, sous le ciel bleu."
+        "titre": "Après l'école, direction les bains",
+        "texte": "Après l'école, toi, tu vas peut-être à la piscine. Ici, l'école est finie, il est tôt dans l'après-midi et toute la ville se dirige vers les thermes. Tu paies une toute petite pièce à l'entrée et tu déposes tes vêtements dans un casier surveillé par un esclave. Te voilà dans une cour immense où des adultes soulèvent des poids, luttent dans le sable ou jouent à la balle. Ensuite, direction les salles chaudes, où la vapeur te fait transpirer, puis un plongeon glacé dans la grande piscine, sous le ciel bleu."
       },
       {
         "titre": "C'était très bruyant",
@@ -374,8 +374,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une légion en marche",
-        "texte": "Imagine : tu entends d'abord un grondement, puis tu vois la poussière. Une légion arrive, des milliers de soldats en rangs serrés, casques brillants, sandales cloutées qui claquent sur les dalles. Chacun porte sur l'épaule un bâton avec son sac, ses outils et sa nourriture, plus de 30 kilos : on les surnommait les « mules ». Ils marchent 30 kilomètres par jour et, le soir, ils construisent un camp entier, avec fossé et palissade, avant de dormir."
+        "titre": "Les mules de l'armée",
+        "texte": "Trente kilomètres par jour, avec plus de 30 kilos à porter : voilà ce que faisaient les soldats d'une légion. Tu entends d'abord un grondement, puis tu vois la poussière. Ils arrivent par milliers, en rangs serrés, casques brillants, sandales cloutées qui claquent sur les dalles. Chacun porte sur l'épaule un bâton avec son sac, ses outils et sa nourriture : on les surnommait les « mules ». Le soir, ils construisent un camp entier, avec fossé et palissade, avant de dormir."
       },
       {
         "titre": "La route d'un aveugle",
@@ -424,8 +424,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine la descente",
-        "texte": "Imagine : tu descends un escalier taillé dans la roche, avec pour seule lumière une petite lampe à huile qui tremble dans ta main. L'air devient frais, presque froid. Devant toi s'ouvre un couloir si étroit que deux personnes peuvent à peine se croiser, et si haut que la lumière n'atteint pas le plafond. De chaque côté, tu vois des rangées de niches creusées les unes au-dessus des autres, comme les étagères d'une immense bibliothèque. Chacune est fermée par une plaque avec un nom."
+        "titre": "Des étagères creusées dans la roche",
+        "texte": "Tourne la tête à droite, puis à gauche. De chaque côté, des rangées de niches creusées les unes au-dessus des autres ressemblent aux étagères d'une immense bibliothèque. Chacune est fermée par une plaque avec un nom. Le couloir est si étroit que deux personnes peuvent à peine s'y croiser, et si haut que la lumière n'atteint pas le plafond. Pour arriver ici, il faut descendre un escalier taillé dans la roche, avec pour seule lumière une petite lampe à huile qui tremble dans la main. L'air devient frais, presque froid."
       },
       {
         "titre": "Le langage secret des chrétiens",

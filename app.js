@@ -247,7 +247,9 @@
   const thumbUrl = (m) => estResto(m) ? `./img/resto/${m.id}-thumb.jpg` : `./img/${m.id}-thumb.jpg`;
   const photoUrl = (m) => estResto(m) ? `./img/resto/${m.id}.jpg` : `./img/${m.id}.jpg`;
   const audioNom = (m, pub) => `${m.id}-${pub}.mp3`;
-  const audioUrl = (m, pub) => `./audio/${audioNom(m, pub)}`;
+  // ?v=<empreinte du texte> : un audio régénéré a une nouvelle adresse, le cache du téléphone ne sert jamais l'ancien
+  const audioVersion = (f) => (state.audioManifest[f] && state.audioManifest[f].hash ? `?v=${state.audioManifest[f].hash}` : '');
+  const audioUrl = (m, pub) => `./audio/${audioNom(m, pub)}${audioVersion(audioNom(m, pub))}`;
   const audioDispo = (m, pub) => !!state.audioManifest[audioNom(m, pub)];
 
   /* ===================================================================
@@ -1186,7 +1188,7 @@
     if (!('caches' in window)) { toast("Le stockage hors-ligne n'est pas disponible ici."); return; }
     if (!navigator.onLine) { toast('Connectez-vous à internet pour télécharger les audios.'); return; }
 
-    const audios = Object.keys(state.audioManifest).map((f) => `./audio/${f}`);
+    const audios = Object.keys(state.audioManifest).map((f) => `./audio/${f}${audioVersion(f)}`);
     const photos = MONUMENTS.flatMap((m) => [photoUrl(m), thumbUrl(m)]);
     const urls = audios.concat(photos).map((u) => new URL(u, location.href).href);
     const mo = Math.round(Object.values(state.audioManifest).reduce((s, a) => s + (a.taille || 0), 0) / 1024 / 1024 + 5);
@@ -1211,6 +1213,13 @@
     if (!('caches' in window)) return;
     try {
       const cache = await caches.open(MEDIA_CACHE);
+      // Supprime les audios périmés (texte réécrit depuis) : ils ne correspondent plus à la fiche affichée
+      if (Object.keys(state.audioManifest).length) {
+        const valides = new Set(Object.keys(state.audioManifest).map((f) => new URL(`./audio/${f}${audioVersion(f)}`, location.href).href));
+        for (const r of await cache.keys()) {
+          if (r.url.includes('/audio/') && !valides.has(r.url)) await cache.delete(r);
+        }
+      }
       const cles = await cache.keys();
       const nbAudio = cles.filter((r) => r.url.includes('/audio/')).length;
       const total = Object.keys(state.audioManifest).length;

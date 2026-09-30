@@ -28,8 +28,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une statue géante en morceaux",
-        "texte": "Imagine une statue d'empereur haute comme un immeuble de quatre étages. Aujourd'hui, il n'en reste que des morceaux posés dans une cour. Il y a une tête plus grande que toi, une main avec un doigt pointé vers le ciel, un pied énorme et un genou. On dirait les restes d'un géant qu'on aurait démonté. C'était la statue de Constantin, un empereur romain, et tu vas pouvoir te photographier à côté de ses orteils."
+        "titre": "Un géant en pièces détachées",
+        "texte": "Dans cette cour, regarde bien. Il y a une tête plus grande que toi, une main avec un doigt pointé vers le ciel, un pied énorme et un genou. On dirait les restes d'un géant qu'on aurait démonté. C'était une statue d'empereur haute comme un immeuble de quatre étages, celle de Constantin, un empereur romain. Aujourd'hui, il n'en reste que des morceaux posés dans une cour, et tu vas pouvoir te photographier à côté de ses orteils."
       },
       {
         "titre": "La louve de Rome",
@@ -82,8 +82,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine des murs qui se repeignent",
-        "texte": "Imagine que tu marches sur un sol de verre, au-dessus de vieux murs en ruine. Soudain, les lumières s'éteignent, et les murs se couvrent de peintures colorées, les sols de mosaïques, et un bassin se remplit d'eau sous tes pieds. C'est comme une machine à remonter le temps ! Sous un palais de Rome, tu vas voir renaître les maisons de riches Romains d'il y a presque deux mille ans."
+        "titre": "Des murs qui renaissent",
+        "texte": "Le sol est en verre, au-dessus de vieux murs en ruine. Soudain, les lumières s'éteignent, et les murs se couvrent de peintures colorées, les sols de mosaïques, et un bassin se remplit d'eau sous tes pieds. C'est comme une machine à remonter le temps ! Sous un palais de Rome, tu vas voir renaître les maisons de riches Romains d'il y a presque deux mille ans."
       },
       {
         "titre": "Des bains à la maison",
@@ -136,8 +136,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un palais avec un lac",
-        "texte": "Imagine un empereur si riche et si capricieux qu'il se fait construire un palais grand comme une ville. Il y a des jardins, des forêts pleines d'animaux et un lac à la place de ce qui deviendra le Colisée. Les murs brillent d'or et de pierres précieuses. C'était la Domus Aurea, la maison dorée de l'empereur Néron, il y a presque deux mille ans. Elle est aujourd'hui cachée sous une colline."
+        "titre": "Un palais grand comme une ville",
+        "texte": "Néron était un empereur si riche et si capricieux qu'il s'est fait construire un palais grand comme une ville. Il y avait des jardins, des forêts pleines d'animaux et un lac à la place de ce qui deviendra le Colisée. Les murs brillaient d'or et de pierres précieuses. C'était la Domus Aurea, la maison dorée de Néron, il y a presque deux mille ans. Elle est aujourd'hui cachée sous une colline."
       },
       {
         "titre": "Le plafond qui tournait",
@@ -190,8 +190,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine des maisons sous une église",
-        "texte": "Imagine que tu descends un escalier sous une église, et que tu découvres tout un quartier romain. Il y a des pièces, des couloirs, des escaliers et des murs couverts de peintures colorées. Il y a presque deux mille ans, des gens vivaient ici, avec leurs boutiques et leurs appartements. Ensuite, on a construit une église par-dessus, et les maisons ont été oubliées sous terre."
+        "titre": "Tout un quartier sous l'église",
+        "texte": "Que découvre-t-on quand on descend un escalier sous une église ? Tout un quartier romain. Il y a des pièces, des couloirs, des escaliers et des murs couverts de peintures colorées. Il y a presque deux mille ans, des gens vivaient ici, avec leurs boutiques et leurs appartements. Ensuite, on a construit une église par-dessus, et les maisons ont été oubliées sous terre."
       },
       {
         "titre": "Les deux frères",
@@ -244,8 +244,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un tableau éclairé par une pièce",
-        "texte": "Imagine une chapelle plongée dans la pénombre. Tu glisses une pièce dans une petite boîte, et d'un coup, la lumière s'allume sur trois immenses tableaux. Des personnages sortent de l'ombre comme sur une scène de théâtre. Ces peintures ont été faites il y a plus de quatre cents ans par un peintre célèbre et bagarreur, le Caravage. Et cette église appartient à la France, en plein cœur de Rome."
+        "titre": "Une pièce pour faire la lumière",
+        "texte": "Glisse une pièce dans la petite boîte de cette chapelle plongée dans la pénombre, et regarde : d'un coup, la lumière s'allume sur trois immenses tableaux. Des personnages sortent de l'ombre comme sur une scène de théâtre. Ces peintures ont été faites il y a plus de quatre cents ans par un peintre célèbre et bagarreur, le Caravage. Et cette église appartient à la France, en plein cœur de Rome."
       },
       {
         "titre": "Qui est Matthieu ?",
@@ -298,8 +298,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un éléphant qui porte une tour",
-        "texte": "Imagine un petit éléphant de pierre, avec une couverture brodée sur le dos, une trompe enroulée et un air malicieux. Sur son dos, il porte une grande aiguille de pierre couverte de dessins égyptiens, un obélisque. Il est planté sur une petite place, derrière le Panthéon, depuis plus de trois cent cinquante ans. Les Romains l'appellent affectueusement le poussin de la Minerve."
+        "titre": "L'éléphant qui porte un obélisque",
+        "texte": "Depuis plus de trois cent cinquante ans, un petit éléphant de pierre se dresse sur une petite place, derrière le Panthéon. Il a une couverture brodée sur le dos, une trompe enroulée et un air malicieux. Il porte une grande aiguille de pierre couverte de dessins égyptiens, un obélisque. Les Romains l'appellent affectueusement le poussin de la Minerve."
       },
       {
         "titre": "L'éléphant qui tourne le dos",
@@ -352,8 +352,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un toit qui disparaît",
-        "texte": "Imagine que tu entres dans une église, que tu lèves la tête, et que le plafond a disparu. À la place, des colonnes montent vers le ciel, et des anges et des saints volent dans les nuages. Pourtant, tout est peint sur un plafond plat ! C'est une illusion, un trompe-l'œil, peint il y a plus de trois cents ans par un frère jésuite très astucieux, Andrea Pozzo."
+        "titre": "Un plafond qui s'est envolé",
+        "texte": "Où est passé le plafond de cette église ? À la place, des colonnes montent vers le ciel, et des anges et des saints volent dans les nuages. Pourtant, tout est peint sur un plafond plat ! C'est une illusion, un trompe-l'œil, peint il y a plus de trois cents ans par un frère jésuite très astucieux, Andrea Pozzo."
       },
       {
         "titre": "La coupole qui n'existe pas",
@@ -406,8 +406,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine des gardes géants",
-        "texte": "Imagine des gardes si grands qu'ils dépassent presque tous les passants, avec un casque brillant surmonté d'une longue crinière de cheval et une cuirasse qui étincelle au soleil. Ils gardent le palais du président de l'Italie, tout en haut de la plus haute colline de Rome. Chaque jour, au son des tambours, a lieu la relève de la garde. C'est le palais du Quirinal."
+        "titre": "Des gardes à crinière",
+        "texte": "Lève les yeux vers ces gardes si grands qu'ils dépassent presque tous les passants. Ils portent un casque brillant surmonté d'une longue crinière de cheval et une cuirasse qui étincelle au soleil. Ils gardent le palais du président de l'Italie, tout en haut de la plus haute colline de Rome. Chaque jour, au son des tambours, a lieu la relève de la garde. C'est le palais du Quirinal."
       },
       {
         "titre": "Les jumeaux et les chevaux",
@@ -460,8 +460,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une photo de famille en pierre",
-        "texte": "Imagine une photo de famille géante, mais sculptée dans le marbre il y a plus de deux mille ans. On y voit l'empereur Auguste, sa famille, des prêtres et même des enfants qui marchent en procession. Un petit garçon s'accroche à la toge d'un adulte, comme toi quand tu te fatigues. C'est l'Ara Pacis, l'autel de la paix, abrité dans un grand musée de verre au bord du Tibre."
+        "titre": "Une famille sculptée dans le marbre",
+        "texte": "Sur cette photo de famille géante, sculptée dans le marbre, un petit garçon s'accroche à la toge d'un adulte, comme toi quand tu te fatigues. Elle a plus de deux mille ans. On y voit aussi l'empereur Auguste, sa famille, des prêtres et d'autres enfants qui marchent en procession. C'est l'Ara Pacis, l'autel de la paix, abrité dans un grand musée de verre au bord du Tibre."
       },
       {
         "titre": "Le puzzle géant",
@@ -514,8 +514,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une colline tombeau",
-        "texte": "Imagine un tombeau si grand qu'il ressemble à une colline ronde, couverte d'arbres, avec au sommet une statue en bronze de l'empereur. Il y a plus de deux mille ans, le premier empereur de Rome, Auguste, s'est fait construire ce gigantesque monument pour y être enterré avec sa famille. C'était le plus grand tombeau rond de tout l'Empire romain."
+        "titre": "Une colline qui cache un tombeau",
+        "texte": "Auguste, le premier empereur de Rome, s'est fait construire ce gigantesque monument, il y a plus de deux mille ans, pour y être enterré avec sa famille. C'était le plus grand tombeau rond de tout l'Empire romain. Il ressemble à une colline ronde, couverte d'arbres, avec au sommet une statue en bronze de l'empereur."
       },
       {
         "titre": "Un tombeau aux mille usages",
@@ -568,8 +568,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une statue qui va parler",
-        "texte": "Imagine un géant de marbre assis, avec une barbe immense qui descend jusqu'à son ventre et des bras musclés. Son regard est si intense qu'on a l'impression qu'il va se lever et crier. C'est Moïse, le prophète de la Bible, sculpté par Michel-Ange il y a plus de cinq cents ans. Selon une légende, le sculpteur lui-même trouvait la statue si vivante qu'il lui aurait ordonné de parler."
+        "titre": "Le Moïse qui allait parler",
+        "texte": "On raconte que Michel-Ange trouvait sa statue si vivante qu'il lui aurait ordonné de parler. Elle représente un géant de marbre assis, avec une barbe immense qui descend jusqu'à son ventre et des bras musclés. Son regard est si intense qu'on a l'impression qu'il va se lever et crier. C'est Moïse, le prophète de la Bible, sculpté il y a plus de cinq cents ans."
       },
       {
         "titre": "Pourquoi a-t-il des cornes ?",
@@ -622,8 +622,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une ville romaine rien que pour toi",
-        "texte": "Imagine une ville romaine entière, avec ses rues pavées, ses maisons, ses boulangeries, ses bains publics et son théâtre. Pas de foule, pas de voitures, juste toi, des pins parasols et des lézards qui se chauffent au soleil. Tu peux marcher dans les rues où des marins, des marchands et des enfants vivaient il y a presque deux mille ans. C'est Ostie antique, l'ancien port de Rome."
+        "titre": "Une ville romaine pour toi seul",
+        "texte": "Pas de foule, pas de voitures : juste toi, des pins parasols et des lézards qui se chauffent au soleil. Devant toi, une ville romaine entière, avec ses rues pavées, ses maisons, ses boulangeries, ses bains publics et son théâtre. Tu peux marcher dans les rues où des marins, des marchands et des enfants vivaient il y a presque deux mille ans. C'est Ostie antique, l'ancien port de Rome."
       },
       {
         "titre": "Le port qui s'est ensablé",
@@ -676,8 +676,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une statue qui se transforme",
-        "texte": "Imagine une jeune femme qui court pour échapper à un dieu. Au moment où il la touche, ses doigts se changent en feuilles, ses jambes en tronc d'arbre, ses orteils en racines. Et tout cela est sculpté dans un seul bloc de marbre blanc ! C'est Apollon et Daphné, du sculpteur Bernin, qui avait à peine plus de vingt ans. On la découvre dans la galerie Borghèse, une villa pleine de trésors."
+        "titre": "Une fuite figée dans le marbre",
+        "texte": "Comment sculpter une jeune femme qui se transforme en arbre dans un seul bloc de marbre blanc ? Elle court pour échapper à un dieu. Au moment où il la touche, ses doigts se changent en feuilles, ses jambes en tronc d'arbre, ses orteils en racines. C'est Apollon et Daphné, du sculpteur Bernin, qui avait à peine plus de vingt ans. On la découvre dans la galerie Borghèse, une villa pleine de trésors."
       },
       {
         "titre": "Le marbre qui ressemble à de la peau",
@@ -730,8 +730,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un jardin peint sur les murs",
-        "texte": "Imagine une pièce dont les quatre murs sont peints comme un jardin. Des arbres chargés d'oranges et de grenades, des fleurs de toutes les couleurs, et des dizaines d'oiseaux perchés dans les branches, sous un ciel bleu. Cette pièce appartenait à Livie, la femme du premier empereur, il y a plus de deux mille ans. On l'a démontée et remontée dans un musée, près de la grande gare de Rome."
+        "titre": "Un jardin sur quatre murs",
+        "texte": "Les quatre murs de cette pièce sont peints comme un jardin : regarde-les. Des arbres chargés d'oranges et de grenades, des fleurs de toutes les couleurs, et des dizaines d'oiseaux perchés dans les branches, sous un ciel bleu. Cette pièce appartenait à Livie, la femme du premier empereur, il y a plus de deux mille ans. On l'a démontée et remontée dans un musée, près de la grande gare de Rome."
       },
       {
         "titre": "La petite fille et sa poupée",
@@ -784,8 +784,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un palais plein d'abeilles",
-        "texte": "Imagine un palais immense, construit pour la famille d'un pape, et partout des abeilles ! Des abeilles au plafond, des abeilles sculptées sur les portes, des abeilles dans les fontaines. C'était l'emblème de la famille Barberini, un peu comme un logo. Aujourd'hui, le palais est un musée rempli de tableaux célèbres. Et les abeilles sont toujours là, à toi de les trouver."
+        "titre": "Un palais couvert d'abeilles",
+        "texte": "Des abeilles au plafond, des abeilles sculptées sur les portes, des abeilles dans les fontaines : ce palais immense en est couvert ! Il a été construit pour la famille d'un pape. C'était l'emblème de la famille Barberini, un peu comme un logo. Aujourd'hui, le palais est un musée rempli de tableaux célèbres. Et les abeilles sont toujours là, à toi de les trouver."
       },
       {
         "titre": "L'escalier en colimaçon",
@@ -838,8 +838,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une maison pleine de tableaux",
-        "texte": "Imagine une maison si grande qu'elle a des centaines de pièces, et dont les murs sont couverts de tableaux du sol au plafond, parfois empilés sur cinq rangs ! Une famille de princes y habite encore aujourd'hui. Une partie de leur palais est ouverte aux visiteurs. Tu vas traverser des salons dorés, une salle de bal et une galerie pleine de miroirs, comme dans un château."
+        "titre": "Des tableaux jusqu'au plafond",
+        "texte": "Des centaines de pièces, et des tableaux empilés sur cinq rangs ! Une famille de princes habite encore aujourd'hui cette immense maison, dont les murs sont couverts de tableaux du sol au plafond. Une partie de leur palais est ouverte aux visiteurs. Tu vas traverser des salons dorés, une salle de bal et une galerie pleine de miroirs, comme dans un château."
       },
       {
         "titre": "Le pape qui fait peur",
@@ -892,8 +892,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine des dieux dans une usine",
-        "texte": "Imagine une grande usine avec des machines géantes, noires et brillantes, pleines de roues, de tuyaux et de boutons. Et au milieu, des statues de dieux et de déesses en marbre blanc, vieilles de deux mille ans ! C'est la Centrale Montemartini, une ancienne usine électrique devenue musée. On dirait que les dieux romains sont venus visiter le monde moderne."
+        "titre": "Des dieux entre les machines",
+        "texte": "Que font des statues de dieux et de déesses en marbre blanc, vieilles de deux mille ans, au milieu de machines géantes ? Ces machines sont noires et brillantes, pleines de roues, de tuyaux et de boutons. C'est la Centrale Montemartini, une ancienne usine électrique devenue musée. On dirait que les dieux romains sont venus visiter le monde moderne."
       },
       {
         "titre": "L'usine qui éclairait Rome",
@@ -946,8 +946,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une décoration en os",
-        "texte": "Imagine des murs et des plafonds décorés de fleurs, d'étoiles, de guirlandes et même de lustres. Maintenant, regarde de plus près : tout est fait avec de vrais os ! Des crânes, des os de jambes, des os de bras, disposés avec soin comme une mosaïque. C'est la crypte des Capucins, sous une église de Rome. C'est un lieu étrange et unique au monde, qui n'est pas fait pour faire peur."
+        "titre": "Une décoration pas comme les autres",
+        "texte": "Ces murs et ces plafonds sont décorés de fleurs, d'étoiles, de guirlandes et même de lustres. Maintenant, approche-toi : tout est fait avec de vrais os ! Des crânes, des os de jambes, des os de bras, disposés avec soin comme une mosaïque. C'est la crypte des Capucins, sous une église de Rome. C'est un lieu étrange et unique au monde, qui n'est pas fait pour faire peur."
       },
       {
         "titre": "Qui étaient ces frères ?",
@@ -1000,8 +1000,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un musée où tout se touche",
-        "texte": "Imagine un musée où personne ne te dit de ne pas toucher. Au contraire, il faut toucher, construire, jouer et essayer ! Il y a un supermarché avec des caddies, des jeux d'eau, un potager et même un laboratoire pour partir sur la Lune. C'est Explora, le musée des enfants de Rome. Ici, c'est toi le visiteur principal, et les parents t'accompagnent."
+        "titre": "On a le droit de toucher",
+        "texte": "Dans un musée, on te répète souvent de ne pas toucher. Ici, c'est tout le contraire : il faut toucher, construire, jouer et essayer ! Il y a un supermarché avec des caddies, des jeux d'eau, un potager et même un laboratoire pour partir sur la Lune. C'est Explora, le musée des enfants de Rome. Ici, c'est toi le visiteur principal, et les parents t'accompagnent."
       },
       {
         "titre": "Joue au client",
@@ -1054,8 +1054,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un safari à Rome",
-        "texte": "Imagine que tu marches dans un grand parc, et que soudain tu vois une girafe qui mange les feuilles d'un arbre. Plus loin, un éléphant s'asperge d'eau et un tigre se promène sur un rocher. Tu n'es pas en Afrique ni en Asie, mais au milieu de Rome ! C'est le Bioparco, le zoo de la ville, installé dans le grand parc de la villa Borghèse depuis plus de cent ans."
+        "titre": "Une girafe au cœur de Rome",
+        "texte": "Un grand parc, une girafe qui mange les feuilles d'un arbre, un peu plus loin un éléphant qui s'asperge d'eau, et un tigre qui se promène sur un rocher. Tu n'es pas en Afrique ni en Asie, mais au milieu de Rome ! C'est le Bioparco, le zoo de la ville, installé dans le grand parc de la villa Borghèse depuis plus de cent ans."
       },
       {
         "titre": "Un zoo sans barreaux",
@@ -1108,7 +1108,7 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine-toi en gladiateur",
+        "titre": "Ton diplôme de gladiateur",
         "texte": "Imagine que tu enfiles une tunique romaine, que tu prends un bouclier et un glaive en bois, et qu'un instructeur costumé t'apprend à combattre comme les gladiateurs du Colisée. Tu t'entraînes à attaquer, à te protéger et à esquiver. À la fin, tu participes à un petit tournoi, et tu repars avec un diplôme de gladiateur ! C'est possible à l'école de gladiateurs, sur la via Appia."
       },
       {
@@ -1162,8 +1162,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un pont pour l'eau",
-        "texte": "Imagine un pont immense, fait de dizaines d'arches en pierre, qui traverse la campagne sur des kilomètres. Mais ce pont n'est pas fait pour les gens ni pour les chars : il transporte de l'eau ! Tout en haut, un canal amenait l'eau fraîche des montagnes jusqu'à Rome. C'est un aqueduc, et tu peux en voir plusieurs dans le parc des Aqueducs, au milieu des prairies."
+        "titre": "Un pont qui transporte l'eau",
+        "texte": "À quoi peut servir un pont immense, fait de dizaines d'arches en pierre, qui traverse la campagne sur des kilomètres ? Pas aux gens ni aux chars : il transporte de l'eau ! Tout en haut, un canal amenait l'eau fraîche des montagnes jusqu'à Rome. C'est un aqueduc, et tu peux en voir plusieurs dans le parc des Aqueducs, au milieu des prairies."
       },
       {
         "titre": "L'eau qui descend toute seule",
@@ -1216,8 +1216,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine des centaines de papes",
-        "texte": "Imagine une église immense, avec une forêt de colonnes, et tout en haut des murs, une longue rangée de portraits. Il y en a plus de deux cent soixante : ce sont tous les papes de l'histoire, du premier jusqu'à celui d'aujourd'hui ! C'est la basilique Saint-Paul-hors-les-Murs, construite sur le tombeau de l'apôtre Paul, l'un des premiers chrétiens."
+        "titre": "Tous les papes sur les murs",
+        "texte": "Plus de deux cent soixante portraits courent tout en haut des murs, au-dessus d'une forêt de colonnes. Ce sont tous les papes de l'histoire, du premier jusqu'à celui d'aujourd'hui ! Bienvenue à la basilique Saint-Paul-hors-les-Murs, une très grande église, construite sur le tombeau de l'apôtre Paul, l'un des premiers chrétiens."
       },
       {
         "titre": "La légende des portraits",
@@ -1270,8 +1270,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine le quartier de Jules César",
-        "texte": "Imagine des ruelles étroites, remplies de monde, de bruit et d'odeurs de cuisine, avec des immeubles si hauts qu'ils cachent le soleil. Des marchands crient, des chariots passent, des enfants jouent dans la rue. C'était Monti il y a deux mille ans, un quartier populaire où serait né Jules César. Aujourd'hui, c'est un quartier plein de petites boutiques, de places et de fontaines, juste à côté du Colisée."
+        "titre": "Un quartier bruyant d'autrefois",
+        "texte": "Nous sommes à Monti, il y a deux mille ans. Les ruelles sont étroites, remplies de monde, de bruit et d'odeurs de cuisine, et les immeubles sont si hauts qu'ils cachent le soleil. Des marchands crient, des chariots passent, des enfants jouent dans la rue. C'est un quartier populaire, où serait né Jules César. Aujourd'hui, c'est un quartier plein de petites boutiques, de places et de fontaines, juste à côté du Colisée."
       },
       {
         "titre": "Le mur anti-incendie",
@@ -1324,8 +1324,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une colline de pots cassés",
-        "texte": "Imagine une colline haute comme un immeuble de dix étages, couverte d'herbe et d'arbres. Maintenant, imagine qu'à l'intérieur, il n'y a pas de terre, mais des millions de morceaux de pots cassés ! C'est le Monte Testaccio, une colline fabriquée par les Romains il y a presque deux mille ans. C'était une gigantesque poubelle, mais une poubelle très bien rangée."
+        "titre": "Une colline pleine de pots cassés",
+        "texte": "Des millions de morceaux de pots cassés : voilà de quoi est fait l'intérieur d'une colline haute comme un immeuble de dix étages, couverte d'herbe et d'arbres. Pas de terre, rien que des pots. C'est le Monte Testaccio, une colline fabriquée par les Romains il y a presque deux mille ans. C'était une gigantesque poubelle, mais une poubelle très bien rangée."
       },
       {
         "titre": "Pourquoi casser les pots ?",
@@ -1378,8 +1378,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un parc sans fin",
-        "texte": "Imagine un parc si grand que tu pourrais y marcher pendant des heures sans en voir le bout. Il y a des prairies immenses, des bois de pins parasols, un lac avec des canards et des tortues, des fontaines et une villa de prince. C'est la villa Doria Pamphilj, le plus grand parc de Rome. Ici, tu peux courir, jouer au ballon, pique-niquer et te reposer loin du bruit de la ville."
+        "titre": "Un parc à perte de vue",
+        "texte": "Où peut-on marcher pendant des heures sans voir le bout d'un parc ? Ici, à la villa Doria Pamphilj, le plus grand parc de Rome. Il y a des prairies immenses, des bois de pins parasols, un lac avec des canards et des tortues, des fontaines et une villa de prince. Tu peux y courir, jouer au ballon, pique-niquer et te reposer loin du bruit de la ville."
       },
       {
         "titre": "Les pins parasols",
@@ -1432,8 +1432,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine la maison de l'homme le plus riche",
-        "texte": "Imagine la maison d'un banquier si riche qu'il prêtait de l'argent aux papes et aux rois. Il y organisait des fêtes incroyables, avec les plus grands artistes de son époque, comme le peintre Raphaël. Les murs de sa villa sont couverts de peintures magnifiques : des dieux, des nymphes, des dauphins et des guirlandes de fruits. C'est la villa Farnesina, au bord du Tibre, dans le Trastevere."
+        "titre": "Le banquier des papes",
+        "texte": "Il était banquier, et si riche qu'il prêtait de l'argent aux papes et aux rois. Chez lui, il organisait des fêtes incroyables, avec les plus grands artistes de son époque, comme le peintre Raphaël. Les murs de sa villa sont couverts de peintures magnifiques : des dieux, des nymphes, des dauphins et des guirlandes de fruits. C'est la villa Farnesina, au bord du Tibre, dans le Trastevere."
       },
       {
         "titre": "La vaisselle dans le fleuve",
@@ -1486,8 +1486,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine une maison de conte de fées",
-        "texte": "Imagine une petite maison avec des tourelles, des toits pointus, des balcons en bois et des fenêtres colorées. Partout, des hiboux et des chouettes te regardent : sur les murs, dans les vitraux, sur les meubles. On dirait la maison d'un magicien ou d'une sorcière gentille ! C'est la maison des Hiboux, cachée dans le parc de la villa Torlonia, au nord de Rome."
+        "titre": "Une maison pleine de hiboux",
+        "texte": "Partout, des hiboux et des chouettes te regardent : sur les murs, dans les vitraux, sur les meubles. Cette petite maison a des tourelles, des toits pointus, des balcons en bois et des fenêtres colorées. On dirait la maison d'un magicien ou d'une sorcière gentille ! C'est la maison des Hiboux, cachée dans le parc de la villa Torlonia, au nord de Rome."
       },
       {
         "titre": "Pourquoi des hiboux ?",
@@ -1540,8 +1540,8 @@
     ],
     "enfants": [
       {
-        "titre": "Imagine un peuple mystérieux",
-        "texte": "Imagine un peuple qui vivait en Italie avant les Romains. Il construisait des villes, fabriquait des bijoux en or et peignait les murs de ses tombeaux avec des scènes de fête. Sa langue est encore en partie mystérieuse aujourd'hui ! Ce sont les Étrusques. Au musée de la villa Giulia, tu peux découvrir leurs trésors et imaginer leur vie, il y a plus de deux mille cinq cents ans."
+        "titre": "Un peuple d'avant Rome",
+        "texte": "Qui vivait en Italie avant les Romains ? Un peuple qui construisait des villes, fabriquait des bijoux en or et peignait les murs de ses tombeaux avec des scènes de fête. Sa langue est encore en partie mystérieuse aujourd'hui ! Ce sont les Étrusques. Au musée de la villa Giulia, tu peux découvrir leurs trésors et imaginer leur vie, il y a plus de deux mille cinq cents ans."
       },
       {
         "titre": "Les amoureux de terre cuite",

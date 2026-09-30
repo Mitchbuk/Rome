@@ -169,7 +169,7 @@ async function servirMedia(req) {
     status: 206,
     statusText: 'Partial Content',
     headers: {
-      'Content-Type': complet.headers.get('Content-Type') || (url.endsWith('.mp3') ? 'audio/mpeg' : 'image/jpeg'),
+      'Content-Type': complet.headers.get('Content-Type') || (/\.mp3(\?|$)/.test(url) ? 'audio/mpeg' : 'image/jpeg'),
       'Content-Range': `bytes ${debut}-${fin}/${taille}`,
       'Content-Length': String(fin - debut + 1),
       'Accept-Ranges': 'bytes'

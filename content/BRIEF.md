@@ -16,7 +16,7 @@ Un vrai guide historique et culturel, précis, vivant, structuré. Sections poss
 
 ### 2. `enfants` : 350 à 500 mots, 4 à 6 sections titrées
 Tutoiement, ton complice et vivant, sans être bébé (9-12 ans). Insister sur l'Empire romain, les gladiateurs, la vie quotidienne, les secrets du Vatican, les légendes. Structure conseillée :
-- Une section d'accroche qui plante le décor (« Imagine… »)
+- Une section d'ouverture qui plante le décor, de forme variée d'un lieu à l'autre (scène au présent, question, chiffre étonnant, personnage, invitation à regarder ; « Imagine » rarement)
 - Deux ou trois sections d'anecdotes / mystères / « Le savais-tu ? »
 - Une section « Défi » : un jeu d'observation à faire sur place (cherche…, compte…, trouve…)
 - Une section « Quiz » : une question, puis la réponse dans la même section (« Réponse : … »)
