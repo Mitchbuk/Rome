@@ -7,7 +7,7 @@ En ligne : <https://mitchbuk.github.io/Rome/>
 
 ## Fonctionnalités
 
-- **67 lieux** (Rome antique, Vatican, musées, places, églises, quartiers et parcs, jusqu'à Ostie antique ; complétés après un audit des curiosités citées par les guides), chacun avec une **photo**, un **guide adultes** (450 à 600 mots, sections titrées : histoire, architecture, à voir, anecdotes) et un **guide enfants 9 à 12 ans** (350 à 500 mots : ouverture qui plante le décor, « Le savais-tu ? », défi d'observation, quiz), plus un conseil pratique, le temps de visite et les coordonnées GPS.
+- **67 lieux** (Rome antique, Vatican, musées, places, églises, quartiers et parcs, jusqu'à Ostie antique ; complétés après un audit des curiosités citées par les guides), chacun avec une **photo**, un **guide adultes** (500 à 900 mots environ, sections titrées : histoire, architecture, à voir, anecdotes) et un **guide enfants 9 à 12 ans** (400 à 700 mots environ : ouverture qui plante le décor, « Le savais-tu ? », défi d'observation, quiz), plus un conseil pratique, le temps de visite et les coordonnées GPS.
 - **Filtre « Incontournables »** : les 17 lieux à ne pas manquer, pour ne pas se noyer dans la liste. La liste des identifiants est dans `content/incontournables.json`.
 - **Sélecteur Adultes / Enfants** dans chaque fiche : il change le texte affiché et le texte lu. Le choix est mémorisé sur chaque téléphone.
 - **Écouter le guide** : lecture avec des **voix neuronales naturelles** (MP3 pré-générés sur PC, voir plus bas), contrôles sur l'écran verrouillé, avance/recul de 15 s. Si un MP3 n'est pas disponible, la synthèse vocale de l'iPhone prend le relais.

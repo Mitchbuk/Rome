@@ -62,8 +62,8 @@ Un tableau. Pour chaque lieu :
 
 Règles de rédaction (celles qui ont été validées sur Rome après relecture) :
 
-- `adultes` : 450 à 600 mots, 4 à 6 sections titrées (histoire, architecture et chiffres, vie à l'époque, à voir sur place, petites histoires et légendes).
-- `enfants` : 350 à 500 mots, 4 à 6 sections, tutoiement, ton complice sans être bébé : une ouverture qui donne envie d'écouter (formes variées, voir « Ouverture des textes enfants »), deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
+- `adultes` : au moins 500 mots, souvent 600 à 900, 4 à 7 sections titrées (histoire, architecture et chiffres, vie à l'époque, à voir sur place, petites histoires et légendes). Pas de plafond strict : le guide audio est ce qu'on fait payer, un texte riche donne envie de l'écouter plutôt que de le lire. Sans écrire un livre : chaque phrase doit apporter quelque chose au visiteur.
+- `enfants` : au moins 400 mots, souvent 450 à 700, 4 à 7 sections, tutoiement, ton complice sans être bébé : une ouverture qui donne envie d'écouter (formes variées, voir « Ouverture des textes enfants »), deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
 - Les textes sont LUS À VOIX HAUTE par une synthèse vocale : phrases de moins de 30 mots, passé composé plutôt que passé simple, aucune tournure livresque (« menace ruine », « d'aucuns », inversions du sujet), jargon expliqué en trois mots, siècles et unités en toutes lettres (« seizième siècle », « mètres », « avant Jésus-Christ »), aucune abréviation, parenthèse, liste ou markdown.
 - Exactitude : rien d'inventé ; chiffres incertains laissés approximatifs ; légendes signalées comme telles. Pas de prix ni d'horaires dans les textes (ils vont dans `conseil`, et changent).
 - Titres de sections : 2 à 6 mots, sans deux-points.
@@ -83,6 +83,10 @@ La première section d'un texte enfants donne envie d'écouter la suite. Elle ne
 - « Imagine », mais seulement quand c'est vraiment la meilleure entrée, dans un texte sur cinq au plus.
 
 Dans une même ville, aucune forme ne dépasse un quart des lieux, deux lieux qui se suivent n'ouvrent pas de la même façon, et le titre de la première section ne commence jamais par « Imagine » (2 à 6 mots, comme « Un lac caché sous la scène » ou « La promesse d'un empereur »).
+
+### Se repérer sur place
+
+Quand un texte fait chercher ou regarder quelque chose sur place (une fontaine, une statue, une inscription, un détail d'une façade), il dit où le trouver si ce n'est pas évident. On part d'un repère que le visiteur voit forcément : « dos à la grande porte », « face aux deux églises jumelles », « à gauche en entrant », « du côté du Tibre », « côté Pincio ». Les points cardinaux (au nord, à l'est) s'ajoutent quand ils aident, par exemple sur une grande place ou un site en plein air, mais ne suffisent jamais seuls : peu de gens savent où est le nord. Sans en faire une chasse au trésor : une indication là où l'on risque de chercher, pas une direction toutes les deux phrases. Chaque indication est vérifiée sur une carte ou un plan (Wikipédia, OpenStreetMap, site officiel) : une mauvaise direction est pire qu'aucune.
 
 ## Livrable 3 : `restos.json` (Où manger)
 

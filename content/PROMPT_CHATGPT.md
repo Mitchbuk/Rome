@@ -82,11 +82,12 @@ Un tableau. Pour chaque lieu :
 
 Règles de rédaction (celles qui ont été validées sur Rome après relecture) :
 
-- `adultes` : 450 à 600 mots, 4 à 6 sections titrées (histoire, architecture et chiffres, vie à l'époque, à voir sur place, petites histoires et légendes).
-- `enfants` : 350 à 500 mots, 4 à 6 sections, tutoiement, ton complice sans être bébé : une ouverture qui donne envie d'écouter, de forme variée (scène au présent, question, chiffre étonnant, personnage, invitation à regarder, comparaison, légende ; « Imagine » dans un texte sur cinq au plus, jamais en titre), deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
+- `adultes` : au moins 500 mots, souvent 600 à 900, 4 à 7 sections titrées (histoire, architecture et chiffres, vie à l'époque, à voir sur place, petites histoires et légendes). Pas de plafond strict : le guide audio est ce qu'on fait payer, un texte riche donne envie de l'écouter plutôt que de le lire. Sans écrire un livre : chaque phrase doit apporter quelque chose au visiteur.
+- `enfants` : au moins 400 mots, souvent 450 à 700, 4 à 7 sections, tutoiement, ton complice sans être bébé : une ouverture qui donne envie d'écouter, de forme variée (scène au présent, question, chiffre étonnant, personnage, invitation à regarder, comparaison, légende ; « Imagine » dans un texte sur cinq au plus, jamais en titre), deux ou trois anecdotes ou « Le savais-tu ? », une section « Défi sur place » (jeu d'observation), une section « Le quiz » avec la réponse dans le même paragraphe.
 - Les textes sont LUS À VOIX HAUTE par une synthèse vocale : phrases de moins de 30 mots, passé composé plutôt que passé simple, aucune tournure livresque (« menace ruine », « d'aucuns », inversions du sujet), jargon expliqué en trois mots, siècles et unités en toutes lettres (« seizième siècle », « mètres », « avant Jésus-Christ »), aucune abréviation, parenthèse, liste ou markdown.
 - Exactitude : rien d'inventé ; chiffres incertains laissés approximatifs ; légendes signalées comme telles. Pas de prix ni d'horaires dans les textes (ils vont dans `conseil`, et changent).
 - Titres de sections : 2 à 6 mots, sans deux-points.
+- Se repérer : quand le texte fait chercher quelque chose sur place, dire où le trouver à partir d'un repère visible (« dos à la grande porte », « face aux églises jumelles », « côté Tibre »), avec les points cardinaux en complément si utile. Une indication là où l'on risque de chercher, pas une direction toutes les deux phrases, et toujours vérifiée sur une carte.
 - Après rédaction, relis TOUT une seconde fois avec la seule question : « un guide dirait-il cette phrase à voix haute ? » Sur Rome, cette relecture a réécrit 40 % des phrases.
 
 ## Livrable 3 : `restos.json` (Où manger)

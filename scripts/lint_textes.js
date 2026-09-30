@@ -20,7 +20,7 @@ const REGLES = [
   { nom: 'siècle en chiffres romains', re: /\b[IVX]{1,5}(e|er|ème)\b\s*siècle/g },
   { nom: 'abréviation', re: /\b(av\.|apr\.|env\.|etc\.|cf\.|n°|km\/h|m²|m³)\s?/g },
   { nom: 'unité abrégée', re: /\d\s?(m|km|kg|t|h|min)(?![A-Za-zÀ-ÿ])/g },
-  { nom: 'tournure livresque', re: /\b(menace ruine|menaçait ruine|d'aucuns|nonobstant|moult|idoine|sis à|sise à|force est de|il n'est pas jusqu'|en ces lieux|pour l'heure|à l'envi|de par|ledit|ladite|lesdits|icelui|naguère|jadis encore|point n'est besoin|il appert|il sied|séant|derechef|sitôt que|ores|maints|maintes)\b/gi },
+  { nom: 'tournure livresque', re: /(?<![A-Za-zÀ-ÿ])(menace ruine|menaçait ruine|d'aucuns|nonobstant|moult|idoine|sis à|sise à|force est de|il n'est pas jusqu'|en ces lieux|pour l'heure|à l'envi|de par|ledit|ladite|lesdits|icelui|naguère|jadis encore|point n'est besoin|il appert|il sied|séant|derechef|sitôt que|ores|maints|maintes)\b/gi },
   { nom: 'subjonctif imparfait / passé simple 1re pers.', re: /\b(fussent|eussent|fût-ce|fût-il|eût-il|eût été|qu'il fît|qu'il eût)\b/g },
   { nom: 'markdown ou liste', re: /(\*\*|__|^#|^\s*[-•]\s)/gm },
   { nom: 'parenthèse', re: /[()]/g },
@@ -39,7 +39,7 @@ for (const f of fs.readdirSync(path.join(ROOT, 'content')).filter((n) => /^part.
     for (const pub of ['adultes', 'enfants']) {
       const sections = lieu[pub] || [];
       const nbMots = sections.reduce((n, s) => n + mots(s.texte), 0);
-      const [min, max] = pub === 'adultes' ? [430, 640] : [330, 540];
+      const [min, max] = pub === 'adultes' ? [430, 1100] : [330, 800]; // pas de plafond strict : l'alerte signale seulement un texte qui devient un livre
       const problemes = [];
       if (nbMots < min || nbMots > max) problemes.push(`longueur ${nbMots} mots (attendu ${min}-${max})`);
 

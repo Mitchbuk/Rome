@@ -6,7 +6,7 @@ Le fichier `monuments.js` (à la racine du projet) contient pour chaque lieu un 
 
 ## Pour chaque lieu, produire deux textes
 
-### 1. `adultes` : 450 à 600 mots, 4 à 6 sections titrées
+### 1. `adultes` : au moins 500 mots, souvent 600 à 900, 4 à 7 sections titrées
 Un vrai guide historique et culturel, précis, vivant, structuré. Sections possibles (adapter selon le lieu) :
 - Histoire (origines, construction, grandes dates, transformations, redécouverte)
 - Architecture et chiffres (dimensions, matériaux, techniques, ce qui a disparu)
@@ -14,7 +14,7 @@ Un vrai guide historique et culturel, précis, vivant, structuré. Sections poss
 - La vie à l'époque (à quoi servait le lieu, qui le fréquentait, anecdotes)
 - Petites histoires et légendes (faits marquants, personnages, films, curiosités)
 
-### 2. `enfants` : 350 à 500 mots, 4 à 6 sections titrées
+### 2. `enfants` : au moins 400 mots, souvent 450 à 700, 4 à 7 sections titrées
 Tutoiement, ton complice et vivant, sans être bébé (9-12 ans). Insister sur l'Empire romain, les gladiateurs, la vie quotidienne, les secrets du Vatican, les légendes. Structure conseillée :
 - Une section d'ouverture qui plante le décor, de forme variée d'un lieu à l'autre (scène au présent, question, chiffre étonnant, personnage, invitation à regarder ; « Imagine » rarement)
 - Deux ou trois sections d'anecdotes / mystères / « Le savais-tu ? »
