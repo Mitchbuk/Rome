@@ -87,6 +87,18 @@
     'hostaria-antica-roma': 'appia', 'osteria-dell-angelo': 'vatican'
   };
   const quartierDe = (m) => QUARTIER_PAR_ID[m.id] || 'ailleurs';
+  // Recherche : insensible aux accents et à la casse, sur le nom et le quartier ; les noms qui commencent par le texte d'abord
+  const plat = (s) => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  function correspond(m, t) {
+    const q = QUARTIERS.find((x) => x.id === quartierDe(m));
+    return plat(m.nom).includes(t) || plat(q && q.label).includes(t) || plat(m.quartier).includes(t);
+  }
+  function chercher(texte) {
+    const t = plat(texte.trim());
+    if (!t) return [];
+    const rang = (m) => (plat(m.nom).startsWith(t) ? 0 : plat(m.nom).split(/[\s'-]+/).some((w) => w.startsWith(t)) ? 1 : plat(m.nom).includes(t) ? 2 : 3);
+    return MONUMENTS.filter((m) => correspond(m, t)).sort((a, b) => rang(a) - rang(b) || a.nom.localeCompare(b.nom, 'fr'));
+  }
   /**
    * Zones préchargées pour le hors-ligne : centre historique + Vatican + début de la Via Appia,
    * puis deux petites zones isolées, le parc des Aqueducs et Ostie antique.
@@ -113,6 +125,7 @@
     watchId: null,         // identifiant de watchPosition
     userMovedMap: false,   // l'utilisateur a déplacé la carte : ne plus recentrer automatiquement
     filter: 'tous',        // filtre de catégorie actif
+    recherche: '',         // texte tapé dans la recherche de la liste
     visited: new Set(),    // identifiants des lieux marqués "vu"
     public: 'adultes',     // guide sélectionné : 'adultes' | 'enfants'
     current: null,         // lieu affiché dans la fiche
@@ -295,7 +308,9 @@
   function lieuxTries() {
     let principal = MONUMENTS.filter((m) => !estResto(m));
     let restos = MONUMENTS.filter(estResto);
-    if (state.filter === 'manger') principal = [];
+    const t = plat(state.recherche.trim());
+    if (t) { principal = principal.filter((m) => correspond(m, t)); restos = restos.filter((m) => correspond(m, t)); }
+    else if (state.filter === 'manger') principal = [];
     else if (state.filter === 'incontournables') { principal = principal.filter((m) => m.incontournable); restos = []; }
     else if (state.filter === 'avoir') { principal = principal.filter((m) => !state.visited.has(m.id)); restos = []; }
     else if (state.filter !== 'tous') { principal = principal.filter((m) => m.categorie === state.filter); restos = []; }
@@ -362,7 +377,18 @@
     el.compteVus.innerHTML = nbVus ? `${ICO_COCHE}<span>${nbVus} lieu${nbVus > 1 ? 'x' : ''} visité${nbVus > 1 ? 's' : ''} sur ${lieux.length}</span>` : '';
 
     const ordre = [];
-    if (surPlace) {
+    const recherche = !!state.recherche.trim();
+    el.listeScroll.classList.toggle('is-recherche', recherche);
+    el.compteVus.hidden = el.compteVus.hidden || recherche;
+    if (recherche) {
+      // Résultats de recherche : une seule liste, les noms qui correspondent le mieux d'abord (au plus près sur place)
+      const rangs = new Map(chercher(state.recherche).map((m, i) => [m.id, i]));
+      const tri = (arr) => (surPlace ? arr : arr.slice().sort((a, b) => rangs.get(a.m.id) - rangs.get(b.m.id)));
+      tri(principal).forEach((x) => ordre.push({ key: x.m.id, x }));
+      if (!principal.length && !restos.length) ordre.push({ key: '__vide__', x: null, label: `Aucun lieu ne correspond à « ${state.recherche.trim()} ».` });
+      if (restos.length) ordre.push({ key: '__section__', x: null, label: '🍝 Où manger' });
+      tri(restos).forEach((x) => ordre.push({ key: x.m.id, x }));
+    } else if (surPlace) {
       principal.forEach((x) => ordre.push({ key: x.m.id, x }));
     } else {
       // Mode "Préparer la visite" : groupé par quartier, dans l'ordre géographique
@@ -373,8 +399,10 @@
         membres.forEach((x) => ordre.push({ key: x.m.id, x }));
       }
     }
-    if (restos.length && state.filter === 'tous') ordre.push({ key: '__section__', x: null, label: '🍝 Où manger' });
-    restos.forEach((x) => ordre.push({ key: x.m.id, x }));
+    if (!recherche) {
+      if (restos.length && state.filter === 'tous') ordre.push({ key: '__section__', x: null, label: '🍝 Où manger' });
+      restos.forEach((x) => ordre.push({ key: x.m.id, x }));
+    }
 
     const existants = new Map();
     if (!force) el.liste.querySelectorAll(':scope > li').forEach((li) => existants.set(li.dataset.id, li));
@@ -393,7 +421,9 @@
         const tmp = document.createElement('ul');
         tmp.innerHTML = x
           ? ligneLieu(x.m, x.d)
-          : `<li data-id="${key}" class="liste-section${key === '__section__' ? '' : ' is-quartier'}" aria-hidden="true">${escapeHtml(label)}</li>`;
+          : key === '__vide__'
+            ? `<li data-id="${key}" class="liste-vide">${escapeHtml(label)}</li>`
+            : `<li data-id="${key}" class="liste-section${key === '__section__' ? '' : ' is-quartier'}" aria-hidden="true">${escapeHtml(label)}</li>`;
         li = tmp.firstElementChild;
       }
       // Ne déplace l'élément que s'il n'est pas déjà à la bonne place
@@ -490,9 +520,8 @@
     // Regroupement des marqueurs proches : un cercle photo avec le nombre de lieux.
     // Un tap sur le groupe zoome dessus ; à partir du zoom 17, tous les marqueurs sont séparés.
     const groupe = L.markerClusterGroup({
-      maxClusterRadius: 60,
-      disableClusteringAtZoom: 17,
-      spiderfyOnMaxZoom: false,
+      maxClusterRadius: (z) => (z >= 17 ? 32 : 60),
+      spiderfyOnMaxZoom: true,         // au zoom maximal, un groupe (lieux au même endroit) s'écarte au toucher
       showCoverageOnHover: false,
       iconCreateFunction: iconeGroupe
     });
@@ -505,7 +534,7 @@
     groupe.addTo(map);
     state.groupe = groupe;
 
-    map.on('click', hideMini);
+    map.on('click', () => { hideMini(); if (el.carteResultats) { el.carteResultats.hidden = true; el.carteQ.blur(); } });
     map.on('dragstart', () => { state.userMovedMap = true; });
     state.map = map;
   }
@@ -771,6 +800,27 @@
     if (!state.current) return;
     const { lat, lon, nom } = state.current;
     window.open(`https://maps.apple.com/?daddr=${lat},${lon}&dirflg=w&q=${encodeURIComponent(nom)}`, '_blank', 'noopener');
+  }
+
+  function allerAuLieu(m) {
+    state.userMovedMap = true;
+    state.map.setView([m.lat, m.lon], Math.max(state.map.getZoom(), 17), { animate: false });
+    state.groupe.zoomToShowLayer(state.markers[m.id], () => showMini(m));
+  }
+
+  function resultatsCarte() {
+    const q = el.carteQ.value;
+    el.carteEffacer.hidden = !q;
+    if (!q.trim()) { el.carteResultats.hidden = true; return; }
+    const res = chercher(q).slice(0, 6);
+    el.carteResultats.innerHTML = res.length
+      ? res.map((m) => `<button type="button" data-id="${m.id}"><span class="vignette"><img class="lieu-photo${estLogo(m) ? ' is-logo' : ''}" src="${thumbUrl(m)}" alt="" width="44" height="44">${badgeResto(m)}</span><span class="lieu-texte"><span class="lieu-nom">${escapeHtml(m.nom)}</span><span class="lieu-meta">${estResto(m) ? `${typeResto(m)}, ${escapeHtml(m.quartier)}` : escapeHtml(CATEGORIES[m.categorie].label)}</span></span></button>`).join('')
+      : '<p>Aucun lieu ne correspond.</p>';
+    el.carteResultats.hidden = false;
+  }
+  function fermerRechercheCarte() {
+    el.carteQ.value = ''; el.carteQ.blur();
+    el.carteResultats.hidden = true; el.carteEffacer.hidden = true;
   }
 
   function voirSurCarte() {
@@ -1319,6 +1369,27 @@
     el.btnPreload2.addEventListener('click', prechargerTuiles);
     el.miniOpen.addEventListener('click', () => { if (state.miniLieu) openSheet(state.miniLieu.id); });
     el.miniClose.addEventListener('click', hideMini);
+    // Recherche sur la carte
+    el.carteQ.addEventListener('input', resultatsCarte);
+    el.carteQ.addEventListener('focus', resultatsCarte);
+    el.carteEffacer.addEventListener('click', () => { el.carteQ.value = ''; resultatsCarte(); el.carteQ.focus(); });
+    el.carteResultats.addEventListener('click', (ev) => {
+      const b = ev.target.closest('button[data-id]');
+      if (!b) return;
+      const m = lieuParId(b.dataset.id);
+      fermerRechercheCarte();
+      if (m) allerAuLieu(m);
+    });
+    // Recherche dans la liste
+    el.listeQ.addEventListener('input', () => {
+      state.recherche = el.listeQ.value;
+      el.listeEffacer.hidden = !state.recherche;
+      renderListe(true);
+    });
+    el.listeEffacer.addEventListener('click', () => {
+      state.recherche = ''; el.listeQ.value = ''; el.listeEffacer.hidden = true;
+      renderListe(true); el.listeQ.focus();
+    });
     el.miniVu.addEventListener('click', () => { if (state.miniLieu) basculerVisite(state.miniLieu.id); });
 
     // Liste
@@ -1396,6 +1467,11 @@
       miniOpen: $('#mini-open'),
       miniClose: $('#mini-close'),
       miniVu: $('#mini-vu'),
+      carteQ: $('#carte-q'),
+      carteEffacer: $('#carte-effacer'),
+      carteResultats: $('#carte-resultats'),
+      listeQ: $('#liste-q'),
+      listeEffacer: $('#liste-effacer'),
       compteVus: $('#compte-vus'),
       miniImg: $('#mini-img'),
       miniBadge: $('#mini-badge'),

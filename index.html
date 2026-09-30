@@ -45,6 +45,14 @@
       <section id="view-carte" class="view is-active" data-view="carte" aria-label="Carte">
         <div id="map" role="application" aria-label="Carte de Rome"></div>
 
+        <!-- Recherche d'un lieu sur la carte -->
+        <div class="carte-recherche">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <input id="carte-q" type="search" placeholder="Chercher un lieu" autocomplete="off" enterkeyhint="search" aria-label="Chercher un lieu sur la carte">
+          <button id="carte-effacer" class="recherche-effacer" type="button" aria-label="Effacer" hidden>✕</button>
+          <div id="carte-resultats" class="carte-resultats" hidden></div>
+        </div>
+
         <!-- Boutons flottants, tiers inférieur de l'écran -->
         <div class="map-fabs">
           <button id="btn-preload" class="fab" type="button" aria-label="Télécharger la carte du centre de Rome pour le mode hors-ligne" title="Carte hors-ligne">
@@ -82,6 +90,11 @@
       <!-- Onglet AUTOUR DE MOI -->
       <section id="view-liste" class="view" data-view="liste" aria-label="Autour de moi">
         <div class="liste-scroll">
+          <div class="liste-recherche">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m20 20-3.6-3.6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            <input id="liste-q" type="search" placeholder="Chercher un lieu" autocomplete="off" enterkeyhint="search" aria-label="Chercher un lieu">
+            <button id="liste-effacer" class="recherche-effacer" type="button" aria-label="Effacer" hidden>✕</button>
+          </div>
           <div id="liste-hint" class="liste-hint" hidden>
             <p>Activez la localisation pour trier les lieux du plus proche au plus lointain.</p>
             <button id="btn-hint-gps" class="btn btn-small btn-primary" type="button">Activer la localisation</button>
