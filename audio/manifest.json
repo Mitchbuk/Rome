@@ -215,11 +215,11 @@
     "taille": 1254240
   },
   "piazza-del-popolo-enfants.mp3": {
-    "hash": "d04515059f4ba66e",
+    "hash": "8f622530005450cc",
     "voix": "fr-FR-DeniseNeural",
     "moteur": "edge",
-    "duree": 184,
-    "taille": 1105776
+    "duree": 200,
+    "taille": 1200384
   },
   "via-del-corso-enfants.mp3": {
     "hash": "2430c8c08f912caf",
@@ -229,10 +229,11 @@
     "taille": 1038240
   },
   "piazza-del-popolo-adultes.mp3": {
-    "hash": "d4de9295fa791e98",
+    "hash": "0cfd1a13ff4bd248",
     "voix": "fr-FR-HenriNeural",
-    "duree": 229,
-    "taille": 1375776
+    "moteur": "edge",
+    "duree": 231,
+    "taille": 1388880
   },
   "piazza-venezia-enfants.mp3": {
     "hash": "9a25dd338d1d9cf6",
